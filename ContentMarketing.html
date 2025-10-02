@@ -1,21 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-   
-    <style>
-      * {
-        box-sizing: border-box;
-        scroll-behavior: smooth;
-        font-family: "Cormorant Garamond";
-        scrollbar-width: none;
-        animation-duration: 800ms;
-        color: #000;
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      font-family: "Cormorant Garamond";
+      scrollbar-width: none;
+      animation-duration: 800ms;
+      color: #000;
+    }
+
+
+
+
+
+
+
+
+    body {
+      margin: 0;
+      background-color: #ebe0d5;
+      display: flex;
+      flex-direction: column;
+      width: 100vw;
+      overflow-x: hidden;
+      min-height: 100vh;
+      /* Ensure body takes at least full viewport height */
+    }
+
+    @supports (-webkit-touch-callout: none) {
+      .hero {
+        background-attachment: scroll !important;
       }
+    }
 
 
 
@@ -24,61 +51,295 @@
 
 
 
-      body {
-        margin: 0;
-        background-color: #ebe0d5;
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 60px;
+      right: 30px;
+      z-index: 99999999999999;
+      width: 50px;
+      height: 50px;
+      background-color: #ffffff;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+
+
+
+
+
+
+
+    .back-to-top:hover {
+      background-color: #fff;
+      color: #000;
+    }
+
+
+
+
+
+
+
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+
+
+
+
+
+
+
+    .back-to-top svg {
+      width: 24px;
+      height: 24px;
+    }
+
+
+
+
+
+
+
+
+    /* Top section styling */
+    .top-section {
+      width: 100%;
+      background-color: #ebe0d5;
+      padding: 10px;
+      margin-bottom: 0;
+    }
+
+    .paddingleftright {
+      padding-left: 5vw;
+      padding-right: 5vw;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .sidebar {
+      width: 340px;
+      background-color: #ebe0d5;
+      color: white;
+      padding: 24px;
+      position: fixed;
+      left: 0;
+      top: 0;
+      padding: 16px;
+      padding-left: 40px;
+      padding-right: 40px;
+      bottom: 0;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      height: fit-content;
+      gap: 14px;
+      /* Initially hidden */
+      transform: translateY(100vh);
+      transition: transform 0.3s ease;
+      z-index: 100;
+      /* Ensure sidebar appears above other content */
+    }
+
+
+
+
+
+
+
+
+
+    .sidebar2 {
+      width: 340px;
+      background-color: #ebe0d5;
+      color: white;
+      padding: 24px;
+      position: fixed;
+      height: fit-content;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      /* Initially hidden */
+      transform: translateY(100vh);
+      transition: transform 0.3s ease;
+      z-index: 100;
+      /* Ensure sidebar appears above other content */
+    }
+
+
+
+
+
+
+
+
+    /* When main-container is in view or scrolled past, show the sidebar */
+    .main-container-visible .sidebar {
+      transform: translateY(0);
+    }
+
+    .main-container-visible .sidebar2 {
+      transform: translateY(0);
+    }
+
+
+
+
+
+
+
+
+    button {
+      background-color: #000;
+      color: #fff;
+      padding: 12px;
+      border-radius: 5px;
+      font-weight: 500;
+      transition: 0.2s;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+
+
+
+
+
+
+
+    button:hover {
+      background-color: #fff;
+      color: #000;
+    }
+
+
+
+
+
+
+
+
+    .main-container {
+      display: flex;
+      flex: 1;
+      /* This makes the container take available space */
+      position: relative;
+    }
+
+
+
+
+
+
+
+
+    .content {
+
+      transition: all;
+      transition-duration: 1ms;
+
+      background-color: #ebe0d5;
+      color: #000;
+      width: 100%;
+      flex: 1;
+      /* This ensures content takes available space */
+    }
+
+    .mrginleft {
+      margin-left: 340px
+    }
+
+    .section {
+      margin-bottom: 80px;
+    }
+
+
+
+
+
+
+
+
+    .image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+
+
+
+    }
+
+
+    .section p {
+      line-height: 1.7;
+    }
+
+    p {
+      font-size: larger !important;
+    }
+
+    h2 {
+      text-align: center;
+      text-decoration: underline;
+    }
+
+    h3 {
+      text-align: center;
+    }
+
+    @media screen and (max-width: 400px) {
+      .luxury-footer-content {
         display: flex;
         flex-direction: column;
-        width:100vw;
-        overflow-x:hidden;
-        min-height: 100vh; /* Ensure body takes at least full viewport height */
-      }
-      @supports (-webkit-touch-callout: none) {
-  .hero {
-    background-attachment: scroll !important;
-  }
-}
-
-
-
-
-
-
-
-
-      /* Back to Top Button */
-      .back-to-top {
-        position: fixed;
-        bottom: 60px;
-        right: 30px;
-        z-index: 99999999999999;
-        width: 50px;
-        height: 50px;
-        background-color: #ffffff;
-        color: #fff;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        gap: 30px;
       }
 
-
-
-
-
-
-
-
-      .back-to-top:hover {
-        background-color: #fff;
-        color: #000;
+      .image2 {
+        max-width: 100%;
       }
 
+      h3 {
+        font-size: 18px
+      }
+    }
 
 
 
@@ -86,283 +347,42 @@
 
 
 
-      .back-to-top.visible {
-        opacity: 1;
-        visibility: visible;
+
+    @media screen and (max-width: 768px) {
+      h1 {
+        font-size: 30px !important;
       }
 
-
-
-
-
-
-
-
-      .back-to-top svg {
-        width: 24px;
-        height: 24px;
-      }
-
-
-
-
-
-
-
-
-      /* Top section styling */
       .top-section {
-        width: 100%;
-        background-color: #ebe0d5;
-        padding: 10px;
-        margin-bottom: 0;
-      }
-     
-      .paddingleftright{
-        padding-left:5vw;
-        padding-right:5vw;
+        padding: 5px;
       }
 
-
-
-
-
-
-
-
-     
-
-
-
-
-
-
-
+      .faq-question {
+        padding: 0 0 !important;
+      }
 
       .sidebar {
-        width: 340px;
-        background-color: #ebe0d5;
-        color: white;
-        padding: 24px;
+        width: 100%;
+        height: 80px;
+        padding: 0;
+        padding-top: 20px;
+        padding-bottom: 0;
+        padding-left: 0;
         position: fixed;
-        left: 0;
         top: 0;
-         padding: 16px;
-          padding-left: 40px;
-          padding-right: 40px;
-        bottom: 0;
-        overflow-y: auto;
-        display: flex;
-        flex-direction: column;
-        height:fit-content;
-        gap: 14px;
-        /* Initially hidden */
-        transform: translateY(100vh);
-        transition: transform 0.3s ease;
-        z-index: 100; /* Ensure sidebar appears above other content */
-      }
-
-
-
-
-
-
-
-
- 
-      .sidebar2 {
-        width: 340px;
+        left: 0;
         background-color: #ebe0d5;
-        color: white;
-        padding: 24px;
-        position: fixed;
-         height:fit-content;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        overflow-y: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-        /* Initially hidden */
-        transform: translateY(100vh);
-        transition: transform 0.3s ease;
-        z-index: 100; /* Ensure sidebar appears above other content */
-      }
-
-
-
-
-
-
-
-
-      /* When main-container is in view or scrolled past, show the sidebar */
-      .main-container-visible .sidebar {
-        transform: translateY(0);
-      }
-      .main-container-visible .sidebar2 {
-        transform: translateY(0);
-      }
-
-
-
-
-
-
-
-
-      button {
-        background-color: #000;
-        color: #fff;
-        padding: 12px;
-        border-radius: 5px;
-        font-weight: 500;
-        transition: 0.2s;
-        border: none;
-        cursor: pointer;
+        z-index: 10;
+        overflow-x: auto;
+        overflow-y: hidden;
+        flex-direction: row;
         white-space: nowrap;
-        flex-shrink: 0;
+        gap: 4px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
       }
 
-
-
-
-
-
-
-
-      button:hover {
-        background-color: #fff;
-        color: #000;
-      }
-
-
-
-
-
-
-
-
-      .main-container {
-        display: flex;
-        flex: 1; /* This makes the container take available space */
-        position: relative;
-      }
-
-
-
-
-
-
-
-
-      .content {
-       
-       transition: all;
-       transition-duration:1ms;
-       
-        background-color: #ebe0d5;
-        color: #000;
-        width: 100%;
-        flex: 1; /* This ensures content takes available space */
-      }
-     
-.mrginleft{
-  margin-left:340px
-}
-      .section {
-        margin-bottom: 80px;
-      }
-
-
-
-
-
-
-
-
-      .image {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 20px;
-        width: 100%;
-        margin-top:20px;
-      }
-
-
-
-
-       }
-
-
-      .section p {
-        line-height: 1.7;
-      }
-      p {
-        font-size:larger !important;
-      }
-      h2 {
-        text-align: center;
-        text-decoration: underline;
-      }
-      h3{
-        text-align:center;
-      }
-      @media screen and (max-width: 400px) {
-        .luxury-footer-content {
-          display: flex;
-          flex-direction: column;
-          gap: 30px;
-        }
-         .image2{
-          max-width: 100%;
-         }
-       
-        h3{
-       font-size:18px
-      }
-      }
-
-
-
-
-
-
-
-
-      @media screen and (max-width: 768px) {
-        h1{
-          font-size: 30px !important;
-        }
-        .top-section {
-          padding: 5px;
-        }
-          .faq-question{
-            padding: 0 0 !important;
-          }
-        .sidebar {
-          width: 100%;
-          height: 80px;
-          padding: 0;
-          padding-top: 20px;
-          padding-bottom: 0;
-          padding-left: 0;
-          position: fixed;
-          top: 0;
-          left: 0;
-          background-color: #ebe0d5;
-          z-index: 10;
-          overflow-x: auto;
-          overflow-y: hidden;
-         flex-direction: row;
-          white-space: nowrap;
-          gap: 4px;
-          scrollbar-width: none;
-          -ms-overflow-style: none;
-        }
-        .sidebar button {
+      .sidebar button {
         background-color: #000;
         color: #fff;
         padding: 8px;
@@ -376,90 +396,14 @@
         flex-shrink: 0;
         height: fit-content;
       }
-       
-        .sidebar::-webkit-scrollbar {
-          display: none;
-        }
-         .back-to-top{
-          bottom: 80px;
-         
-         }
 
+      .sidebar::-webkit-scrollbar {
+        display: none;
+      }
 
+      .back-to-top {
+        bottom: 80px;
 
-
-
-
-
-
-        .sidebar2 {
-          width: 100%;
-          height: 80px;
-          padding: 16px;
-          padding-left: 40px;
-          padding-right: 40px;
-          position: fixed;
-          top: 0;
-          left: 0;
-          background-color: #ebe0d5;
-          z-index: 10;
-          flex-direction: row;
-          overflow-x: auto;
-          overflow-y: hidden;
-          white-space: nowrap;
-          gap: 10px;
-          scrollbar-width: none;
-          -ms-overflow-style: none;
-        }
-       
-        .sidebar2::-webkit-scrollbar {
-          display: none;
-        }
-
-
-
-
-
-
-
-
-        .left-arrow, .right-arrow {
-          display: none !important;
-        }
-
-
-
-
-
-
-
-
-        .scroll-btn-left, .scroll-btn-right {
-          display: block;
-        }
-
-
-
-
-
-
-
-
-        p {
-          font-size: large;
-        }
-
-
-
-
-
-
-
-
-       
-        .mrginleft{
-           margin-left:0px;
-        }
       }
 
 
@@ -469,367 +413,28 @@
 
 
 
-      a:visited {
-        color: #000;
-      }
-
-
-
-
-
-
-
-
-      .luxury-footer {
-        background-color: inherit; /* Beige background */
-        padding: 15px 0;
-        text-align: center;
-        font-size: 1.1rem;
-        font-family: Arial, sans-serif;
+      .sidebar2 {
         width: 100%;
-        margin-top: auto; /* Push to the bottom */
-        z-index: 99999999999999;
-      }
-
-
-
-
-
-
-
-
-      .luxury-footer-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 97%;
-        margin: 0 auto;
-        padding: 0 20px;
-        padding-left: 4%;
-        padding-right: 10%;
-      }
-
-
-
-
-
-
-
-
-      .luxury-footer-contact {
-        margin-right: 50px;
-        text-align: left;
-      }
-
-
-
-
-
-
-
-
-      .luxury-footer small {
-        display: block;
-        margin: 5px 0;
-        color: #333;
-      }
-
-
-
-
-
-
-
-
-      .luxury-footer a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-
-
-
-
-
-
-
-      .luxury-footer a:hover {
-        text-decoration: underline;
-      }
-
-
-
-
-
-
-
-
-      .luxury-footer .social-icons {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        align-items: center;
-      }
-
-
-
-
-
-
-
-
-      .luxury-footer .social-link {
-        display: inline-block;
-        margin: 0 10px;
-      }
-
-
-
-
-
-
-
-
-      .luxury-footer img {
-        width: 20px;
-        height: 20px;
-        vertical-align: middle;
-      }
-
-
-
-
-
-
-
-
-   
-
-
-
-
-
-
-
-
-      .faq-item {
-        border-bottom: 1px solid #696969;
-        overflow: hidden;
-      }
-
-
-
-
-
-
-
-
-      .faq-question {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 0;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-
-
-
-
-
-
-
-
-      .faq-question h3 {
-        font-size: 18px;
-        font-weight: 500;
-        color: #1a1a1a;
-        text-align: left;
-      }
-
-
-
-
-
-
-
-
-      .faq-toggle {
-        width: 24px;
-        height: 24px;
-        background: transparent;
-        border: none;
-        position: relative;
-        cursor: pointer;
-      }
-
-
-
-
-
-
-
-
-      .faq-toggle::before {
-        font-size: 18px;
-        color: #1a1a1a;
-        transition: transform 0.3s ease;
-      }
-
-
-
-
-
-
-
-
-      .faq-toggle.active {
-        rotate: 180deg;
-      }
-
-
-
-
-
-
-
-
-      .faq-answer {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease;
-        padding: 0 0 0 2px;
-        line-height: 1.6;
-        color: #333;
-      }
-
-
-
-
-
-
-
-
-      .faq-answer.active {
-        max-height: fit-content;
-        padding-bottom: 20px;
-        height: fit-content;
-      }
-
-
-
-
-
-
-
-
-      .faq-answer p {
-        margin-bottom: 10px;
-        font-size: 16px;
-        line-height: 1.5;
-        height: fit-content;
-        margin-top: 0;
-      }
-
-
-
-
-
-
-
-
-      .left-arrow{
-        font-size: 20px;
-        color: #000;
-        cursor: pointer;
-        margin-right: 10px;
-        position: absolute;
-        left: 5px;
-        top: 35%;
-        z-index: 15;
-        display: none; /* Hide by default (on desktop) */
-      }
-
-
-
-
-
-
-
-
-      .right-arrow{
-        font-size: 20px;
-        color: #000;
-        cursor: pointer;
-        margin-left: 10px;
-        position: absolute;
-        right: 5px;
-        top: 35%;
-        z-index: 15;
-        display: none; /* Hide by default (on desktop) */
-      }
-
-
-
-
-
-
-
-
-      /* Hide scrollbar but maintain functionality */
-      .sidebar::-webkit-scrollbar, .sidebar2::-webkit-scrollbar {
-        display: none;
-      }
-     
-      .sidebar, .sidebar2 {
-        -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;  /* Firefox */
-      }
-
-
-
-
-
-
-
-
-      /* Scroll button styling */
-      .scroll-btn-left, .scroll-btn-right {
-        display: none;
+        height: 80px;
+        padding: 16px;
+        padding-left: 40px;
+        padding-right: 40px;
         position: fixed;
-        top: 5px;
-        z-index: 30;
+        top: 0;
+        left: 0;
+        background-color: #ebe0d5;
+        z-index: 10;
+        flex-direction: row;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        gap: 10px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
       }
-     
-      .scroll-btn-left {
-        left: 0px;
-      }
-     
-      .scroll-btn-right {
-        right: 0px;
-      }
-     
-      .scroll-btn {
-        background-color: rgba(235, 224, 213, 0.95);
-        border: none;
-       
-        width: 30px;
-        height: 60px;
-        cursor: pointer;
-       
+
+      .sidebar2::-webkit-scrollbar {
         display: none;
-        align-items: center;
-        justify-content: center;
-        padding: 0;
-        border-radius: 0px;
-      }
-     
-      .scroll-btn:hover {
-        background-color: rgba(235, 224, 213, 1);
-      }
-     
-      .scroll-btn svg {
-        fill: #000;
       }
 
 
@@ -839,101 +444,530 @@
 
 
 
-      @media screen and (max-width: 768px) {
-        .top-section {
-          padding: 5px;
-        }
-.scroll-btn{
-  display: flex;
-}
-       
-       
-        .sidebar::-webkit-scrollbar {
-          display: none;
-        }
-
-
-
-
-
-
-
-
-        .sidebar2 {
-          width: 100%;
-          height: 80px;
-          padding: 16px;
-          padding-left: 40px;
-          padding-right: 40px;
-          position: fixed;
-          top: 0;
-          left: 0;
-          background-color: #ebe0d5;
-          z-index: 10;
-          flex-direction: row;
-          overflow-x: auto;
-          overflow-y: hidden;
-          white-space: nowrap;
-          gap: 10px;
-          scrollbar-width: none;
-          -ms-overflow-style: none;
-        }
-       
-        .sidebar2::-webkit-scrollbar {
-          display: none;
-        }
-
-
-
-
-
-
-
-
-        .left-arrow, .right-arrow {
-          display: none !important;
-        }
-
-
-
-
-
-
-
-
-        .scroll-btn-left, .scroll-btn-right {
-          display: block;
-        }
-
-
-
-
-
-
-
-
-        p {
-          font-size: large;
-        }
-
-
-
-
-
-
-
-
-        .content {
-          margin-top: 100px;
-          margin-left:0px;
-        }
+      .left-arrow,
+      .right-arrow {
+        display: none !important;
       }
-    </style>
-  </head>
-  <body >
-    <div
-    class="hero"
-      style="
+
+
+
+
+
+
+
+
+      .scroll-btn-left,
+      .scroll-btn-right {
+        display: block;
+      }
+
+
+
+
+
+
+
+
+      p {
+        font-size: large;
+      }
+
+
+
+
+
+
+
+
+
+      .mrginleft {
+        margin-left: 0px;
+      }
+    }
+
+
+
+
+
+
+
+
+    a:visited {
+      color: #000;
+    }
+
+
+
+
+
+
+
+
+    .luxury-footer {
+      background-color: inherit;
+      /* Beige background */
+      padding: 15px 0;
+      text-align: center;
+      font-size: 1.1rem;
+      font-family: Arial, sans-serif;
+      width: 100%;
+      margin-top: auto;
+      /* Push to the bottom */
+      z-index: 99999999999999;
+    }
+
+
+
+
+
+
+
+
+    .luxury-footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 97%;
+      margin: 0 auto;
+      padding: 0 20px;
+      padding-left: 4%;
+      padding-right: 10%;
+    }
+
+
+
+
+
+
+
+
+    .luxury-footer-contact {
+      margin-right: 50px;
+      text-align: left;
+    }
+
+
+
+
+
+
+
+
+    .luxury-footer small {
+      display: block;
+      margin: 5px 0;
+      color: #333;
+    }
+
+
+
+
+
+
+
+
+    .luxury-footer a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+
+
+
+
+
+
+
+    .luxury-footer a:hover {
+      text-decoration: underline;
+    }
+
+
+
+
+
+
+
+
+    .luxury-footer .social-icons {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+
+
+
+
+
+
+
+
+    .luxury-footer .social-link {
+      display: inline-block;
+      margin: 0 10px;
+    }
+
+
+
+
+
+
+
+
+    .luxury-footer img {
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .faq-item {
+      border-bottom: 1px solid #696969;
+      overflow: hidden;
+    }
+
+
+
+
+
+
+
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+
+
+
+
+
+
+
+    .faq-question h3 {
+      font-size: 18px;
+      font-weight: 500;
+      color: #1a1a1a;
+      text-align: left;
+    }
+
+
+
+
+
+
+
+
+    .faq-toggle {
+      width: 24px;
+      height: 24px;
+      background: transparent;
+      border: none;
+      position: relative;
+      cursor: pointer;
+    }
+
+
+
+
+
+
+
+
+    .faq-toggle::before {
+      font-size: 18px;
+      color: #1a1a1a;
+      transition: transform 0.3s ease;
+    }
+
+
+
+
+
+
+
+
+    .faq-toggle.active {
+      rotate: 180deg;
+    }
+
+
+
+
+
+
+
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding: 0 0 0 2px;
+      line-height: 1.6;
+      color: #333;
+    }
+
+
+
+
+
+
+
+
+    .faq-answer.active {
+      max-height: fit-content;
+      padding-bottom: 20px;
+      height: fit-content;
+    }
+
+
+
+
+
+
+
+
+    .faq-answer p {
+      margin-bottom: 10px;
+      font-size: 16px;
+      line-height: 1.5;
+      height: fit-content;
+      margin-top: 0;
+    }
+
+
+
+
+
+
+
+
+    .left-arrow {
+      font-size: 20px;
+      color: #000;
+      cursor: pointer;
+      margin-right: 10px;
+      position: absolute;
+      left: 5px;
+      top: 35%;
+      z-index: 15;
+      display: none;
+      /* Hide by default (on desktop) */
+    }
+
+
+
+
+
+
+
+
+    .right-arrow {
+      font-size: 20px;
+      color: #000;
+      cursor: pointer;
+      margin-left: 10px;
+      position: absolute;
+      right: 5px;
+      top: 35%;
+      z-index: 15;
+      display: none;
+      /* Hide by default (on desktop) */
+    }
+
+
+
+
+
+
+
+
+    /* Hide scrollbar but maintain functionality */
+    .sidebar::-webkit-scrollbar,
+    .sidebar2::-webkit-scrollbar {
+      display: none;
+    }
+
+    .sidebar,
+    .sidebar2 {
+      -ms-overflow-style: none;
+      /* IE and Edge */
+      scrollbar-width: none;
+      /* Firefox */
+    }
+
+
+
+
+
+
+
+
+    /* Scroll button styling */
+    .scroll-btn-left,
+    .scroll-btn-right {
+      display: none;
+      position: fixed;
+      top: 5px;
+      z-index: 30;
+    }
+
+    .scroll-btn-left {
+      left: 0px;
+    }
+
+    .scroll-btn-right {
+      right: 0px;
+    }
+
+    .scroll-btn {
+      background-color: rgba(235, 224, 213, 0.95);
+      border: none;
+
+      width: 30px;
+      height: 60px;
+      cursor: pointer;
+
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      border-radius: 0px;
+    }
+
+    .scroll-btn:hover {
+      background-color: rgba(235, 224, 213, 1);
+    }
+
+    .scroll-btn svg {
+      fill: #000;
+    }
+
+
+
+
+
+
+
+
+    @media screen and (max-width: 768px) {
+      .top-section {
+        padding: 5px;
+      }
+
+      .scroll-btn {
+        display: flex;
+      }
+
+
+      .sidebar::-webkit-scrollbar {
+        display: none;
+      }
+
+
+
+
+
+
+
+
+      .sidebar2 {
+        width: 100%;
+        height: 80px;
+        padding: 16px;
+        padding-left: 40px;
+        padding-right: 40px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #ebe0d5;
+        z-index: 10;
+        flex-direction: row;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        gap: 10px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      .sidebar2::-webkit-scrollbar {
+        display: none;
+      }
+
+
+
+
+
+
+
+
+      .left-arrow,
+      .right-arrow {
+        display: none !important;
+      }
+
+
+
+
+
+
+
+
+      .scroll-btn-left,
+      .scroll-btn-right {
+        display: block;
+      }
+
+
+
+
+
+
+
+
+      p {
+        font-size: large;
+      }
+
+
+
+
+
+
+
+
+      .content {
+        margin-top: 100px;
+        margin-left: 0px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="hero" style="
      
         width: 100%;
         height: 100vh;
@@ -948,11 +982,9 @@
         display: flex;
         justify-content: center;
         align-items: center;
-      "
-    >
-   
-      <div
-        style="
+      ">
+
+    <div style="
           background-color: black;
           opacity: 0.5;
           width: 100%;
@@ -960,19 +992,37 @@
           position: absolute;
           top: 0;
           left: 0;
-        "
-        class="overlay"
-      ></div>
-      <h1
-        style="
+        " class="overlay"></div>
+    <h1 style="
           color: white;
           text-align: center;
           z-index: 999999999999;
          
-        "
-      >
-         LUXURY CONTENT MARKETING
-  </h1>
+        ">
+      LUXURY CONTENT MARKETING
+    </h1>
+  </div>
+
+
+
+
+
+
+
+
+  <div class="paddingleftright mrginleft">
+    <div class="top-section">
+      <div style="  margin-top:80px; ">
+        <p>
+          What makes luxury content marketing different? It’s less about clicks and more about connection. Luxury
+          content transforms your brand into a lifestyle, your product into a compelling story, and your audience into
+          devoted believers.
+          Customers connect with luxury brands on a mental and emotional level long before making a purchasing decision.
+          From SEO to social media to storytelling, luxury content marketing keeps your brand relevant, desirable, and
+          unforgettable.
+        </p>
+
+      </div>
     </div>
 
 
@@ -982,25 +1032,7 @@
 
 
 
-    <div class="paddingleftright mrginleft" >
-    <div class="top-section" >
-      <div  style="  margin-top:80px; ">
-    <p>
-        What makes luxury content marketing different? It’s less about clicks and more about connection. Luxury content transforms your brand into a lifestyle, your product into a compelling story, and your audience into devoted believers.
-Customers connect with luxury brands on a mental and emotional level long before making a purchasing decision. From SEO to social media to storytelling, luxury content marketing keeps your brand relevant, desirable, and unforgettable.
-    </p>
-     
-    </div>
-    </div>
 
-
-
-
-
-
-
-
-   
 
 
 
@@ -1010,28 +1042,35 @@ Customers connect with luxury brands on a mental and emotional level long before
 
 
     <div class="main-container" id="main-container">
-      <div class="sidebar" style="display: flex;justify-content: center;" >
-         
-       
+      <div class="sidebar" style="display: flex;justify-content: center;">
+
+
         <button onclick="scrollToSection('audience')">Our content services</button>
         <button onclick="scrollToSection('mindmap')">
           The industries we work with
         </button>
         <button onclick="scrollToSection('content')">Who We Are</button>
-     
+
       </div>
-     
-     
-     
-      <div class="content" >
-         <div  class="top-section" style="padding-top: 0px !important; ">
-      <h2 >What Is Luxury Content Marketing?</h2>
-      <img  style="max-height: 500px; object-fit: cover;" class="image" src="https://images.unsplash.com/photo-1678081624395-6d57c224df42?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
-      <p style="text-align: start;">
-       <b>Luxury content marketing</b> is the way to build a unique brand image by focusing on every little detail across all brand elements. <b>Luxury content</b> focuses on quality, crafting messages that connect with the emotions and heritage of the target audience to create meaningful brand experiences. <b>Content marketing</b>, just like branding, is about reaching a broad audience by working on valuable and engaging content like blog posts, videos, or social media posts that increase brand <b>visibility</b> and <b>drive conversions.</b> What sets luxury content marketing apart is its emphasis on speaking to a more refined audience.
-      </p>
-     
-    </div>
+
+
+
+      <div class="content">
+        <div class="top-section" style="padding-top: 0px !important; ">
+          <h2>What Is Luxury Content Marketing?</h2>
+          <img style="max-height: 500px; object-fit: cover;" class="image"
+            src="https://images.unsplash.com/photo-1678081624395-6d57c224df42?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+          <p style="text-align: start;">
+            <b>Luxury content marketing</b> is the way to build a unique brand image by focusing on every little detail
+            across all brand elements. <b>Luxury content</b> focuses on quality, crafting messages that connect with the
+            emotions and heritage of the target audience to create meaningful brand experiences. <b>Content
+              marketing</b>, just like branding, is about reaching a broad audience by working on valuable and engaging
+            content like blog posts, videos, or social media posts that increase brand <b>visibility</b> and <b>drive
+              conversions.</b> What sets luxury content marketing apart is its emphasis on speaking to a more refined
+            audience.
+          </p>
+
+        </div>
 
 
 
@@ -1040,39 +1079,45 @@ Customers connect with luxury brands on a mental and emotional level long before
 
 
 
-         <div  class="top-section" style="padding-top: 0px !important; ">
-      <h2 >The Role of Luxury Content in Building Exclusivity and Prestige</h2>
-     
-      <p style="text-align: start;">
-     <b>Luxury content creators</b> aim to drive traffic and generate leads for luxury brands; they also focus on prestige, emotion, and storytelling. <b>Luxury content</b> connects with individuals who value heritage, craftsmanship, and exclusivity - those who see luxury as an extension of their identity and aspirations.
-      </p>
-       <img
-             style="max-height: 500px; object-fit: cover;"
-              src="https://images.pexels.com/photos/4549411/pexels-photo-4549411.jpeg"
-             class="image"
-              alt=""
-            />
-      <p style="text-align: start;">
-<b>Content marketing for luxury brands</b> should be built on a strategy based on connection, not just communication. It’s elegant, emotional, and carefully designed to reflect a lifestyle, which makes luxury content go beyond selling; it tells stories of heritage, quality, and meaning. With the support of a <b>luxury content agency,</b> your brand will receive custom <b>content marketing solutions</b> that connect with people who expect more than just a product. As a <a href="https://www.luxury-method.com/">luxury content agency</a>, our job is to be your partner in attracting the right audience for your luxury brand, those who care about meaning, value, and the story behind the product.      </p>
-     
-    </div>
-      <div id="editorial2" class="section">
-<h2 style="text-decoration:none;">OUR SERVICES IN LUXURY CONTENT MARKETING</h2>
-         
+        <div class="top-section" style="padding-top: 0px !important; ">
+          <h2>The Role of Luxury Content in Building Exclusivity and Prestige</h2>
+
+          <p style="text-align: start;">
+            <b>Luxury content creators</b> aim to drive traffic and generate leads for luxury brands; they also focus on
+            prestige, emotion, and storytelling. <b>Luxury content</b> connects with individuals who value heritage,
+            craftsmanship, and exclusivity - those who see luxury as an extension of their identity and aspirations.
+          </p>
+          <img style="max-height: 500px; object-fit: cover;"
+            src="https://images.pexels.com/photos/4549411/pexels-photo-4549411.jpeg" class="image" alt="" />
+          <p style="text-align: start;">
+            <b>Content marketing for luxury brands</b> should be built on a strategy based on connection, not just
+            communication. It’s elegant, emotional, and carefully designed to reflect a lifestyle, which makes luxury
+            content go beyond selling; it tells stories of heritage, quality, and meaning. With the support of a
+            <b>luxury content agency,</b> your brand will receive custom <b>content marketing solutions</b> that connect
+            with people who expect more than just a product. As a <a href="https://www.luxury-method.com/">luxury
+              content agency</a>, our job is to be your partner in attracting the right audience for your luxury brand,
+            those who care about meaning, value, and the story behind the product.
+          </p>
+
+        </div>
+        <div id="editorial2" class="section">
+          <h2 style="text-decoration:none;">OUR SERVICES IN LUXURY CONTENT MARKETING</h2>
+
           <div class="image">
-            <img
-             style="max-height: 500px; object-fit: cover;"
+            <img style="max-height: 500px; object-fit: cover;"
               src="https://images.unsplash.com/photo-1709715357520-5e1047a2b691?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              class="image"
-              alt=""
-            />
+              class="image" alt="" />
           </div>
-          <p>As a <b>luxury content agency</b>, we offer content marketing solutions matched to your brand’s elegance and identity. From SEO and email marketing to social media content creation and elite print materials, our work is crafted to connect your brand with personalized target audiences. Our team of <b>content marketing experts</b> has the knowledge and experience to ensure every piece, whether digital or traditional, carries the right message, tone, and look to elevate your brand presence with meaning and exclusivity.</p>
+          <p>As a <b>luxury content agency</b>, we offer content marketing solutions matched to your brand’s elegance
+            and identity. From SEO and email marketing to social media content creation and elite print materials, our
+            work is crafted to connect your brand with personalized target audiences. Our team of <b>content marketing
+              experts</b> has the knowledge and experience to ensure every piece, whether digital or traditional,
+            carries the right message, tone, and look to elevate your brand presence with meaning and exclusivity.</p>
         </div>
         <div id="top" class="top-section " style="position: relative;">
           <span id="audience" style="position: absolute; top: -40px;"></span>
-          <h2   style="text-decoration: none;">OUR CONTENT SERVICES</h2>
-       
+          <h2 style="text-decoration: none;">OUR CONTENT SERVICES</h2>
+
         </div>
         <div class="section">
           <h3>1) SEO and Content Writing for Luxury Brands</h3>
@@ -1093,17 +1138,24 @@ Customers connect with luxury brands on a mental and emotional level long before
 
 
           <p>
-           <b>SEO for luxury brands</b> will <b>improve</b> your rankings by optimizing your website’s presence to reach audiences organically. Our <a href="https://www.luxury-method.com/services/luxury-seo-agency">luxury SEO services</a> target wealthy clients by identifying high-value keywords they search for, then enhancing your website’s on-page, off-page, and technical SEO to <b>rank higher</b> and appeal to them using our unique SEO work process.
-At <a href="https://www.luxury-method.com/">Luxury Method</a>, we specialize in <b>luxury content writing</b> that brings the perfect balance in tone to connect your brand with the culture of elite audiences. Every piece of content is crafted to match your brand’s exclusive identity.
-Whether we’re optimizing for search engines or telling your story through compelling brand narratives, <b>our goal is simple:</b> to help your premium brand connect with the right audience and turn that connection into loyalty.
+            <b>SEO for luxury brands</b> will <b>improve</b> your rankings by optimizing your website’s presence to
+            reach audiences organically. Our <a href="https://www.luxury-method.com/services/luxury-seo-agency">luxury
+              SEO services</a> target wealthy clients by identifying high-value keywords they search for, then enhancing
+            your website’s on-page, off-page, and technical SEO to <b>rank higher</b> and appeal to them using our
+            unique SEO work process.
+            At <a href="https://www.luxury-method.com/">Luxury Method</a>, we specialize in <b>luxury content
+              writing</b> that brings the perfect balance in tone to connect your brand with the culture of elite
+            audiences. Every piece of content is crafted to match your brand’s exclusive identity.
+            Whether we’re optimizing for search engines or telling your story through compelling brand narratives,
+            <b>our goal is simple:</b> to help your premium brand connect with the right audience and turn that
+            connection into loyalty.
           </p>
-  <img
-            style="max-height: 500px; object-fit: cover;"
-              src="https://luxury-method.vercel.app/3.png"
-              class="image"
-              alt=""
-            />
-          <p>For example, look at the <b style="color: rgb(110, 0, 0);">Louis Vuitton</b> site in the image above: clean design and high rankings. That’s the result of great luxury brand SEO. We use the same approach through our <b>content marketing for fashion brands</b>, helping you get noticed on Google, build visibility, and drive conversions, all while keeping your luxury identity intact.</p>
+          <img style="max-height: 500px; object-fit: cover;" src="https://luxury-method.vercel.app/3.png" class="image"
+            alt="" />
+          <p>For example, look at the <b style="color: rgb(110, 0, 0);">Louis Vuitton</b> site in the image above: clean
+            design and high rankings. That’s the result of great luxury brand SEO. We use the same approach through our
+            <b>content marketing for fashion brands</b>, helping you get noticed on Google, build visibility, and drive
+            conversions, all while keeping your luxury identity intact.</p>
 
 
 
@@ -1112,7 +1164,7 @@ Whether we’re optimizing for search engines or telling your story through comp
 
 
 
-         
+
         </div>
 
 
@@ -1122,7 +1174,7 @@ Whether we’re optimizing for search engines or telling your story through comp
 
 
 
-        <div  class="section">
+        <div class="section">
           <h3>2) Social media: Design & Content Creation for Luxury Brands</h3>
           <!-- <div class="image">
             <img
@@ -1136,27 +1188,28 @@ Whether we’re optimizing for search engines or telling your story through comp
 
 
 
- <img
-            style="max-height: 500px; object-fit: cover;"
-              src="https://luxury-method.vercel.app/4.jpg"
-              class="image"
-              alt=""
-            />
+          <img style="max-height: 500px; object-fit: cover;" src="https://luxury-method.vercel.app/4.jpg" class="image"
+            alt="" />
 
 
           <p>
-         <b>Luxury brands</b> need clean, elegant posts that reflect their identity. That’s why they hire trusted agencies to work on their social media accounts. From the visuals to the message, everything is made to feel premium and on-brand. Content creation services and high-quality content production services matter. With strong <b>social media design services</b> and smart <a href="https://www.luxury-method.com/services/luxury-social-media-agency">social media optimization services</a>, your brand can grow naturally, connect with the right audience, and transform its customers into loyal ones, building trust with the right presence on their social media accounts.
+            <b>Luxury brands</b> need clean, elegant posts that reflect their identity. That’s why they hire trusted
+            agencies to work on their social media accounts. From the visuals to the message, everything is made to feel
+            premium and on-brand. Content creation services and high-quality content production services matter. With
+            strong <b>social media design services</b> and smart <a
+              href="https://www.luxury-method.com/services/luxury-social-media-agency">social media optimization
+              services</a>, your brand can grow naturally, connect with the right audience, and transform its customers
+            into loyal ones, building trust with the right presence on their social media accounts.
           </p>
-         
-         
-          <img
-          class="image"
-          style="max-height: 500px; object-fit: cover;"
-              alt=""
-          src="https://luxury-method.vercel.app/Social%20media.png"
-          />
+
+
+          <img class="image" style="max-height: 500px; object-fit: cover;" alt=""
+            src="https://luxury-method.vercel.app/Social%20media.png" />
           <p>
-         Just like you see in these images from <b style="color: rgb(110, 0, 0);">Patek Philippe’s</b> Instagram, luxury watch brands can achieve powerful organic growth with the right luxury watch marketing strategy. Their feed is clean, branded, and consistent, showing how a social media content creation agency can help you build prestige and loyalty without relying on paid ads only.
+            Just like you see in these images from <b style="color: rgb(110, 0, 0);">Patek Philippe’s</b> Instagram,
+            luxury watch brands can achieve powerful organic growth with the right luxury watch marketing strategy.
+            Their feed is clean, branded, and consistent, showing how a social media content creation agency can help
+            you build prestige and loyalty without relying on paid ads only.
           </p>
 
 
@@ -1166,7 +1219,7 @@ Whether we’re optimizing for search engines or telling your story through comp
 
 
 
-       
+
         </div>
 
 
@@ -1186,55 +1239,64 @@ Whether we’re optimizing for search engines or telling your story through comp
               alt=""
             />
           </div> -->
-       
-<p><b>Traditional marketing</b> still plays a vital role in luxury branding. Whether it’s bold <b>OOH print</b> or elegant <b>luxury brand print ads</b>, these pieces give your brand a real, physical presence. From the street to the pages of premium magazines, good print design grabs attention and builds trust. We create the best print ads to match your brand style and leave a lasting impression wherever they’re seen.</p>
+
+          <p><b>Traditional marketing</b> still plays a vital role in luxury branding. Whether it’s bold <b>OOH
+              print</b> or elegant <b>luxury brand print ads</b>, these pieces give your brand a real, physical
+            presence. From the street to the pages of premium magazines, good print design grabs attention and builds
+            trust. We create the best print ads to match your brand style and leave a lasting impression wherever
+            they’re seen.</p>
 
 
 
 
-       
-<b>
-OOH Advertising with Gucci:
-</b>
-<p>
-<b style="color: green;">Our team members</b> have worked with <b style="color: rgb(110, 0, 0);">Gucci</b> and were involved in several campaigns for the brand. This OOH project in Piccadilly Circus is one of them. It highlights how our real-world experience in luxury OOH helps us craft campaigns that leave a lasting impression. We bring this hands-on knowledge to help clients create the best <b>luxury print ads</b> and outdoor visuals that reflect their brand’s identity and values.
-</p>
+
+          <b>
+            OOH Advertising with Gucci:
+          </b>
+          <p>
+            <b style="color: green;">Our team members</b> have worked with <b style="color: rgb(110, 0, 0);">Gucci</b>
+            and were involved in several campaigns for the brand. This OOH project in Piccadilly Circus is one of them.
+            It highlights how our real-world experience in luxury OOH helps us craft campaigns that leave a lasting
+            impression. We bring this hands-on knowledge to help clients create the best <b>luxury print ads</b> and
+            outdoor visuals that reflect their brand’s identity and values.
+          </p>
 
 
- <div class="image">
-            <img
-            style="max-height: 500px;  object-fit: cover;"
-              src="https://luxury-method.vercel.app/OOH%20Advertising%20with%20Gucci.jpeg"
-              class="image "
-              alt=""
-            />
+          <div class="image">
+            <img style="max-height: 500px;  object-fit: cover;"
+              src="https://luxury-method.vercel.app/OOH%20Advertising%20with%20Gucci.jpeg" class="image " alt="" />
           </div>
 
 
-<b>
-Luxury Magazine Print Ad:
-</b>
+          <b>
+            Luxury Magazine Print Ad:
+          </b>
 
 
-<p>
-Many luxury companies still rely on <b>luxury brand print ads</b> to connect with readers who appreciate high-end magazines. These ads are crafted to reflect the style and mood elite audiences expect, proving how strong visuals, a clean layout, and the right message can make a lasting impact. When the format is carefully designed, the result gives your brand the space to tell a story and stand out. At <b style="color: green;">Luxury Method</b>, we understand how the right <b>luxury print ads</b> can place your brand in the perfect setting.
-</p>
+          <p>
+            Many luxury companies still rely on <b>luxury brand print ads</b> to connect with readers who appreciate
+            high-end magazines. These ads are crafted to reflect the style and mood elite audiences expect, proving how
+            strong visuals, a clean layout, and the right message can make a lasting impact. When the format is
+            carefully designed, the result gives your brand the space to tell a story and stand out. At <b
+              style="color: green;">Luxury Method</b>, we understand how the right <b>luxury print ads</b> can place
+            your brand in the perfect setting.
+          </p>
 
 
- <div style="display: flex ; align-items: center; justify-content: center;">
-          <img
-         
-          style="max-width: 500px; width: 100vw; object-fit: cover;"
-              alt=""
-          src="https://luxury-method.vercel.app/Luxury%20Magazine%20Print%20Ad.jpg"
-          />
+          <div style="display: flex ; align-items: center; justify-content: center;">
+            <img style="max-width: 500px; width: 100vw; object-fit: cover;" alt=""
+              src="https://luxury-method.vercel.app/Luxury%20Magazine%20Print%20Ad.jpg" />
           </div>
-<b>
-Gucci’s Vogue Italia Cover: A Luxury Print Ad Highlight:
-</b>
-<p>
-Your luxury brand can make a strong impression with timeless visual storytelling in print. Gucci’s Spring 2024 collection on the Vogue Italia cover is a great example of the <b>best magazine print ads:</b> simple, elegant, and easy to remember.
-This luxury brand print ad blends classic style with a modern look, showing how <b>luxury print ads</b> help shape a <b>strong brand image.</b> A smart and well-placed luxury print ad like this <b>keeps Gucci in mind</b> for the interested audience and strengthens its presence in the world of high fashion.</p>
+          <b>
+            Gucci’s Vogue Italia Cover: A Luxury Print Ad Highlight:
+          </b>
+          <p>
+            Your luxury brand can make a strong impression with timeless visual storytelling in print. Gucci’s Spring
+            2024 collection on the Vogue Italia cover is a great example of the <b>best magazine print ads:</b> simple,
+            elegant, and easy to remember.
+            This luxury brand print ad blends classic style with a modern look, showing how <b>luxury print ads</b> help
+            shape a <b>strong brand image.</b> A smart and well-placed luxury print ad like this <b>keeps Gucci in
+              mind</b> for the interested audience and strengthens its presence in the world of high fashion.</p>
         </div>
 
 
@@ -1246,26 +1308,32 @@ This luxury brand print ad blends classic style with a modern look, showing how 
 
         <div id="calendar" class="section">
           <h3>4) Email Marketing for Luxury Brands</h3>
-         
-          <p><b>Email marketing for luxury brands</b> isn’t just about getting emails opened; it's about creating content and design templates that build an emotional connection with your clients by highlighting your product’s true value. Whether you’re reaching VIP clients or announcing something new, your luxury brand email marketing should reflect the same attention to detail in every element.
-At <b style="color: green;">Luxury Method</b>, we create personalized campaigns that perfectly reflect your elite brand’s style and tone, from elegant designs to carefully chosen messaging. We ensure that your <b>luxury brand email marketing</b> maintains the level of quality and style your clients expect, whether it’s for a product launch, a private event, or a seasonal update.
-</p>
+
+          <p><b>Email marketing for luxury brands</b> isn’t just about getting emails opened; it's about creating
+            content and design templates that build an emotional connection with your clients by highlighting your
+            product’s true value. Whether you’re reaching VIP clients or announcing something new, your luxury brand
+            email marketing should reflect the same attention to detail in every element.
+            At <b style="color: green;">Luxury Method</b>, we create personalized campaigns that perfectly reflect your
+            elite brand’s style and tone, from elegant designs to carefully chosen messaging. We ensure that your
+            <b>luxury brand email marketing</b> maintains the level of quality and style your clients expect, whether
+            it’s for a product launch, a private event, or a seasonal update.
+          </p>
 
 
 
 
- <div style="display: flex ; align-items: center; justify-content: center;">
-          <img
-         
-          style="max-width: 500px; width: 100vw; object-fit: cover;"
-              alt=""
-          src="https://luxury-method.vercel.app/Email%20Marketing%20.png"
-          />
+          <div style="display: flex ; align-items: center; justify-content: center;">
+            <img style="max-width: 500px; width: 100vw; object-fit: cover;" alt=""
+              src="https://luxury-method.vercel.app/Email%20Marketing%20.png" />
           </div>
 
 
-<p>
-<b>Email marketing for luxury brands</b> still makes a big impact when done right. Your brand can stay close to loyal clients with clean, refined messages just like the newsletter from <b style="color: rgb(110, 0, 0);">Louis Vuitton</b>. With the right luxury email marketing approach, you can keep your audience informed, grow your reach, and drive real results.</p>
+          <p>
+            <b>Email marketing for luxury brands</b> still makes a big impact when done right. Your brand can stay close
+            to loyal clients with clean, refined messages just like the newsletter from <b
+              style="color: rgb(110, 0, 0);">Louis Vuitton</b>. With the right luxury email marketing approach, you can
+            keep your audience informed, grow your reach, and drive real results.
+          </p>
 
 
 
@@ -1283,7 +1351,6 @@ At <b style="color: green;">Luxury Method</b>, we create personalized campaigns 
 
 
 
-     
 
 
 
@@ -1294,10 +1361,11 @@ At <b style="color: green;">Luxury Method</b>, we create personalized campaigns 
 
 
 
-       
+
+
       </div>
-     
-     
+
+
     </div>
 
 
@@ -1307,7 +1375,6 @@ At <b style="color: green;">Luxury Method</b>, we create personalized campaigns 
 
 
 
- 
 
 
 
@@ -1316,51 +1383,60 @@ At <b style="color: green;">Luxury Method</b>, we create personalized campaigns 
 
 
 
- 
-     
-   
-      <div class="content" id="con2" style="position: relative;">
-        <div id="top2" class="top-section">
-          <span id="mindmap" style="position: absolute; top: -40px;"></span>
-          <h2  style="text-decoration: none">LUXURY CONTENT MARKETING ACROSS LUXURY SECTORS</h2>
+
+
+
+
+    <div class="content" id="con2" style="position: relative;">
+      <div id="top2" class="top-section">
+        <span id="mindmap" style="position: absolute; top: -40px;"></span>
+        <h2 style="text-decoration: none">LUXURY CONTENT MARKETING ACROSS LUXURY SECTORS</h2>
+      </div>
+      <div id="audience2" class="section">
+
+        <p>Each <b>luxury sector</b> has its own style, voice, and audience, and a luxury content marketing agency
+          should reflect and customize the content accordingly. From jewelry and watches to real estate, fashion, and
+          travel, content needs to match the <b>high-end value</b> your brand offers. We craft <b>content marketing
+            solutions</b> for each sector that fit the tone of your niche while staying true to what elite consumers
+          expect: quality, emotion, and exclusivity.
+
+
+
+
+          Luxury jewelry and watch marketing focuses on telling a story that is a mixture of heritage, craftsmanship,
+          and exclusivity. Whether showcasing a unique diamond or a limited-edition timepiece, the content highlights
+          the artistry of the maker and the brand behind each piece.
+          Jewelry content marketing brings out the emotional value and rarity of owning something truly special. Luxury
+          watch marketing emphasizes precision and legacy, while luxury watch ads highlight the exclusivity of owning a
+          rare, high-end piece.</p>
+
+      </div>
+
+
+
+
+
+
+
+
+      <div id="mindmap2" class="section">
+        <h3>Luxury Jewelry & Luxury Watches Content Marketing</h3>
+        <div class="image">
+          <img style="max-height: 500px; object-fit: cover;"
+            src="https://images.unsplash.com/photo-1726981407933-06fe96c4cefa?q=80&w=725&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            class="image" alt="" />
         </div>
-        <div id="audience2" class="section">
-         
-          <p>Each <b>luxury sector</b> has its own style, voice, and audience, and a luxury content marketing agency should reflect and customize the content accordingly. From jewelry and watches to real estate, fashion, and travel, content needs to match the <b>high-end value</b> your brand offers. We craft <b>content marketing solutions</b> for each sector that fit the tone of your niche while staying true to what elite consumers expect: quality, emotion, and exclusivity.
-
-
-
-
-Luxury jewelry and watch marketing focuses on telling a story that is a mixture of heritage, craftsmanship, and exclusivity. Whether showcasing a unique diamond or a limited-edition timepiece, the content highlights the artistry of the maker and the brand behind each piece.
-Jewelry content marketing brings out the emotional value and rarity of owning something truly special. Luxury watch marketing emphasizes precision and legacy, while luxury watch ads highlight the exclusivity of owning a rare, high-end piece.</p>
-       
-        </div>
 
 
 
 
 
+        <p><a href="https://www.luxury-method.com/industries/luxury-watches-jewelry">Luxury jewelry and watch
+            marketing</a> focuses on telling a story that is a mixture of heritage, craftsmanship, and exclusivity.
+          Whether showcasing a unique diamond or a limited-edition timepiece, the content highlights the artistry of the
+          maker and the brand behind each piece. </p>
 
-
-
-        <div id="mindmap2" class="section">
-          <h3>Luxury Jewelry & Luxury Watches Content Marketing</h3>
-          <div class="image">
-            <img
-             style="max-height: 500px; object-fit: cover;"
-              src="https://images.unsplash.com/photo-1726981407933-06fe96c4cefa?q=80&w=725&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              class="image"
-              alt=""
-            />
-          </div>
-         
-
-
-
-
-       <p><a href="https://www.luxury-method.com/industries/luxury-watches-jewelry">Luxury jewelry and watch marketing</a> focuses on telling a story that is a mixture of heritage, craftsmanship, and exclusivity. Whether showcasing a unique diamond or a limited-edition timepiece, the content highlights the artistry of the maker and the brand behind each piece. </p>
-     
-      <!-- <div class="image">
+        <!-- <div class="image">
             <img
              style="max-height: 500px; object-fit: cover;"
               src="https://cdn.pixabay.com/photo/2016/04/13/16/21/watch-1327169_1280.jpg"
@@ -1370,14 +1446,15 @@ Jewelry content marketing brings out the emotional value and rarity of owning so
           </div> -->
 
 
-     
-       <p><b>Jewelry content marketing</b> brings out the emotional value and rarity of owning something truly special. <b>Luxury watch marketing</b> emphasizes precision and legacy, while luxury watch ads highlight the exclusivity of owning a rare, high-end piece.</p>
+
+        <p><b>Jewelry content marketing</b> brings out the emotional value and rarity of owning something truly special.
+          <b>Luxury watch marketing</b> emphasizes precision and legacy, while luxury watch ads highlight the
+          exclusivity of owning a rare, high-end piece.</p>
       </div>
 
 
-         <div id="mindmap2" class="section">
-          <h3>Luxury Travel & Luxury Hospitality content marketing</h3>
-         
+      <div id="mindmap2" class="section">
+        <h3>Luxury Travel & Luxury Hospitality content marketing</h3>
 
 
 
@@ -1386,68 +1463,53 @@ Jewelry content marketing brings out the emotional value and rarity of owning so
 
 
 
-          <p><a href="https://www.luxury-method.com/industries/luxury-travel">Luxury travel marketing</a> helps high-end travelers discover unique and unforgettable experiences. With strong travel content marketing, brands can showcase stunning places, luxury stays, and personalized service. Through quality visuals and stories, content marketing travel agency services highlight what makes each destination special.
-            </p>
-           
-     
-          <div class="image">
-            <img
-             style="max-height: 500px; object-fit: cover;"
-          src="https://cdn.prod.website-files.com/62b01487555313ceec71f525/62b196385edaf64b6855aa37_beautiful-luxury-outdoor-swimming-pool-hotel-resort%20(1)%20(1)%20(1)-p-1080.jpeg"
-              class="image"
-              alt="Aman Resorts"
-            />
-          </div>
-         
-            <p>
-In hospitality, <b>content marketing for <a href="https://www.luxury-method.com/industries/luxury-hospitality-marketing-agency">luxury hotels</a></b> focuses on the design, atmosphere, and service that set a hotel apart. A smart content marketing plan for hotels uses SEO, storytelling, and beautiful imagery to attract elite travelers and encourage bookings.</p>
-         
+
+        <p><a href="https://www.luxury-method.com/industries/luxury-travel">Luxury travel marketing</a> helps high-end
+          travelers discover unique and unforgettable experiences. With strong travel content marketing, brands can
+          showcase stunning places, luxury stays, and personalized service. Through quality visuals and stories, content
+          marketing travel agency services highlight what makes each destination special.
+        </p>
+
+
+        <div class="image">
+          <img style="max-height: 500px; object-fit: cover;"
+            src="https://cdn.prod.website-files.com/62b01487555313ceec71f525/62b196385edaf64b6855aa37_beautiful-luxury-outdoor-swimming-pool-hotel-resort%20(1)%20(1)%20(1)-p-1080.jpeg"
+            class="image" alt="Aman Resorts" />
+        </div>
+
+        <p>
+          In hospitality, <b>content marketing for <a
+              href="https://www.luxury-method.com/industries/luxury-hospitality-marketing-agency">luxury hotels</a></b>
+          focuses on the design, atmosphere, and service that set a hotel apart. A smart content marketing plan for
+          hotels uses SEO, storytelling, and beautiful imagery to attract elite travelers and encourage bookings.</p>
+
+      </div>
+
+
+
+
+
+
+      <div id="content2" class="section">
+        <h3>Luxury Fashion & Luxury Retail content marketing</h3>
+
+        <div class="image">
+          <img style="max-height: 500px; object-fit: cover; object-position: top; "
+            src="https://luxury-method.vercel.app/5.avif" class="image" alt="Aman Resorts" />
         </div>
 
 
-
-
-
-
-        <div id="content2" class="section">
-          <h3>Luxury Fashion & Luxury Retail content marketing</h3>
-         
-          <div class="image">
-            <img
-             style="max-height: 500px; object-fit: cover; object-position: top; "
-          src="https://luxury-method.vercel.app/5.avif"
-              class="image"
-              alt="Aman Resorts"
-            />
-          </div>
-         
-         
-         <p><b><a href="https://www.luxury-method.com/industries/luxury-fashion">Luxury fashion</a> content marketing</b> works best when it focuses on seasonal collections, couture, and the lifestyle behind the brand. It helps create a real connection with high-end shoppers by showing what makes the brand special in a clear and stylish way.
-          </p>
-          <p>
-      <b>Retail content marketing</b> supports this by making the shopping journey feel personal and seamless online and in-store. It highlights what matters most to luxury buyers, from quality to exclusivity. A strong <b><a href="https://www.luxury-method.com/industries/luxury-retail">luxury retail</a> strategy</b> uses the right tone, visuals, and content to reflect the premium experience people expect from a high-end brand. </p>
-        </div>
-
-
-
-
-
-
-
-
-        <div id="calendar2" class="section">
-          <h3>Real Estate Content Marketing</h3>
-          <div class="image">
-            <img
-             style="max-height: 500px; object-fit: cover;"
-              src="https://luxury-method.vercel.app/Real%20Estate%20.png"
-              class="image"
-              alt=""
-            />
-          </div>
-         <p><b>Real estate content marketing</b> is about showing the design, location, and value of a property in a way that feels real and appealing. Great content marketing for <a href="https://www.luxury-method.com/industries/luxury-real-estate-marketing">real estate</a> brings out the lifestyle and experience behind every listing, builds trust, and helps attract the right buyers.</p>
-        </div>    
-     
+        <p><b><a href="https://www.luxury-method.com/industries/luxury-fashion">Luxury fashion</a> content marketing</b>
+          works best when it focuses on seasonal collections, couture, and the lifestyle behind the brand. It helps
+          create a real connection with high-end shoppers by showing what makes the brand special in a clear and stylish
+          way.
+        </p>
+        <p>
+          <b>Retail content marketing</b> supports this by making the shopping journey feel personal and seamless online
+          and in-store. It highlights what matters most to luxury buyers, from quality to exclusivity. A strong <b><a
+              href="https://www.luxury-method.com/industries/luxury-retail">luxury retail</a> strategy</b> uses the
+          right tone, visuals, and content to reflect the premium experience people expect from a high-end brand.
+        </p>
       </div>
 
 
@@ -1457,39 +1519,19 @@ In hospitality, <b>content marketing for <a href="https://www.luxury-method.com/
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          <div class="content" id="con3">
-
-
-        <div id="top2" class="top-section">
-          <h3 id="industry" style="text-decoration: none;" >eCommerce Content Marketing</h3>
-          <p >On the digital side, the best ecommerce content marketing uses personalization and clean, stylish product displays. Strong <b>content marketing for ecommerce sites</b> brings everything together: blogs, email flows, and <a href="https://www.luxury-method.com/services/luxury-seo-agency">SEO</a> to drive sales and build brand loyalty.</p>
+      <div id="calendar2" class="section">
+        <h3>Real Estate Content Marketing</h3>
+        <div class="image">
+          <img style="max-height: 500px; object-fit: cover;" src="https://luxury-method.vercel.app/Real%20Estate%20.png"
+            class="image" alt="" />
         </div>
-        <div id="audience2" class="section">
-          <h3><a style="text-decoration: none;" href="https://www.luxury-method.com/luxury-fashion">Content Marketing for Restaurant & Food</a></h3>
-          <div class="image">
-            <img
-             style="max-height: 500px; object-fit: cover;"
-              src="https://images.unsplash.com/photo-1692197275441-40c874f40385?q=80&w=873&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              class="image"
-              alt=""
-            />
-          </div>
+        <p><b>Real estate content marketing</b> is about showing the design, location, and value of a property in a way
+          that feels real and appealing. Great content marketing for <a
+            href="https://www.luxury-method.com/industries/luxury-real-estate-marketing">real estate</a> brings out the
+          lifestyle and experience behind every listing, builds trust, and helps attract the right buyers.</p>
+      </div>
+
+    </div>
 
 
 
@@ -1498,8 +1540,39 @@ In hospitality, <b>content marketing for <a href="https://www.luxury-method.com/
 
 
 
-          <p><b>Content marketing for restaurants</b> goes beyond food pictures. It shares the whole experience of great spaces, talented chefs, and the story behind each dish. Content marketing for food highlights the atmosphere and the passion behind each meal. In the content marketing <a href="https://www.luxury-method.com/industries/luxury-food">food industry</a>, it builds trust and excitement.
-Excellent <b>content marketing for restaurants</b> connects with the right people and makes them want to visit, whether it's a fine dining spot or a new place to try.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="content" id="con3">
+
+
+      <div id="top2" class="top-section">
+        <h3 id="industry" style="text-decoration: none;">eCommerce Content Marketing</h3>
+        <p>On the digital side, the best ecommerce content marketing uses personalization and clean, stylish product
+          displays. Strong <b>content marketing for ecommerce sites</b> brings everything together: blogs, email flows,
+          and <a href="https://www.luxury-method.com/services/luxury-seo-agency">SEO</a> to drive sales and build brand
+          loyalty.</p>
+      </div>
+      <div id="audience2" class="section">
+        <h3><a style="text-decoration: none;" href="https://www.luxury-method.com/luxury-fashion">Content Marketing for
+            Restaurant & Food</a></h3>
+        <div class="image">
+          <img style="max-height: 500px; object-fit: cover;"
+            src="https://images.unsplash.com/photo-1692197275441-40c874f40385?q=80&w=873&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            class="image" alt="" />
         </div>
 
 
@@ -1509,16 +1582,32 @@ Excellent <b>content marketing for restaurants</b> connects with the right peopl
 
 
 
-        <div id="mindmap2" class="section">
-          <h3><a style="text-decoration: none;"  href="https://www.luxury-method.com/luxury-travel">ELEVATE YOUR LUXURY BRAND - Speak with Our Experts Today</a></h3>
+        <p><b>Content marketing for restaurants</b> goes beyond food pictures. It shares the whole experience of great
+          spaces, talented chefs, and the story behind each dish. Content marketing for food highlights the atmosphere
+          and the passion behind each meal. In the content marketing <a
+            href="https://www.luxury-method.com/industries/luxury-food">food industry</a>, it builds trust and
+          excitement.
+          Excellent <b>content marketing for restaurants</b> connects with the right people and makes them want to
+          visit, whether it's a fine dining spot or a new place to try.</p>
+      </div>
+
+
+
+
+
+
+
+
+      <!-- <div id="mindmap2" class="section"> -->
+      <!-- <h3><a style="text-decoration: none;"  href="https://www.luxury-method.com/luxury-travel">ELEVATE YOUR LUXURY BRAND - Speak with Our Experts Today</a></h3>
           <div class="image">
             <img
              style="max-height: 500px; object-fit: cover;"
               src="https://plus.unsplash.com/premium_photo-1661593396934-07c1cb424f5b?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               class="image"
               alt=""
-            />
-          </div>
+            /> -->
+      <!-- </div> -->
 
 
 
@@ -1527,55 +1616,18 @@ Excellent <b>content marketing for restaurants</b> connects with the right peopl
 
 
 
-        <p>At <a href="https://www.luxury-method.com/">Luxury Method</a>, <b>we help luxury brands grow with smart, elegant content.</b> Our team of luxury content creators has years of experience working with brands like <b style="color: green;">Gucci</b> and deep knowledge of the luxury sector and how to connect with a high-end audience. Today, we offer flexible <b>content marketing packages</b> for different luxury sectors, including fashion, travel, and real estate. With our <b>brand content marketing services</b>, you can strengthen your brand image and reach the people who truly matter for your products or services.
-Contact <b style="color: green;">Luxury Method</b> now to start creating <b>luxury content</b> that connects you with an elite audience and increases your brand visibility and conversions.</p>
-        </div>
+      <!-- <p>At <a target="_blank" href="https://www.luxury-method.com/">Luxury Method</a>, <b>we help luxury brands grow with smart, elegant content.</b> Our team of luxury content creators has years of experience working with brands like <b style="color: green;">Gucci</b> and deep knowledge of the luxury sector and how to connect with a high-end audience. Today, we offer flexible <b>content marketing packages</b> for different luxury sectors, including fashion, travel, and real estate. With our <b>brand content marketing services</b>, you can strengthen your brand image and reach the people who truly matter for your products or services.
+Contact <b style="color: green;">Luxury Method</b> now to start creating <b>luxury content</b> that connects you with an elite audience and increases your brand visibility and conversions.</p> -->
+      <!-- </div> -->
+    </div>
 
 
 
 
 
 
-
-
-   
-
-
-
-
-
-
-     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-       
-
-
-
-
-      </div>
-
-
-
-
-
-
- <div id="bottom2" class="top-section" style="padding-top: 0px !important; position: relative;">
-  <span id="content"  style="position: absolute; top: -40px;"></span>
+    <div id="bottom2" class="top-section" style="padding-top: 0px !important; position: relative;">
+      <span id="content" style="position: absolute; top: -40px;"></span>
       <h2 style="text-decoration: none">Who We Are</h2>
       <p style="text-align: start;">
         Luxury Method is a luxury SEO agency that specialises in assisting
@@ -1585,32 +1637,22 @@ Contact <b style="color: green;">Luxury Method</b> now to start creating <b>luxu
         that are suited to the particular requirements of luxury brands. Our
         headquarters is in Rome, and we operate all over the globe.
       </p>
-     
+
+      <p>At <a target="_blank" href="https://www.luxury-method.com/">Luxury Method</a>, <b>we help luxury brands grow
+          with smart, elegant content.</b> Our team of luxury content creators has years of experience working with
+        brands like <b style="color: green;">Gucci</b> and deep knowledge of the luxury sector and how to connect with a
+        high-end audience. Today, we offer flexible <b>content marketing packages</b> for different luxury sectors,
+        including fashion, travel, and real estate. With our <b>brand content marketing services</b>, you can strengthen
+        your brand image and reach the people who truly matter for your products or services.
+        Contact <b style="color: green;">Luxury Method</b> now to start creating <b>luxury content</b> that connects you
+        with an elite audience and increases your brand visibility and conversions.</p>
+
     </div>
 
 
 
 
-    </div>
-
-
-
-
-
-
-
-
- 
-   
-
-
-
-
-
-
-
-
- 
+  </div>
 
 
 
@@ -1627,22 +1669,50 @@ Contact <b style="color: green;">Luxury Method</b> now to start creating <b>luxu
 
 
 
- <div class="faq-container paddingleftright top-section" style="margin-top: 20px; z-index: 99999999999999999999999999;">
- 
- 
- 
- 
 
 
 
 
-  <p style="text-align: center; font-size: 24px !important; font-style: italic;">
-     Experience the difference of  a marketing agency dedicated to luxury.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="faq-container paddingleftright top-section"
+    style="margin-top: 20px; z-index: 99999999999999999999999999;">
+
+
+
+
+
+
+
+
+    <p style="text-align: center; font-size: 24px !important; font-style: italic;">
+      Experience the difference of a marketing agency dedicated to luxury.
     </p>
     <div style="display: flex; gap: 100px; margin-top: 60px; width: 100%; justify-content: center;">
-        <a href="https://www.google.com/url?q=https%3A%2F%2Fwa.me%2F%2B393920034695&sa=D&sntz=1&usg=AOvVaw2a9hG2asZNJfADOdAWUper" class="padding:20px; background-color: #fff; border-radius: 100%;"><img src="https://i.postimg.cc/HkGt0VxV/whatsapp.png" style="width: 30px; border-radius: 100%; height: 30px;" alt=""></a>
-        <a href="mailto:giacomo@luxury-method.com" class="padding:20px; background-color: #5f6368; border-radius: 100%; "><img src="https://i.postimg.cc/mr4tBFZf/image-978.png" style="width: 30px; border-radius: 100%; background-color: #5f6368; height: 30px;" alt=""></a>
-        <a href="https://www.google.com/url?q=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Fluxurymethod%2F&sa=D&sntz=1&usg=AOvVaw0MER64fKjxQpgMZC_E-MgX" class="padding:20px;  border-radius: 100%; "><img src="https://i.postimg.cc/BvtQqcWz/image-979.png" style="width: 30px; border-radius: 100%; background-color: #2867b2; height: 30px;" alt=""></a>
+      <a href="https://www.google.com/url?q=https%3A%2F%2Fwa.me%2F%2B393920034695&sa=D&sntz=1&usg=AOvVaw2a9hG2asZNJfADOdAWUper"
+        class="padding:20px; background-color: #fff; border-radius: 100%;"><img
+          src="https://i.postimg.cc/HkGt0VxV/whatsapp.png" style="width: 30px; border-radius: 100%; height: 30px;"
+          alt=""></a>
+      <a href="mailto:giacomo@luxury-method.com"
+        class="padding:20px; background-color: #5f6368; border-radius: 100%; "><img
+          src="https://i.postimg.cc/mr4tBFZf/image-978.png"
+          style="width: 30px; border-radius: 100%; background-color: #5f6368; height: 30px;" alt=""></a>
+      <a href="https://www.google.com/url?q=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Fluxurymethod%2F&sa=D&sntz=1&usg=AOvVaw0MER64fKjxQpgMZC_E-MgX"
+        class="padding:20px;  border-radius: 100%; "><img src="https://i.postimg.cc/BvtQqcWz/image-979.png"
+          style="width: 30px; border-radius: 100%; background-color: #2867b2; height: 30px;" alt=""></a>
     </div>
 
 
@@ -1653,32 +1723,24 @@ Contact <b style="color: green;">Luxury Method</b> now to start creating <b>luxu
 
 
     <div style="display: flex; justify-content: center; margin-top: 40px; margin-bottom: 100px;">
-      <a href="https://www.luxury-method.com/contact" style="padding-left: 80px; text-decoration: none; font-size: 18px; border-radius: 5px; padding-right: 80px; border: #000; border: 1px solid; padding-top: 10px; padding-bottom: 10px;">CONTACT FORM</a>
+      <a href="https://www.luxury-method.com/contact"
+        style="padding-left: 80px; text-decoration: none; font-size: 18px; border-radius: 5px; padding-right: 80px; border: #000; border: 1px solid; padding-top: 10px; padding-bottom: 10px;">CONTACT
+        FORM</a>
     </div>
-  <h2>Frequently Asked Questions</h2>  
-  <div class="faq-item">
-        <div class="faq-question" onclick="toggleFAQ(this)">
-          <h3><strong>What is luxury content marketing?</strong></h3>
-          <div class="faq-toggle">
-            <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
-              <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
-            </svg>
-          </div>
-        </div>
-        <div class="faq-answer">
-          <p>
-          It's a strategy focused on storytelling, emotion, and exclusivity to connect with premium audiences without relying on hard sales.
-
-
-
-
-
-
-
-
-          </p>
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        <h3><strong>What is luxury content marketing?</strong></h3>
+        <div class="faq-toggle">
+          <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+            <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+          </svg>
         </div>
       </div>
+      <div class="faq-answer">
+        <p>
+          It's a strategy focused on storytelling, emotion, and exclusivity to connect with premium audiences without
+          relying on hard sales.
 
 
 
@@ -1687,22 +1749,32 @@ Contact <b style="color: green;">Luxury Method</b> now to start creating <b>luxu
 
 
 
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFAQ(this)">
-          <h3><strong>How is Luxury Method different from other agencies? </strong
-            > </h3>
-          <div class="faq-toggle">
-            <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
-              <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
-            </svg>
-          </div>
-        </div>
-        <div class="faq-answer">
-          <p>
-           We only work with premium brands, so every piece of content we craft is tailored for high-end audiences.
-          </p>
+        </p>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        <h3><strong>How is Luxury Method different from other agencies? </strong> </h3>
+        <div class="faq-toggle">
+          <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+            <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+          </svg>
         </div>
       </div>
+      <div class="faq-answer">
+        <p>
+          We only work with premium brands, so every piece of content we craft is tailored for high-end audiences.
+        </p>
+      </div>
+    </div>
 
 
 
@@ -1711,21 +1783,19 @@ Contact <b style="color: green;">Luxury Method</b> now to start creating <b>luxu
 
 
 
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFAQ(this)">
-          <h3>
-            <strong
-              >Why is content important for luxury brands?</strong
-            >
-          </h3>
-          <div class="faq-toggle">
-            <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
-              <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
-            </svg>
-          </div>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        <h3>
+          <strong>Why is content important for luxury brands?</strong>
+        </h3>
+        <div class="faq-toggle">
+          <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+            <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+          </svg>
         </div>
-        <div class="faq-answer">
-          <p>
+      </div>
+      <div class="faq-answer">
+        <p>
           Because it helps shape your brand image, build trust, and speak to high-end values.
 
 
@@ -1735,30 +1805,30 @@ Contact <b style="color: green;">Luxury Method</b> now to start creating <b>luxu
 
 
 
-          </p>
+        </p>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        <h3>
+          <strong>How does SEO help luxury brands?</strong>
+        </h3>
+        <div class="faq-toggle">
+          <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+            <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+          </svg>
         </div>
       </div>
-
-
-
-
-
-
-
-
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFAQ(this)">
-          <h3>
-            <strong>How does SEO help luxury brands?</strong>
-          </h3>
-          <div class="faq-toggle">
-            <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
-              <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
-            </svg>
-          </div>
-        </div>
-        <div class="faq-answer">
-          <p>
+      <div class="faq-answer">
+        <p>
           It helps your brand show up in searches organically, attracting the right audience without paying for ads.
 
 
@@ -1768,95 +1838,8 @@ Contact <b style="color: green;">Luxury Method</b> now to start creating <b>luxu
 
 
 
-          </p>
-        </div>
+        </p>
       </div>
-
-
-
-
-
-
-
-
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFAQ(this)">
-          <h3>
-            <strong>Can you help launch a new luxury brand?</strong>
-          </h3>
-          <div class="faq-toggle">
-            <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
-              <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
-            </svg>
-          </div>
-        </div>
-        <div class="faq-answer">
-          <p>
-           Yes, we help define your voice, visuals, and content strategy from the very beginning.
-          </p>
-        </div>
-      </div>
-
-
-
-
-
-
-
-
-    </div>
-    <footer class="luxury-footer" style="margin-bottom: 20px; margin-top:20px">
-      <div class="luxury-footer-content" style="margin-bottom: 50px;">
-        <div class="luxury-footer-contact">
-          <small>
-            <a
-              style="font-weight: bold; text-decoration: underline"
-              href="mailto:giacomo@luxury-method.com"
-              >giacomo@luxury-method.com</a
-            >
-          </small>
-          <small>(+39) 3920034695</small>
-         
-          <small>P.IVA: 17906211002</small>
-        </div>
-        <div class="social-icons" >
-          <div class="social-link">
-            <a
-              href="https://www.instagram.com/luxurymethod_agency/"
-              target="_blank"
-            >
-              <img
-               style="max-height: 500px; object-fit: cover;"
-                src="https://i.postimg.cc/XJSn0GKM/image-976.png"
-                alt="Instagram"
-              />
-            </a>
-          </div>
-          <div class="social-link">
-            <a href="https://x.com/luxury_method" target="_blank">
-              <img
-               style="max-height: 500px; object-fit: cover;"
-                src="https://i.postimg.cc/Y93Zyhbz/image-977.png"
-                alt="X"
-              />
-            </a>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-
-
-
-
-
-
-
-    <!-- Back to Top Button -->
-    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">
-      <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false">
-        <path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z" fill="currentColor"></path>
-      </svg>
     </div>
 
 
@@ -1866,10 +1849,23 @@ Contact <b style="color: green;">Luxury Method</b> now to start creating <b>luxu
 
 
 
-    <script>
-      function toggleFAQ(element) {
-        const answer = element.nextElementSibling;
-        const toggle = element.querySelector(".faq-toggle");
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        <h3>
+          <strong>Can you help launch a new luxury brand?</strong>
+        </h3>
+        <div class="faq-toggle">
+          <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+            <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+          </svg>
+        </div>
+      </div>
+      <div class="faq-answer">
+        <p>
+          Yes, we help define your voice, visuals, and content strategy from the very beginning.
+        </p>
+      </div>
+    </div>
 
 
 
@@ -1878,83 +1874,244 @@ Contact <b style="color: green;">Luxury Method</b> now to start creating <b>luxu
 
 
 
-        // Close all other FAQs
-        document.querySelectorAll(".faq-answer").forEach((item) => {
-          if (item !== answer) {
-            item.classList.remove("active");
-          }
+  </div>
+  <footer class="luxury-footer" style="margin-bottom: 20px; margin-top:20px">
+    <div class="luxury-footer-content" style="margin-bottom: 50px;">
+      <div class="luxury-footer-contact">
+        <small>
+          <a style="font-weight: bold; text-decoration: underline"
+            href="mailto:giacomo@luxury-method.com">giacomo@luxury-method.com</a>
+        </small>
+        <small>(+39) 3920034695</small>
+
+        <small>P.IVA: 17906211002</small>
+      </div>
+      <div class="social-icons">
+        <div class="social-link">
+          <a href="https://www.instagram.com/luxurymethod_agency/" target="_blank">
+            <img style="max-height: 500px; object-fit: cover;" src="https://i.postimg.cc/XJSn0GKM/image-976.png"
+              alt="Instagram" />
+          </a>
+        </div>
+        <div class="social-link">
+          <a href="https://x.com/luxury_method" target="_blank">
+            <img style="max-height: 500px; object-fit: cover;" src="https://i.postimg.cc/Y93Zyhbz/image-977.png"
+              alt="X" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+
+
+
+
+
+  <!-- Back to Top Button -->
+  <div class="back-to-top" id="backToTop" onclick="scrollToTop()">
+    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false">
+      <path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z" fill="currentColor"></path>
+    </svg>
+  </div>
+
+
+
+
+
+
+
+
+  <script>
+    function toggleFAQ(element) {
+      const answer = element.nextElementSibling;
+      const toggle = element.querySelector(".faq-toggle");
+
+
+
+
+
+
+
+
+      // Close all other FAQs
+      document.querySelectorAll(".faq-answer").forEach((item) => {
+        if (item !== answer) {
+          item.classList.remove("active");
+        }
+      });
+
+
+
+
+
+
+
+
+      document.querySelectorAll(".faq-toggle").forEach((item) => {
+        if (item !== toggle) {
+          item.classList.remove("active");
+        }
+      });
+
+
+
+
+
+
+
+
+      // Toggle current FAQ
+      answer.classList.toggle("active");
+      toggle.classList.toggle("active");
+    }
+
+
+
+
+
+
+
+
+    function scrollToSection(id) {
+      const element = document.getElementById(id);
+      const yOffset = -20;
+      const y =
+        element.getBoundingClientRect().top + window.scrollY + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+
+
+
+
+
+
+
+
+    // Back to Top functionality
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+
+
+
+
+
+
+
+
+    // Show/hide back to top button
+    function handleBackToTopButton() {
+      const backToTopButton = document.getElementById('backToTop');
+      if (window.scrollY > 300) { // Show button after scrolling 300px
+        backToTopButton.classList.add('visible');
+      } else {
+        backToTopButton.classList.remove('visible');
+      }
+    }
+
+
+
+
+
+
+
+
+    // Function to scroll sidebar horizontally on mobile
+    function scrollSidebar(sidebarId, direction) {
+      const sidebar = document.querySelector(`.${sidebarId}`);
+      const scrollAmount = 180; // Slightly larger scroll amount
+
+      if (direction === 'left') {
+        sidebar.scrollBy({
+          left: -scrollAmount,
+          behavior: 'smooth'
         });
-
-
-
-
-
-
-
-
-        document.querySelectorAll(".faq-toggle").forEach((item) => {
-          if (item !== toggle) {
-            item.classList.remove("active");
-          }
-        });
-
-
-
-
-
-
-
-
-        // Toggle current FAQ
-        answer.classList.toggle("active");
-        toggle.classList.toggle("active");
-      }
-
-
-
-
-
-
-
-
-      function scrollToSection(id) {
-        const element = document.getElementById(id);
-        const yOffset = -20;
-        const y =
-          element.getBoundingClientRect().top + window.scrollY + yOffset;
-        window.scrollTo({ top: y, behavior: "smooth" });
-      }
-
-
-
-
-
-
-
-
-      // Back to Top functionality
-      function scrollToTop() {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth"
+      } else {
+        sidebar.scrollBy({
+          left: scrollAmount,
+          behavior: 'smooth'
         });
       }
 
+      // Update arrow visibility after scrolling
+      setTimeout(() => {
+        updateArrowVisibility(sidebarId);
+      }, 300);
+    }
 
+    // Function to update arrow visibility based on scroll position
+    function updateArrowVisibility(sidebarId) {
+      const sidebar = document.querySelector(`.${sidebarId}`);
+      const leftArrow = sidebar.querySelector('.left-arrow');
+      const rightArrow = sidebar.querySelector('.right-arrow');
 
+      // Only show arrows on mobile view (width <= 768px)
+      if (window.innerWidth <= 768) {
+        // Make sure arrows are visible
+        leftArrow.style.display = 'flex';
+        rightArrow.style.display = 'flex';
 
-
-
-
-
-      // Show/hide back to top button
-      function handleBackToTopButton() {
-        const backToTopButton = document.getElementById('backToTop');
-        if (window.scrollY > 300) { // Show button after scrolling 300px
-          backToTopButton.classList.add('visible');
+        // Check if at the start or end of scrolling
+        if (sidebar.scrollLeft <= 10) {
+          leftArrow.style.opacity = '0.4';
         } else {
-          backToTopButton.classList.remove('visible');
+          leftArrow.style.opacity = '1';
         }
+
+        if (sidebar.scrollLeft + sidebar.clientWidth >= sidebar.scrollWidth - 10) {
+          rightArrow.style.opacity = '0.4';
+        } else {
+          rightArrow.style.opacity = '1';
+        }
+
+        // Check if sidebar has enough content to scroll
+        if (sidebar.scrollWidth <= sidebar.clientWidth) {
+          leftArrow.style.display = 'none';
+          rightArrow.style.display = 'none';
+        }
+      }
+    }
+
+
+
+
+
+
+
+
+    // Function to handle the sidebar visibility
+    function handleSidebar() {
+      const bottomsection = document.querySelector(".hero");
+
+      const sidebar = document.querySelector(".sidebar");
+      const Faq = document.querySelector(".faq-container");
+
+
+      // Get the bottom position of the top section
+
+      const FaqBottom =
+        Faq.getBoundingClientRect().top;
+      const topSectiontopBottom =
+        bottomsection.getBoundingClientRect().bottom;
+
+
+
+
+
+
+
+
+      // First hide all scroll buttons
+      if (window.innerWidth <= 768) {
+        document.querySelectorAll('.scroll-btn-left, .scroll-btn-right').forEach(btn => {
+          btn.style.display = 'none';
+        });
       }
 
 
@@ -1964,264 +2121,129 @@ Contact <b style="color: green;">Luxury Method</b> now to start creating <b>luxu
 
 
 
-      // Function to scroll sidebar horizontally on mobile
-      function scrollSidebar(sidebarId, direction) {
-        const sidebar = document.querySelector(`.${sidebarId}`);
-        const scrollAmount = 180; // Slightly larger scroll amount
-       
-        if (direction === 'left') {
-          sidebar.scrollBy({
-            left: -scrollAmount,
-            behavior: 'smooth'
-          });
-        } else {
-          sidebar.scrollBy({
-            left: scrollAmount,
-            behavior: 'smooth'
-          });
-        }
-       
-        // Update arrow visibility after scrolling
-        setTimeout(() => {
-          updateArrowVisibility(sidebarId);
-        }, 300);
-      }
-     
-      // Function to update arrow visibility based on scroll position
-      function updateArrowVisibility(sidebarId) {
-        const sidebar = document.querySelector(`.${sidebarId}`);
-        const leftArrow = sidebar.querySelector('.left-arrow');
-        const rightArrow = sidebar.querySelector('.right-arrow');
-       
-        // Only show arrows on mobile view (width <= 768px)
+      // If we've scrolled past the top section, show the sidebar
+      if (topSectiontopBottom <= 100 && FaqBottom > 200) {
+        sidebar.style.transform = "translateY(0)";
+        // Make the first sidebar's scroll buttons active
         if (window.innerWidth <= 768) {
-          // Make sure arrows are visible
-          leftArrow.style.display = 'flex';
-          rightArrow.style.display = 'flex';
-         
-          // Check if at the start or end of scrolling
-          if (sidebar.scrollLeft <= 10) {
-            leftArrow.style.opacity = '0.4';
-          } else {
-            leftArrow.style.opacity = '1';
-          }
-         
-          if (sidebar.scrollLeft + sidebar.clientWidth >= sidebar.scrollWidth - 10) {
-            rightArrow.style.opacity = '0.4';
-          } else {
-            rightArrow.style.opacity = '1';
-          }
-         
-          // Check if sidebar has enough content to scroll
-          if (sidebar.scrollWidth <= sidebar.clientWidth) {
-            leftArrow.style.display = 'none';
-            rightArrow.style.display = 'none';
-          }
-        }
-      }
-
-
-
-
-
-
-
-
-      // Function to handle the sidebar visibility
-      function handleSidebar() {
-        const bottomsection = document.querySelector(".hero");
-       
-        const sidebar = document.querySelector(".sidebar");
-        const Faq = document.querySelector(".faq-container");
-       
-       
-        // Get the bottom position of the top section
-     
-        const FaqBottom =
-          Faq.getBoundingClientRect().top;
-        const topSectiontopBottom =
-          bottomsection.getBoundingClientRect().bottom;
-
-
-
-
-
-
-
-
-        // First hide all scroll buttons
-        if (window.innerWidth <= 768) {
-          document.querySelectorAll('.scroll-btn-left, .scroll-btn-right').forEach(btn => {
-            btn.style.display = 'none';
-          });
-        }
-
-
-
-
-
-
-
-
-        // If we've scrolled past the top section, show the sidebar
-        if (topSectiontopBottom <= 100 && FaqBottom > 200) {
-          sidebar.style.transform = "translateY(0)";
-           // Make the first sidebar's scroll buttons active
-          if (window.innerWidth <= 768) {
-            document.getElementById('sidebar1-left').style.display = 'block';
-            document.getElementById('sidebar1-right').style.display = 'block';
-            updateScrollButtonVisibility('sidebar');
-          }
-         
-       
-        } else {
-          sidebar.style.transform = "translateY(100vh)";
-         
-        }
-
-
-
-
-
-
-
-
-       
-       
-       
-      }
-     
-      // Function to update scroll button visibility based on scroll position
-      function updateScrollButtonVisibility(sidebarId) {
-        const sidebar = document.querySelector(`.${sidebarId}`);
-        const leftBtn = document.getElementById(`${sidebarId === 'sidebar' ? 'sidebar1' : 'sidebar2'}-left`).querySelector('.scroll-btn');
-        const rightBtn = document.getElementById(`${sidebarId === 'sidebar' ? 'sidebar1' : 'sidebar2'}-right`).querySelector('.scroll-btn');
-       
-        // Only show buttons on mobile view (width <= 768px)
-        if (window.innerWidth <= 768) {
-          // Check if at the start or end of scrolling
-          if (sidebar.scrollLeft <= 10) {
-            leftBtn.style.opacity = '0.4';
-          } else {
-            leftBtn.style.opacity = '1';
-          }
-         
-          if (sidebar.scrollLeft + sidebar.clientWidth >= sidebar.scrollWidth - 10) {
-            rightBtn.style.opacity = '0.4';
-          } else {
-            rightBtn.style.opacity = '1';
-          }
-         
-          // Check if sidebar has enough content to scroll
-          if (sidebar.scrollWidth <= sidebar.clientWidth) {
-            document.getElementById(`${sidebarId === 'sidebar' ? 'sidebar1' : 'sidebar2'}-left`).style.display = 'none';
-            document.getElementById(`${sidebarId === 'sidebar' ? 'sidebar1' : 'sidebar2'}-right`).style.display = 'none';
-          }
-        }
-      }
-     
-      // Function to scroll sidebar horizontally on mobile
-      function scrollSidebar(sidebarId, direction) {
-        const sidebar = document.querySelector(`.${sidebarId}`);
-        const scrollAmount = 180; // Scroll amount
-       
-        if (direction === 'left') {
-          sidebar.scrollBy({
-            left: -scrollAmount,
-            behavior: 'smooth'
-          });
-        } else {
-          sidebar.scrollBy({
-            left: scrollAmount,
-            behavior: 'smooth'
-          });
-        }
-       
-        // Update scroll button visibility after scrolling
-        setTimeout(() => {
-          updateScrollButtonVisibility(sidebarId);
-        }, 300);
-      }
-
-
-
-
-
-
-
-
-      // Initialize on page load
-      document.addEventListener("DOMContentLoaded", function () {
-        handleSidebar();
-        handleBackToTopButton(); // Initial check for back to top button
-       
-        // Add scroll event listeners to sidebars for button visibility updates
-        const sidebar = document.querySelector('.sidebar');
-        const sidebar2 = document.querySelector('.sidebar2');
-       
-        sidebar.addEventListener('scroll', function() {
+          document.getElementById('sidebar1-left').style.display = 'block';
+          document.getElementById('sidebar1-right').style.display = 'block';
           updateScrollButtonVisibility('sidebar');
+        }
+
+
+      } else {
+        sidebar.style.transform = "translateY(100vh)";
+
+      }
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+    // Function to update scroll button visibility based on scroll position
+    function updateScrollButtonVisibility(sidebarId) {
+      const sidebar = document.querySelector(`.${sidebarId}`);
+      const leftBtn = document.getElementById(`${sidebarId === 'sidebar' ? 'sidebar1' : 'sidebar2'}-left`).querySelector('.scroll-btn');
+      const rightBtn = document.getElementById(`${sidebarId === 'sidebar' ? 'sidebar1' : 'sidebar2'}-right`).querySelector('.scroll-btn');
+
+      // Only show buttons on mobile view (width <= 768px)
+      if (window.innerWidth <= 768) {
+        // Check if at the start or end of scrolling
+        if (sidebar.scrollLeft <= 10) {
+          leftBtn.style.opacity = '0.4';
+        } else {
+          leftBtn.style.opacity = '1';
+        }
+
+        if (sidebar.scrollLeft + sidebar.clientWidth >= sidebar.scrollWidth - 10) {
+          rightBtn.style.opacity = '0.4';
+        } else {
+          rightBtn.style.opacity = '1';
+        }
+
+        // Check if sidebar has enough content to scroll
+        if (sidebar.scrollWidth <= sidebar.clientWidth) {
+          document.getElementById(`${sidebarId === 'sidebar' ? 'sidebar1' : 'sidebar2'}-left`).style.display = 'none';
+          document.getElementById(`${sidebarId === 'sidebar' ? 'sidebar1' : 'sidebar2'}-right`).style.display = 'none';
+        }
+      }
+    }
+
+    // Function to scroll sidebar horizontally on mobile
+    function scrollSidebar(sidebarId, direction) {
+      const sidebar = document.querySelector(`.${sidebarId}`);
+      const scrollAmount = 180; // Scroll amount
+
+      if (direction === 'left') {
+        sidebar.scrollBy({
+          left: -scrollAmount,
+          behavior: 'smooth'
         });
-       
-        sidebar2.addEventListener('scroll', function() {
-          updateScrollButtonVisibility('sidebar2');
+      } else {
+        sidebar.scrollBy({
+          left: scrollAmount,
+          behavior: 'smooth'
         });
-       
-        // Add window resize event listener to update button visibility
-        window.addEventListener('resize', function() {
-          handleSidebar();
-        });
+      }
+
+      // Update scroll button visibility after scrolling
+      setTimeout(() => {
+        updateScrollButtonVisibility(sidebarId);
+      }, 300);
+    }
+
+
+
+
+
+
+
+
+    // Initialize on page load
+    document.addEventListener("DOMContentLoaded", function () {
+      handleSidebar();
+      handleBackToTopButton(); // Initial check for back to top button
+
+      // Add scroll event listeners to sidebars for button visibility updates
+      const sidebar = document.querySelector('.sidebar');
+      const sidebar2 = document.querySelector('.sidebar2');
+
+      sidebar.addEventListener('scroll', function () {
+        updateScrollButtonVisibility('sidebar');
       });
 
+      sidebar2.addEventListener('scroll', function () {
+        updateScrollButtonVisibility('sidebar2');
+      });
 
-
-
-
-
-
-
-      // Add scroll event listener
-      window.addEventListener("scroll", function() {
+      // Add window resize event listener to update button visibility
+      window.addEventListener('resize', function () {
         handleSidebar();
-        handleBackToTopButton(); // Check back to top button on scroll
       });
-    </script>
-  </body>
+    });
+
+
+
+
+
+
+
+
+    // Add scroll event listener
+    window.addEventListener("scroll", function () {
+      handleSidebar();
+      handleBackToTopButton(); // Check back to top button on scroll
+    });
+  </script>
+</body>
+
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
