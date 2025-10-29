@@ -20,10 +20,6 @@
       color: #000;
     }
 
-
-
-
-
     body {
       margin: 0;
       background-color: #ebe0d5;
@@ -40,9 +36,6 @@
         background-attachment: scroll !important;
       }
     }
-
-
-
 
     /* Back to Top Button */
     .back-to-top {
@@ -65,32 +58,26 @@
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     }
 
-
-
+    @media screen and (max-width: 500px) {
+      .back-to-top {
+        bottom: 120px !important;
+      }
+    }
 
     .back-to-top:hover {
       background-color: #fff;
       color: #000;
     }
 
-
-
-
     .back-to-top.visible {
       opacity: 1;
       visibility: visible;
     }
 
-
-
-
     .back-to-top svg {
       width: 24px;
       height: 24px;
     }
-
-
-
 
     /* Top section styling */
     .top-section {
@@ -104,14 +91,6 @@
       padding-left: 5vw;
       padding-right: 5vw;
     }
-
-
-
-
-
-
-
-
 
     .sidebar {
       width: 340px;
@@ -137,10 +116,6 @@
       /* Ensure sidebar appears above other content */
     }
 
-
-
-
-
     .sidebar2 {
       width: 340px;
       background-color: #ebe0d5;
@@ -162,9 +137,6 @@
       /* Ensure sidebar appears above other content */
     }
 
-
-
-
     /* When main-container is in view or scrolled past, show the sidebar */
     .main-container-visible .sidebar {
       transform: translateY(0);
@@ -173,9 +145,6 @@
     .main-container-visible .sidebar2 {
       transform: translateY(0);
     }
-
-
-
 
     button {
       background-color: #000;
@@ -190,16 +159,10 @@
       flex-shrink: 0;
     }
 
-
-
-
     button:hover {
       background-color: #fff;
       color: #000;
     }
-
-
-
 
     .main-container {
       display: flex;
@@ -212,10 +175,8 @@
 
 
     .content {
-
       transition: all;
       transition-duration: 1ms;
-
       background-color: #ebe0d5;
       color: #000;
       width: 100%;
@@ -231,9 +192,6 @@
       margin-bottom: 80px;
     }
 
-
-
-
     .image {
       display: flex;
       justify-content: center;
@@ -242,9 +200,6 @@
       width: 100%;
       margin-top: 20px;
     }
-
-
-
 
     .section p {
       line-height: 1.7;
@@ -290,14 +245,7 @@
         height: fit-content;
       }
 
-
-
-
-
     }
-
-
-
 
     @media screen and (max-width: 768px) {
       h1 {
@@ -348,9 +296,6 @@
 
       }
 
-
-
-
       .sidebar2 {
         width: 100%;
         height: 80px;
@@ -375,31 +320,19 @@
         display: none;
       }
 
-
-
-
       .left-arrow,
       .right-arrow {
         display: none !important;
       }
-
-
-
 
       .scroll-btn-left,
       .scroll-btn-right {
         display: block;
       }
 
-
-
-
       p {
         font-size: large;
       }
-
-
-
 
 
       .mrginleft {
@@ -408,14 +341,9 @@
     }
 
 
-
-
     a:visited {
       color: #000;
     }
-
-
-
 
     .luxury-footer {
       background-color: inherit;
@@ -430,9 +358,6 @@
       z-index: 99999999999999;
     }
 
-
-
-
     .luxury-footer-content {
       display: flex;
       justify-content: space-between;
@@ -444,16 +369,10 @@
       padding-right: 10%;
     }
 
-
-
-
     .luxury-footer-contact {
       margin-right: 50px;
       text-align: left;
     }
-
-
-
 
     .luxury-footer small {
       display: block;
@@ -462,22 +381,14 @@
     }
 
 
-
-
     .luxury-footer a {
       color: inherit;
       text-decoration: none;
     }
 
-
-
-
     .luxury-footer a:hover {
       text-decoration: underline;
     }
-
-
-
 
     .luxury-footer .social-icons {
       display: flex;
@@ -485,9 +396,6 @@
       gap: 20px;
       align-items: center;
     }
-
-
-
 
     .luxury-footer .social-link {
       display: inline-block;
@@ -504,19 +412,10 @@
     }
 
 
-
-
-
-
-
-
-
     .faq-item {
       border-bottom: 1px solid #696969;
       overflow: hidden;
     }
-
-
 
 
     .faq-question {
@@ -529,16 +428,12 @@
     }
 
 
-
-
     .faq-question h3 {
       font-size: 18px;
       font-weight: 500;
       color: #1a1a1a;
       text-align: left;
     }
-
-
 
 
     .faq-toggle {
@@ -551,8 +446,6 @@
     }
 
 
-
-
     .faq-toggle::before {
       font-size: 18px;
       color: #1a1a1a;
@@ -560,14 +453,9 @@
     }
 
 
-
-
     .faq-toggle.active {
       rotate: 180deg;
     }
-
-
-
 
     .faq-answer {
       max-height: 0;
@@ -579,15 +467,11 @@
     }
 
 
-
-
     .faq-answer.active {
       max-height: fit-content;
       padding-bottom: 20px;
       height: fit-content;
     }
-
-
 
 
     .faq-answer p {
@@ -597,8 +481,6 @@
       height: fit-content;
       margin-top: 0;
     }
-
-
 
 
     .left-arrow {
@@ -614,9 +496,6 @@
       /* Hide by default (on desktop) */
     }
 
-
-
-
     .right-arrow {
       font-size: 20px;
       color: #000;
@@ -629,9 +508,6 @@
       display: none;
       /* Hide by default (on desktop) */
     }
-
-
-
 
     /* Hide scrollbar but maintain functionality */
     .sidebar::-webkit-scrollbar,
@@ -646,8 +522,6 @@
       scrollbar-width: none;
       /* Firefox */
     }
-
-
 
 
     /* Scroll button styling */
@@ -691,8 +565,6 @@
     }
 
 
-
-
     @media screen and (max-width: 768px) {
       .top-section {
         padding: 5px;
@@ -706,8 +578,6 @@
       .sidebar::-webkit-scrollbar {
         display: none;
       }
-
-
 
 
       .sidebar2 {
@@ -734,9 +604,6 @@
         display: none;
       }
 
-
-
-
       .left-arrow,
       .right-arrow {
         display: none !important;
@@ -749,9 +616,6 @@
       .scroll-btn-right {
         display: block;
       }
-
-
-
 
       p {
         font-size: large;
@@ -770,13 +634,12 @@
 
 <body>
   <div class="hero" style="
-     
         width: 100%;
         height: 100vh;
         -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-   background-attachment: fixed;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-attachment: fixed;
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -785,32 +648,29 @@
         justify-content: center;
         align-items: center;
         opacity: 98%;
-       
       ">
 
-    <div style="
-         
+    <div style="         
           opacity: 0.5;
           width: 100%;
           height: 100%;
           position: absolute;
           top: 0;
           left: 0;
-           background-color: #000;
-        " class="overlay"></div>
-   <h1
-        style="
-          color:#ebe0d5;
+           background-color: #000;" class="overlay">
+    </div>
+
+    <h1 style="
+          color: #ebe0d5;
           text-align: center;
           z-index: 999999999999;
           font-weight: normal;
-        "
-      >
+          font-size: 4rem;
+          letter-spacing: 0.5rem;
+    ">
       LUXURY INFLUENCER MARKETING
     </h1>
   </div>
-
-
 
 
   <div class="paddingleftright mrginleft">
@@ -825,7 +685,7 @@
           target market, as well as navigating the fast-paced world of digital marketing.
         </p>
         <p>A
-          <a href="https://www.luxury-method.com/luxury-marketing-agency" target="_blank">luxury influencer marketing
+          <a target="_blank" href="https://www.luxury-method.com/luxury-marketing-agency" target="_blank">luxury influencer marketing
             agency</a>
           specialises in creating influencer marketing strategies that focus on promoting a campaign or product.
 
@@ -883,7 +743,7 @@
           </div>
 
           <p><strong>Digital marketing strategies for luxury brands</strong> must aim to increase visibility and boost
-            engagement. And <a href="https://www.luxury-method.com/services/luxury-social-media-agency">social media</a>
+            engagement. And <a target="_blank" href="https://www.luxury-method.com/services/luxury-social-media-agency">social media</a>
             channels are the perfect pathway to doing just that. Platforms such as Instagram, Pinterest, and TikTok have
             evolved into essential channels for luxury brands to build relationships with affluent customers.</p>
 
@@ -1043,7 +903,7 @@
 
 
       <p>Today's luxury influencers are redefining the standards of <span style="color:blue;"><a
-            href="https://www.luxury-method.com/services/luxury-branding-strategy">high-end branding</a></span> through
+            target="_blank" href="https://www.luxury-method.com/services/luxury-branding-strategy">high-end branding</a></span> through
         visually stunning and strategically crafted content. As top content marketing influencers, they drive engagement
         and trust across the fashion, travel, and retail sectors. These <b>influencer marketing fashion leaders</b>—such
         as Leonie Hanne, Chriselle Lim, and Nora Smith—seamlessly blend elegance with digital impact. Known for shaping
@@ -1080,7 +940,7 @@
 
 
         <p>Luxury fashion brands are constantly utilizing digital <a
-            href="https://www.luxury-method.com/industries/luxury-fashion-marketing">marketing strategies for fashion
+            target="_blank" href="https://www.luxury-method.com/industries/luxury-fashion-marketing">marketing strategies for fashion
             and luxury brands</a>, to stay ahead in the competitive market. And one of the most powerful tactics is
           <b>influencer marketing in the fashion industry</b>.
         </p>
@@ -1124,7 +984,7 @@
 
         <p>Luxury real estate brands are embracing the power of <b>real estate influencer marketing</b> to connect with
           highly selected individuals in a more authentic and impactful way. By utilising <a
-            href="https://www.luxury-method.com/industries/luxury-real-estate-marketing">real estate</a>, agencies and
+            target="_blank" href="https://www.luxury-method.com/industries/luxury-real-estate-marketing">real estate</a>, agencies and
           developers can showcase properties through trusted voices who have built credibility and authority online.
           This approach humanizes listings and creates aspirational content that <b>resonates with luxury buyers</b>.
         </p>
@@ -1164,12 +1024,12 @@
 
         <p>Luxury influencer marketing has become a vital strategy within the hospitality industry to redefine brand
           visibility and guest engagement. Through <a
-            href="https://www.luxury-method.com/industries/luxury-hospitality-marketing-agency">hospitality
+            target="_blank" href="https://www.luxury-method.com/industries/luxury-hospitality-marketing-agency">hospitality
             industry</a>, your premium brand can create authentic experiences that resonate with affluent travelers and
           discerning diners.</p>
 
 
-        <p><a href="https://www.luxury-method.com/industries/luxury-food-marketing">Restaurant influencer marketing</a>
+        <p><a target="_blank" href="https://www.luxury-method.com/industries/luxury-food-marketing">Restaurant influencer marketing</a>
           strategies focus on collaborating with food bloggers, lifestyle influencers, and celebrity chefs to showcase
           signature dishes, exclusive menus, and curated dining experiences. Similarly, <b>hotel influencer
             marketing</b> campaigns involve partnerships with travel influencers who highlight luxurious accommodations,
@@ -1204,7 +1064,7 @@
 
         <p>In today's experience-driven retail landscape, luxury influencer marketing is a key tool that premium brands
           are using to target modern, style-conscious consumers. <a
-            href="https://www.luxury-method.com/industries/luxury-retail-marketing">retail shopping brands</a> involves
+            target="_blank" href="https://www.luxury-method.com/industries/luxury-retail-marketing">retail shopping brands</a> involves
           collaborations with lifestyle and fashion influencers, who appeal to aspirational customers and use their
           trusted voice to reflect the brand's image. <b>Retail influencer marketing</b> partnerships can showcase
           exclusive collections, in-store experiences, and limited-edition drops.</p>
@@ -1243,7 +1103,7 @@
 
 
 
-        <p><a href="https://www.luxury-method.com/industries/luxury-watches-jewelry-marketing">high-end jewelry</a> has
+        <p><a target="_blank" href="https://www.luxury-method.com/industries/luxury-watches-jewelry-marketing">high-end jewelry</a> has
           evolved with the rise of social media, being redefined by the strategic use of <b>jewelry influencer
             marketing</b>. High-end jewelry brands are increasingly turning towards influencers who embody the authentic
           essence of luxury brands, and showcase collections to their prestige audiences.</p>
@@ -1287,7 +1147,7 @@
           marketing services are embracing influencer partnerships.</p>
 
 
-        <p>Through a trusted <a href="https://www.luxury-method.com/industries/luxury-lifestyle-marketing">luxury
+        <p>Through a trusted <a target="_blank" href="https://www.luxury-method.com/industries/luxury-lifestyle-marketing">luxury
             lifestyle</a>, brands can connect with influencers who inspire through curated, high-end content.
           <b>Influencer marketing in travel and tourism</b> can authentically highlight luxury destinations, prestige
           products, and bespoke services through visually compelling content that reaches a high-end audience. For
@@ -1394,15 +1254,15 @@
       Experience the difference of a marketing agency dedicated to luxury.
     </p>
     <div style="display: flex; gap: 100px; margin-top: 60px; width: 100%; justify-content: center;">
-      <a href="https://www.google.com/url?q=https%3A%2F%2Fwa.me%2F%2B393920034695&sa=D&sntz=1&usg=AOvVaw2a9hG2asZNJfADOdAWUper"
+      <a target="_blank" href="https://www.google.com/url?q=https%3A%2F%2Fwa.me%2F%2B393920034695&sa=D&sntz=1&usg=AOvVaw2a9hG2asZNJfADOdAWUper"
         class="padding:20px; background-color: #fff; border-radius: 100%;"><img
           src="https://i.postimg.cc/HkGt0VxV/whatsapp.png" style="width: 30px; border-radius: 100%; height: 30px;"
           alt=""></a>
-      <a href="mailto:giacomo@luxury-method.com"
+      <a target="_blank" href="mailto:giacomo@luxury-method.com"
         class="padding:20px; background-color: #5f6368; border-radius: 100%; "><img
           src="https://i.postimg.cc/mr4tBFZf/image-978.png"
           style="width: 30px; border-radius: 100%; background-color: #5f6368; height: 30px;" alt=""></a>
-      <a href="https://www.google.com/url?q=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Fluxurymethod%2F&sa=D&sntz=1&usg=AOvVaw0MER64fKjxQpgMZC_E-MgX"
+      <a target="_blank" href="https://www.google.com/url?q=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Fluxurymethod%2F&sa=D&sntz=1&usg=AOvVaw0MER64fKjxQpgMZC_E-MgX"
         class="padding:20px;  border-radius: 100%; "><img src="https://i.postimg.cc/BvtQqcWz/image-979.png"
           style="width: 30px; border-radius: 100%; background-color: #2867b2; height: 30px;" alt=""></a>
     </div>
@@ -1411,7 +1271,7 @@
 
 
     <div style="display: flex; justify-content: center; margin-top: 40px; margin-bottom: 100px;">
-      <a href="https://www.luxury-method.com/contact"
+      <a target="_blank" href="https://www.luxury-method.com/contact"
         style="padding-left: 80px; text-decoration: none; font-size: 18px; border-radius: 5px; padding-right: 80px; border: #000; border: 1px solid; padding-top: 10px; padding-bottom: 10px;">CONTACT
         FORM</a>
     </div>
@@ -1575,7 +1435,7 @@
       <div class="luxury-footer-contact">
         <small>
           <a style="font-weight: bold; text-decoration: underline"
-            href="mailto:giacomo@luxury-method.com">giacomo@luxury-method.com</a>
+            target="_blank" href="mailto:giacomo@luxury-method.com">giacomo@luxury-method.com</a>
         </small>
         <small>(+39) 3920034695</small>
 
@@ -1583,13 +1443,13 @@
       </div>
       <div class="social-icons">
         <div class="social-link">
-          <a href="https://www.instagram.com/luxurymethod_agency/" target="_blank">
+          <a target="_blank" href="https://www.instagram.com/luxurymethod_agency/" >
             <img style="max-height: 500px; object-fit: cover;" src="https://i.postimg.cc/XJSn0GKM/image-976.png"
               alt="Instagram" />
           </a>
         </div>
         <div class="social-link">
-          <a href="https://x.com/luxury_method" target="_blank">
+          <a target="_blank" href="https://x.com/luxury_method">
             <img style="max-height: 500px; object-fit: cover;" src="https://i.postimg.cc/Y93Zyhbz/image-977.png"
               alt="X" />
           </a>
