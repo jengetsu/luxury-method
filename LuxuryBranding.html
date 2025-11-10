@@ -654,6 +654,35 @@
         margin-left: 0px;
       }
     }
+
+    .industry_Image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-block: 40px;
+      width: 100%;
+
+    }
+
+    .industry_Image img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      object-position: bottom;
+      max-height: 600px;
+      object-fit:cover;
+      object-position:center center;
+    }
+
+    /* mobile */
+    @media(max-width:768px) {
+      .industry_Image img {
+        max-width: 700px;
+        max-height: none;
+        object-position: center;
+      }
+    }
   </style>
 </head>
 
@@ -1070,14 +1099,14 @@
         <p style="text-align: center;">At Luxury Method, we develop tailored, high-impact branding systems designed for
           the unique demands of each luxury sector:</p>
       </div>
+
       <div id="audience2" class="section">
         <h3><a style="text-decoration: none;" target="_blank"
             href="https://www.luxury-method.com/industries/luxury-fashion-marketing">Fashion</a></h3>
-        <div
-          style="display: flex; justify-content: center; align-items: center; margin-bottom: 40px; margin-top: 10px;">
-          <img src="https://luxury-method.vercel.app/FASHION.png" class="FASHION-image" alt=""
-            style="max-height: 500px; object-fit: cover;">
+        <div class="industry_Image" style="margin-top:10px;">
+          <img src="https://luxury-method.vercel.app/FASHION.png" alt="Fashion Industry" style="">
         </div>
+
 
 
 
@@ -1089,11 +1118,11 @@
       <div id="mindmap2" class="section">
         <h3><a style="text-decoration: none;" target="_blank"
             href="https://www.luxury-method.com/industries/luxury-travel-marketing">Travel</a></h3>
-         <div
-          style="display: flex; justify-content: center; align-items: center; margin-bottom: 40px; margin-top: 40px;">
-          <img src="https://luxury-method.vercel.app/TRAVEL.png"
-            style=" max-width: 700px; width: 100%; height: 65vh; object-fit: cover;" alt="">
+
+        <div class="industry_Image" style="margin-top:10px;">
+          <img src="https://luxury-method.vercel.app/TRAVEL.png" alt="Travel Industry" style="">
         </div>
+
 
 
         <p>In the travel industry, branding is about <strong>evoking emotion, aspiration, and escape.</strong> We create
@@ -1106,11 +1135,16 @@
       <div id="content2" class="section">
         <h3><a target="_blank" href="https://www.luxury-method.com/industries/luxury-hospitality-marketing-agency"
             style="text-decoration: none;">Hospitality</a></h3>
-       <div
+        <!-- <div
           style="display: flex; justify-content: center; align-items: center; margin-bottom: 40px; margin-top: 40px;">
           <img src="https://luxury-method.vercel.app/HOSPITALITY.png"
             style=" max-width: 700px; width: 100%; height: auto; object-fit: cover;" alt="">
+        </div> -->
+        <div class="industry_Image" style="margin-top:10px;">
+          <img src="https://luxury-method.vercel.app/HOSPITALITY.png" alt="Hospitality Industry"
+            style="">
         </div>
+
         <p>In a <strong>sector where experience and emotion define value, we craft refined identities that capture
             elegance and atmosphere.</strong> As a luxury hotel branding agency, we develop cohesive brand systems
           rooted in storytelling and service. Our work in hospitality luxury branding includes naming, visual identity,
@@ -1121,11 +1155,16 @@
       <div id="calendar2" class="section">
         <h3> <a target="_blank" href="https://www.luxury-method.com/industries/luxury-real-estate-marketing"
             style="text-decoration: none;">Real Estate</a></h3>
-        <div
+        <!-- <div
           style="display: flex; justify-content: center; align-items: center; margin-bottom: 40px; margin-top: 40px;">
           <img src="https://luxury-method.vercel.app/REAL_ESTATE.png"
             style=" max-width: 700px; width: 100%; height: auto; object-fit: cover;" alt="">
+        </div> -->
+        <div class="industry_Image" style="margin-top:10px;">
+          <img src="https://luxury-method.vercel.app/REAL_ESTATE.png" alt="Real Estate Industry"
+            style="">
         </div>
+
         <p>In luxury real estate, branding must convey <strong>trust, exclusivity, and aspiration.</strong> As a luxury
           property branding agency, we craft identities that elevate developments and speak directly to high-net-worth
           audiences.</p>
@@ -1135,11 +1174,10 @@
       <div id="editorial2" class="section">
         <h3><a target="_blank" href="https://www.luxury-method.com/industries/luxury-watches-marketing"
             style="text-decoration: none;">Watches & Jewellery</a></h3>
-        <div
-          style="display: flex; justify-content: center; align-items: center; margin-bottom: 40px; margin-top: 40px;">
-          <img src="https://luxury-method.vercel.app/WATCHES.png"
-            style=" max-width: 700px; width: 100%; height: 65vh; object-fit: cover;" alt="">
+        <div class="industry_Image" style="margin-top:10px;">
+          <img src="https://luxury-method.vercel.app/WATCHES.png" alt="Watches Industry" style="">
         </div>
+
         <p>Branding in this sector demands a <strong>focus on craftsmanship, legacy, and precision.</strong> We build
           tailored and refined identities that highlight heritage and timeless value. From emblematic logos to
           material-driven storytelling, we create luxury brand systems that honour artisanal excellence while appealing
@@ -1150,11 +1188,12 @@
       <div id="distribution2" class="section">
         <h3> <a target="_blank" href="https://www.luxury-method.com/industries/luxury-food-marketing"
             style="text-decoration: none;">Food and Beverages</a></h3>
-         <div
-          style="display: flex; justify-content: center; align-items: center; margin-bottom: 40px; margin-top: 40px;">
-          <img src="https://luxury-method.vercel.app/FOOD_AND_BEVERAGES.png"
-            style=" max-width: 700px; width: 100%; height: auto; object-fit: cover;" alt="">
+
+        <div class="industry_Image" style="margin-top:10px;">
+          <img src="https://luxury-method.vercel.app/FOOD_AND_BEVERAGES.png" alt="Food and Beverages Industry"
+            style="">
         </div>
+
         <p>In the luxury food sector, branding is a <strong>sensory experience</strong> that must express
           <strong>quality, origin, and craftsmanship.</strong> We specialise in food branding that captures flavour,
           texture, and emotion through thoughtful packaging, naming, and visual identity. Our luxury food branding
@@ -1168,9 +1207,9 @@
         <h3><a target="_blank" href="https://www.luxury-method.com/industries/luxury-retail-marketing"
             style="text-decoration: none;">Retail</a> </h3>
         <div
-          style="display: flex; justify-content: center; align-items: center; margin-bottom: 40px; margin-top: 40px;">
-          <img src="https://luxury-method.vercel.app/RETAIL.png"
-            style=" max-width: 700px; width: 100%; height: auto; object-fit: cover;" alt="">
+          style="display: flex; justify-content: center; align-items: center; margin-bottom: 40px; margin-top: 10px;">
+          <img src="https://luxury-method.vercel.app/RETAIL.png" class="FASHION-image" alt=""
+            style="object-fit: cover;">
         </div>
         <p>In luxury retail, branding is about crafting a <strong>multi-sensory experience that engages customers from
             the first glance to the final purchase.</strong> We specialise in retail branding that blends visual
