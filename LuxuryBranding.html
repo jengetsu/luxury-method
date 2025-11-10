@@ -655,6 +655,7 @@
       }
     }
 
+    /* Industry Images */
     .industry_Image {
       display: flex;
       justify-content: center;
@@ -671,16 +672,18 @@
       object-fit: cover;
       object-position: bottom;
       max-height: 600px;
-      object-fit:cover;
-      object-position:center center;
+      object-fit: cover;
+      object-position: center center;
+      height: 65vh;
     }
 
     /* mobile */
-    @media(max-width:768px) {
+    @media screen and (max-width: 768px) {
       .industry_Image img {
+        height: auto !important;
+        /* instead of deleting height rules by accident */
         max-width: 700px;
-        max-height: none;
-        object-position: center;
+        width: 100%;
       }
     }
   </style>
@@ -1141,8 +1144,7 @@
             style=" max-width: 700px; width: 100%; height: auto; object-fit: cover;" alt="">
         </div> -->
         <div class="industry_Image" style="margin-top:10px;">
-          <img src="https://luxury-method.vercel.app/HOSPITALITY.png" alt="Hospitality Industry"
-            style="">
+          <img src="https://luxury-method.vercel.app/HOSPITALITY.png" alt="Hospitality Industry" style="">
         </div>
 
         <p>In a <strong>sector where experience and emotion define value, we craft refined identities that capture
@@ -1161,8 +1163,7 @@
             style=" max-width: 700px; width: 100%; height: auto; object-fit: cover;" alt="">
         </div> -->
         <div class="industry_Image" style="margin-top:10px;">
-          <img src="https://luxury-method.vercel.app/REAL_ESTATE.png" alt="Real Estate Industry"
-            style="">
+          <img src="https://luxury-method.vercel.app/REAL_ESTATE.png" alt="Real Estate Industry" style="">
         </div>
 
         <p>In luxury real estate, branding must convey <strong>trust, exclusivity, and aspiration.</strong> As a luxury
@@ -1190,8 +1191,7 @@
             style="text-decoration: none;">Food and Beverages</a></h3>
 
         <div class="industry_Image" style="margin-top:10px;">
-          <img src="https://luxury-method.vercel.app/FOOD_AND_BEVERAGES.png" alt="Food and Beverages Industry"
-            style="">
+          <img src="https://luxury-method.vercel.app/FOOD_AND_BEVERAGES.png" alt="Food and Beverages Industry" style="">
         </div>
 
         <p>In the luxury food sector, branding is a <strong>sensory experience</strong> that must express

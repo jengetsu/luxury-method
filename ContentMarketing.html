@@ -657,6 +657,36 @@
         margin-left: 0px;
       }
     }
+
+    .industry_Image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-block: 40px;
+      width: 100%;
+
+    }
+
+    .industry_Image img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      object-position: bottom;
+      max-height: 600px;
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    /* mobile */
+    @media screen and (max-width: 768px) {
+      .industry_Image img {
+        height: auto !important;
+        /* instead of deleting height rules by accident */
+        max-width: 700px;
+        width: 100%;
+      }
+    }
   </style>
 </head>
 
@@ -775,7 +805,10 @@
             communication. It’s elegant, emotional, and carefully designed to reflect a lifestyle, which makes luxury
             content go beyond selling; it tells stories of heritage, quality, and meaning. With the support of a
             <b>luxury content agency,</b> your brand will receive custom <b>content marketing solutions</b> that connect
-            with people who expect more than just a product. As a <a href="https://www.luxury-method.com/services/luxury-content-marketing" target="_blank">luxury content agency</a>, our job is to be your partner in attracting the right audience for your luxury brand, those who care about meaning, value, and the story behind the product.
+            with people who expect more than just a product. As a <a
+              href="https://www.luxury-method.com/services/luxury-content-marketing" target="_blank">luxury content
+              agency</a>, our job is to be your partner in attracting the right audience for your luxury brand, those
+            who care about meaning, value, and the story behind the product.
           </p>
         </div>
 
@@ -1035,11 +1068,10 @@
 
         <h3>Luxury Jewelry & Luxury Watches Content Marketing</h3>
 
-        <div
-          style="display: flex; justify-content: center; align-items: center; margin-bottom: 40px; margin-top: 40px;">
-          <img src="https://luxury-method.vercel.app/WATCHES.png"
-            style=" max-width: 700px; width: 100%; height: 65vh; object-fit: cover;" alt="">
+        <div class="industry_Image">
+          <img src="https://luxury-method.vercel.app/WATCHES.png" alt="Watches Industry" style="height:65vh;">
         </div>
+
 
         <p>
           <a target="_blank" href="https://www.luxury-method.com/industries/luxury-jewelry-marketing">Luxury
@@ -1081,11 +1113,10 @@
         </p>
 
 
-        <div
-          style="display: flex; justify-content: center; align-items: center; margin-bottom: 40px; margin-top: 40px;">
-          <img src="https://luxury-method.vercel.app/TRAVEL.png"
-            style=" max-width: 700px; width: 100%; height: 65vh; object-fit: cover;" alt="">
+        <div class="industry_Image">
+          <img src="https://luxury-method.vercel.app/TRAVEL.png" alt="Travel Industry" style="height:65vh;">
         </div>
+
 
         <p>
           In hospitality, <b>content marketing for <a target="_blank"
@@ -1098,11 +1129,11 @@
       <div id="content2" class="section">
         <h3>Luxury Fashion & Luxury Retail content marketing</h3>
 
-        <div
-          style="display: flex; justify-content: center; align-items: center; margin-bottom: 40px; margin-top: 10px;">
-          <img src="https://luxury-method.vercel.app/FASHION.png" class="FASHION-image" alt=""
-            style="max-height: 500px; object-fit: cover;">
+        <div class="industry_Image" style="display:flex; justify-content:center; align-items:center; margin:40px 0;">
+          <img src="https://luxury-method.vercel.app/FASHION.png" alt=""
+            style="width:100%; height:65vh; object-fit:cover; object-position:center center;">
         </div>
+
 
 
 
@@ -1116,7 +1147,9 @@
         </p>
         <p>
           <b>Retail content marketing</b> supports this by making the shopping journey feel personal and seamless online
-          and in-store. It highlights what matters most to luxury buyers, from quality to exclusivity. A strong <b><a target="_blank" href="https://www.luxury-method.com/industries/luxury-retail-marketing">luxury retail</a> strategy</b>
+          and in-store. It highlights what matters most to luxury buyers, from quality to exclusivity. A strong <b><a
+              target="_blank" href="https://www.luxury-method.com/industries/luxury-retail-marketing">luxury retail</a>
+            strategy</b>
           uses the
           right tone, visuals, and content to reflect the premium experience people expect from a high-end brand.
         </p>
@@ -1125,28 +1158,31 @@
 
       <div id="calendar2" class="section">
         <h3>Real Estate Content Marketing</h3>
-        <div
-          style="display: flex; justify-content: center; align-items: center; margin-bottom: 40px; margin-top: 40px;">
-          <img src="https://luxury-method.vercel.app/REAL_ESTATE.png"
-            style=" max-width: 700px; width: 100%; height: auto; object-fit: cover;" alt="">
+        <div class="industry_Image">
+          <img src="https://luxury-method.vercel.app/REAL_ESTATE.png" alt="Real Estate Industry" style="height:65vh;">
         </div>
+
         <p><b>Real estate content marketing</b> is about showing the design, location, and value of a property in a way
           that feels real and appealing. Great content marketing for <a target="_blank"
             href="https://www.luxury-method.com/industries/luxury-real-estate-marketing">real estate</a> brings out the
           lifestyle and experience behind every listing, builds trust, and helps attract the right buyers.</p>
       </div>
 
-    </div>
 
 
 
 
 
-    <div class="content" id="con3">
+
 
 
       <div id="top2" class="top-section">
         <h3 id="industry" style="text-decoration: none;">eCommerce Content Marketing</h3>
+
+        <div class="industry_Image">
+          <img src="https://luxury-method.vercel.app/E_COMMERCE.png" style="height:65vh;" alt="E Commerce Industry">
+        </div>
+
         <p>On the digital side, the best ecommerce content marketing uses personalization and clean, stylish product
           displays. Strong <b>content marketing for ecommerce sites</b> brings everything together: blogs, email flows,
           and <a target="_blank" href="https://www.luxury-method.com/services/luxury-seo-agency">SEO</a> to drive sales
@@ -1157,11 +1193,11 @@
         <h3><a target="_blank" style="text-decoration: none;"
             href="https://www.luxury-method.com/industries/luxury-food-marketing">Content Marketing for
             Restaurant & Food</a></h3>
-         <div
-          style="display: flex; justify-content: center; align-items: center; margin-bottom: 40px; margin-top: 40px;">
-          <img src="https://luxury-method.vercel.app/FOOD_AND_BEVERAGES.png"
-            style=" max-width: 700px; width: 100%; height: auto; object-fit: cover;" alt="">
+        <div class="industry_Image">
+          <img src="https://luxury-method.vercel.app/FOOD_AND_BEVERAGES.png" alt="Food and Beverages Industry"
+            style="height:65vh;">
         </div>
+
 
 
 

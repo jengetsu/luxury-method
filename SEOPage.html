@@ -220,6 +220,7 @@
       align-items: center;
       margin-block: 40px;
       width: 100%;
+
     }
 
     .industry_Image img {
@@ -229,18 +230,20 @@
       object-fit: cover;
       object-position: bottom;
       max-height: 600px;
+      object-fit: cover;
+      object-position: center center;
+      height: 65vh;
     }
 
     /* mobile */
-    @media(max-width:768px) {
+    @media screen and (max-width: 768px) {
       .industry_Image img {
+        height: auto !important;
+        /* instead of deleting height rules by accident */
         max-width: 700px;
-        max-height: none;
-        object-position: center;
+        width: 100%;
       }
     }
-
-
 
     @media screen and (max-width: 400px) {
       .luxury-footer-content {

@@ -630,6 +630,7 @@
       }
     }
 
+    /* Industry Images */
     .industry_Image {
       display: flex;
       justify-content: center;
@@ -648,14 +649,16 @@
       max-height: 600px;
       object-fit: cover;
       object-position: center center;
+      height: 65vh;
     }
 
     /* mobile */
-    @media(max-width:768px) {
+    @media screen and (max-width: 768px) {
       .industry_Image img {
+        height: auto !important;
+        /* instead of deleting height rules by accident */
         max-width: 700px;
-        max-height: none;
-        object-position: center;
+        width: 100%;
       }
     }
   </style>
