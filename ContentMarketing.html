@@ -687,6 +687,39 @@
         width: 100%;
       }
     }
+
+
+    @media screen and (max-width: 768px) {
+      .image {
+        height: auto !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+      }
+
+      .image img {
+        width: 100% !important;
+        height: auto !important;
+        max-width: 100% !important;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+        margin: 0 auto;
+      }
+    }
+
+    .hover-3d {
+      transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
+    .hover-3d:hover {
+      transform: translateY(-8px) rotateX(4deg) rotateY(-4deg) scale(1.04);
+      box-shadow: 0 18px 35px rgba(0, 0, 0, 0.18);
+    }
   </style>
 </head>
 
@@ -797,8 +830,9 @@
             craftsmanship, and exclusivity - those who see luxury as an extension of their identity and aspirations.
           </p>
 
-          <img style="max-height: 500px; object-fit: cover;"
-            src="https://images.pexels.com/photos/4549411/pexels-photo-4549411.jpeg" class="image" alt="" />
+          <img style="max-height: 500px; object-fit: cover; border-radius: 20px;"
+            src="https://images.pexels.com/photos/4549411/pexels-photo-4549411.jpeg" class="hover-3d image" alt="" />
+
 
           <p style="text-align: start;">
             <b>Content marketing for luxury brands</b> should be built on a strategy based on connection, not just
@@ -870,8 +904,8 @@
             connection into loyalty.
           </p>
 
-          <img style="max-height: 500px; object-fit: cover;" src="https://luxury-method.vercel.app/3.png" class="image"
-            alt="" />
+          <img style="max-height: 500px; object-fit: cover;border-radius: 20px;"
+            src="https://luxury-method.vercel.app/3.png" class="image hover-3d" alt="" />
 
           <p>
             For example, look at the <b style="color: rgb(0, 0, 0);">Louis Vuitton</b> site in the image above: clean
@@ -891,8 +925,8 @@
               alt=""
             />
           </div> -->
-          <img style="max-height: 500px; object-fit: cover;"
-            src="https://luxury-method.vercel.app/CMSocialMediaDesign.png" class="image" alt="" />
+          <img style="max-height: 500px; object-fit: cover; border-radius: 20px;"
+            src="https://luxury-method.vercel.app/CMSocialMediaDesign.png" class="image hover-3d" alt="" />
 
           <p>
             <b>Luxury brands</b> need clean, elegant posts that reflect their identity. That’s why they hire trusted
@@ -904,7 +938,7 @@
             into loyal ones, building trust with the right presence on their social media accounts.
           </p>
 
-          <img class="image" style="max-height: 500px; object-fit: cover;" alt=""
+          <img class="image hover-3d" style="max-height: 500px; object-fit: cover;border-radius: 20px;" alt=""
             src="https://luxury-method.vercel.app/Social%20media.png" />
           <p>
             Just like you see in these images from <b style="color: rgb(0, 0, 0);">Patek Philippe’s</b> Instagram,
@@ -965,7 +999,7 @@
                   
                   border-radius: 6px; /* Optional: makes it look more refined */
                   image-rendering: high-quality;
-                  filter: brightness(1.05) contrast(1.02);" />
+                  filter: brightness(1.05) contrast(1.02);" class="hover-3d" />
 
           </div>
 
@@ -985,7 +1019,7 @@
           </p>
 
           <div style="display: flex ; align-items: center;margin: 30px; justify-content: center;">
-            <img style="max-width: 500px; width: 100vw; object-fit: cover;" alt=""
+            <img style="max-width: 500px; width: 100vw; object-fit: cover; border-radius: 20px;" class="hover-3d" alt=""
               src="https://luxury-method.vercel.app/Luxury%20Magazine%20Print%20Ad.jpg" />
           </div>
 
@@ -1021,8 +1055,8 @@
           </p>
 
           <div style="display: flex ; align-items: center; justify-content: center;">
-            <img style="max-width: 500px; width: 100vw; object-fit: cover;" alt=""
-              src="https://luxury-method.vercel.app/Email%20Marketing%20.png" />
+            <img style="max-width: 500px; width: 100vw; object-fit: cover;border-radius: 20px;" alt=""
+              src="https://luxury-method.vercel.app/Email%20Marketing%20.png" class="image hover-3d" />
           </div>
 
 
@@ -1069,7 +1103,8 @@
         <h3>Luxury Jewelry & Luxury Watches Content Marketing</h3>
 
         <div class="industry_Image">
-          <img src="https://luxury-method.vercel.app/WATCHES.png" alt="Watches Industry" style="height:65vh;">
+          <img src="https://luxury-method.vercel.app/WATCHES.png" alt="Watches Industry" class="hover-3d"
+            style="height:65vh;">
         </div>
 
 
@@ -1114,13 +1149,14 @@
 
 
         <div class="industry_Image">
-          <img src="https://luxury-method.vercel.app/TRAVEL.png" alt="Travel Industry" style="height:65vh;">
+          <img src="https://luxury-method.vercel.app/TRAVEL.png" alt="Travel Industry" class="hover-3d"
+            style="height:65vh;">
         </div>
 
 
         <p>
           In hospitality, <b>content marketing for <a target="_blank"
-              href="https://www.luxury-method.com/industries/luxury-hospitality-marketing-agency">luxury hotels</a></b>
+              href="https://www.luxury-method.com/industries/luxury-food-marketing">luxury hotels</a></b>
           focuses on the design, atmosphere, and service that set a hotel apart. A smart content marketing plan for
           hotels uses SEO, storytelling, and beautiful imagery to attract elite travelers and encourage bookings.</p>
 
@@ -1130,7 +1166,7 @@
         <h3>Luxury Fashion & Luxury Retail content marketing</h3>
 
         <div class="industry_Image" style="display:flex; justify-content:center; align-items:center; margin:40px 0;">
-          <img src="https://luxury-method.vercel.app/FASHION.png" alt=""
+          <img src="https://luxury-method.vercel.app/FASHION.png" class="hover-3d" alt=""
             style="width:100%; height:65vh; object-fit:cover; object-position:center center;">
         </div>
 
@@ -1159,7 +1195,8 @@
       <div id="calendar2" class="section">
         <h3>Real Estate Content Marketing</h3>
         <div class="industry_Image">
-          <img src="https://luxury-method.vercel.app/REAL_ESTATE.png" alt="Real Estate Industry" style="height:65vh;">
+          <img src="https://luxury-method.vercel.app/REAL_ESTATE.png" class="hover-3d" alt="Real Estate Industry"
+            style="height:65vh;">
         </div>
 
         <p><b>Real estate content marketing</b> is about showing the design, location, and value of a property in a way
@@ -1180,7 +1217,8 @@
         <h3 id="industry" style="text-decoration: none;">eCommerce Content Marketing</h3>
 
         <div class="industry_Image">
-          <img src="https://luxury-method.vercel.app/E_COMMERCE.png" style="height:65vh;" alt="E Commerce Industry">
+          <img src="https://luxury-method.vercel.app/E_COMMERCE.png" style="height:65vh;" class="hover-3d"
+            alt="E Commerce Industry">
         </div>
 
         <p>On the digital side, the best ecommerce content marketing uses personalization and clean, stylish product
@@ -1194,8 +1232,8 @@
             href="https://www.luxury-method.com/industries/luxury-food-marketing">Content Marketing for
             Restaurant & Food</a></h3>
         <div class="industry_Image">
-          <img src="https://luxury-method.vercel.app/FOOD_AND_BEVERAGES.png" alt="Food and Beverages Industry"
-            style="height:65vh;">
+          <img src="https://luxury-method.vercel.app/FOOD_AND_BEVERAGES.png" class="hover-3d"
+            alt="Food and Beverages Industry" style="height:65vh;">
         </div>
 
 
