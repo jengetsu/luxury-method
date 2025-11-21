@@ -421,6 +421,14 @@
       flex-direction: column;
       gap: 20px;
       align-items: center;
+
+    }
+
+    .social-link img {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8));
     }
 
 
@@ -432,8 +440,6 @@
 
 
     .luxury-footer img {
-      width: 20px;
-      height: 20px;
       vertical-align: middle;
     }
 
@@ -720,7 +726,50 @@
       transform: translateY(-8px) rotateX(4deg) rotateY(-4deg) scale(1.04);
       box-shadow: 0 18px 35px rgba(0, 0, 0, 0.18);
     }
+
+    .luxury-footer {
+      background-image: url("https://luxury-method.vercel.app/Footer.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 100px 0;
+      color: #e5d7b1;
+    }
+
+    .luxury-footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      max-width: 1200px;
+      width: 90%;
+      margin: auto;
+    }
+
+    .luxury-footer-contact small {
+      display: block;
+      margin-bottom: 18px;
+      font-size: 18px;
+      letter-spacing: 0.5px;
+      color: #ffffff;
+    }
+
+    .luxury-footer-contact a {
+      color: #e5d7b1;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 20px;
+    }
+
+    .social-link img {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8));
+    }
   </style>
+
 </head>
 
 <body>
@@ -1439,7 +1488,7 @@ Contact <b style="color: green;">Luxury Method</b> now to start creating <b>luxu
     </div>
 
   </div>
-  <footer class="luxury-footer" style="margin-bottom: 20px; margin-top:20px">
+  <!-- <footer class="luxury-footer" style="margin-bottom: 20px; margin-top:20px">
     <div class="luxury-footer-content" style="margin-bottom: 50px;">
       <div class="luxury-footer-contact">
         <small>
@@ -1465,7 +1514,35 @@ Contact <b style="color: green;">Luxury Method</b> now to start creating <b>luxu
         </div>
       </div>
     </div>
+  </footer> -->
+  <footer class="luxury-footer">
+    <div class="luxury-footer-content">
+
+      <div class="luxury-footer-contact">
+        <small>
+          <a target="_blank" style="font-weight: bold; text-decoration: underline"
+            href="mailto:giacomo@luxury-method.com">giacomo@luxury-method.com</a>
+        </small>
+        <small>(+39) 3920034695</small>
+        <small>P.IVA: 17906211002</small>
+      </div>
+
+      <div class="social-icons">
+        <div class="social-link">
+          <a href="https://www.instagram.com/luxurymethod_agency/" target="_blank">
+            <img src="https://i.postimg.cc/XJSn0GKM/image-976.png" alt="Instagram" />
+          </a>
+        </div>
+        <div class="social-link">
+          <a href="https://x.com/luxury_method" target="_blank">
+            <img src="https://i.postimg.cc/Y93Zyhbz/image-977.png" alt="X" />
+          </a>
+        </div>
+      </div>
+
+    </div>
   </footer>
+
 
 
   <!-- Back to Top Button -->
