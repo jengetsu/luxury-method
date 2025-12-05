@@ -20,7 +20,7 @@
             scroll-behavior: smooth;
             font-family: "Cormorant Garamond", serif;
             scrollbar-width: none;
-            animation-duration: 800ms;
+            /* animation-duration: 800ms; Removed to avoid conflict */
             color: #000;
         }
 
@@ -93,7 +93,38 @@
         }
 
         /* =========================================
-       3. HERO SECTION
+       3. TEXT REVEAL ANIMATION (NEW)
+       ========================================= */
+        .reveal-text {
+            opacity: 0.1;
+            /* Start almost invisible */
+            transform: translateY(30px) scale(0.95) rotateX(10deg);
+            /* 3D Drop effect */
+            filter: blur(4px);
+            /* Luxury fog effect */
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+            /* Elegant easing */
+            transform-origin: center top;
+            will-change: opacity, transform, filter;
+        }
+
+        .reveal-text.active {
+            opacity: 1;
+            transform: translateY(0) scale(1) rotateX(0deg);
+            filter: blur(0);
+        }
+
+        /* Ensure FAQ items animate as a block */
+        .faq-item.reveal-text {
+            transform: translateY(20px);
+        }
+
+        .faq-item.reveal-text.active {
+            transform: translateY(0);
+        }
+
+        /* =========================================
+       4. HERO SECTION
        ========================================= */
         .hero {
             width: 100%;
@@ -127,7 +158,7 @@
         }
 
         /* =========================================
-       4. MAIN LAYOUT & SECTIONS
+       5. MAIN LAYOUT & SECTIONS
        ========================================= */
         .main-container {
             display: flex;
@@ -159,7 +190,7 @@
         }
 
         /* =========================================
-       5. SIDEBAR NAVIGATION
+       6. SIDEBAR NAVIGATION
        ========================================= */
         .sidebar {
             width: 340px;
@@ -224,7 +255,7 @@
             color: #000;
         }
 
-        /* Mobile Scroll Buttons for Sidebar */
+        /* Mobile Scroll Buttons for Sidebar (Hidden as per request) */
         .scroll-btn-left,
         .scroll-btn-right {
             display: none;
@@ -284,7 +315,7 @@
         }
 
         /* =========================================
-       6. IMAGES
+       7. IMAGES
        ========================================= */
         .image {
             display: flex;
@@ -336,7 +367,7 @@
         }
 
         /* =========================================
-       7. FAQ SECTION
+       8. FAQ SECTION
        ========================================= */
         .faq-container {
             margin-top: 20px;
@@ -409,7 +440,7 @@
         }
 
         /* =========================================
-       8. FOOTER & BACK TO TOP
+       9. FOOTER & BACK TO TOP
        ========================================= */
         .luxury-footer {
             background-image: url("https://luxury-method.vercel.app/Footer.png");
@@ -493,7 +524,7 @@
         }
 
         /* =========================================
-       9. RESPONSIVE MEDIA QUERIES
+       10. RESPONSIVE MEDIA QUERIES
        ========================================= */
         @media screen and (max-width: 768px) {
 
@@ -529,12 +560,13 @@
                 padding-right: 5vw;
             }
 
-            /* Sidebar Mobile */
+            /* Sidebar Mobile - IMPROVED SPACING */
             .sidebar,
             .sidebar2 {
                 width: 100%;
                 height: 80px;
-                padding: 20px 0 0 0;
+                padding: 20px 20px 0 20px;
+                /* Added padding to prevent edge sticking */
                 position: fixed;
                 top: 0;
                 left: 0;
@@ -544,24 +576,27 @@
                 overflow-y: hidden;
                 flex-direction: row;
                 white-space: nowrap;
-                gap: 4px;
+                gap: 12px;
+                /* Increased gap */
                 justify-content: flex-start;
             }
 
             .sidebar button {
                 font-size: 3.5vw;
-                padding: 8px;
+                /* Increased font size */
+                padding: 8px 16px;
+                /* Better spacing */
                 height: fit-content;
             }
 
-            /* Scroll Buttons */
+            /* Hiding Scroll Buttons */
             .scroll-btn-left,
             .scroll-btn-right {
-                display: block;
+                display: none !important;
             }
 
             .scroll-btn {
-                display: flex;
+                display: none;
             }
 
             .left-arrow,
@@ -578,6 +613,11 @@
             }
 
             /* FAQ */
+            .faq-container {
+                padding: 0 5vw !important;
+                /* Fixed padding for mobile */
+            }
+
             .faq-question {
                 padding: 0 0 !important;
             }
@@ -709,7 +749,9 @@
                         bringing all of
                         this to life. From branding elements like logo and packaging to marketing channels like your <a
                             target="_blank" href="https://www.luxury-method.com/services/web-development">website</a>
-                        and <a target="_blank" href="https://www.luxury-method.com/services/luxury-social-media-agency">social media</a>, every detail must reflect the quality and exclusivity of your brand. <strong>Smart market
+                        and <a target="_blank"
+                            href="https://www.luxury-method.com/services/luxury-social-media-agency">social media</a>,
+                        every detail must reflect the quality and exclusivity of your brand. <strong>Smart market
                             placement</strong>, through precise <strong>targeting </strong>and <strong>clear
                             positioning</strong>,
                         ensures your brand resonates with the right clientele. As a trusted luxury brand building
@@ -737,7 +779,8 @@
                         <strong>success lies in consistency across all touchpoints — online and offline.</strong> A
                         well-crafted
                         digital strategy, including <a target="_blank"
-                            href="https://www.luxury-method.com/services/luxury-seo-agency">SEO</a>, content, and social
+                            href="https://www.luxury-method.com/services/luxury-seo-agency">SEO</a>, content, and
+                        social
                         media, plays
                         a major role in how to market luxury products to today’s audience. At Luxury Method, we
                         specialise in
@@ -1013,7 +1056,7 @@
                 <p>In a <strong>sector where experience and emotion define value, we craft refined identities that
                         capture
                         elegance and atmosphere.</strong> As a luxury hotel
-                        branding agency, we develop cohesive brand
+                    branding agency, we develop cohesive brand
                     systems
                     rooted in storytelling and service. Our work in <a target="_blank"
                         href="https://www.luxury-method.com/industries/luxury-hospitality-marketing-agency">hospitality
@@ -1043,7 +1086,9 @@
                     <img src="https://luxury-method.vercel.app/WATCHES.png" class="hover-3d" alt="Watches Industry">
                 </div>
 
-                <p><a target="_blank" href="https://www.luxury-method.com/industries/luxury-watches-marketing">Branding for luxury watches</a> demands a <strong>focus on craftsmanship, legacy, and precision.</strong> We
+                <p><a target="_blank" href="https://www.luxury-method.com/industries/luxury-watches-marketing">Branding
+                        for luxury watches</a> demands a <strong>focus on craftsmanship, legacy, and precision.</strong>
+                    We
                     build
                     tailored and refined identities that highlight heritage and timeless value. From emblematic logos to
                     material-driven storytelling, we create luxury brand systems that honour artisanal excellence while
@@ -1145,7 +1190,7 @@
                     style="width: 30px; border-radius: 100%; background-color: #5f6368; height: 30px;" alt=""></a>
             <a target="_blank"
                 href="https://www.google.com/url?q=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Fluxurymethod%2F&sa=D&sntz=1&usg=AOvVaw0MER64fKjxQpgMZC_E-MgX"
-                class="padding:20px;  border-radius: 100%; "><img src="https://i.postimg.cc/BvtQqcWz/image-979.png"
+                class="padding:20px;  border-radius: 100%; "><img src="https://i.postimg.cc/BvtQqcWz/image-979.png"
                     style="width: 30px; border-radius: 100%; background-color: #2867b2; height: 30px;" alt=""></a>
         </div>
 
@@ -1540,6 +1585,31 @@
                     observer.observe(el);
                 });
             }
+
+            // ==========================================
+            // NEW TEXT REVEAL ANIMATION (ALL DEVICES)
+            // ==========================================
+            // Selector targets hero title, main content headings/paras, FAQ headers, FAQ intro, and FAQ items
+            const textElements = document.querySelectorAll('h1, .top-section p, .content h2, .content h3, .content p, .faq-container h2, .faq-intro, .faq-item');
+
+            const textObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    } else {
+                        // Fade out when scrolling away
+                        entry.target.classList.remove('active');
+                    }
+                });
+            }, {
+                threshold: 0.15, // Trigger when 15% visible
+                rootMargin: "-20px 0px -20px 0px" // Slight offset so it doesn't trigger at very edge
+            });
+
+            textElements.forEach(el => {
+                el.classList.add('reveal-text'); // Add the animation class dynamically
+                textObserver.observe(el);
+            });
 
         });
 

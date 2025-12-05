@@ -2,1641 +2,1693 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Luxury SEO Agency</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-    rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Luxury SEO Agency</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
 
-  <style>
-    /* =========================================
+    <style>
+        /* =========================================
        1. Variables & Reset
        ========================================= */
-    :root {
-      --bg-color: #ebe0d5;
-      --text-color: #000000;
-      --accent-color: #ffffff;
-      --font-main: "Cormorant Garamond", serif;
-      --sidebar-width: 340px;
-    }
+        :root {
+            --bg-color: #ebe0d5;
+            --text-color: #000000;
+            --accent-color: #ffffff;
+            --font-main: "Cormorant Garamond", serif;
+            --sidebar-width: 340px;
+        }
 
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-      font-family: var(--font-main);
-      scrollbar-width: none;
-      /* Firefox */
-      animation-duration: 800ms;
-      color: var(--text-color);
-    }
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: var(--font-main);
+            scrollbar-width: none;
+            /* Firefox */
+            /* animation-duration: 800ms; Removed to avoid conflict */
+            color: var(--text-color);
+        }
 
-    /* Hide scrollbar for Chrome/Safari/Opera */
-    *::-webkit-scrollbar {
-      display: none;
-    }
+        /* Hide scrollbar for Chrome/Safari/Opera */
+        *::-webkit-scrollbar {
+            display: none;
+        }
 
-    body {
-      margin: 0;
-      background-color: var(--bg-color);
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      overflow-x: hidden;
-      min-height: 100vh;
-    }
+        body {
+            margin: 0;
+            background-color: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
 
-    /* =========================================
+        /* =========================================
        2. Typography & Shared Classes
        ========================================= */
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
 
-    a:visited {
-      color: var(--text-color);
-    }
+        a:visited {
+            color: var(--text-color);
+        }
 
-    h1 {
-      color: var(--bg-color);
-      text-align: center;
-      z-index: 10;
-      font-weight: normal;
-      font-size: 4rem;
-      letter-spacing: 0.5rem;
-      margin: 0;
-    }
+        h1 {
+            color: var(--bg-color);
+            text-align: center;
+            z-index: 10;
+            font-weight: normal;
+            font-size: 4rem;
+            letter-spacing: 0.5rem;
+            margin: 0;
+        }
 
-    h2 {
-      text-align: center;
-      text-decoration: underline;
-    }
+        h2 {
+            text-align: center;
+            text-decoration: underline;
+        }
 
-    h3 {
-      text-align: center;
-      font-size: 18px;
-      font-weight: 500;
-      color: #1a1a1a;
-    }
+        h3 {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 500;
+            color: #1a1a1a;
+        }
 
-    p {
-      font-size: large !important;
-      line-height: 1.7;
-    }
+        p {
+            font-size: large !important;
+            line-height: 1.7;
+        }
 
-    /* Legacy Text Cleanups (Replacements for C9DxTc, zfr3Q, etc) */
-    .text-block {
-      background-color: transparent;
-      line-height: 1.656;
-      margin: 0;
-      padding: 0;
-      text-align: justify;
-    }
+        /* Legacy Text Cleanups (Replacements for C9DxTc, zfr3Q, etc) */
+        .text-block {
+            background-color: transparent;
+            line-height: 1.656;
+            margin: 0;
+            padding: 0;
+            text-align: justify;
+        }
 
-    .text-base {
-      color: var(--text-color);
-      font-size: 14pt;
-      /* Approx 13.999pt from original */
-      vertical-align: baseline;
-    }
+        .text-base {
+            color: var(--text-color);
+            font-size: 14pt;
+            /* Approx 13.999pt from original */
+            vertical-align: baseline;
+        }
 
-    .text-bold {
-      font-family: 'Cormorant Garamond', Arial;
-      font-weight: 700;
-    }
+        .text-bold {
+            font-family: 'Cormorant Garamond', Arial;
+            font-weight: 700;
+        }
 
-    .text-underline {
-      text-decoration: underline;
-    }
+        .text-underline {
+            text-decoration: underline;
+        }
 
-    .text-italic {
-      font-style: italic;
-    }
+        .text-italic {
+            font-style: italic;
+        }
 
-    .text-link {
-      color: #1155cc;
-    }
+        .text-link {
+            color: #1155cc;
+        }
 
-    /* Layout Utilities */
-    .content-padding {
-      padding-left: 5vw;
-      padding-right: 5vw;
-    }
+        /* Layout Utilities */
+        .content-padding {
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
 
-    .has-sidebar-offset {
-      margin-left: var(--sidebar-width);
-    }
+        .has-sidebar-offset {
+            margin-left: var(--sidebar-width);
+        }
 
-    .margin-top-large {
-      margin-top: 80px;
-    }
+        .margin-top-large {
+            margin-top: 80px;
+        }
 
-    .section {
-      margin-bottom: 80px;
-    }
+        .section {
+            margin-bottom: 80px;
+        }
 
-    /* =========================================
-       3. Hero Section
+        /* =========================================
+       3. TEXT REVEAL ANIMATION (NEW)
        ========================================= */
-    .hero {
-      width: 100%;
-      height: 100vh;
-      /* Fallback */
-      min-height: 100vh;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-image: url('https://luxury-method.vercel.app/SEOHero.jpg');
-      background-attachment: fixed;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-    }
+        .reveal-text {
+            opacity: 0.1;
+            /* Start almost invisible */
+            transform: translateY(30px) scale(0.95) rotateX(10deg);
+            /* 3D Drop effect */
+            filter: blur(4px);
+            /* Luxury fog effect */
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+            /* Elegant easing */
+            transform-origin: center top;
+            will-change: opacity, transform, filter;
+        }
 
-    .hero-overlay {
-      background-color: black;
-      opacity: 0.5;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
+        .reveal-text.active {
+            opacity: 1;
+            transform: translateY(0) scale(1) rotateX(0deg);
+            filter: blur(0);
+        }
 
-    /* =========================================
-       4. Sidebar & Navigation
+        /* Ensure FAQ items animate as a block */
+        .faq-item.reveal-text {
+            transform: translateY(20px);
+        }
+
+        .faq-item.reveal-text.active {
+            transform: translateY(0);
+        }
+
+        /* =========================================
+       4. Hero Section
        ========================================= */
-    .sidebar {
-      width: var(--sidebar-width);
-      background-color: var(--bg-color);
-      color: white;
-      padding: 24px 40px;
-      position: fixed;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      height: fit-content;
-      gap: 14px;
-      transform: translateY(100vh);
-      /* Initially hidden */
-      transition: transform 0.3s ease;
-      z-index: 100;
-      justify-content: center;
-    }
+        .hero {
+            width: 100%;
+            height: 100vh;
+            /* Fallback */
+            min-height: 100vh;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url('https://luxury-method.vercel.app/SEOHero.jpg');
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
 
-    /* Visible state controlled by JS */
-    .main-container-visible .sidebar {
-      transform: translateY(0);
-    }
+        .hero-overlay {
+            background-color: black;
+            opacity: 0.5;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
 
-    .sidebar button {
-      background-color: #000;
-      color: #fff;
-      padding: 12px;
-      border-radius: 5px;
-      font-weight: 500;
-      transition: 0.2s;
-      border: none;
-      cursor: pointer;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-
-    .sidebar button:hover {
-      background-color: #fff;
-      color: #000;
-    }
-
-    /* Mobile Scroll Buttons (Hidden by default on desktop) */
-    .scroll-btn-left,
-    .scroll-btn-right {
-      display: none;
-      position: fixed;
-      top: 5px;
-      z-index: 30;
-    }
-
-    .scroll-btn-left {
-      left: 0px;
-    }
-
-    .scroll-btn-right {
-      right: 0px;
-    }
-
-    .scroll-btn {
-      background-color: rgba(235, 224, 213, 0.95);
-      border: none;
-      width: 30px;
-      height: 60px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-      border-radius: 0;
-    }
-
-    .scroll-btn:hover {
-      background-color: rgba(235, 224, 213, 1);
-    }
-
-    .scroll-btn svg {
-      fill: #000;
-    }
-
-    .left-arrow,
-    .right-arrow {
-      font-size: 20px;
-      color: #000;
-      cursor: pointer;
-      position: absolute;
-      top: 35%;
-      z-index: 15;
-      display: none;
-    }
-
-    .left-arrow {
-      left: 5px;
-      margin-right: 10px;
-    }
-
-    .right-arrow {
-      right: 5px;
-      margin-left: 10px;
-    }
-
-
-    /* =========================================
-       5. Content Area
+        /* =========================================
+       5. Sidebar & Navigation
        ========================================= */
-    .main-container {
-      display: flex;
-      flex: 1;
-      position: relative;
-    }
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--bg-color);
+            color: white;
+            padding: 24px 40px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            gap: 14px;
+            transform: translateY(100vh);
+            /* Initially hidden */
+            transition: transform 0.3s ease;
+            z-index: 100;
+            justify-content: center;
+        }
 
-    .content {
-      transition: all 1ms;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      width: 100%;
-      flex: 1;
-    }
+        /* Visible state controlled by JS */
+        .main-container-visible .sidebar {
+            transform: translateY(0);
+        }
 
-    .top-section {
-      width: 100%;
-      background-color: var(--bg-color);
-      padding: 10px;
-      margin-bottom: 0;
-    }
+        .sidebar button {
+            background-color: #000;
+            color: #fff;
+            padding: 12px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
 
-    /* =========================================
-       6. Images
+        .sidebar button:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        /* Mobile Scroll Buttons (Hidden by default on desktop) */
+        .scroll-btn-left,
+        .scroll-btn-right {
+            display: none;
+            position: fixed;
+            top: 5px;
+            z-index: 30;
+        }
+
+        .scroll-btn-left {
+            left: 0px;
+        }
+
+        .scroll-btn-right {
+            right: 0px;
+        }
+
+        .scroll-btn {
+            background-color: rgba(235, 224, 213, 0.95);
+            border: none;
+            width: 30px;
+            height: 60px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            border-radius: 0;
+        }
+
+        .scroll-btn:hover {
+            background-color: rgba(235, 224, 213, 1);
+        }
+
+        .scroll-btn svg {
+            fill: #000;
+        }
+
+        .left-arrow,
+        .right-arrow {
+            font-size: 20px;
+            color: #000;
+            cursor: pointer;
+            position: absolute;
+            top: 35%;
+            z-index: 15;
+            display: none;
+        }
+
+        .left-arrow {
+            left: 5px;
+            margin-right: 10px;
+        }
+
+        .right-arrow {
+            right: 5px;
+            margin-left: 10px;
+        }
+
+
+        /* =========================================
+       6. Content Area
        ========================================= */
-    .image-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 20px;
-      margin-bottom: 20px;
-      width: 100%;
-    }
+        .main-container {
+            display: flex;
+            flex: 1;
+            position: relative;
+        }
 
-    .image-style {
-      max-height: 500px;
-      /* Standardized height */
-      border-radius: 20px;
-      object-fit: cover;
-      width: 100%;
-      /* Ensure responsiveness */
-    }
+        .content {
+            transition: all 1ms;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            width: 100%;
+            flex: 1;
+        }
 
-    /* Specific style for the Intro image */
-    .intro-image {
-      max-height: 600px;
-      object-position: bottom;
-    }
+        .top-section {
+            width: 100%;
+            background-color: var(--bg-color);
+            padding: 10px;
+            margin-bottom: 0;
+        }
 
-    .industry-wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-block: 40px;
-      width: 100%;
-    }
-
-    .industry-wrapper img {
-      display: block;
-      width: 100%;
-      object-fit: cover;
-      object-position: bottom;
-      max-height: 550px;
-      object-position: center center;
-      height: auto;
-      /* Replaces vh for better reliability */
-      min-height: 400px;
-      /* Ensures visibility */
-      border-radius: 20px;
-    }
-
-    /* 3D Effect- Shared */
-    .hover-3d {
-      transform-style: preserve-3d;
-      will-change: transform, opacity;
-      transition:
-        transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1),
-        box-shadow 0.45s cubic-bezier(0.25, 0.8, 0.25, 1),
-        opacity 0.35s ease-out;
-      opacity: 1;
-      transform: translateY(15px) scale(0.95);
-    }
-
-    /* =========================================
-       7. FAQ Section
+        /* =========================================
+       7. Images
        ========================================= */
-    .faq-container {
-      margin-top: 20px;
-      z-index: 2000;
-      position: relative;
-      padding: 100px;
-    }
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
 
-    .faq-item {
-      border-bottom: 1px solid #696969;
-      overflow: hidden;
-    }
+        .image-style {
+            max-height: 500px;
+            /* Standardized height */
+            border-radius: 20px;
+            object-fit: cover;
+            width: 100%;
+            /* Ensure responsiveness */
+        }
 
-    .faq-question {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 0;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
+        /* Specific style for the Intro image */
+        .intro-image {
+            max-height: 600px;
+            object-position: bottom;
+        }
 
-    .faq-question h3 {
-      text-align: left;
-    }
+        .industry-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-block: 40px;
+            width: 100%;
+        }
 
-    .faq-toggle {
-      width: 24px;
-      height: 24px;
-      background: transparent;
-      border: none;
-      position: relative;
-      cursor: pointer;
-    }
+        .industry-wrapper img {
+            display: block;
+            width: 100%;
+            object-fit: cover;
+            object-position: bottom;
+            max-height: 550px;
+            object-position: center center;
+            height: auto;
+            /* Replaces vh for better reliability */
+            min-height: 400px;
+            /* Ensures visibility */
+            border-radius: 20px;
+        }
 
-    .faq-toggle::before {
-      font-size: 18px;
-      color: #1a1a1a;
-      transition: transform 0.3s ease;
-    }
+        /* 3D Effect- Shared */
+        .hover-3d {
+            transform-style: preserve-3d;
+            will-change: transform, opacity;
+            transition:
+                transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1),
+                box-shadow 0.45s cubic-bezier(0.25, 0.8, 0.25, 1),
+                opacity 0.35s ease-out;
+            opacity: 1;
+            transform: translateY(15px) scale(0.95);
+        }
 
-    .faq-toggle.active {
-      rotate: 180deg;
-    }
-
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-      padding: 0 0 0 2px;
-      line-height: 1.6;
-      color: #333;
-    }
-
-    .faq-answer.active {
-      max-height: fit-content;
-      padding-bottom: 20px;
-      height: fit-content;
-    }
-
-    .faq-answer p {
-      margin-bottom: 10px;
-      font-size: 16px;
-      line-height: 1.5;
-      margin-top: 0;
-    }
-
-    /* =========================================
-       8. Footer & Contacts
+        /* =========================================
+       8. FAQ Section
        ========================================= */
-    .contact-icons {
-      display: flex;
-      gap: 100px;
-      margin-top: 60px;
-      width: 100%;
-      justify-content: center;
-    }
+        .faq-container {
+            margin-top: 20px;
+            z-index: 2000;
+            position: relative;
+            padding: 100px;
+        }
 
-    .contact-btn-container {
-      display: flex;
-      justify-content: center;
-      margin-top: 40px;
-      margin-bottom: 100px;
-    }
+        .faq-item {
+            border-bottom: 1px solid #696969;
+            overflow: hidden;
+        }
 
-    .contact-btn {
-      padding: 10px 80px;
-      text-decoration: none;
-      font-size: 18px;
-      border-radius: 5px;
-      border: 1px solid #000;
-      color: #000;
-    }
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
 
-    .luxury-footer {
-      background-image: url("https://luxury-method.vercel.app/Footer.png");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      padding: 100px 0;
-      color: #e5d7b1;
-    }
+        .faq-question h3 {
+            text-align: left;
+        }
 
-    .luxury-footer-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      max-width: 1200px;
-      width: 90%;
-      margin: auto;
-    }
+        .faq-toggle {
+            width: 24px;
+            height: 24px;
+            background: transparent;
+            border: none;
+            position: relative;
+            cursor: pointer;
+        }
 
-    .luxury-footer-contact small {
-      display: block;
-      margin-bottom: 18px;
-      font-size: 18px;
-      letter-spacing: 0.5px;
-      color: #e5d7b1;
-      text-decoration: none;
-    }
+        .faq-toggle::before {
+            font-size: 18px;
+            color: #1a1a1a;
+            transition: transform 0.3s ease;
+        }
 
-    .luxury-footer-contact a {
-      color: #e5d7b1;
-      text-decoration: none;
-    }
+        .faq-toggle.active {
+            rotate: 180deg;
+        }
 
-    .social-icons {
-      display: flex;
-      gap: 20px;
-      justify-content: flex-end;
-      /* desktop: right */
-      align-items: center;
-    }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 0 0 2px;
+            line-height: 1.6;
+            color: #333;
+        }
 
-    .social-link img {
-      width: 40px;
-      object-fit: contain;
-    }
+        .faq-answer.active {
+            max-height: fit-content;
+            padding-bottom: 20px;
+            height: fit-content;
+        }
 
+        .faq-answer p {
+            margin-bottom: 10px;
+            font-size: 16px;
+            line-height: 1.5;
+            margin-top: 0;
+        }
 
-
-    /* =========================================
-       9. Back to Top Button
+        /* =========================================
+       9. Footer & Contacts
        ========================================= */
-    .back-to-top {
-      position: fixed;
-      bottom: 60px;
-      right: 30px;
-      z-index: 2000;
-      width: 50px;
-      height: 50px;
-      background-color: #ffffff;
-      color: #fff;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    }
+        .contact-icons {
+            display: flex;
+            gap: 100px;
+            margin-top: 60px;
+            width: 100%;
+            justify-content: center;
+        }
 
-    .back-to-top:hover {
-      background-color: #fff;
-      color: #000;
-    }
+        .contact-btn-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            margin-bottom: 100px;
+        }
 
-    .back-to-top.visible {
-      opacity: 1;
-      visibility: visible;
-    }
+        .contact-btn {
+            padding: 10px 80px;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            border: 1px solid #000;
+            color: #000;
+        }
 
-    .back-to-top svg {
-      width: 24px;
-      height: 24px;
-    }
+        .luxury-footer {
+            background-image: url("https://luxury-method.vercel.app/Footer.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 100px 0;
+            color: #e5d7b1;
+        }
 
-    /* =========================================
-       10. Media Queries
+        .luxury-footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 1200px;
+            width: 90%;
+            margin: auto;
+        }
+
+        .luxury-footer-contact small {
+            display: block;
+            margin-bottom: 18px;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+            color: #e5d7b1;
+            text-decoration: none;
+        }
+
+        .luxury-footer-contact a {
+            color: #e5d7b1;
+            text-decoration: none;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            justify-content: flex-end;
+            /* desktop: right */
+            align-items: center;
+        }
+
+        .social-link img {
+            width: 40px;
+            object-fit: contain;
+        }
+
+
+
+        /* =========================================
+       10. Back to Top Button
+       ========================================= */
+        .back-to-top {
+            position: fixed;
+            bottom: 60px;
+            right: 30px;
+            z-index: 2000;
+            width: 50px;
+            height: 50px;
+            background-color: #ffffff;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-to-top:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* =========================================
+       11. Media Queries
        ========================================= */
 
-    /* Tablet & Mobile (Max Width 768px) */
-    @media screen and (max-width: 768px) {
-      h1 {
-        font-size: 30px !important;
-      }
+        /* Tablet & Mobile (Max Width 768px) */
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 30px !important;
+            }
 
-      .top-section {
-        padding: 5px;
-      }
+            .top-section {
+                padding: 5px;
+            }
 
-      .has-sidebar-offset {
-        margin-left: 0px;
-      }
+            .has-sidebar-offset {
+                margin-left: 0px;
+            }
 
-      .sidebar {
-        width: 100%;
-        height: 80px;
-        padding: 20px 0 0 0;
-        position: fixed;
-        top: 0;
-        left: 0;
-        background-color: var(--bg-color);
-        z-index: 10;
-        overflow-x: auto;
-        overflow-y: hidden;
-        flex-direction: row;
-        white-space: nowrap;
-        gap: 4px;
-        scrollbar-width: none;
-      }
+            /* Sidebar Mobile - IMPROVED SPACING */
+            .sidebar {
+                width: 100%;
+                height: 80px;
+                padding: 20px 20px 0 20px;
+                /* Added padding to prevent edge sticking */
+                position: fixed;
+                top: 0;
+                left: 0;
+                background-color: var(--bg-color);
+                z-index: 10;
+                overflow-x: auto;
+                overflow-y: hidden;
+                flex-direction: row;
+                white-space: nowrap;
+                gap: 12px;
+                /* Increased gap */
+                scrollbar-width: none;
+                justify-content: flex-start;
+            }
 
-      .sidebar button {
-        padding: 8px;
-        font-size: 3.5vw;
-        height: fit-content;
-      }
+            .sidebar button {
+                padding: 10px 16px;
+                /* Better spacing */
+                font-size: 3.5vw;
+                /* Increased size */
+                height: fit-content;
+            }
 
-      .left-arrow,
-      .right-arrow {
-        display: none !important;
-      }
+            /* Hiding Scroll Buttons */
+            .left-arrow,
+            .right-arrow,
+            .scroll-btn-left,
+            .scroll-btn-right {
+                display: none !important;
+            }
 
-      .scroll-btn-left,
-      .scroll-btn-right {
-        display: block;
-      }
+            .scroll-btn {
+                display: none;
+            }
 
-      .scroll-btn {
-        display: flex;
-      }
+            .content {
+                margin-top: 100px;
+            }
 
-      .content {
-        margin-top: 100px;
-      }
+            .industry-wrapper img {
+                height: auto !important;
+                min-height: 0 !important;
+                max-width: 700px;
+                width: 100%;
+                border-radius: 20px;
+                object-fit: contain;
+            }
 
-      .industry-wrapper img {
-        height: auto !important;
-        min-height: 0 !important;
-        /* Fix: Allow image to shrink so text isn't cropped */
-        max-width: 700px;
-        width: 100%;
-        border-radius: 20px;
-        /* Fix: Match rounded style from reference */
-        object-fit: contain;
-        /* Fix: Ensure full banner is visible */
-      }
+            .faq-container {
+                padding: 0 5vw !important;
+                /* Fixed padding for mobile */
+            }
 
-      .faq-question {
-        padding: 0 0 !important;
-      }
+            .faq-question {
+                padding: 0 0 !important;
+            }
 
-      .back-to-top {
-        bottom: 80px;
-      }
+            .back-to-top {
+                bottom: 80px;
+            }
 
-      .hover-3d {
-        transform: scale(0.85);
-        opacity: 0.3;
-        transition:
-          transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-          opacity 0.35s ease-out;
-      }
+            .hover-3d {
+                transform: scale(0.85);
+                opacity: 0.3;
+                transition:
+                    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                    opacity 0.35s ease-out;
+            }
 
-      .hover-3d.is-visible {
-        transform: scale(1.03);
-        opacity: 1;
-        box-shadow: 0 12px 22px rgba(0, 0, 0, 0.15);
-      }
+            .hover-3d.is-visible {
+                transform: scale(1.03);
+                opacity: 1;
+                box-shadow: 0 12px 22px rgba(0, 0, 0, 0.15);
+            }
 
-      .luxury-footer-content {
-        flex-direction: column;
-        align-items: center;
-      }
+            .luxury-footer-content {
+                flex-direction: column;
+                align-items: center;
+            }
 
-      .luxury-footer-contact {
-        margin-bottom: 20px;
-        text-align: center;
-        /* optional, to center text */
-      }
+            .luxury-footer-contact {
+                margin-bottom: 20px;
+                text-align: center;
+                /* optional, to center text */
+            }
 
-      .social-icons {
-        justify-content: center !important;
-        margin-top: 20px;
-      }
-    }
+            .social-icons {
+                justify-content: center !important;
+                margin-top: 20px;
+            }
+        }
 
-    @media (min-width: 769px) {
+        @media (min-width: 769px) {
 
-      /* Desktop elements always visible */
-      .hover-3d {
-        opacity: 1;
-        transform: none;
-      }
+            /* Desktop elements always visible */
+            .hover-3d {
+                opacity: 1;
+                transform: none;
+            }
 
-      .hover-3d:hover {
-        transform: translateY(-8px) scale(1.05);
-        box-shadow: 0 20px 35px rgba(0, 0, 0, 0.22);
-      }
-    }
+            .hover-3d:hover {
+                transform: translateY(-8px) scale(1.05);
+                box-shadow: 0 20px 35px rgba(0, 0, 0, 0.22);
+            }
+        }
 
-    /* Small Mobile (Max Width 500px) */
-    @media screen and (max-width: 500px) {
-      .back-to-top {
-        bottom: 120px !important;
-      }
-    }
+        /* Small Mobile (Max Width 500px) */
+        @media screen and (max-width: 500px) {
+            .back-to-top {
+                bottom: 120px !important;
+            }
+        }
 
-    /* Extra Small Mobile (Max Width 400px) */
-    @media screen and (max-width: 400px) {
-      .luxury-footer-content {
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-      }
+        /* Extra Small Mobile (Max Width 400px) */
+        @media screen and (max-width: 400px) {
+            .luxury-footer-content {
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+            }
 
-      h3 {
-        font-size: 18px;
-      }
-    }
+            h3 {
+                font-size: 18px;
+            }
+        }
 
-    /* iOS Touch Support */
-    @supports (-webkit-touch-callout: none) {
-      .hero {
-        background-attachment: scroll !important;
-      }
-    }
-  </style>
+        /* iOS Touch Support */
+        @supports (-webkit-touch-callout: none) {
+            .hero {
+                background-attachment: scroll !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <!-- Hero Section -->
-  <div class="hero">
-    <div class="hero-overlay"></div>
-    <h1>LUXURY SEO AGENCY</h1>
-  </div>
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-overlay"></div>
+        <h1>LUXURY SEO AGENCY</h1>
+    </div>
 
-  <!-- Intro Text Section -->
-  <div class="content-padding has-sidebar-offset">
-    <div class="top-section">
-      <div class="margin-top-large">
-        <p>
-          <span class="text-base ">A </span><a class="XqQF9c" target="_blank"
-            href="https://www.luxury-method.com/luxury-marketing-agency"><span
-              class="text-base text-underline">luxury SEO agency</span></a><span class="text-base">
-          </span><span class="text-base">helps </span><span class="text-base">your brand</span><span class="text-base">
-            attract luxury-oriented customers through online visibility, ensuring </span><span
-            class="text-base">your</span><span class="text-base">
-            exclusive and premium image connects with the right audience. This is
-            done by implementing a results-</span><span class="text-base">oriented SEO strategy,
-            which </span><span class="text-base">includes </span><span class="text-base">selecting the</span><span
-            class="text-base">
-          </span><span class="text-base text-bold">right keywords</span><span class="text-base">
-            and</span><span class="text-base text-bold">
-            creating </span><a class="XqQF9c" target="_blank"
-            href="https://www.luxury-method.com/services/luxury-content-marketing"><span
-              class="text-base text-bold text-underline">high-quality content</span></a><span class="text-base">. Luxury
-            SEO enhances user experience, making navigation seamless and
-            intuitive, which is particularly important in luxury industries
-            including </span><a class="XqQF9c" target="_blank"
-            href="https://www.luxury-method.com/industries/luxury-travel-marketing"><span
-              class="text-base text-underline">travel</span></a><span class="text-base">, </span><a class="XqQF9c"
-            target="_blank" href="https://www.luxury-method.com/industries/luxury-real-estate-marketing"><span
-              class="text-base text-underline">real estate</span></a><span class="text-base">,</span><span
-            class="text-base">
-            and </span><a class="XqQF9c" target="_blank"
-            href="https://www.luxury-method.com/industries/luxury-fashion-marketing"><span
-              class="text-base text-underline">fashion</span></a><span class="text-base">.</span>
+    <!-- Intro Text Section -->
+    <div class="content-padding has-sidebar-offset">
+        <div class="top-section">
+            <div class="margin-top-large">
+                <p>
+                    <span class="text-base ">A </span><a class="XqQF9c" target="_blank"
+                        href="https://www.luxury-method.com/luxury-marketing-agency"><span
+                            class="text-base text-underline">luxury SEO agency</span></a><span class="text-base">
+                    </span><span class="text-base">helps </span><span class="text-base">your brand</span><span
+                        class="text-base">
+                        attract luxury-oriented customers through online visibility, ensuring </span><span
+                        class="text-base">your</span><span class="text-base">
+                        exclusive and premium image connects with the right audience. This is
+                        done by implementing a results-</span><span class="text-base">oriented SEO strategy,
+                        which </span><span class="text-base">includes </span><span class="text-base">selecting
+                        the</span><span class="text-base">
+                    </span><span class="text-base text-bold">right keywords</span><span class="text-base">
+                        and</span><span class="text-base text-bold">
+                        creating </span><a class="XqQF9c" target="_blank"
+                        href="https://www.luxury-method.com/services/luxury-content-marketing"><span
+                            class="text-base text-bold text-underline">high-quality content</span></a><span
+                        class="text-base">. Luxury
+                        SEO enhances user experience, making navigation seamless and
+                        intuitive, which is particularly important in luxury industries
+                        including </span><a class="XqQF9c" target="_blank"
+                        href="https://www.luxury-method.com/industries/luxury-travel-marketing"><span
+                            class="text-base text-underline">travel</span></a><span class="text-base">, </span><a
+                        class="XqQF9c" target="_blank"
+                        href="https://www.luxury-method.com/industries/luxury-real-estate-marketing"><span
+                            class="text-base text-underline">real estate</span></a><span class="text-base">,</span><span
+                        class="text-base">
+                        and </span><a class="XqQF9c" target="_blank"
+                        href="https://www.luxury-method.com/industries/luxury-fashion-marketing"><span
+                            class="text-base text-underline">fashion</span></a><span class="text-base">.</span>
+                </p>
+
+                <p dir="ltr" class="text-block">
+                    <span class="text-base">Since luxury SEO aims to </span><span class="text-base text-bold">enhance
+                        the online
+                        visibility</span><span class="text-base">
+                        of premium, exclusive brands, </span><span class="text-base">luxury SEO agencies</span><span
+                        class="text-base">
+                        are crucial. </span><span class="text-base">Luxury Method will help you</span><span
+                        class="text-base">
+                        highlight high quality, refinement, and a luxurious feel to draw in
+                        and appeal to wealthy, high-end clients.&nbsp;</span>
+                </p>
+
+                <p dir="ltr" class="text-block">
+                    <span class="text-base">Luxury SEO </span><span class="text-base">differs from regular SEO because
+                        it goes
+                        beyond the basics; it
+                        prioritizes creating a seamless, high-end digital experience that
+                        aligns with the expectations of affluent audiences. While regular SEO </span><span
+                        class="text-base">is
+                        limited to improving</span><span class="text-base">
+                        website performance and visibility, a </span><span class="text-base">SEO luxury agency does
+                        everything that
+                        regular SEO does but
+                        also</span><span class="text-base">
+                        provides a </span><span class="text-base text-bold">seamless user experience geared to high-end
+                        consumers.</span><span class="text-base">
+                        It prioritises the usage of refined, industry-specific keywords that
+                        appeal to affluent customers and are consistent with </span><span class="text-base">your</span><span
+                        class="text-base">
+                        brand's exclusivity. </span><span class="text-base">This</span><span class="text-base">
+                        ensures that the website's functionality, speed, and design convey
+                        sophistication and elegance, enhancing </span><span class="text-base">your </span><span
+                        class="text-base">brand's luxury appeal.</span>
+                </p>
+
+                <div class="image-container" style="margin-bottom: 30px">
+                    <img class="image-style intro-image hover-3d"
+                        src="https://images.unsplash.com/photo-1581551392494-7a15f7752a55?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Luxury Image">
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content with Sidebar -->
+        <div class="main-container" id="main-container">
+
+            <!-- Sidebar Navigation -->
+            <div class="sidebar">
+                <button onclick="scrollToSection('audience')">Our SEO Services</button>
+                <button onclick="scrollToSection('mindmap')">The Industries We Work With</button>
+                <button onclick="scrollToSection('content')">Who We Are</button>
+            </div>
+
+            <!-- Content Column -->
+            <div class="content">
+                <!-- SEO Services Section -->
+                <div id="top" class="top-section">
+                    <h2 id="audience" style="text-decoration: none">Our Luxury SEO Services</h2>
+                    <p style="text-align: center">
+                        SEO for luxury brands is not just about ranking high and being at the
+                        top, it focuses on maintaining an elite brand image. As a luxury SEO
+                        agency, we integrate SEO with a deep understanding of luxury consumer
+                        behaviour.
+                    </p>
+                </div>
+
+                <div class="section">
+                    <h2>Luxury SEO Audits</h2>
+                    <div class="image-container">
+                        <img class="image-style hover-3d"
+                            src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=1476&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="SEO Audit" />
+                    </div>
+                    <p>
+                        SEO audit services are crucial to evaluating a website's SEO
+                        performance as they <strong>identify issues, strengths,</strong> and
+                        <strong>improvement areas.</strong> This typically includes
+                        analyzing on-page SEO (such as content quality and keyword
+                        optimization) and technical SEO audits, which include website speed,
+                        mobile-friendliness, and crawlability. As well as off-page SEO,
+                        which includes backlinks and domain authority.
+                    </p>
+                    <p>
+                        By conducting a thorough SEO audit, we can uncover factors that may
+                        be hindering your rankings and develop an actionable strategy to
+                        enhance visibility, organic traffic, and user experience. Partnering
+                        with a reputable SEO audit agency like Luxury Method can provide
+                        expert insights and recommendations on enhancing your SEO efforts.
+                    </p>
+                </div>
+
+                <div class="section">
+                    <h2>Luxury SEO Strategy</h2>
+                    <div class="image-container">
+                        <img class="image-style hover-3d"
+                            src="https://images.unsplash.com/photo-1542744173-05336fcc7ad4?q=80&w=1402&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="SEO Strategy" />
+                    </div>
+                    <p>
+                        A luxury SEO strategy is a methodical approach to increasing a
+                        website's online presence and achieving targeted organic traffic. A
+                        superior SEO strategy for luxury brands aids in achieving
+                        <strong>greater ranks, more engagement,</strong> and long-term
+                        success by aligning content, technological elements, and outreach
+                        initiatives with corporate objectives.
+                    </p>
+                    <p>
+                        Effective luxury SEM strategies encompass both SEO and SEA. While
+                        SEO focuses on organic search visibility, SEA (Google Ads) helps
+                        brands secure prominent placements through paid search, ensuring a
+                        well-rounded approach to increasing online visibility. SEO can be
+                        seen as more leveraged in the long term since it relies on organic
+                        engagement, an area expertly handled by our luxury SEO agency.
+                    </p>
+                    <p>
+                        For a customer-focused SEO strategy, it is crucial to understand the
+                        right user intent, how to choose relevant keywords, create
+                        high-quality content, and implement a unique website experience to
+                        improve rankings and engagement. In addition to working with B2C
+                        brands, we are also a B2B luxury SEO agency. We help high-end
+                        businesses enhance their online visibility, connect with other
+                        businesses, and strengthen their digital presence through strategic
+                        SEO and tailored marketing solutions. For example, we work with
+                        luxury food and beverage brands, optimizing their websites and
+                        content to reach premium clients, distributors, and hospitality
+                        partners while maintaining an exclusive brand image.
+                    </p>
+                    <p>
+                        It is important to promote visibility in the local online market to
+                        retain the right clients and build deep connections through trust
+                        and reliability, which fosters business growth.
+                    </p>
+                    <p>
+                        SEO strategies aim at more than just visibility. They also aim at
+                        maintaining a strong and cohesive brand image across multiple
+                        markets. As a luxury SEO agency, we develop multi-location SEO
+                        strategies that maintain brand consistency while optimizing for
+                        local market trends and search visibility. Through a refined SEO
+                        localization strategy, we help businesses resonate with diverse
+                        audiences, enhancing their elite positioning while maintaining a
+                        unified global identity.
+                    </p>
+                </div>
+
+                <div class="section">
+                    <h2>Keyword Research</h2>
+                    <div class="image-container">
+                        <img class="image-style hover-3d"
+                            src="https://images.unsplash.com/photo-1555421689-d68471e189f2?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="Keyword Research" />
+                    </div>
+                    <p>
+                        Keyword research involves determining the
+                        <strong>most relevant and useful search phrases</strong> that your
+                        target audience employs. Using effective keyword research techniques
+                        for improved organic SEO traffic leads to improved rankings and
+                        increased visibility in search results. Leveraging professional
+                        keyword research services is the first step to a successful content
+                        marketing strategy. By focusing on high-quality content in SEO, your
+                        luxury brand can enhance its online presence and resonate with its
+                        audience.
+                    </p>
+                </div>
+
+                <div id="calendar" class="section">
+                    <h2>Luxury Content Writing</h2>
+                    <div class="image-container">
+                        <img class="image-style hover-3d"
+                            src="https://images.unsplash.com/photo-1519337265831-281ec6cc8514?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="Content Writing" />
+                    </div>
+                    <p>
+                        It is important to have the right content targeting your audience,
+                        including the correct keywords written clearly and strongly. The
+                        right content, provided by a content writing agency specializing in
+                        luxury SEO content writing services like Luxury Method, helps to
+                        engage and boost your online presence. Luxury Method does this
+                        through authenticity, demonstrating the value of luxury SEO services
+                        for driving targeted traffic.
+                    </p>
+                    <p>
+                        <a target="_blank" href="https://www.luxury-method.com/services/luxury-content-writing">Luxury
+                            SEO Content
+                            writing services</a>
+                        <strong>are essential for ensuring that the content reaches the right audience
+                            effectively.</strong>
+                    </p>
+                </div>
+
+                <div id="editorial" class="section">
+                    <h2>Technical SEO</h2>
+                    <div class="image-container">
+                        <img class="image-style hover-3d"
+                            src="https://images.unsplash.com/photo-1607706189992-eae578626c86?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="Technical SEO" />
+                    </div>
+                    <p>
+                        Technical SEO quality content refers to optimizing a web page's
+                        technical components that improve search engine ranking. This can
+                        include improving your
+                        <strong>website speed, user-friendliness, and data security.</strong>
+                        Technical SEO services ensure each aspect is accessible and create
+                        ease for your customers. A skilled technical SEO consultant or
+                        technical SEO specialist working with a reputable technical SEO
+                        company can provide expert guidance. A thorough technical SEO audit
+                        service is essential for identifying areas that need improvement.
+                        Engaging a technical SEO expert can help businesses maximize their
+                        online visibility and achieve better search engine rankings.
+                    </p>
+                </div>
+
+                <div id="distribution" class="section">
+                    <h2>Local SEO</h2>
+                    <div class="image-container">
+                        <img class="image-style hover-3d"
+                            src="https://images.unsplash.com/photo-1587573578274-184d5ccabfc3?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="Local SEO" />
+                    </div>
+                    <p>
+                        Effective local SEO services enhance online presence to attract
+                        businesses for more <strong>local searches</strong> such as 'near
+                        me.' Quality local SEO services allow targeting audiences in that
+                        specific geographic area, driving customers to your business.
+                    </p>
+                    <p>
+                        A strong luxury SEO localization strategy is key to success. Whether
+                        you're looking for a local SEO agency for travel websites, need help
+                        with "local SEO near me" searches, or a local SEO for real estate,
+                        finding the right local SEO specialist is crucial. A comprehensive
+                        local SEO audit will pinpoint areas for improvement. From local SEO
+                        for hotels to local SEO for restaurants, targeted strategies are
+                        essential. For the best local SEO agency or local SEO services 'near
+                        me', consider a provider with expertise in SEO localization such as
+                        our agency.
+                    </p>
+                </div>
+
+                <div id="effectiveness" class="section">
+                    <h2>Backlinking</h2>
+                    <div class="image-container">
+                        <img class="image-style hover-3d"
+                            src="https://images.unsplash.com/photo-1559526324-c1f275fbfa32?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="Backlinking" />
+                    </div>
+                    <p>
+                        Backlinking is a crucial part of SEO that involves building links to
+                        your website from reputable external websites. Backlinking helps
+                        improve <strong>website authority, rank,</strong> and organic search
+                        visibility. It's important to engage in ethical backlinking
+                        techniques, acquiring links from credible sources.
+                    </p>
+                    <p>
+                        A backlink strategy can include both natural and outreach backlinks.
+                        Inbound and outbound backlinks both contribute significantly to SEO
+                        success, so engaging in the best backlink strategy is crucial.
+                        Partnering with the best backlinking agency will ensure you're using
+                        effective practices to elevate your website's search rankings.
+                    </p>
+                </div>
+
+                <div id="tracking" class="section">
+                    <h2>Luxury SEO Performance Tracking</h2>
+                    <div class="image-container">
+                        <img class="image-style hover-3d"
+                            src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?q=80&w=1551&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="Performance Tracking" />
+                    </div>
+                    <p>
+                        Once SEO strategies are implemented, it's vital to
+                        <strong>track their performance</strong> to assess their
+                        effectiveness. Luxury SEO performance tracking services help monitor
+                        important metrics such as traffic, conversion rates, and engagement.
+                        Using tools like Google Analytics, SEMrush, and Ahrefs, we track
+                        progress and adjust strategies to maintain high performance and
+                        ensure ongoing results.
+                    </p>
+                    <p>
+                        Effective tracking of your SEO performance is vital for businesses
+                        to stay competitive and ensure continued growth in search rankings.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Industries Section -->
+        <div class="content" id="con2">
+            <div id="top2" class="top-section">
+                <h2 id="mindmap" style="text-decoration: none">THE INDUSTRIES WE WORK WITH</h2>
+            </div>
+
+            <div id="audience2" class="section">
+                <h2 style="text-decoration: none;">Luxury Travel SEO</h2>
+                <div class="industry-wrapper">
+                    <img class="hover-3d" src="https://luxury-method.vercel.app/TRAVEL.png" alt="Travel Industry">
+                </div>
+
+                <div class="tyJCtd mGzaTb Depvyb baZpAe">
+                    <p dir="ltr" class="text-block" style="margin-bottom: 12pt;">
+                        <span class="text-base">Our agency specializes in </span><a class="XqQF9c" target="_blank"
+                            href="https://www.luxury-method.com/industries/luxury-travel-marketing"><span
+                                class="text-base text-underline">luxury travel</span></a><span class="text-base">&nbsp;SEO, </span><span
+                            class="text-base text-bold"> a niche that demands a deep understanding of your
+                            customers</span><span class="text-base">
+                            and a strong online presence. In the competitive digital
+                            landscape, standing out is crucial. We help you increase your
+                            online visibility and SEO rankings to effectively reach more
+                            potential luxury customers.&nbsp;</span>
+                    </p>
+                    <p dir="ltr" class="text-block" style="margin-bottom: 12pt; margin-top: 12pt;">
+                        <span class="text-base">Luxury travel SEO requires a unique approach, one that
+                            prioritizes </span><span class="text-base text-bold">quality, exclusivity, and creating an
+                            emotional
+                            connection with
+                            your customers</span><span class="text-base">. Our tailored SEO strategy for travel
+                            websites ensures that
+                            these elements are at the core of your digital marketing,
+                            helping you provide a seamless experience while achieving your
+                            business goals. Whether you're a hotel or a travel agency, our
+                            luxury travel SEO agency can drive high-quality organic leads
+                            that enhance your brand's visibility.</span>
+                    </p>
+                    <p dir="ltr" class="text-block" style="margin-bottom: 12pt; margin-top: 12pt;">
+                        <span class="text-base">By implementing a travel SEO strategy that speaks directly to
+                            your target audience, we help establish trust and credibility in
+                            the luxury travel industry. Our luxury travel SEO company
+                            focuses on positioning your brand as a leader in this
+                            competitive sector, making sure your business stands out in a
+                            popular online market.</span>
+                    </p>
+                </div>
+            </div>
+
+            <div id="mindmap2" class="section">
+                <h2 style="text-decoration: none;">Fashion SEO Services</h2>
+                <div class="industry-wrapper">
+                    <img class="hover-3d" src="https://luxury-method.vercel.app/FASHION.png" alt="Fashion Industry">
+                </div>
+                <div class="tyJCtd mGzaTb Depvyb baZpAe">
+                    <p dir="ltr" class="text-block" style="margin-bottom: 12pt;">
+                        <span class="text-base">Fashion SEO services are an important area of expertise for our
+                        </span><a class="XqQF9c" target="_blank"
+                            href="https://www.luxury-method.com/industries/luxury-fashion-marketing"><span
+                                class="text-base text-underline">fashion SEO agency</span></a><span class="text-base">.
+                            In the highly
+                            competitive world of luxury fashion, especially
+                            in the online space, being unique and having a unique sense of
+                            brand/service quality is key.</span><span class="text-base text-bold">
+                            We help fashion companies enhance their online presence</span><span class="text-base">
+                            and improve their SEO rankings, ensuring they effectively reach
+                            their target audience.</span>
+                    </p>
+                    <p dir="ltr" class="text-block" style="margin-bottom: 12pt; margin-top: 12pt;">
+                        <span class="text-base">Quality, exclusivity, and brand storytelling are fundamental
+                            elements in our SEO services for</span><span class="text-base text-bold">
+                        </span><span class="text-base">fashion companies. These components are woven into our
+                            custom-tailored strategies, ensuring a seamless approach that
+                            aligns with your business objectives. Whether you're a growing
+                            fashion brand or an established name, </span><span class="text-base text-bold">we help you
+                            build
+                            credibility and authority within the luxury
+                            fashion industry</span><span class="text-base">. By driving high-value organic leads,
+                            we help you stand out in
+                            the fashion SEO services market.</span>
+                    </p>
+                </div>
+            </div>
+
+            <div id="content2" class="section">
+                <h2 style="text-decoration: none;">Luxury Hospitality SEO</h2>
+                <div class="industry-wrapper">
+                    <img class="hover-3d" src="https://luxury-method.vercel.app/HOSPITALITY.png"
+                        alt="Hospitality Industry">
+                </div>
+                <div class="tyJCtd mGzaTb Depvyb baZpAe">
+                    <p dir="ltr" class="text-block" style="margin-bottom: 12pt;">
+                        <span class="text-base">In the competitive world of </span><a class="XqQF9c" target="_blank"
+                            href="https://www.luxury-method.com/luxury-marketing-agency"><span
+                                class="text-base text-underline">luxury hospitality</span></a><span class="text-base">,
+                            having a unique
+                            selling point is essential. Understanding
+                            your guests on a deeper level and </span><span class="text-base">creating personalized
+                            experiences that resonate with them
+                            shapes an effective hotel SEO strategy. </span><span class="text-base text-bold">Our
+                        </span><a class="XqQF9c" target="_blank"
+                            href="https://www.luxury-method.com/services/luxury-seo-agency"><span
+                                class="text-base text-bold text-underline">luxury SEO agency</span></a><span
+                            class="text-base text-bold text-link">
+                        </span><span class="text-base text-bold">specializes in crafting tailored solutions</span><span
+                            class="text-base">
+                            that enhance your online visibility, improve your SEO rankings,
+                            and ensure you attract the right, high-quality
+                            individuals.</span>
+                    </p>
+                    <p dir="ltr" class="text-block" style="margin-bottom: 12pt; margin-top: 12pt;">
+                        <span class="text-base">Luxury SEO services focus on </span><span class="text-base text-bold">uniqueness and
+                            powerful brand messaging</span><span class="text-base">, and we
+                            include these in every strategy we create. We
+                            understand that </span><span class="text-base text-bold">luxury hospitality</span><span
+                            class="text-base">
+                            is all about creating unforgettable experiences, and our
+                            customer-focused SEO strategy amplifies these qualities across
+                            digital platforms. By focusing on high-value organic leads, we
+                            help your luxury brand build a strong image and establish
+                            authority in the highly competitive luxury hospitality SEO
+                            space.</span>
+                    </p>
+                    <p dir="ltr" class="text-block" style="margin-bottom: 12pt; margin-top: 12pt;">
+                        <span class="text-base">Our strategies ensure that your brand not only stands out but
+                            thrives in the digital landscape, effectively distinguishing
+                            your services from competitors while aligning with your
+                            long-term business objectives.</span>
+                    </p>
+                </div>
+            </div>
+
+            <div id="calendar2" class="section">
+                <h2 style="text-decoration: none;">Luxury Real Estate SEO</h2>
+                <div class="industry-wrapper">
+                    <img class="hover-3d" src="https://luxury-method.vercel.app/REAL_ESTATE.png"
+                        alt="Real Estate Industry">
+                </div>
+                <div class="tyJCtd mGzaTb Depvyb baZpAe">
+                    <p dir="ltr" class="text-block" style="margin-bottom: 12pt;">
+                        <a class="XqQF9c" target="_blank"
+                            href="https://www.luxury-method.com/industries/luxury-real-estate-marketing"><span
+                                class="text-base text-underline" style="letter-spacing: -1px;">Luxury Real Estate
+                                SEO</span></a><span class="text-base"> </span><span class="text-base">is incredibly
+                            competitive in
+                            the upscale market. To truly stand
+                            out, it's essential to understand the desires and needs of your
+                            potential buyers. We can effectively improve SEO rankings to
+                            connect with your ideal luxury clientele.</span>
+                    </p>
+                    <p dir="ltr" class="text-block" style="margin-bottom: 12pt; margin-top: 12pt;">
+                        <span class="text-base">Our customized strategies incorporate these key factors to
+                            ensure a seamless approach that </span><span class="text-base text-bold">aligns perfectly
+                            with your
+                            business goals.</span><span class="text-base">
+                            Whether you're a luxury realtor or a real estate agency, our
+                            expertise helps your brand establish authority and credibility
+                            in the competitive real estate sector.</span>
+                    </p>
+                    <p dir="ltr" class="text-block" style="margin-bottom: 12pt; margin-top: 12pt;">
+                        <span class="text-base">With our</span><a class="XqQF9c" target="_blank"
+                            href="https://www.luxury-method.com/industries/luxury-real-estate-marketing"><span
+                                class="text-base text-underline">
+                            </span></a><span class="text-base">luxury SEO real estate website</span><span
+                            class="text-base text-link text-underline">
+                        </span><span class="text-base">solutions, we focus on generating high-value organic
+                            leads,
+                            helping you achieve a distinguished online presence. By applying
+                            our proven methods, </span><span class="text-base text-bold">yo</span><span
+                            class="text-base text-bold">ur
+                            luxury real estate SEO website </span><span class="text-base text-bold">will stand out in
+                            this fast-paced
+                            digital marketplace, </span><span class="text-base">ensuring you attract the right clients
+                            and stay ahead
+                            of the
+                            competition.</span>
+                    </p>
+                </div>
+            </div>
+
+            <div id="editorial2" class="section">
+                <h2 style="text-decoration: none;">Luxury SEO for Retail Brands</h2>
+                <div class="industry-wrapper">
+                    <img class="hover-3d" src="https://luxury-method.vercel.app/RETAIL.png" alt="Retail Industry">
+                </div>
+                <div class="tyJCtd mGzaTb Depvyb baZpAe">
+                    <p dir="ltr" class="text-block" style="margin-bottom: 12pt;">
+                        <span class="text-base">As a </span><a class="XqQF9c" target="_blank"
+                            href="https://www.luxury-method.com/industries/luxury-retail-marketing"><span
+                                class="text-base text-underline">luxury retail SEO agency</span></a><span
+                            class="text-base">, we focus
+                            on strategies that </span><span class="text-base text-bold">highlight your brand's
+                            uniqueness</span><span class="text-base">
+                            and connect with the right clients. SEO for Retail Brands is
+                            more than just improving rankings, it's about creating a
+                            standout online presence for your brand.&nbsp;</span>
+                    </p>
+                    <p dir="ltr" class="text-block">
+                        <span class="text-base">Our SEO for luxury brands drives organic traffic that helps
+                            your retail brand stand out and grow. At </span><span class="text-base text-bold">Luxury
+                            Method</span><span class="text-base">, we help luxury retail brands
+                            attract the right clients, boost
+                            sales, and build loyalty with a strong online presence. Our SEO
+                            strategies enhance exclusivity while increasing
+                            visibility.</span>
+                    </p>
+                </div>
+            </div>
+
+            <div id="distribution2" class="section">
+                <h2 style="text-decoration: none;">High End Food and Beverage SEO</h2>
+                <div class="industry-wrapper">
+                    <img class="hover-3d" src="https://luxury-method.vercel.app/FOOD_AND_BEVERAGES.png"
+                        alt="Food and Beverages Industry">
+                </div>
+                <div class="tyJCtd mGzaTb Depvyb baZpAe">
+                    <p dir="ltr" class="text-block" style="margin-bottom: 12pt;">
+                        <a class="XqQF9c" target="_blank"
+                            href="https://www.luxury-method.com/industries/luxury-food-marketing"><span
+                                class="text-base text-underline">High-end food and beverage</span></a><span
+                            class="text-base">
+                            SEO is highly competitive in the upscale dining and hospitality
+                            sector. To stand out, it's crucial to understand what your
+                            customers are seeking in a premium culinary
+                            experience.&nbsp;</span>
+                    </p>
+                    <p dir="ltr" class="text-block" style="margin-bottom: 12pt; margin-top: 12pt;">
+                        <span class="text-base">By enhancing user experience and search visibility, we ensure
+                            your gourmet offerings reach affluent audiences who appreciate </span><span
+                            class="text-base text-bold">quality and sophistication.</span><span class="text-base">
+                            Whether you specialize in </span><span class="text-base text-bold">fine dining, artisanal
+                            products, or
+                            luxury beverages</span><span class="text-base">, our expertise helps you dominate the market
+                            and drive
+                            conversions.&nbsp;</span>
+                    </p>
+                    <p dir="ltr" class="text-block" style="margin-bottom: 12pt; margin-top: 12pt;">
+                        <span class="text-base">Our luxury SEO services focus on exclusivity and exceptional
+                            service, integrating these elements into customised strategies
+                            that align with your </span><span class="text-base text-bold">brand's culture.</span><span
+                            class="text-base">
+                            By attaining high-value organic leads, we help your luxury food
+                            and beverage brand build credibility and authority, carving out
+                            a distinct online presence in the competitive SEO for luxury
+                            brands space.</span>
+                    </p>
+                </div>
+            </div>
+
+            <div id="effectiveness2" class="section">
+                <h2 style="text-decoration: none;">SEO for Luxury Watches and Jewellery</h2>
+                <div class="industry-wrapper">
+                    <img class="hover-3d" src="https://luxury-method.vercel.app/WATCHES.png" alt="Watches Industry">
+                </div>
+                <div class="tyJCtd mGzaTb Depvyb baZpAe">
+                    <p dir="ltr" class="text-block" style="margin-bottom: 12pt;">
+                        <span class="text-base">SEO for </span><a class="XqQF9c" target="_blank"
+                            href="https://www.luxury-method.com/industries/luxury-watches-marketing"><span
+                                class="text-base text-underline">luxury watches and jewellery</span></a><span
+                            class="text-base text-link"> </span><span class="text-base">is highly competitive in the
+                            upscale market. To truly stand
+                            out, it's crucial to </span><span class="text-base text-bold">understand the refined tastes
+                            of your
+                            customers </span><span class="text-base">and what draws them to premium watches and
+                            exquisite jewellery.
+                            We specialize in enhancing your online visibility and improving
+                            SEO for luxury watches and SEO for luxury jewellery, </span><span
+                            class="text-base text-bold">connecting
+                            you with the right high-end buyers.</span>
+                    </p>
+                    <p dir="ltr" class="text-block">
+                        <span class="text-base">Our custom strategies highlight the </span><span
+                            class="text-base text-bold">craftsmanship, prestige, and unique culture</span><span
+                            class="text-base">
+                            of your luxury products. With a focus on luxury brands SEO, we
+                            ensure your efforts reflect the sophistication and quality of
+                            your brand while aligning with your business goals. By driving
+                            high-value organic traffic, we help your luxury watches and
+                            luxury jewellery brand </span><span class="text-base text-bold">build trust, authority, and
+                            a standout
+                            digital presence in an
+                            increasingly crowded market.</span>
+                    </p>
+                </div>
+            </div>
+
+            <div id="bottom2" class="top-section" style="padding-top: 0px !important;">
+                <h2 id="content" style="text-decoration: none">WHO WE ARE</h2>
+                <p style="text-align: start;">
+                    Luxury Method is a luxury SEO agency that specialises in assisting
+                    high-end brands in attracting the appropriate target audience.
+                    Concentrating on sectors including apparel, jewellery, watches, and,
+                    retail and hotels. Our speciality is creating custom marketing solutions
+                    that are suited to the particular requirements of luxury brands. Our
+                    headquarters is in Rome, and we operate all over the globe.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="faq-container content-padding top-section">
+        <p style="text-align: center; font-size: 24px !important; font-style: italic;">
+            Experience the difference of a marketing agency dedicated to luxury.
         </p>
 
-        <p dir="ltr" class="text-block">
-          <span class="text-base">Since luxury SEO aims to </span><span class="text-base text-bold">enhance the online
-            visibility</span><span class="text-base">
-            of premium, exclusive brands, </span><span class="text-base">luxury SEO agencies</span><span
-            class="text-base">
-            are crucial. </span><span class="text-base">Luxury Method will help you</span><span class="text-base">
-            highlight high quality, refinement, and a luxurious feel to draw in
-            and appeal to wealthy, high-end clients.&nbsp;</span>
-        </p>
-
-        <p dir="ltr" class="text-block">
-          <span class="text-base">Luxury SEO </span><span class="text-base">differs from regular SEO because it goes
-            beyond the basics; it
-            prioritizes creating a seamless, high-end digital experience that
-            aligns with the expectations of affluent audiences. While regular SEO </span><span class="text-base">is
-            limited to improving</span><span class="text-base">
-            website performance and visibility, a </span><span class="text-base">SEO luxury agency does everything that
-            regular SEO does but
-            also</span><span class="text-base">
-            provides a </span><span class="text-base text-bold">seamless user experience geared to high-end
-            consumers.</span><span class="text-base">
-            It prioritises the usage of refined, industry-specific keywords that
-            appeal to affluent customers and are consistent with </span><span class="text-base">your</span><span
-            class="text-base">
-            brand's exclusivity. </span><span class="text-base">This</span><span class="text-base">
-            ensures that the website's functionality, speed, and design convey
-            sophistication and elegance, enhancing </span><span class="text-base">your </span><span
-            class="text-base">brand's luxury appeal.</span>
-        </p>
-
-        <div class="image-container" style="margin-bottom: 30px">
-          <img class="image-style intro-image hover-3d"
-            src="https://images.unsplash.com/photo-1581551392494-7a15f7752a55?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="Luxury Image">
+        <div class="contact-icons">
+            <a target="_blank"
+                href="https://www.google.com/url?q=https%3A%2F%2Fwa.me%2F%2B393920034695&sa=D&sntz=1&usg=AOvVaw2a9hG2asZNJfADOdAWUper"
+                style="padding:20px;border-radius: 100%;">
+                <img src="https://i.postimg.cc/HkGt0VxV/whatsapp.png"
+                    style="width: 30px; border-radius: 100%; height: 30px;" alt="WhatsApp">
+            </a>
+            <a target="_blank" href="mailto:giacomo@luxury-method.com" style="padding:20px; border-radius: 100%;">
+                <img src="https://i.postimg.cc/mr4tBFZf/image-978.png"
+                    style="width: 30px; border-radius: 100%; background-color: #5f6368; height: 30px;" alt="Email">
+            </a>
+            <a target="_blank"
+                href="https://www.google.com/url?q=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Fluxurymethod%2F&sa=D&sntz=1&usg=AOvVaw0MER64fKjxQpgMZC_E-MgX"
+                style="padding:20px; border-radius: 100%;">
+                <img src="https://i.postimg.cc/BvtQqcWz/image-979.png"
+                    style="width: 30px; border-radius: 100%; background-color: #2867b2; height: 30px;" alt="LinkedIn">
+            </a>
         </div>
-      </div>
+
+        <div class="contact-btn-container">
+            <a target="_blank" href="https://www.luxury-method.com/contact" class="contact-btn">CONTACT FORM</a>
+        </div>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3><strong>How effective are luxury SEO services?</strong></h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <p>Luxury SEO services are highly effective in increasing organic visibility and attracting luxury
+                    clients. They
+                    help maintain brand exclusivity while driving long-term growth.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3><strong>What services do luxury SEO agencies offer?</strong></h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <p>Luxury agencies like Luxury Method offer services including branding and marketing strategy, social
+                    media
+                    management, content writing, web and app development, SEO, global expansion strategy and influencer
+                    marketing,
+                    all tailored to elevate luxury brands' online presence.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3><strong>Why is SEO for luxury brands different from regular SEO?</strong></h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <p>Luxury SEO focuses on enhancing brand prestige, targeting luxury brands, and maintaining exclusivity,
+                    while
+                    regular SEO prioritizes broader audience reach and volume.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3><strong>What's the best SEO strategy for luxury brands?</strong></h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <p>A combination of technical SEO, high-end content marketing, and strategic link-building is key.
+                    Personalized
+                    SEO localization ensures brand consistency across global markets and builds strong relationships for
+                    better
+                    business growth.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3><strong>How do SEO luxury brands enhance their visibility?</strong></h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <p>By leveraging organic search strategies, authoritative backlinks, and high-value content. SEO
+                    localisation
+                    also strengthens presence in key markets.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3><strong>What improves strategies for effective branding in SEO luxury companies?</strong></h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <p>Strong storytelling, high-quality content and data-driven insights help refine audience targeting for
+                    better
+                    engagement and strong branding.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3><strong>Why pick Luxury Method?</strong></h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <p>Luxury Method specialises in premium SEO strategies tailored for high-end brands. We combine deep
+                    industry
+                    expertise with data-driven solutions to elevate your brand's online presence uniquely.</p>
+            </div>
+        </div>
     </div>
 
-    <!-- Main Content with Sidebar -->
-    <div class="main-container" id="main-container">
+    <footer class="luxury-footer">
+        <div class="luxury-footer-content">
+            <div class="luxury-footer-contact">
+                <small>
+                    <a target="_blank" style="font-weight: bold; text-decoration: none"
+                        href="mailto:giacomo@luxury-method.com">giacomo@luxury-method.com</a>
+                </small>
+                <a href="tel:+393920034695"><small>(+39) 3920034695</small></a>
+                <small>P.IVA: 17906211002</small>
+            </div>
 
-      <!-- Sidebar Navigation -->
-      <div class="sidebar">
-        <button onclick="scrollToSection('audience')">Our SEO Services</button>
-        <button onclick="scrollToSection('mindmap')">The Industries We Work With</button>
-        <button onclick="scrollToSection('content')">Who We Are</button>
-      </div>
-
-      <!-- Mobile Scroll Buttons for Sidebar
-      <div class="scroll-btn-left" id="sidebar1-left">
-        <button class="scroll-btn" onclick="scrollSidebar('sidebar', 'left')">
-          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" focusable="false">
-            <path d="M14.96 18.96 8 12l6.96-6.96.71.71L9.41 12l6.25 6.25-.7.71z"></path>
-          </svg>
-        </button>
-      </div>
-
-      <div class="scroll-btn-right" id="sidebar1-right">
-        <button class="scroll-btn" onclick="scrollSidebar('sidebar', 'right')">
-          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" focusable="false">
-            <path d="m9.4 18.4-.7-.7 5.6-5.6-5.7-5.7.7-.7 6.4 6.4-6.3 6.3z"></path>
-          </svg>
-        </button>
-      </div> -->
-
-      <!-- Content Column -->
-      <div class="content">
-        <!-- SEO Services Section -->
-        <div id="top" class="top-section">
-          <h2 id="audience" style="text-decoration: none">Our Luxury SEO Services</h2>
-          <p style="text-align: center">
-            SEO for luxury brands is not just about ranking high and being at the
-            top, it focuses on maintaining an elite brand image. As a luxury SEO
-            agency, we integrate SEO with a deep understanding of luxury consumer
-            behaviour.
-          </p>
+            <div class="social-icons">
+                <div class="social-link">
+                    <a href="https://www.instagram.com/luxurymethod_agency/" target="_blank">
+                        <img src="https://i.postimg.cc/XJSn0GKM/image-976.png" alt="Instagram" />
+                    </a>
+                </div>
+                <div class="social-link">
+                    <a href="https://x.com/luxury_method" target="_blank">
+                        <img src="https://luxury-method.vercel.app/twitter-logo.png" alt="X" />
+                    </a>
+                </div>
+            </div>
         </div>
+    </footer>
 
-        <div class="section">
-          <h2>Luxury SEO Audits</h2>
-          <div class="image-container">
-            <img class="image-style hover-3d"
-              src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=1476&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="SEO Audit" />
-          </div>
-          <p>
-            SEO audit services are crucial to evaluating a website's SEO
-            performance as they <strong>identify issues, strengths,</strong> and
-            <strong>improvement areas.</strong> This typically includes
-            analyzing on-page SEO (such as content quality and keyword
-            optimization) and technical SEO audits, which include website speed,
-            mobile-friendliness, and crawlability. As well as off-page SEO,
-            which includes backlinks and domain authority.
-          </p>
-          <p>
-            By conducting a thorough SEO audit, we can uncover factors that may
-            be hindering your rankings and develop an actionable strategy to
-            enhance visibility, organic traffic, and user experience. Partnering
-            with a reputable SEO audit agency like Luxury Method can provide
-            expert insights and recommendations on enhancing your SEO efforts.
-          </p>
-        </div>
-
-        <div class="section">
-          <h2>Luxury SEO Strategy</h2>
-          <div class="image-container">
-            <img class="image-style hover-3d"
-              src="https://images.unsplash.com/photo-1542744173-05336fcc7ad4?q=80&w=1402&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="SEO Strategy" />
-          </div>
-          <p>
-            A luxury SEO strategy is a methodical approach to increasing a
-            website's online presence and achieving targeted organic traffic. A
-            superior SEO strategy for luxury brands aids in achieving
-            <strong>greater ranks, more engagement,</strong> and long-term
-            success by aligning content, technological elements, and outreach
-            initiatives with corporate objectives.
-          </p>
-          <p>
-            Effective luxury SEM strategies encompass both SEO and SEA. While
-            SEO focuses on organic search visibility, SEA (Google Ads) helps
-            brands secure prominent placements through paid search, ensuring a
-            well-rounded approach to increasing online visibility. SEO can be
-            seen as more leveraged in the long term since it relies on organic
-            engagement, an area expertly handled by our luxury SEO agency.
-          </p>
-          <p>
-            For a customer-focused SEO strategy, it is crucial to understand the
-            right user intent, how to choose relevant keywords, create
-            high-quality content, and implement a unique website experience to
-            improve rankings and engagement. In addition to working with B2C
-            brands, we are also a B2B luxury SEO agency. We help high-end
-            businesses enhance their online visibility, connect with other
-            businesses, and strengthen their digital presence through strategic
-            SEO and tailored marketing solutions. For example, we work with
-            luxury food and beverage brands, optimizing their websites and
-            content to reach premium clients, distributors, and hospitality
-            partners while maintaining an exclusive brand image.
-          </p>
-          <p>
-            It is important to promote visibility in the local online market to
-            retain the right clients and build deep connections through trust
-            and reliability, which fosters business growth.
-          </p>
-          <p>
-            SEO strategies aim at more than just visibility. They also aim at
-            maintaining a strong and cohesive brand image across multiple
-            markets. As a luxury SEO agency, we develop multi-location SEO
-            strategies that maintain brand consistency while optimizing for
-            local market trends and search visibility. Through a refined SEO
-            localization strategy, we help businesses resonate with diverse
-            audiences, enhancing their elite positioning while maintaining a
-            unified global identity.
-          </p>
-        </div>
-
-        <div class="section">
-          <h2>Keyword Research</h2>
-          <div class="image-container">
-            <img class="image-style hover-3d"
-              src="https://images.unsplash.com/photo-1555421689-d68471e189f2?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Keyword Research" />
-          </div>
-          <p>
-            Keyword research involves determining the
-            <strong>most relevant and useful search phrases</strong> that your
-            target audience employs. Using effective keyword research techniques
-            for improved organic SEO traffic leads to improved rankings and
-            increased visibility in search results. Leveraging professional
-            keyword research services is the first step to a successful content
-            marketing strategy. By focusing on high-quality content in SEO, your
-            luxury brand can enhance its online presence and resonate with its
-            audience.
-          </p>
-        </div>
-
-        <div id="calendar" class="section">
-          <h2>Luxury Content Writing</h2>
-          <div class="image-container">
-            <img class="image-style hover-3d"
-              src="https://images.unsplash.com/photo-1519337265831-281ec6cc8514?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Content Writing" />
-          </div>
-          <p>
-            It is important to have the right content targeting your audience,
-            including the correct keywords written clearly and strongly. The
-            right content, provided by a content writing agency specializing in
-            luxury SEO content writing services like Luxury Method, helps to
-            engage and boost your online presence. Luxury Method does this
-            through authenticity, demonstrating the value of luxury SEO services
-            for driving targeted traffic.
-          </p>
-          <p>
-            <a target="_blank" href="https://www.luxury-method.com/services/luxury-content-writing">Luxury SEO Content
-              writing services</a>
-            <strong>are essential for ensuring that the content reaches the right audience effectively.</strong>
-          </p>
-        </div>
-
-        <div id="editorial" class="section">
-          <h2>Technical SEO</h2>
-          <div class="image-container">
-            <img class="image-style hover-3d"
-              src="https://images.unsplash.com/photo-1607706189992-eae578626c86?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Technical SEO" />
-          </div>
-          <p>
-            Technical SEO quality content refers to optimizing a web page's
-            technical components that improve search engine ranking. This can
-            include improving your
-            <strong>website speed, user-friendliness, and data security.</strong>
-            Technical SEO services ensure each aspect is accessible and create
-            ease for your customers. A skilled technical SEO consultant or
-            technical SEO specialist working with a reputable technical SEO
-            company can provide expert guidance. A thorough technical SEO audit
-            service is essential for identifying areas that need improvement.
-            Engaging a technical SEO expert can help businesses maximize their
-            online visibility and achieve better search engine rankings.
-          </p>
-        </div>
-
-        <div id="distribution" class="section">
-          <h2>Local SEO</h2>
-          <div class="image-container">
-            <img class="image-style hover-3d"
-              src="https://images.unsplash.com/photo-1587573578274-184d5ccabfc3?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Local SEO" />
-          </div>
-          <p>
-            Effective local SEO services enhance online presence to attract
-            businesses for more <strong>local searches</strong> such as 'near
-            me.' Quality local SEO services allow targeting audiences in that
-            specific geographic area, driving customers to your business.
-          </p>
-          <p>
-            A strong luxury SEO localization strategy is key to success. Whether
-            you're looking for a local SEO agency for travel websites, need help
-            with "local SEO near me" searches, or a local SEO for real estate,
-            finding the right local SEO specialist is crucial. A comprehensive
-            local SEO audit will pinpoint areas for improvement. From local SEO
-            for hotels to local SEO for restaurants, targeted strategies are
-            essential. For the best local SEO agency or local SEO services 'near
-            me', consider a provider with expertise in SEO localization such as
-            our agency.
-          </p>
-        </div>
-
-        <div id="effectiveness" class="section">
-          <h2>Backlinking</h2>
-          <div class="image-container">
-            <img class="image-style hover-3d"
-              src="https://images.unsplash.com/photo-1559526324-c1f275fbfa32?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Backlinking" />
-          </div>
-          <p>
-            Backlinking is a crucial part of SEO that involves building links to
-            your website from reputable external websites. Backlinking helps
-            improve <strong>website authority, rank,</strong> and organic search
-            visibility. It's important to engage in ethical backlinking
-            techniques, acquiring links from credible sources.
-          </p>
-          <p>
-            A backlink strategy can include both natural and outreach backlinks.
-            Inbound and outbound backlinks both contribute significantly to SEO
-            success, so engaging in the best backlink strategy is crucial.
-            Partnering with the best backlinking agency will ensure you're using
-            effective practices to elevate your website's search rankings.
-          </p>
-        </div>
-
-        <div id="tracking" class="section">
-          <h2>Luxury SEO Performance Tracking</h2>
-          <div class="image-container">
-            <img class="image-style hover-3d"
-              src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?q=80&w=1551&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Performance Tracking" />
-          </div>
-          <p>
-            Once SEO strategies are implemented, it's vital to
-            <strong>track their performance</strong> to assess their
-            effectiveness. Luxury SEO performance tracking services help monitor
-            important metrics such as traffic, conversion rates, and engagement.
-            Using tools like Google Analytics, SEMrush, and Ahrefs, we track
-            progress and adjust strategies to maintain high performance and
-            ensure ongoing results.
-          </p>
-          <p>
-            Effective tracking of your SEO performance is vital for businesses
-            to stay competitive and ensure continued growth in search rankings.
-          </p>
-        </div>
-      </div>
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false">
+            <path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z" fill="currentColor"></path>
+        </svg>
     </div>
 
-    <!-- Industries Section -->
-    <div class="content" id="con2">
-      <div id="top2" class="top-section">
-        <h2 id="mindmap" style="text-decoration: none">THE INDUSTRIES WE WORK WITH</h2>
-      </div>
+    <!-- Scripts -->
+    <script>
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const toggle = element.querySelector(".faq-toggle");
 
-      <div id="audience2" class="section">
-        <h2 style="text-decoration: none;">Luxury Travel SEO</h2>
-        <div class="industry-wrapper">
-          <img class="hover-3d" src="https://luxury-method.vercel.app/TRAVEL.png" alt="Travel Industry">
-        </div>
+            document.querySelectorAll(".faq-answer").forEach((item) => {
+                if (item !== answer) item.classList.remove("active");
+            });
 
-        <div class="tyJCtd mGzaTb Depvyb baZpAe">
-          <p dir="ltr" class="text-block" style="margin-bottom: 12pt;">
-            <span class="text-base">Our agency specializes in </span><a class="XqQF9c" target="_blank"
-              href="https://www.luxury-method.com/industries/luxury-travel-marketing"><span
-                class="text-base text-underline">luxury travel</span></a><span class="text-base">&nbsp;SEO, </span><span
-              class="text-base text-bold"> a niche that demands a deep understanding of your
-              customers</span><span class="text-base">
-              and a strong online presence. In the competitive digital
-              landscape, standing out is crucial. We help you increase your
-              online visibility and SEO rankings to effectively reach more
-              potential luxury customers.&nbsp;</span>
-          </p>
-          <p dir="ltr" class="text-block" style="margin-bottom: 12pt; margin-top: 12pt;">
-            <span class="text-base">Luxury travel SEO requires a unique approach, one that
-              prioritizes </span><span class="text-base text-bold">quality, exclusivity, and creating an emotional
-              connection with
-              your customers</span><span class="text-base">. Our tailored SEO strategy for travel
-              websites ensures that
-              these elements are at the core of your digital marketing,
-              helping you provide a seamless experience while achieving your
-              business goals. Whether you're a hotel or a travel agency, our
-              luxury travel SEO agency can drive high-quality organic leads
-              that enhance your brand's visibility.</span>
-          </p>
-          <p dir="ltr" class="text-block" style="margin-bottom: 12pt; margin-top: 12pt;">
-            <span class="text-base">By implementing a travel SEO strategy that speaks directly to
-              your target audience, we help establish trust and credibility in
-              the luxury travel industry. Our luxury travel SEO company
-              focuses on positioning your brand as a leader in this
-              competitive sector, making sure your business stands out in a
-              popular online market.</span>
-          </p>
-        </div>
-      </div>
+            document.querySelectorAll(".faq-toggle").forEach((item) => {
+                if (item !== toggle) item.classList.remove("active");
+            });
 
-      <div id="mindmap2" class="section">
-        <h2 style="text-decoration: none;">Fashion SEO Services</h2>
-        <div class="industry-wrapper">
-          <img class="hover-3d" src="https://luxury-method.vercel.app/FASHION.png" alt="Fashion Industry">
-        </div>
-        <div class="tyJCtd mGzaTb Depvyb baZpAe">
-          <p dir="ltr" class="text-block" style="margin-bottom: 12pt;">
-            <span class="text-base">Fashion SEO services are an important area of expertise for our
-            </span><a class="XqQF9c" target="_blank"
-              href="https://www.luxury-method.com/industries/luxury-fashion-marketing"><span
-                class="text-base text-underline">fashion SEO agency</span></a><span class="text-base">. In the highly
-              competitive world of luxury fashion, especially
-              in the online space, being unique and having a unique sense of
-              brand/service quality is key.</span><span class="text-base text-bold">
-              We help fashion companies enhance their online presence</span><span class="text-base">
-              and improve their SEO rankings, ensuring they effectively reach
-              their target audience.</span>
-          </p>
-          <p dir="ltr" class="text-block" style="margin-bottom: 12pt; margin-top: 12pt;">
-            <span class="text-base">Quality, exclusivity, and brand storytelling are fundamental
-              elements in our SEO services for</span><span class="text-base text-bold">
-            </span><span class="text-base">fashion companies. These components are woven into our
-              custom-tailored strategies, ensuring a seamless approach that
-              aligns with your business objectives. Whether you're a growing
-              fashion brand or an established name, </span><span class="text-base text-bold">we help you build
-              credibility and authority within the luxury
-              fashion industry</span><span class="text-base">. By driving high-value organic leads,
-              we help you stand out in
-              the fashion SEO services market.</span>
-          </p>
-        </div>
-      </div>
-
-      <div id="content2" class="section">
-        <h2 style="text-decoration: none;">Luxury Hospitality SEO</h2>
-        <div class="industry-wrapper">
-          <img class="hover-3d" src="https://luxury-method.vercel.app/HOSPITALITY.png" alt="Hospitality Industry">
-        </div>
-        <div class="tyJCtd mGzaTb Depvyb baZpAe">
-          <p dir="ltr" class="text-block" style="margin-bottom: 12pt;">
-            <span class="text-base">In the competitive world of </span><a class="XqQF9c" target="_blank"
-              href="https://www.luxury-method.com/luxury-marketing-agency"><span
-                class="text-base text-underline">luxury hospitality</span></a><span class="text-base">, having a unique
-              selling point is essential. Understanding
-              your guests on a deeper level and </span><span class="text-base">creating personalized
-              experiences that resonate with them
-              shapes an effective hotel SEO strategy. </span><span class="text-base text-bold">Our </span><a
-              class="XqQF9c" target="_blank" href="https://www.luxury-method.com/services/luxury-seo-agency"><span
-                class="text-base text-bold text-underline">luxury SEO agency</span></a><span
-              class="text-base text-bold text-link">
-            </span><span class="text-base text-bold">specializes in crafting tailored solutions</span><span
-              class="text-base">
-              that enhance your online visibility, improve your SEO rankings,
-              and ensure you attract the right, high-quality
-              individuals.</span>
-          </p>
-          <p dir="ltr" class="text-block" style="margin-bottom: 12pt; margin-top: 12pt;">
-            <span class="text-base">Luxury SEO services focus on </span><span class="text-base text-bold">uniqueness and
-              powerful brand messaging</span><span class="text-base">, and we
-              include these in every strategy we create. We
-              understand that </span><span class="text-base text-bold">luxury hospitality</span><span class="text-base">
-              is all about creating unforgettable experiences, and our
-              customer-focused SEO strategy amplifies these qualities across
-              digital platforms. By focusing on high-value organic leads, we
-              help your luxury brand build a strong image and establish
-              authority in the highly competitive luxury hospitality SEO
-              space.</span>
-          </p>
-          <p dir="ltr" class="text-block" style="margin-bottom: 12pt; margin-top: 12pt;">
-            <span class="text-base">Our strategies ensure that your brand not only stands out but
-              thrives in the digital landscape, effectively distinguishing
-              your services from competitors while aligning with your
-              long-term business objectives.</span>
-          </p>
-        </div>
-      </div>
-
-      <div id="calendar2" class="section">
-        <h2 style="text-decoration: none;">Luxury Real Estate SEO</h2>
-        <div class="industry-wrapper">
-          <img class="hover-3d" src="https://luxury-method.vercel.app/REAL_ESTATE.png" alt="Real Estate Industry">
-        </div>
-        <div class="tyJCtd mGzaTb Depvyb baZpAe">
-          <p dir="ltr" class="text-block" style="margin-bottom: 12pt;">
-            <a class="XqQF9c" target="_blank"
-              href="https://www.luxury-method.com/industries/luxury-real-estate-marketing"><span
-                class="text-base text-underline" style="letter-spacing: -1px;">Luxury Real Estate SEO</span></a><span class="text-base"> </span><span
-              class="text-base">is incredibly competitive in
-              the upscale market. To truly stand
-              out, it's essential to understand the desires and needs of your
-              potential buyers. We can effectively improve SEO rankings to
-              connect with your ideal luxury clientele.</span>
-          </p>
-          <p dir="ltr" class="text-block" style="margin-bottom: 12pt; margin-top: 12pt;">
-            <span class="text-base">Our customized strategies incorporate these key factors to
-              ensure a seamless approach that </span><span class="text-base text-bold">aligns perfectly with your
-              business goals.</span><span class="text-base">
-              Whether you're a luxury realtor or a real estate agency, our
-              expertise helps your brand establish authority and credibility
-              in the competitive real estate sector.</span>
-          </p>
-          <p dir="ltr" class="text-block" style="margin-bottom: 12pt; margin-top: 12pt;">
-            <span class="text-base">With our</span><a class="XqQF9c" target="_blank"
-              href="https://www.luxury-method.com/industries/luxury-real-estate-marketing"><span
-                class="text-base text-underline">
-              </span></a><span class="text-base">luxury SEO real estate website</span><span
-              class="text-base text-link text-underline">
-            </span><span class="text-base">solutions, we focus on generating high-value organic
-              leads,
-              helping you achieve a distinguished online presence. By applying
-              our proven methods, </span><span class="text-base text-bold">yo</span><span class="text-base text-bold">ur
-              luxury real estate SEO website </span><span class="text-base text-bold">will stand out in this fast-paced
-              digital marketplace, </span><span class="text-base">ensuring you attract the right clients and stay ahead
-              of the
-              competition.</span>
-          </p>
-        </div>
-      </div>
-
-      <div id="editorial2" class="section">
-        <h2 style="text-decoration: none;">Luxury SEO for Retail Brands</h2>
-        <div class="industry-wrapper">
-          <img class="hover-3d" src="https://luxury-method.vercel.app/RETAIL.png" alt="Retail Industry">
-        </div>
-        <div class="tyJCtd mGzaTb Depvyb baZpAe">
-          <p dir="ltr" class="text-block" style="margin-bottom: 12pt;">
-            <span class="text-base">As a </span><a class="XqQF9c" target="_blank"
-              href="https://www.luxury-method.com/industries/luxury-retail-marketing"><span
-                class="text-base text-underline">luxury retail SEO agency</span></a><span class="text-base">, we focus
-              on strategies that </span><span class="text-base text-bold">highlight your brand's uniqueness</span><span
-              class="text-base">
-              and connect with the right clients. SEO for Retail Brands is
-              more than just improving rankings, it's about creating a
-              standout online presence for your brand.&nbsp;</span>
-          </p>
-          <p dir="ltr" class="text-block">
-            <span class="text-base">Our SEO for luxury brands drives organic traffic that helps
-              your retail brand stand out and grow. At </span><span class="text-base text-bold">Luxury
-              Method</span><span class="text-base">, we help luxury retail brands
-              attract the right clients, boost
-              sales, and build loyalty with a strong online presence. Our SEO
-              strategies enhance exclusivity while increasing
-              visibility.</span>
-          </p>
-        </div>
-      </div>
-
-      <div id="distribution2" class="section">
-        <h2 style="text-decoration: none;">High End Food and Beverage SEO</h2>
-        <div class="industry-wrapper">
-          <img class="hover-3d" src="https://luxury-method.vercel.app/FOOD_AND_BEVERAGES.png" alt="Food and Beverages Industry">
-        </div>
-        <div class="tyJCtd mGzaTb Depvyb baZpAe">
-          <p dir="ltr" class="text-block" style="margin-bottom: 12pt;">
-            <a class="XqQF9c" target="_blank"
-              href="https://www.luxury-method.com/industries/luxury-food-marketing"><span
-                class="text-base text-underline">High-end food and beverage</span></a><span class="text-base">
-              SEO is highly competitive in the upscale dining and hospitality
-              sector. To stand out, it's crucial to understand what your
-              customers are seeking in a premium culinary
-              experience.&nbsp;</span>
-          </p>
-          <p dir="ltr" class="text-block" style="margin-bottom: 12pt; margin-top: 12pt;">
-            <span class="text-base">By enhancing user experience and search visibility, we ensure
-              your gourmet offerings reach affluent audiences who appreciate </span><span
-              class="text-base text-bold">quality and sophistication.</span><span class="text-base">
-              Whether you specialize in </span><span class="text-base text-bold">fine dining, artisanal products, or
-              luxury beverages</span><span class="text-base">, our expertise helps you dominate the market and drive
-              conversions.&nbsp;</span>
-          </p>
-          <p dir="ltr" class="text-block" style="margin-bottom: 12pt; margin-top: 12pt;">
-            <span class="text-base">Our luxury SEO services focus on exclusivity and exceptional
-              service, integrating these elements into customised strategies
-              that align with your </span><span class="text-base text-bold">brand's culture.</span><span
-              class="text-base">
-              By attaining high-value organic leads, we help your luxury food
-              and beverage brand build credibility and authority, carving out
-              a distinct online presence in the competitive SEO for luxury
-              brands space.</span>
-          </p>
-        </div>
-      </div>
-
-      <div id="effectiveness2" class="section">
-        <h2 style="text-decoration: none;">SEO for Luxury Watches and Jewellery</h2>
-        <div class="industry-wrapper">
-          <img class="hover-3d" src="https://luxury-method.vercel.app/WATCHES.png" alt="Watches Industry">
-        </div>
-        <div class="tyJCtd mGzaTb Depvyb baZpAe">
-          <p dir="ltr" class="text-block" style="margin-bottom: 12pt;">
-            <span class="text-base">SEO for </span><a class="XqQF9c" target="_blank"
-              href="https://www.luxury-method.com/industries/luxury-watches-marketing"><span
-                class="text-base text-underline">luxury watches and jewellery</span></a><span
-              class="text-base text-link"> </span><span class="text-base">is highly competitive in the
-              upscale market. To truly stand
-              out, it's crucial to </span><span class="text-base text-bold">understand the refined tastes of your
-              customers </span><span class="text-base">and what draws them to premium watches and exquisite jewellery.
-              We specialize in enhancing your online visibility and improving
-              SEO for luxury watches and SEO for luxury jewellery, </span><span class="text-base text-bold">connecting
-              you with the right high-end buyers.</span>
-          </p>
-          <p dir="ltr" class="text-block">
-            <span class="text-base">Our custom strategies highlight the </span><span
-              class="text-base text-bold">craftsmanship, prestige, and unique culture</span><span class="text-base">
-              of your luxury products. With a focus on luxury brands SEO, we
-              ensure your efforts reflect the sophistication and quality of
-              your brand while aligning with your business goals. By driving
-              high-value organic traffic, we help your luxury watches and
-              luxury jewellery brand </span><span class="text-base text-bold">build trust, authority, and a standout
-              digital presence in an
-              increasingly crowded market.</span>
-          </p>
-        </div>
-      </div>
-
-      <div id="bottom2" class="top-section" style="padding-top: 0px !important;">
-        <h2 id="content" style="text-decoration: none">WHO WE ARE</h2>
-        <p style="text-align: start;">
-          Luxury Method is a luxury SEO agency that specialises in assisting
-          high-end brands in attracting the appropriate target audience.
-          Concentrating on sectors including apparel, jewellery, watches, and,
-          retail and hotels. Our speciality is creating custom marketing solutions
-          that are suited to the particular requirements of luxury brands. Our
-          headquarters is in Rome, and we operate all over the globe.
-        </p>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- FAQ Section -->
-  <div class="faq-container content-padding top-section">
-    <p style="text-align: center; font-size: 24px !important; font-style: italic;">
-      Experience the difference of a marketing agency dedicated to luxury.
-    </p>
-
-    <div class="contact-icons">
-      <a target="_blank"
-        href="https://www.google.com/url?q=https%3A%2F%2Fwa.me%2F%2B393920034695&sa=D&sntz=1&usg=AOvVaw2a9hG2asZNJfADOdAWUper"
-        style="padding:20px;border-radius: 100%;">
-        <img src="https://i.postimg.cc/HkGt0VxV/whatsapp.png" style="width: 30px; border-radius: 100%; height: 30px;"
-          alt="WhatsApp">
-      </a>
-      <a target="_blank" href="mailto:giacomo@luxury-method.com" style="padding:20px; border-radius: 100%;">
-        <img src="https://i.postimg.cc/mr4tBFZf/image-978.png"
-          style="width: 30px; border-radius: 100%; background-color: #5f6368; height: 30px;" alt="Email">
-      </a>
-      <a target="_blank"
-        href="https://www.google.com/url?q=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Fluxurymethod%2F&sa=D&sntz=1&usg=AOvVaw0MER64fKjxQpgMZC_E-MgX"
-        style="padding:20px; border-radius: 100%;">
-        <img src="https://i.postimg.cc/BvtQqcWz/image-979.png"
-          style="width: 30px; border-radius: 100%; background-color: #2867b2; height: 30px;" alt="LinkedIn">
-      </a>
-    </div>
-
-    <div class="contact-btn-container">
-      <a target="_blank" href="https://www.luxury-method.com/contact" class="contact-btn">CONTACT FORM</a>
-    </div>
-
-    <h2>Frequently Asked Questions</h2>
-
-    <div class="faq-item">
-      <div class="faq-question" onclick="toggleFAQ(this)">
-        <h3><strong>How effective are luxury SEO services?</strong></h3>
-        <div class="faq-toggle">
-          <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
-            <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
-          </svg>
-        </div>
-      </div>
-      <div class="faq-answer">
-        <p>Luxury SEO services are highly effective in increasing organic visibility and attracting luxury clients. They
-          help maintain brand exclusivity while driving long-term growth.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question" onclick="toggleFAQ(this)">
-        <h3><strong>What services do luxury SEO agencies offer?</strong></h3>
-        <div class="faq-toggle">
-          <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
-            <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
-          </svg>
-        </div>
-      </div>
-      <div class="faq-answer">
-        <p>Luxury agencies like Luxury Method offer services including branding and marketing strategy, social media
-          management, content writing, web and app development, SEO, global expansion strategy and influencer marketing,
-          all tailored to elevate luxury brands' online presence.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question" onclick="toggleFAQ(this)">
-        <h3><strong>Why is SEO for luxury brands different from regular SEO?</strong></h3>
-        <div class="faq-toggle">
-          <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
-            <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
-          </svg>
-        </div>
-      </div>
-      <div class="faq-answer">
-        <p>Luxury SEO focuses on enhancing brand prestige, targeting luxury brands, and maintaining exclusivity, while
-          regular SEO prioritizes broader audience reach and volume.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question" onclick="toggleFAQ(this)">
-        <h3><strong>What's the best SEO strategy for luxury brands?</strong></h3>
-        <div class="faq-toggle">
-          <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
-            <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
-          </svg>
-        </div>
-      </div>
-      <div class="faq-answer">
-        <p>A combination of technical SEO, high-end content marketing, and strategic link-building is key. Personalized
-          SEO localization ensures brand consistency across global markets and builds strong relationships for better
-          business growth.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question" onclick="toggleFAQ(this)">
-        <h3><strong>How do SEO luxury brands enhance their visibility?</strong></h3>
-        <div class="faq-toggle">
-          <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
-            <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
-          </svg>
-        </div>
-      </div>
-      <div class="faq-answer">
-        <p>By leveraging organic search strategies, authoritative backlinks, and high-value content. SEO localisation
-          also strengthens presence in key markets.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question" onclick="toggleFAQ(this)">
-        <h3><strong>What improves strategies for effective branding in SEO luxury companies?</strong></h3>
-        <div class="faq-toggle">
-          <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
-            <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
-          </svg>
-        </div>
-      </div>
-      <div class="faq-answer">
-        <p>Strong storytelling, high-quality content and data-driven insights help refine audience targeting for better
-          engagement and strong branding.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question" onclick="toggleFAQ(this)">
-        <h3><strong>Why pick Luxury Method?</strong></h3>
-        <div class="faq-toggle">
-          <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
-            <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
-          </svg>
-        </div>
-      </div>
-      <div class="faq-answer">
-        <p>Luxury Method specialises in premium SEO strategies tailored for high-end brands. We combine deep industry
-          expertise with data-driven solutions to elevate your brand's online presence uniquely.</p>
-      </div>
-    </div>
-  </div>
-
-  <footer class="luxury-footer">
-    <div class="luxury-footer-content">
-      <div class="luxury-footer-contact">
-        <small>
-          <a target="_blank" style="font-weight: bold; text-decoration: none"
-            href="mailto:giacomo@luxury-method.com">giacomo@luxury-method.com</a>
-        </small>
-        <a href="tel:+393920034695"><small>(+39) 3920034695</small></a>
-        <small>P.IVA: 17906211002</small>
-      </div>
-
-      <div class="social-icons">
-        <div class="social-link">
-          <a href="https://www.instagram.com/luxurymethod_agency/" target="_blank">
-            <img src="https://i.postimg.cc/XJSn0GKM/image-976.png" alt="Instagram" />
-          </a>
-        </div>
-        <div class="social-link">
-          <a href="https://x.com/luxury_method" target="_blank">
-            <img src="https://luxury-method.vercel.app/twitter-logo.png" alt="X" />
-          </a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Back to Top Button -->
-  <div class="back-to-top" id="backToTop" onclick="scrollToTop()">
-    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false">
-      <path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z" fill="currentColor"></path>
-    </svg>
-  </div>
-
-  <!-- Scripts -->
-  <script>
-    function toggleFAQ(element) {
-      const answer = element.nextElementSibling;
-      const toggle = element.querySelector(".faq-toggle");
-
-      document.querySelectorAll(".faq-answer").forEach((item) => {
-        if (item !== answer) item.classList.remove("active");
-      });
-
-      document.querySelectorAll(".faq-toggle").forEach((item) => {
-        if (item !== toggle) item.classList.remove("active");
-      });
-
-      answer.classList.toggle("active");
-      toggle.classList.toggle("active");
-    }
-
-    function scrollToSection(id) {
-      const element = document.getElementById(id);
-      const yOffset = -20;
-      const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
-      window.scrollTo({ top: y, behavior: "smooth" });
-    }
-
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-
-    function handleBackToTopButton() {
-      const backToTopButton = document.getElementById('backToTop');
-      if (window.scrollY > 300) {
-        backToTopButton.classList.add('visible');
-      } else {
-        backToTopButton.classList.remove('visible');
-      }
-    }
-
-    function scrollSidebar(sidebarId, direction) {
-      const sidebar = document.querySelector(`.${sidebarId}`);
-      const scrollAmount = 180;
-
-      if (direction === 'left') {
-        sidebar.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-      } else {
-        sidebar.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-      }
-
-      setTimeout(() => { updateArrowVisibility(sidebarId); }, 300);
-    }
-
-    function updateArrowVisibility(sidebarId) {
-      const sidebar = document.querySelector(`.${sidebarId}`);
-      const leftArrow = sidebar.querySelector('.left-arrow');
-      const rightArrow = sidebar.querySelector('.right-arrow');
-
-      if (window.innerWidth <= 768) {
-        if (leftArrow) leftArrow.style.display = 'flex';
-        if (rightArrow) rightArrow.style.display = 'flex';
-
-        if (leftArrow) leftArrow.style.opacity = (sidebar.scrollLeft <= 10) ? '0.4' : '1';
-        if (rightArrow) rightArrow.style.opacity = (sidebar.scrollLeft + sidebar.clientWidth >= sidebar.scrollWidth - 10) ? '0.4' : '1';
-
-        if (sidebar.scrollWidth <= sidebar.clientWidth) {
-          if (leftArrow) leftArrow.style.display = 'none';
-          if (rightArrow) rightArrow.style.display = 'none';
+            answer.classList.toggle("active");
+            toggle.classList.toggle("active");
         }
-      }
-    }
 
-    function updateScrollButtonVisibility(sidebarId) {
-      const sidebar = document.querySelector(`.${sidebarId}`);
-      // Safety check for elements existing
-      const leftBtnContainer = document.getElementById(`${sidebarId === 'sidebar' ? 'sidebar1' : 'sidebar2'}-left`);
-      const rightBtnContainer = document.getElementById(`${sidebarId === 'sidebar' ? 'sidebar1' : 'sidebar2'}-right`);
-
-      if (!leftBtnContainer || !rightBtnContainer) return;
-
-      const leftBtn = leftBtnContainer.querySelector('.scroll-btn');
-      const rightBtn = rightBtnContainer.querySelector('.scroll-btn');
-
-      if (window.innerWidth <= 768) {
-        leftBtn.style.opacity = (sidebar.scrollLeft <= 10) ? '0.4' : '1';
-        rightBtn.style.opacity = (sidebar.scrollLeft + sidebar.clientWidth >= sidebar.scrollWidth - 10) ? '0.4' : '1';
-
-        if (sidebar.scrollWidth <= sidebar.clientWidth) {
-          leftBtnContainer.style.display = 'none';
-          rightBtnContainer.style.display = 'none';
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            const yOffset = -20;
+            const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
+            window.scrollTo({ top: y, behavior: "smooth" });
         }
-      }
-    }
 
-    function handleSidebar() {
-      const bottomsection = document.querySelector(".hero");
-      const sidebar = document.querySelector(".sidebar");
-      const Faq = document.querySelector(".faq-container");
-
-      const FaqBottom = Faq.getBoundingClientRect().top;
-      const topSectiontopBottom = bottomsection.getBoundingClientRect().bottom;
-
-      if (window.innerWidth <= 768) {
-        document.querySelectorAll('.scroll-btn-left, .scroll-btn-right').forEach(btn => {
-          btn.style.display = 'none';
-        });
-      }
-
-      if (topSectiontopBottom <= 100 && FaqBottom > 200) {
-        sidebar.style.transform = "translateY(0)";
-        if (window.innerWidth <= 768) {
-          const s1Left = document.getElementById('sidebar1-left');
-          const s1Right = document.getElementById('sidebar1-right');
-          if (s1Left) s1Left.style.display = 'block';
-          if (s1Right) s1Right.style.display = 'block';
-          updateScrollButtonVisibility('sidebar');
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
         }
-      } else {
-        sidebar.style.transform = "translateY(100vh)";
-      }
-    }
 
-    document.addEventListener("DOMContentLoaded", function () {
-      handleSidebar();
-      handleBackToTopButton();
-
-      const sidebar = document.querySelector('.sidebar');
-      if (sidebar) {
-        sidebar.addEventListener('scroll', function () {
-          updateScrollButtonVisibility('sidebar');
-        });
-      }
-
-      window.addEventListener('resize', function () {
-        handleSidebar();
-      });
-
-      if (window.innerWidth <= 768) {
-        const hoverElements = document.querySelectorAll('.hover-3d');
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
+        function handleBackToTopButton() {
+            const backToTopButton = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('visible');
             } else {
-              entry.target.classList.remove('is-visible');
+                backToTopButton.classList.remove('visible');
             }
-          });
-        }, {
-          threshold: 0.5 // earlier trigger for stronger effect
+        }
+
+        function scrollSidebar(sidebarId, direction) {
+            const sidebar = document.querySelector(`.${sidebarId}`);
+            const scrollAmount = 180;
+
+            if (direction === 'left') {
+                sidebar.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                sidebar.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+
+            //setTimeout(() => { updateArrowVisibility(sidebarId); }, 300);
+        }
+
+        // function updateArrowVisibility(sidebarId) {
+        //   const sidebar = document.querySelector(`.${sidebarId}`);
+        //   const leftArrow = sidebar.querySelector('.left-arrow');
+        //   const rightArrow = sidebar.querySelector('.right-arrow');
+
+        //   if (window.innerWidth <= 768) {
+        //     if (leftArrow) leftArrow.style.display = 'flex';
+        //     if (rightArrow) rightArrow.style.display = 'flex';
+
+        //     if (leftArrow) leftArrow.style.opacity = (sidebar.scrollLeft <= 10) ? '0.4' : '1';
+        //     if (rightArrow) rightArrow.style.opacity = (sidebar.scrollLeft + sidebar.clientWidth >= sidebar.scrollWidth - 10) ? '0.4' : '1';
+
+        //     if (sidebar.scrollWidth <= sidebar.clientWidth) {
+        //       if (leftArrow) leftArrow.style.display = 'none';
+        //       if (rightArrow) rightArrow.style.display = 'none';
+        //     }
+        //   }
+        // }
+
+        function handleSidebar() {
+            const bottomsection = document.querySelector(".hero");
+            const sidebar = document.querySelector(".sidebar");
+            const Faq = document.querySelector(".faq-container");
+
+            if (!bottomsection || !sidebar || !Faq) return;
+
+            const FaqBottom = Faq.getBoundingClientRect().top;
+            const topSectiontopBottom = bottomsection.getBoundingClientRect().bottom;
+
+            if (topSectiontopBottom <= 100 && FaqBottom > 200) {
+                sidebar.classList.add("main-container-visible");
+                sidebar.style.transform = "translateY(0)";
+            } else {
+                sidebar.classList.remove("main-container-visible");
+                sidebar.style.transform = "translateY(100vh)";
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            handleSidebar();
+            handleBackToTopButton();
+
+            const sidebar = document.querySelector('.sidebar');
+            // if (sidebar) {
+            //   sidebar.addEventListener('scroll', function () {
+            //     updateScrollButtonVisibility('sidebar');
+            //   });
+            // }
+
+            window.addEventListener('resize', function () {
+                handleSidebar();
+            });
+
+            // 3D Text Animation Observer
+            const textElements = document.querySelectorAll('h1, h2, h3, p, .faq-item');
+            const textObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    } else {
+                        entry.target.classList.remove('active');
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: "-20px 0px -20px 0px"
+            });
+
+            textElements.forEach(el => {
+                el.classList.add('reveal-text');
+                textObserver.observe(el);
+            });
+
+            // Image Hover Animation Observer (Mobile)
+            if (window.innerWidth <= 768) {
+                const hoverElements = document.querySelectorAll('.hover-3d');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                        } else {
+                            entry.target.classList.remove('is-visible');
+                        }
+                    });
+                }, {
+                    threshold: 0.5
+                });
+
+                hoverElements.forEach(el => {
+                    observer.observe(el);
+                });
+            }
+
         });
 
-        hoverElements.forEach(el => {
-          observer.observe(el);
+        window.addEventListener("scroll", function () {
+            handleSidebar();
+            handleBackToTopButton();
         });
-      }
-
-    });
-
-    window.addEventListener("scroll", function () {
-      handleSidebar();
-      handleBackToTopButton();
-    });
-  </script>
+    </script>
 </body>
 
-</html>
+</html>l

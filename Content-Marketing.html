@@ -20,7 +20,7 @@
             scroll-behavior: smooth;
             font-family: "Cormorant Garamond", serif;
             scrollbar-width: none;
-            animation-duration: 800ms;
+            /* animation-duration: 800ms; Removed global animation duration to prevent conflict with text reveal */
             color: #000;
         }
 
@@ -74,7 +74,39 @@
         }
 
         /* =========================================
-       3. LAYOUT & CONTAINERS
+       3. TEXT REVEAL ANIMATION (NEW)
+       ========================================= */
+        .reveal-text {
+            opacity: 0.1;
+            /* Start almost invisible */
+            transform: translateY(30px) scale(0.95) rotateX(10deg);
+            /* 3D Drop effect */
+            filter: blur(4px);
+            /* Luxury fog effect */
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+            /* Elegant easing */
+            transform-origin: center top;
+            will-change: opacity, transform, filter;
+        }
+
+        .reveal-text.active {
+            opacity: 1;
+            transform: translateY(0) scale(1) rotateX(0deg);
+            filter: blur(0);
+        }
+
+        /* Ensure FAQ items animate as a block */
+        .faq-item.reveal-text {
+            transform: translateY(20px);
+            /* Less rotation for FAQ to avoid layout shift issues */
+        }
+
+        .faq-item.reveal-text.active {
+            transform: translateY(0);
+        }
+
+        /* =========================================
+       4. LAYOUT & CONTAINERS
        ========================================= */
         .main-container {
             display: flex;
@@ -127,7 +159,7 @@
         }
 
         /* =========================================
-       4. COMPONENT: HERO SECTION
+       5. COMPONENT: HERO SECTION
        ========================================= */
         .hero {
             width: 100%;
@@ -160,7 +192,7 @@
         }
 
         /* =========================================
-       5. COMPONENT: SIDEBAR
+       6. COMPONENT: SIDEBAR
        ========================================= */
         .sidebar {
             width: 340px;
@@ -291,7 +323,7 @@
 
 
         /* =========================================
-       6. COMPONENT: IMAGES & MEDIA
+       7. COMPONENT: IMAGES & MEDIA
        ========================================= */
         .image {
             display: flex;
@@ -315,7 +347,7 @@
             align-items: center;
             margin-block: 40px;
             width: 100%;
-            
+
         }
 
         .industry_Image img {
@@ -364,7 +396,7 @@
         }
 
         /* =========================================
-       7. COMPONENT: FAQ
+       8. COMPONENT: FAQ
        ======================================== */
         .faq-container {
             margin-top: 20px;
@@ -436,7 +468,7 @@
         }
 
         /* =========================================
-       8. COMPONENT: FOOTER & CONTACT
+       9. COMPONENT: FOOTER & CONTACT
        ========================================= */
         .luxury-footer {
             background-image: url("https://luxury-method.vercel.app/Footer.png");
@@ -524,7 +556,7 @@
         }
 
         /* =========================================
-       9. COMPONENT: BACK TO TOP
+       10. COMPONENT: BACK TO TOP
        ========================================= */
         .back-to-top {
             position: fixed;
@@ -562,7 +594,7 @@
         }
 
         /* =========================================
-       10. MEDIA QUERIES (CONSOLIDATED)
+       11. MEDIA QUERIES (CONSOLIDATED)
        ========================================= */
 
         /* Max Width 768px (Tablet/Mobile) */
@@ -706,22 +738,7 @@
                 display: block;
             }
 
-            /* Scroll Animation State for Mobile */
-            /* .hover-3d {
-                transition:
-                    transform 0.75s cubic-bezier(0.25, 0.8, 0.25, 1),
-                    box-shadow 0.75s cubic-bezier(0.25, 0.8, 0.25, 1),
-                    opacity 0.55s ease-out;
-                transform: translateY(20px) scale(0.92);
-                opacity: 0;
-            }
-
-            .hover-3d.is-visible {
-                transform: translateY(0) scale(1);
-                box-shadow: 0 10px 18px rgba(0, 0, 0, 0.12);
-                opacity: 1;
-            }
-                 */
+            /* Scroll Animation State for Mobile - Images */
             .hover-3d {
                 transform: scale(0.85);
                 opacity: 0.3;
@@ -751,8 +768,6 @@
                 justify-content: center !important;
                 margin-top: 20px;
             }
-
-
         }
 
         @media (min-width: 769px) {
@@ -843,18 +858,6 @@
                     Who We Are
                 </button>
             </div>
-
-            <!-- Mobile Sidebar Scroll Controls -->
-            <!-- <div id="sidebar1-left" class="scroll-btn-left">
-        <button class="scroll-btn" onclick="scrollSidebar('sidebar', 'left')">
-          <svg width="24" height="24" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
-        </button>
-      </div>
-      <div id="sidebar1-right" class="scroll-btn-right">
-        <button class="scroll-btn" onclick="scrollSidebar('sidebar', 'right')">
-          <svg width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-        </button>
-      </div> -->
 
             <!-- Content -->
             <div class="content">
@@ -1177,11 +1180,13 @@
 
                 <p>
                     In hospitality, <b>content marketing for <a target="_blank"
-                            href="https://www.luxury-method.com/industries/luxury-hospitality-marketing-agency">luxury hotels</a></b>
+                            href="https://www.luxury-method.com/industries/luxury-hospitality-marketing-agency">luxury
+                            hotels</a></b>
                     focuses on the design, atmosphere, and service that set a hotel apart. A smart content marketing
                     plan for
                     hotels uses SEO, storytelling, and beautiful imagery to attract elite travelers and encourage
-                    bookings.</p>
+                    bookings.
+                </p>
             </div>
 
             <div id="content2" class="section">
@@ -1194,8 +1199,7 @@
                 </div>
 
                 <p>
-                    <b><a target="_blank"
-                            href="https://www.luxury-method.com/industries/luxury-fashion-marketing">Luxury
+                    <b><a target="_blank" href="https://www.luxury-method.com/industries/luxury-fashion-marketing">Luxury
                             fashion</a>
                         content marketing</b>
                     works best when it focuses on seasonal collections, couture, and the lifestyle behind the brand. It
@@ -1584,15 +1588,6 @@
             if (topSectiontopBottom <= 100 && FaqBottom > 200) {
                 sidebar.classList.add("main-container-visible"); // Use class instead of inline style
                 sidebar.style.transform = "translateY(0)";
-
-                // Make the first sidebar's scroll buttons active
-                // if (window.innerWidth <= 768) {
-                //   const s1Left = document.getElementById('sidebar1-left');
-                //   const s1Right = document.getElementById('sidebar1-right');
-                //   if(s1Left) s1Left.style.display = 'block';
-                //   if(s1Right) s1Right.style.display = 'block';
-                //   updateScrollButtonVisibility('sidebar');
-                // }
             } else {
                 // On desktop, we hide it. On mobile, behavior might vary, but keeping original logic:
                 sidebar.style.transform = "translateY(100vh)";
@@ -1624,6 +1619,7 @@
                 handleSidebar();
             });
 
+            // EXISTING IMAGE ANIMATION OBSERVER
             if (window.innerWidth <= 768) {
                 const hoverElements = document.querySelectorAll('.hover-3d');
                 const observer = new IntersectionObserver((entries) => {
@@ -1643,6 +1639,29 @@
                 });
             }
 
+            // ==========================================
+            // NEW TEXT REVEAL ANIMATION (ALL DEVICES)
+            // ==========================================
+            const textElements = document.querySelectorAll('.content p, .content h2, .content h3, .hero h1, .faq-item');
+
+            const textObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    } else {
+                        // Fade out when scrolling away
+                        entry.target.classList.remove('active');
+                    }
+                });
+            }, {
+                threshold: 0.15, // Trigger when 15% visible
+                rootMargin: "-20px 0px -20px 0px" // Slight offset so it doesn't trigger at very edge
+            });
+
+            textElements.forEach(el => {
+                el.classList.add('reveal-text'); // Add the animation class dynamically
+                textObserver.observe(el);
+            });
 
         });
 

@@ -20,7 +20,7 @@
             scroll-behavior: smooth;
             font-family: "Cormorant Garamond", serif;
             scrollbar-width: none;
-            animation-duration: 800ms;
+            /* animation-duration: 800ms; Removed to avoid conflict */
             color: #000;
         }
 
@@ -70,7 +70,38 @@
         }
 
         /* =========================================
-       3. HERO SECTION
+       3. TEXT REVEAL ANIMATION (NEW)
+       ========================================= */
+        .reveal-text {
+            opacity: 0.1;
+            /* Start almost invisible */
+            transform: translateY(30px) scale(0.95) rotateX(10deg);
+            /* 3D Drop effect */
+            filter: blur(4px);
+            /* Luxury fog effect */
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+            /* Elegant easing */
+            transform-origin: center top;
+            will-change: opacity, transform, filter;
+        }
+
+        .reveal-text.active {
+            opacity: 1;
+            transform: translateY(0) scale(1) rotateX(0deg);
+            filter: blur(0);
+        }
+
+        /* Ensure FAQ items animate as a block */
+        .faq-item.reveal-text {
+            transform: translateY(20px);
+        }
+
+        .faq-item.reveal-text.active {
+            transform: translateY(0);
+        }
+
+        /* =========================================
+       4. HERO SECTION
        ========================================= */
         .hero {
             width: 100%;
@@ -117,7 +148,7 @@
         }
 
         /* =========================================
-       4. LAYOUT & UTILITIES
+       5. LAYOUT & UTILITIES
        ========================================= */
         .main-container {
             display: flex;
@@ -180,7 +211,7 @@
         }
 
         /* =========================================
-       5. SIDEBAR
+       6. SIDEBAR
        ========================================= */
         .sidebar {
             width: 340px;
@@ -236,7 +267,7 @@
         }
 
         /* =========================================
-       6. IMAGES
+       7. IMAGES
        ========================================= */
         .image-container {
             display: flex;
@@ -299,7 +330,7 @@
         }
 
         /* =========================================
-       7. NAVIGATION CONTROLS (Arrows & Scroll)
+       8. NAVIGATION CONTROLS (Arrows & Scroll)
        ========================================= */
         .left-arrow,
         .right-arrow {
@@ -360,7 +391,7 @@
         }
 
         /* =========================================
-       8. FAQ SECTION
+       9. FAQ SECTION
        ========================================= */
         .faq-container {
             margin-top: 20px;
@@ -447,7 +478,7 @@
         }
 
         /* =========================================
-       9. CONTACT & FOOTER
+       10. CONTACT & FOOTER
        ========================================= */
         .contact-icons-container {
             display: flex;
@@ -561,7 +592,7 @@
        I am preserving the inline style behavior. */
 
         /* =========================================
-       10. BACK TO TOP
+       11. BACK TO TOP
        ========================================= */
         .back-to-top {
             position: fixed;
@@ -599,7 +630,7 @@
         }
 
         /* =========================================
-       11. MEDIA QUERIES
+       12. MEDIA QUERIES
        ========================================= */
 
         /* --- Tablet/Mobile (Max Width 768px) --- */
@@ -625,11 +656,12 @@
                 margin-left: 0px;
             }
 
-            /* Sidebar Changes */
+            /* Sidebar Changes - UPDATED FOR SPACING */
             .sidebar {
                 width: 100%;
                 height: 80px;
-                padding: 20px 0 0 0;
+                padding: 20px 20px 0 20px;
+                /* Added horizontal padding */
                 left: 0;
                 top: 0;
                 background-color: #ebe0d5;
@@ -638,23 +670,26 @@
                 overflow-y: hidden;
                 flex-direction: row;
                 white-space: nowrap;
-                gap: 4px;
+                gap: 12px;
+                /* Increased gap from 4px to 12px */
                 justify-content: flex-start;
-                /* Reset justify content for horizontal scroll */
             }
 
             .sidebar button {
-                font-size: 2.5vw;
+                font-size: 3.5vw;
+                /* Increased slightly from 2.5vw */
+                padding: 10px 16px;
+                /* Better touch targets */
             }
 
-            /* Scroll Buttons Visible */
+            /* Hiding scroll buttons as requested */
             .scroll-btn-left,
             .scroll-btn-right {
-                display: block;
+                display: none !important;
             }
 
             .scroll-btn {
-                display: flex;
+                display: none;
             }
 
             .left-arrow,
@@ -680,15 +715,6 @@
                 justify-content: center !important;
             }
 
-            /* .luxury-footer-content {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .luxury-footer-contact {
-                margin-bottom: 20px;
-                text-align: center;
-            } */
             .luxury-footer-content {
                 flex-direction: column;
                 align-items: center;
@@ -698,11 +724,6 @@
                 margin-bottom: 20px;
                 text-align: center;
                 /* optional, to center text */
-            }
-
-            .social-icons {
-                justify-content: center !important;
-                margin-top: 20px;
             }
 
             .social-icons {
@@ -820,18 +841,6 @@
                 <button onclick="scrollToSection('impac')">The Industries We Work With</button>
                 <button onclick="scrollToSection('brand')">Who We Are</button>
             </div>
-
-            <!-- Scroll Buttons (Mobile) -->
-            <!-- <div id="sidebar1-left" class="scroll-btn-left">
-        <button class="scroll-btn" onclick="scrollSidebar('sidebar', 'left')">
-          <svg width="24" height="24" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
-        </button>
-      </div>
-      <div id="sidebar1-right" class="scroll-btn-right">
-        <button class="scroll-btn" onclick="scrollSidebar('sidebar', 'right')">
-          <svg width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-        </button>
-      </div> -->
 
             <!-- Main Content Area -->
             <div class="content">
@@ -1203,7 +1212,8 @@
                 <h3 class="mt-80" style="font-weight: bold;">Luxury Influencer Marketing for Lifestyle</h3>
 
                 <div class="industry_Image img-lifestyle">
-                    <img src="https://luxury-method.vercel.app/LIFESTYLE.png" class="hover-3d" alt="Lifestyle Industry">
+                    <img src="https://luxury-method.vercel.app/LIFESTYLE.png" class="hover-3d"
+                        alt="Lifestyle Industry">
                 </div>
 
                 <p>Affluent consumers today don't just buy products—they invest in experiences, which is why luxury
@@ -1211,7 +1221,8 @@
                     marketing services are embracing influencer partnerships.</p>
 
                 <p>Through a trusted <a target="_blank"
-                        href="https://www.luxury-method.com/industries/luxury-lifestyle-marketing">luxury lifestyle</a>,
+                        href="https://www.luxury-method.com/industries/luxury-lifestyle-marketing">luxury
+                        lifestyle</a>,
                     brands can connect with influencers who inspire through curated, high-end content.
                     <b>Influencer marketing in travel and tourism</b> can authentically highlight luxury destinations,
                     prestige
@@ -1666,6 +1677,31 @@
                     observer.observe(el);
                 });
             }
+
+            // ==========================================
+            // NEW TEXT REVEAL ANIMATION (ALL DEVICES)
+            // ==========================================
+            // Selector targets hero title, main content headings/paras, FAQ headers, FAQ intro, and FAQ items
+            const textElements = document.querySelectorAll('h1, .top-section p, .content h2, .content h3, .content p, .faq-container h2, .faq-intro, .faq-item');
+
+            const textObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    } else {
+                        // Fade out when scrolling away
+                        entry.target.classList.remove('active');
+                    }
+                });
+            }, {
+                threshold: 0.15, // Trigger when 15% visible
+                rootMargin: "-20px 0px -20px 0px" // Slight offset so it doesn't trigger at very edge
+            });
+
+            textElements.forEach(el => {
+                el.classList.add('reveal-text'); // Add the animation class dynamically
+                textObserver.observe(el);
+            });
 
         });
 
