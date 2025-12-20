@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy - Luxury Method</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* =========================================
+       1. RESET & GLOBAL STYLES (MATCHING REFERENCE)
+       ========================================= */
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: "Cormorant Garamond", serif;
+            scrollbar-width: none;
+            color: #000;
+        }
+
+        body {
+            margin: 0;
+            background-color: #ebe0d5;
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        a {
+            color: inherit;
+            transition: opacity 0.3s;
+        }
+        
+        a:hover {
+            opacity: 0.7;
+        }
+
+        a:visited {
+            color: #000;
+        }
+
+        /* =========================================
+       2. TYPOGRAPHY
+       ========================================= */
+        h1 {
+            color: #ebe0d5;
+            text-align: center;
+            z-index: 2;
+            font-weight: normal;
+            font-size: 4rem;
+            letter-spacing: 0.5rem;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            text-align: center;
+            text-decoration: underline;
+            margin-top: 60px;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+        }
+
+        h3 {
+            text-align: left;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        p, li {
+            font-size: 1.3rem !important;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            margin-bottom: 30px;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        strong {
+            font-weight: 700;
+        }
+
+        /* =========================================
+       3. ANIMATIONS
+       ========================================= */
+        .reveal-text {
+            opacity: 0.1;
+            transform: translateY(30px) scale(0.95) rotateX(10deg);
+            filter: blur(4px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+            transform-origin: center top;
+            will-change: opacity, transform, filter;
+        }
+
+        .reveal-text.active {
+            opacity: 1;
+            transform: translateY(0) scale(1) rotateX(0deg);
+            filter: blur(0);
+        }
+
+        /* Lang Fade Animation */
+        .lang-section {
+            transition: opacity 0.5s ease-in-out;
+            opacity: 1;
+        }
+        .lang-section.hidden {
+            display: none;
+            opacity: 0;
+        }
+
+        /* =========================================
+       4. LAYOUT
+       ========================================= */
+        .hero {
+            width: 100%;
+            height: 60vh;
+            background-image: url('https://images.pexels.com/photos/3771097/pexels-photo-3771097.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-overlay {
+            background-color: black;
+            opacity: 0.5;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .content-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 5vw;
+            background-color: #ebe0d5;
+            min-height: 80vh;
+        }
+
+        /* =========================================
+       5. COMPONENTS
+       ========================================= */
+        
+        /* Language Toggle Switch */
+        .lang-toggle {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 90px;
+            height: 40px;
+            background: rgba(235, 224, 213, 0.6); /* Matches background, semi-transparent */
+            border: 1px solid #000;
+            border-radius: 40px;
+            cursor: pointer;
+            padding: 4px;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .lang-toggle:hover {
+            transform: scale(1.05);
+        }
+
+        .toggle-slider {
+            position: absolute;
+            left: 4px;
+            top: 4px;
+            width: 40px; /* ~Half width minus padding */
+            height: 30px;
+            background-color: #000;
+            border-radius: 30px;
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Bouncy effect */
+            z-index: 1;
+        }
+
+        .lang-text {
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 700;
+            transition: color 0.4s ease;
+            user-select: none;
+            line-height: 1;
+        }
+
+        /* Default State (EN Active) */
+        .lang-text.en { color: #fff; }
+        .lang-text.it { color: #000; opacity: 0.6; }
+
+        /* Active State (IT Active) */
+        .lang-toggle.it-mode .toggle-slider {
+            transform: translateX(40px);
+        }
+
+        .lang-toggle.it-mode .lang-text.en {
+            color: #000;
+            opacity: 0.6;
+        }
+
+        .lang-toggle.it-mode .lang-text.it {
+            color: #fff;
+            opacity: 1;
+        }
+
+
+        /* Icons in Headers */
+        .section-icon {
+            width: 28px;
+            height: 28px;
+            stroke-width: 1.5;
+            opacity: 0.7;
+        }
+
+        /* Policy Box Styling */
+        .policy-section {
+            margin-bottom: 60px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            padding-bottom: 40px;
+        }
+
+        .policy-section:last-child {
+            border-bottom: none;
+        }
+
+        /* =========================================
+       6. FOOTER
+       ========================================= */
+        .luxury-footer {
+            background-image: url("https://luxury-method.vercel.app/Footer.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 100px 0;
+            color: #e5d7b1;
+        }
+
+        .luxury-footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 1200px;
+            width: 90%;
+            margin: auto;
+        }
+
+        .luxury-footer-contact small, 
+        .luxury-footer-contact a {
+            display: block;
+            margin-bottom: 18px;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+            color: #e5d7b1;
+            text-decoration: none;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .social-link img {
+            width: 40px;
+            object-fit: contain;
+        }
+
+        /* Back to top */
+        .back-to-top {
+            position: fixed;
+            bottom: 60px;
+            right: 30px;
+            z-index: 999;
+            width: 50px;
+            height: 50px;
+            background-color: #ffffff;
+            color: #000;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-to-top:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* =========================================
+       7. MOBILE QUERY
+       ========================================= */
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+                letter-spacing: 0.2rem;
+                padding: 0 10px;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+
+            h3 {
+                font-size: 1.5rem;
+            }
+
+            .content-wrapper {
+                padding: 40px 20px;
+            }
+
+            .lang-toggle {
+                top: 20px;
+                right: 20px;
+            }
+
+            .luxury-footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 30px;
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+
+            .hero {
+                background-attachment: scroll; /* Fix for mobile parallax jitters */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Language Toggle Switch -->
+    <div class="lang-toggle" id="langToggle" onclick="toggleLanguage()">
+        <div class="toggle-slider"></div>
+        <span class="lang-text en">EN</span>
+        <span class="lang-text it">IT</span>
+    </div>
+
+    <!-- Hero -->
+    <div class="hero">
+        <div class="hero-overlay"></div>
+        <h1 id="page-title" class="reveal-text">PRIVACY POLICY</h1>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content-wrapper">
+        
+        <!-- ENGLISH CONTENT -->
+        <div id="content-en" class="lang-section">
+            <div class="reveal-text">
+                <p><strong>Luxury Method</strong> ("we", "our", "us") provides business consulting and marketing services. This Privacy Policy explains what personal data we collect on our website <strong>www.luxury-method.com</strong>, why we collect it, how we use it, who we share it with, how long we keep it, and your rights.</p>
+            </div>
+
+            <div class="policy-section reveal-text">
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    1. Personal data we collect
+                </h3>
+                <p>We only collect personal data that you voluntarily provide to us via the contact form on our website:</p>
+                <ul>
+                    <li>Full name</li>
+                    <li>Email address</li>
+                    <li>Phone number</li>
+                    <li>Message content (any text you include in the message field)</li>
+                </ul>
+                <p>We also collect limited technical data automatically for site operation (only if present): IP address and basic technical details logged by Google Sites hosting. We do not use analytics or tracking cookies on the site.</p>
+            </div>
+
+            <div class="policy-section reveal-text">
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    2. How we collect data
+                </h3>
+                <p><strong>Contact form:</strong> when you submit the contact form, your message is delivered to our email address and the submission is stored in a Google Sheet for internal management and follow-up.</p>
+                <p><strong>Emails:</strong> if you email us directly, those emails are stored in our mailbox.</p>
+                <p><strong>No other tools:</strong> we do not use third-party marketing platforms, pixels, heatmaps, or analytics services on the site.</p>
+            </div>
+
+            <div class="policy-section reveal-text">
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    3. Purposes of processing and legal basis
+                </h3>
+                <p>We process your personal data for the following purposes:</p>
+                <ul>
+                    <li>To respond to your inquiries and messages and to carry out pre-contractual measures you request (Legal basis: performance of pre-contractual steps / consent when you send the form).</li>
+                    <li>To manage and administrate communications (Legal basis: legitimate interest in maintaining client communications).</li>
+                    <li>To comply with legal obligations (e.g., accounting/tax requirements) if applicable.</li>
+                </ul>
+                <p>We do not use your data for automated profiling, marketing, or sales lists unless you explicitly agree otherwise.</p>
+            </div>
+
+            <div class="policy-section reveal-text">
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    4. How long we keep your data (retention)
+                </h3>
+                <ul>
+                    <li>Contact form submissions and related email correspondence are retained for up to <strong>24 months</strong> from the date of contact, unless you request earlier deletion.</li>
+                    <li>If a contractual relationship is established, we will retain records for the period required by law (e.g., tax/accounting obligations) and as necessary for the performance of the contract.</li>
+                </ul>
+                <p>You may request deletion or restriction of processing at any time (see "Your rights" below). If you prefer a different retention period, contact us and we will evaluate your request.</p>
+            </div>
+
+            <div class="policy-section reveal-text">
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    5. Recipients and third-party processors
+                </h3>
+                <p>We do not sell or rent personal data.</p>
+                <p>We use the following third-party service providers as processors to handle data on our behalf:</p>
+                <ul>
+                    <li><strong>Google LLC</strong> - for email (Gmail/Google Workspace) and Google Sheets where form submissions are stored. Google acts as a data processor under its agreements with us. Data processed by Google may be stored on servers outside the EEA; appropriate safeguards are in place via Google's standard contractual mechanisms.</li>
+                </ul>
+            </div>
+
+            <div class="policy-section reveal-text">
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                    6. Cookies and similar technologies
+                </h3>
+                <p>This website uses only essential/technical cookies required for the operation of Google Sites (if any). We do not use analytics, marketing, or profiling cookies.</p>
+            </div>
+
+            <div class="policy-section reveal-text">
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    7. Data security
+                </h3>
+                <p>We implement reasonable technical and organizational measures to protect your personal data against unauthorized access, disclosure, loss, or alteration. However, no method of transmission over the internet or electronic storage is completely secure; absolute security cannot be guaranteed.</p>
+            </div>
+
+            <div class="policy-section reveal-text">
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    8. Your rights
+                </h3>
+                <p>Under applicable data protection laws (including the EU GDPR where applicable), you have the right to:</p>
+                <ul>
+                    <li>Request access to your personal data.</li>
+                    <li>Request rectification of inaccurate or incomplete data.</li>
+                    <li>Request erasure ("right to be forgotten") where applicable.</li>
+                    <li>Request restriction of processing.</li>
+                    <li>Object to processing where the legal basis is our legitimate interest.</li>
+                    <li>Request portability of certain data you provided to us.</li>
+                    <li>Withdraw consent at any time when processing is based on consent.</li>
+                    <li>Lodge a complaint with a supervisory authority (in Italy: Garante per la protezione dei dati personali).</li>
+                </ul>
+            </div>
+
+            <div class="policy-section reveal-text">
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12"/></svg>
+                    9. How to request deletion or export of your data
+                </h3>
+                <p>To request deletion or export, send an email to <strong>giacomo@luxury-method.com</strong> with the subject line "Data Subject Request - [Your name]" and tell us what you want (access, deletion, export, rectification). Please include enough information to allow us to verify your identity.</p>
+            </div>
+
+            <div class="policy-section reveal-text">
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                    10. Children
+                </h3>
+                <p>This website is not directed to children under 16. We do not knowingly collect personal data from children. If you believe we have collected such data, please contact us to request deletion.</p>
+            </div>
+
+            <div class="policy-section reveal-text">
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    13. Contact
+                </h3>
+                <p>For any questions, to exercise your rights, or to make a complaint, contact:</p>
+                <p>
+                    <strong>Email:</strong> giacomo@luxury-method.com<br>
+                    <strong>Phone:</strong> (+39) 392 003 4695<br>
+                    <strong>Name:</strong> Giacomo Rotella<br>
+                    <strong>Address:</strong> Via Tor Vergata, 14, 00133 Rome, Italy
+                </p>
+            </div>
+
+        </div>
+
+        <!-- ITALIAN CONTENT -->
+        <div id="content-it" class="lang-section hidden">
+            <div class="reveal-text">
+                <p><strong>Luxury Method</strong> ("noi", "nostro", "ci") fornisce servizi di consulenza aziendale e marketing. Questa Informativa sulla Privacy spiega quali dati personali raccogliamo sul nostro sito web <strong>www.luxury-method.com</strong>, perché li raccogliamo, come li utilizziamo, con chi li condividiamo, per quanto tempo li conserviamo e i tuoi diritti.</p>
+            </div>
+
+            <div class="policy-section reveal-text">
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    1. Dati personali che raccogliamo
+                </h3>
+                <p>Raccogliamo solo i dati personali che ci fornisci volontariamente tramite il modulo di contatto sul nostro sito web:</p>
+                <ul>
+                    <li>Nome e cognome</li>
+                    <li>Indirizzo email</li>
+                    <li>Numero di telefono</li>
+                    <li>Contenuto del messaggio (qualsiasi testo incluso nel campo del messaggio)</li>
+                </ul>
+                <p>Raccogliamo inoltre limitati dati tecnici automaticamente per il funzionamento del sito (solo se presenti): indirizzo IP e dettagli tecnici di base registrati dall'hosting di Google Sites. Non utilizziamo cookie analitici o di tracciamento sul sito.</p>
+            </div>
+
+            <div class="policy-section reveal-text">
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    2. Come raccogliamo i dati
+                </h3>
+                <p><strong>Modulo di contatto:</strong> quando invii il modulo di contatto, il tuo messaggio viene consegnato al nostro indirizzo email e l'invio viene archiviato in un foglio Google (Google Sheet) per la gestione interna e il follow-up.</p>
+                <p><strong>Email:</strong> se ci invii un'email direttamente, quelle email vengono archiviate nella nostra casella di posta.</p>
+                <p><strong>Nessun altro strumento:</strong> non utilizziamo piattaforme di marketing di terze parti, pixel, mappe di calore o servizi di analisi sul sito.</p>
+            </div>
+
+            <div class="policy-section reveal-text">
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    3. Finalità del trattamento e base giuridica
+                </h3>
+                <p>Trattiamo i tuoi dati personali per le seguenti finalità:</p>
+                <ul>
+                    <li>Per rispondere alle tue richieste e messaggi ed eseguire misure precontrattuali da te richieste (Base giuridica: esecuzione di misure precontrattuali / consenso quando invii il modulo).</li>
+                    <li>Per gestire e amministrare le comunicazioni (Base giuridica: legittimo interesse a mantenere le comunicazioni con i clienti).</li>
+                    <li>Per adempiere agli obblighi legali (es. obblighi contabili/fiscali) se applicabile.</li>
+                </ul>
+                <p>Non utilizziamo i tuoi dati per profilazione automatizzata, marketing o liste di vendita a meno che tu non acconsenta esplicitamente.</p>
+            </div>
+
+            <div class="policy-section reveal-text">
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    4. Per quanto tempo conserviamo i dati (conservazione)
+                </h3>
+                <ul>
+                    <li>Le richieste tramite modulo di contatto e la relativa corrispondenza via email vengono conservate per un massimo di <strong>24 mesi</strong> dalla data di contatto, a meno che tu non richieda una cancellazione anticipata.</li>
+                    <li>Se viene stabilito un rapporto contrattuale, conserveremo i registri per il periodo richiesto dalla legge (es. obblighi fiscali/contabili) e per quanto necessario per l'esecuzione del contratto.</li>
+                </ul>
+                <p>Puoi richiedere la cancellazione o la limitazione del trattamento in qualsiasi momento (vedi "I tuoi diritti" di seguito). Se preferisci un periodo di conservazione diverso, contattaci e valuteremo la tua richiesta.</p>
+            </div>
+
+            <div class="policy-section reveal-text">
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    5. Destinatari e responsabili del trattamento
+                </h3>
+                <p>Non vendiamo né affittiamo dati personali.</p>
+                <p>Utilizziamo i seguenti fornitori di servizi terzi come responsabili del trattamento per gestire i dati per nostro conto:</p>
+                <ul>
+                    <li><strong>Google LLC</strong> - per le email (Gmail/Google Workspace) e Fogli Google dove vengono archiviati i dati dei moduli. Google agisce come responsabile del trattamento in base ai suoi accordi con noi. I dati elaborati da Google possono essere archiviati su server al di fuori del SEE; adeguate garanzie sono in atto tramite i meccanismi contrattuali standard di Google.</li>
+                </ul>
+            </div>
+
+            <div class="policy-section reveal-text">
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                    6. Cookie e tecnologie simili
+                </h3>
+                <p>Questo sito web utilizza solo cookie essenziali/tecnici necessari per il funzionamento di Google Sites (se presenti). Non utilizziamo cookie analitici, di marketing o di profilazione.</p>
+            </div>
+
+            <div class="policy-section reveal-text">
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    7. Sicurezza dei dati
+                </h3>
+                <p>Implementiamo ragionevoli misure tecniche e organizzative per proteggere i tuoi dati personali da accessi non autorizzati, divulgazione, perdita o alterazione. Tuttavia, nessun metodo di trasmissione via internet o archiviazione elettronica è completamente sicuro; la sicurezza assoluta non può essere garantita.</p>
+            </div>
+
+            <div class="policy-section reveal-text">
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    8. I tuoi diritti
+                </h3>
+                <p>Ai sensi delle leggi applicabili sulla protezione dei dati (incluso il GDPR UE ove applicabile), hai il diritto di:</p>
+                <ul>
+                    <li>Richiedere l'accesso ai tuoi dati personali.</li>
+                    <li>Richiedere la rettifica di dati inesatti o incompleti.</li>
+                    <li>Richiedere la cancellazione ("diritto all'oblio") ove applicabile.</li>
+                    <li>Richiedere la limitazione del trattamento.</li>
+                    <li>Opporti al trattamento ove la base giuridica sia il nostro legittimo interesse.</li>
+                    <li>Richiedere la portabilità di determinati dati che ci hai fornito.</li>
+                    <li>Ritirare il consenso in qualsiasi momento quando il trattamento è basato sul consenso.</li>
+                    <li>Proporre reclamo a un'autorità di controllo (in Italia: Garante per la protezione dei dati personali).</li>
+                </ul>
+            </div>
+
+            <div class="policy-section reveal-text">
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12"/></svg>
+                    9. Come richiedere la cancellazione o l'esportazione dei tuoi dati
+                </h3>
+                <p>Per richiedere la cancellazione o l'esportazione, invia un'email a <strong>giacomo@luxury-method.com</strong> con oggetto "Richiesta dell'interessato - [Il tuo nome]" e dicci cosa desideri (accesso, cancellazione, esportazione, rettifica). Includi informazioni sufficienti per permetterci di verificare la tua identità.</p>
+            </div>
+
+            <div class="policy-section reveal-text">
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                    10. Minori
+                </h3>
+                <p>Questo sito web non è diretto a minori di 16 anni. Non raccogliamo consapevolmente dati personali da minori. Se ritieni che abbiamo raccolto tali dati, ti preghiamo di contattarci per richiederne la cancellazione.</p>
+            </div>
+
+            <div class="policy-section reveal-text">
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    13. Contatti
+                </h3>
+                <p>Per qualsiasi domanda, per esercitare i tuoi diritti o per presentare un reclamo, contatta:</p>
+                <p>
+                    <strong>Email:</strong> giacomo@luxury-method.com<br>
+                    <strong>Telefono:</strong> (+39) 392 003 4695<br>
+                    <strong>Nome:</strong> Giacomo Rotella<br>
+                    <strong>Indirizzo:</strong> Via Tor Vergata, 14, 00133 Roma, Italia
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="luxury-footer">
+        <div class="luxury-footer-content">
+            <div class="luxury-footer-contact">
+                <small>
+                    <a target="_blank" style="font-weight: bold; text-decoration: none"
+                        href="mailto:giacomo@luxury-method.com">giacomo@luxury-method.com</a>
+                </small>
+                <a href="tel:+393920034695"><small>(+39) 3920034695</small></a>
+                <small>P.IVA: 17906211002</small>
+            </div>
+
+            <div class="social-icons">
+                <div class="social-link">
+                    <a href="https://www.instagram.com/luxurymethod_agency/" target="_blank">
+                        <img src="https://i.postimg.cc/XJSn0GKM/image-976.png" alt="Instagram" />
+                    </a>
+                </div>
+                <div class="social-link">
+                    <a href="https://x.com/luxury_method" target="_blank">
+                        <img src="https://luxury-method.vercel.app/twitter-logo.png" alt="X" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false">
+            <path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z" fill="currentColor"></path>
+        </svg>
+    </div>
+
+    <script>
+        // Language Toggle Logic
+        let currentLang = 'en';
+        
+        function toggleLanguage() {
+            const toggleContainer = document.getElementById('langToggle');
+            const enContent = document.getElementById('content-en');
+            const itContent = document.getElementById('content-it');
+            const mainTitle = document.getElementById('page-title');
+            
+            // Fade out
+            enContent.style.opacity = '0';
+            itContent.style.opacity = '0';
+
+            setTimeout(() => {
+                if (currentLang === 'en') {
+                    // Switch to IT
+                    enContent.classList.add('hidden');
+                    itContent.classList.remove('hidden');
+                    toggleContainer.classList.add('it-mode'); // Moves slider
+                    currentLang = 'it';
+                    mainTitle.innerText = "INFORMATIVA SULLA PRIVACY";
+                    // Fade in IT
+                    setTimeout(() => itContent.style.opacity = '1', 50);
+                } else {
+                    // Switch to EN
+                    itContent.classList.add('hidden');
+                    enContent.classList.remove('hidden');
+                    toggleContainer.classList.remove('it-mode'); // Moves slider back
+                    currentLang = 'en';
+                    mainTitle.innerText = "PRIVACY POLICY";
+                    // Fade in EN
+                    setTimeout(() => enContent.style.opacity = '1', 50);
+                }
+            }, 250); // Wait for fade out
+        }
+
+        // Animation Logic (Intersection Observer)
+        document.addEventListener("DOMContentLoaded", function () {
+            const textElements = document.querySelectorAll('.reveal-text');
+
+            const textObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            textElements.forEach(el => {
+                textObserver.observe(el);
+            });
+            
+            // Initial Check for visible elements
+            setTimeout(() => {
+                textElements.forEach(el => {
+                    if(el.getBoundingClientRect().top < window.innerHeight) {
+                        el.classList.add('active');
+                    }
+                });
+            }, 100);
+        });
+
+        // Back to Top Functionality
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+        window.addEventListener("scroll", function () {
+            const backToTopButton = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+    </script>
+</body>
+</html>
