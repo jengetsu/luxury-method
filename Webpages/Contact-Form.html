@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Contact Us - Luxury Method</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,6 +17,7 @@
             box-sizing: border-box;
             font-family: "Cormorant Garamond", serif;
             outline: none;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -24,12 +25,14 @@
             padding: 0;
             background-color: #ebe0d5;
             display: flex;
-            flex-direction: column; /* Stack form and footer */
+            flex-direction: column;
+            /* Use dvh for dynamic viewport height on mobile browsers */
             min-height: 100vh;
+            min-height: 100dvh; 
             overflow-x: hidden;
         }
 
-        /* Scrollbar styling for Webkit */
+        /* Scrollbar styling */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -41,13 +44,13 @@
             border-radius: 10px;
         }
 
-        /* Wrapper to center form in available space */
+        /* Wrapper to center form */
         .page-content {
             flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 80px 20px; /* Padding to ensure toggle isn't clipped */
+            padding: 80px 20px;
             width: 100%;
         }
 
@@ -87,7 +90,7 @@
        ========================================= */
         .lang-toggle {
             position: absolute;
-            top: -60px; /* Moved up slightly */
+            top: -60px;
             right: 0;
             z-index: 1000;
             display: flex;
@@ -176,6 +179,7 @@
             transition: all 0.3s ease;
             color: #000;
             font-weight: 500;
+            -webkit-appearance: none; /* Removes default shadow on iOS */
         }
 
         textarea {
@@ -262,6 +266,7 @@
             justify-content: center;
             align-items: center;
             gap: 10px;
+            -webkit-appearance: none; /* iOS Button fix */
         }
 
         button:hover {
@@ -288,7 +293,7 @@
         .error { color: #8b0000; }
 
         /* =========================================
-       6. FOOTER (Taken from Privacy Policy)
+       6. FOOTER
        ========================================= */
         .luxury-footer {
             background-image: url("https://luxury-method.vercel.app/Footer.png");
@@ -333,11 +338,35 @@
         }
 
         /* =========================================
-       7. MOBILE RESPONSIVENESS
+       7. MOBILE OPTIMIZATION (iPhone & Small Screens)
        ========================================= */
         @media (max-width: 768px) {
-            h2 { font-size: 2.2rem; }
-            .lang-toggle { top: -45px; }
+            
+            /* Add bottom padding so content isn't covered by mobile browser bars */
+            .page-content {
+                padding: 40px 20px 100px 20px; 
+                align-items: flex-start; /* Prevents vertical centering from pushing content off-screen */
+            }
+
+            /* Compact the form on mobile */
+            h2 { 
+                font-size: 2.2rem; 
+                margin-bottom: 20px;
+            }
+            
+            .input-group {
+                margin-bottom: 15px; /* Tighter spacing */
+            }
+
+            input, select, textarea { 
+                font-size: 1rem; /* Prevents auto-zoom on iOS */
+                padding-top: 12px; 
+                padding-bottom: 12px; 
+            }
+
+            .lang-toggle { 
+                top: -50px; 
+            }
             
             .luxury-footer-content {
                 flex-direction: column;
@@ -348,10 +377,6 @@
             
             .social-icons {
                 justify-content: center;
-            }
-            
-            .page-content {
-                padding: 60px 20px;
             }
         }
     </style>
