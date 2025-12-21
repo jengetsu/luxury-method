@@ -169,7 +169,8 @@
             pointer-events: none;
         }
 
-        input, select, textarea {
+        /* Generic Input Styles (Excluding Checkbox) */
+        input:not([type="checkbox"]), select, textarea {
             width: 100%;
             padding: 15px 15px 15px 45px;
             font-size: 1.1rem;
@@ -179,7 +180,7 @@
             transition: all 0.3s ease;
             color: #000;
             font-weight: 500;
-            -webkit-appearance: none; /* Removes default shadow on iOS */
+            -webkit-appearance: none; /* Removes default shadow on iOS for text inputs */
         }
 
         textarea {
@@ -241,6 +242,11 @@
             accent-color: #000;
             cursor: pointer;
             padding: 0;
+            /* Force visibility and default browser style for checkbox */
+            -webkit-appearance: auto;
+            appearance: auto;
+            background-color: transparent;
+            border: initial;
         }
 
         .checkbox-group a {
@@ -358,7 +364,7 @@
                 margin-bottom: 15px; /* Tighter spacing */
             }
 
-            input, select, textarea { 
+            input:not([type="checkbox"]), select, textarea { 
                 font-size: 1rem; /* Prevents auto-zoom on iOS */
                 padding-top: 12px; 
                 padding-bottom: 12px; 
