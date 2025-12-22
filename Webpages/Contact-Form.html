@@ -366,10 +366,8 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            padding: 60px 0; /* Reduced padding for mobile fit */
+            padding: 100px 0;
             color: #e5d7b1;
-            width: 100%;
-            margin-top: auto;
         }
 
         .luxury-footer-content {
@@ -381,12 +379,16 @@
             margin: auto;
         }
 
-        .luxury-footer-contact small, 
-        .luxury-footer-contact a {
+        .luxury-footer-contact small {
             display: block;
-            margin-bottom: 15px;
-            font-size: 16px;
+            margin-bottom: 18px;
+            font-size: 18px;
             letter-spacing: 0.5px;
+            color: #e5d7b1;
+            text-decoration: none;
+        }
+
+        .luxury-footer-contact a {
             color: #e5d7b1;
             text-decoration: none;
         }
@@ -395,11 +397,12 @@
             display: flex;
             gap: 20px;
             justify-content: flex-end;
+            /* desktop: right */
             align-items: center;
         }
 
         .social-link img {
-            width: 35px;
+            width: 40px;
             object-fit: contain;
         }
 
@@ -445,6 +448,32 @@
                 height: 50px !important;
                 line-height: 50px !important;
             }
+        }
+
+        @media screen and (max-width: 768px) {
+            .luxury-footer-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .luxury-footer-contact {
+                margin-bottom: 20px;
+                text-align: center;
+                /* optional, to center text */
+            }
+
+            .social-icons {
+                justify-content: center !important;
+                margin-top: 20px;
+            }
+        }
+         @media screen and (max-width: 400px) {
+            .luxury-footer-content {
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+            }
+
         }
     </style>
 </head>
@@ -552,7 +581,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="luxury-footer">
+     <footer class="luxury-footer">
         <div class="luxury-footer-content">
             <div class="luxury-footer-contact">
                 <small>
