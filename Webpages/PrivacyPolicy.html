@@ -13,8 +13,8 @@
 
     <style>
         /* =========================================
-       1. RESET & GLOBAL STYLES (MATCHING REFERENCE)
-       ========================================= */
+        1. RESET & GLOBAL STYLES
+        ========================================= */
         * {
             box-sizing: border-box;
             scroll-behavior: smooth;
@@ -51,8 +51,8 @@
         }
 
         /* =========================================
-       2. TYPOGRAPHY
-       ========================================= */
+        2. TYPOGRAPHY
+        ========================================= */
         h1 {
             color: #ebe0d5;
             text-align: center;
@@ -101,8 +101,8 @@
         }
 
         /* =========================================
-       3. ANIMATIONS
-       ========================================= */
+        3. ANIMATIONS
+        ========================================= */
         .reveal-text {
             opacity: 0.1;
             transform: translateY(30px) scale(0.95) rotateX(10deg);
@@ -129,11 +129,11 @@
         }
 
         /* =========================================
-       4. LAYOUT
-       ========================================= */
+        4. LAYOUT & HERO (Updated)
+        ========================================= */
         .hero {
             width: 100%;
-            height: 60vh;
+            height: 100vh; /* Updated to 100vh */
             background-image: url('https://images.pexels.com/photos/3771097/pexels-photo-3771097.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
             background-attachment: fixed;
             background-size: cover;
@@ -155,6 +155,13 @@
             left: 0;
         }
 
+        /* iOS Parallax Fix */
+        @supports (-webkit-touch-callout: none) {
+            .hero {
+                background-attachment: scroll !important;
+            }
+        }
+
         .content-wrapper {
             max-width: 1000px;
             margin: 0 auto;
@@ -164,8 +171,8 @@
         }
 
         /* =========================================
-       5. COMPONENTS
-       ========================================= */
+        5. COMPONENTS
+        ========================================= */
         
         /* Language Toggle Switch */
         .lang-toggle {
@@ -256,8 +263,8 @@
         }
 
         /* =========================================
-       6. FOOTER
-       ========================================= */
+        6. FOOTER
+        ========================================= */
         .luxury-footer {
             background-image: url("https://luxury-method.vercel.app/Footer.png");
             background-size: cover;
@@ -301,7 +308,7 @@
         /* Back to top */
         .back-to-top {
             position: fixed;
-            bottom: 60px;
+            bottom: 100px; /* Increased from 60px to 100px */
             right: 30px;
             z-index: 999;
             width: 50px;
@@ -330,8 +337,8 @@
         }
 
         /* =========================================
-       7. MOBILE QUERY
-       ========================================= */
+        7. MOBILE QUERY
+        ========================================= */
         @media screen and (max-width: 768px) {
             h1 {
                 font-size: 2.5rem;
@@ -368,7 +375,7 @@
             }
 
             .hero {
-                background-attachment: scroll; /* Fix for mobile parallax jitters */
+                background-attachment: scroll; /* Redundant due to @supports but good for consistency */
             }
         }
     </style>
