@@ -10,6 +10,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
+    <!-- Added FontAwesome for the Cookie Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         /* =========================================
@@ -836,6 +838,7 @@
         /* =========================================
        12. COMPONENT: COOKIE BANNER (MODERN DARK)
        ========================================= */
+       /* Keeps the Banner Look Dark as requested */
         .cookie-banner {
             position: fixed;
             bottom: 30px; /* Floating look on desktop */
@@ -845,7 +848,7 @@
             width: 90%;
             max-width: 1000px;
             background-color: #1c1c1c; /* Dark background for contrast against beige */
-            color: #ebe0d5;
+            color: #ffffff;
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 16px; /* Modern rounded corners */
             padding: 24px 32px;
@@ -875,14 +878,14 @@
         .cookie-content p {
             margin: 0;
             font-size: 16px !important;
-            color: #ebe0d5; /* Slightly off-white for readability */
+            color: #e0e0e0; /* Slightly off-white for readability */
             flex: 1;
             min-width: 300px;
         }
 
         .cookie-content a {
             text-decoration: underline;
-            color: #ebe0d5;
+            color: #fff;
             text-underline-offset: 4px;
         }
 
@@ -919,7 +922,7 @@
         .cookie-actions button:first-child:hover {
             background-color: rgba(255, 255, 255, 0.1);
             border-color: #fff;
-            color: #ebe0d5;
+            color: #fff;
         }
 
         @media (max-width: 768px) {
@@ -956,6 +959,210 @@
             .cookie-actions button {
                 flex: 1;
                 padding: 14px;
+            }
+        }
+
+        /* =========================================
+        13. GDPR COMPONENTS (NEW BEIGE THEME)
+        ========================================= */
+        /* Common Overlay */
+        .gdpr-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 2000000000001; /* Higher than banner */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+
+        .gdpr-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Beige Modal Design from User Snippet */
+        .gdpr-modal {
+            background-color: #ebe0d5;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            border: 1px solid #000;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .gdpr-modal h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: normal;
+            border-bottom: 1px solid #000;
+            padding-bottom: 10px;
+            text-align: left;
+            color: #000;
+        }
+
+        .gdpr-modal p,
+        .gdpr-modal li {
+            font-size: 1.1rem !important;
+            margin-bottom: 15px;
+            color: #000;
+        }
+
+        .gdpr-modal h4 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #000;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        .gdpr-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            border: none;
+            background: none;
+            color: #000;
+        }
+
+        .gdpr-btn {
+            background-color: transparent;
+            border: 1px solid #000;
+            color: #000;
+            padding: 10px 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: "Cormorant Garamond", serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .gdpr-btn:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        /* Toggle Switch for Preferences */
+        .pref-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .pref-text h4 {
+            margin: 0;
+            font-size: 1.2rem;
+            text-align: left;
+            color: #000;
+        }
+
+        .pref-text p {
+            margin: 5px 0 0 0;
+            font-size: 0.9rem !important;
+            opacity: 0.8;
+            color: #333;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: #000;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(26px);
+        }
+
+        input:disabled+.slider {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Floating Settings Button (White Circle) */
+        .floating-gdpr-btn {
+            position: fixed;
+            bottom: 60px; /* Aligned with Back to Top */
+            left: 30px;   /* Symmetrical inset */
+            width: 50px; /* Match Back to Top size */
+            height: 50px; /* Match Back to Top size */
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 9998;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+            color: #000;
+        }
+
+        .floating-gdpr-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Update mobile queries to match Back to Top movement */
+        @media (max-width: 768px) {
+            .floating-gdpr-btn {
+                bottom: 80px; /* Match mobile Back to Top */
+            }
+        }
+
+        @media (max-width: 500px) {
+            .floating-gdpr-btn {
+                bottom: 120px; /* Match small mobile Back to Top */
             }
         }
     </style>
@@ -1507,6 +1714,13 @@
             <a target="_blank" href="https://www.luxury-method.com/contact" class="contact-form-link">CONTACT FORM</a>
         </div>
 
+        <!-- Implicit Consent Notice for Forms -->
+        <p style="text-align: center; font-size: 0.9rem; margin-top: -80px; margin-bottom: 80px; opacity: 0.7;">
+            By contacting us, you agree to the processing of your data as described in our <a href="#"
+                onclick="openModal('privacyModal'); return false;" style="text-decoration: underline;">Privacy
+                Policy</a>.
+        </p>
+
         <h2>Frequently Asked Questions</h2>
         <div class="faq-item">
             <div class="faq-question" onclick="toggleFAQ(this)">
@@ -1635,7 +1849,76 @@
         </svg>
     </div>
 
-    <!-- Cookie Banner -->
+    <!-- =========================================
+    13. GDPR MODALS & BANNERS (NEW)
+    ========================================= -->
+
+    <!-- Floating Cookie Button (Right to Withdraw) -->
+    <div class="floating-gdpr-btn" onclick="openModal('prefModal')" title="Cookie Preferences">
+        <i class="fa-solid fa-cookie-bite"></i>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacyModal" class="gdpr-overlay">
+        <div class="gdpr-modal">
+            <button class="gdpr-close" onclick="closeModal('privacyModal')">&times;</button>
+            <h3>Privacy Policy</h3>
+            <p><strong>Effective Date:</strong> December 2025</p>
+            <p>At Luxury Method, we value your privacy and are committed to protecting your personal data in accordance
+                with the General Data Protection Regulation (GDPR).</p>
+
+            <h4>1. Data Collection</h4>
+            <p>We collect Identity Data (name) and Contact Data (email) when you voluntarily submit our contact forms.
+                We also collect Technical Data (IP address, browser type) via cookies if you consent.</p>
+
+            <h4>2. How We Use Data</h4>
+            <p>Your data is used solely to respond to inquiries and analyze website performance. We do not sell your
+                data to third parties.</p>
+
+            <h4>3. Your Rights</h4>
+            <p>You have the right to access, correct, or delete your data. You may withdraw consent at any time via the
+                settings button.</p>
+
+            <h4>4. Contact</h4>
+            <p>For privacy inquiries, please contact: giacomo@luxury-method.com</p>
+        </div>
+    </div>
+
+    <!-- Cookie Preferences Modal -->
+    <div id="prefModal" class="gdpr-overlay">
+        <div class="gdpr-modal">
+            <button class="gdpr-close" onclick="closeModal('prefModal')">&times;</button>
+            <h3>Cookie Preferences</h3>
+            <p>Manage how we use cookies. "Essential" cookies are necessary for the site to function.</p>
+
+            <div class="pref-row">
+                <div class="pref-text">
+                    <h4>Essential</h4>
+                    <p>Required for basic functionality.</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" checked disabled>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="pref-row">
+                <div class="pref-text">
+                    <h4>Analytics & Marketing</h4>
+                    <p>Help us improve our content strategy.</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="analyticsToggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <button class="gdpr-btn" onclick="savePreferences()" style="width: 100%; margin-top: 20px;">Save
+                Preferences</button>
+        </div>
+    </div>
+
+    <!-- Cookie Banner (Dark Mode) -->
     <div id="cookie-banner" class="cookie-banner">
         <div class="cookie-content">
             <p>We use cookies to ensure you get the best experience on our website. <a
@@ -1782,73 +2065,46 @@
             }
         }
 
-        // Cookie Helper Functions
-        function setCookie(name, value, days) {
-            let expires = "";
-            if (days) {
-                const date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                expires = "; expires=" + date.toUTCString();
-            }
-            document.cookie = name + "=" + (value || "") + expires + "; path=/; SameSite=Lax";
+        // =========================================
+        // GDPR LOGIC
+        // =========================================
+        const COOKIE_NAME = "luxury_gdpr_consent";
+
+        function openModal(id) {
+            document.getElementById(id).classList.add('visible');
         }
 
-        function getCookie(name) {
-            const nameEQ = name + "=";
-            const ca = document.cookie.split(';');
-            for(let i=0;i < ca.length;i++) {
-                let c = ca[i];
-                while (c.charAt(0)==' ') c = c.substring(1,c.length);
-                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-            }
-            return null;
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('visible');
         }
 
-        function eraseCookie(name) {   
-            document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-        }
-
-        // Cookie Banner Logic
+        // Check local storage on load
         function initCookieBanner() {
+            const consent = localStorage.getItem(COOKIE_NAME);
             const banner = document.getElementById('cookie-banner');
-            const contentContainer = banner.querySelector('.cookie-content');
-            const consent = getCookie('cookieConsent');
-
-            if (!consent) {
-                // Case 1: No Cookie - Show Consent Request
-                setTimeout(() => {
-                    banner.classList.add('visible');
-                }, 1000);
-            } else {
-                // Case 2: Cookie Exists - Show "Accepted Before" Message
-                // We overwrite the content to show the welcome back message
-                contentContainer.innerHTML = `
-                    <p>Welcome back. You have previously accepted our cookies (Valid for 30 days). <a href="https://www.luxury-method.com/privacy-policy" target="_blank">Privacy Policy</a>.</p>
-                    <div class="cookie-actions">
-                        <button onclick="hideCookieBanner()">Close</button>
-                        <button onclick="resetCookies()" style="border: 1px solid #fff; color: #fff; background: transparent;">Reset</button>
-                    </div>
-                `;
-                
-                setTimeout(() => {
-                    banner.classList.add('visible');
-                }, 1000);
-            }
-        }
-
-        function acceptAllCookies() {
-            setCookie('cookieConsent', 'all', 30);
-            // After accepting, we hide, but maybe update the text if they reload? 
-            // The request implies checking storage on load.
-            hideCookieBanner();
             
-            // Optional: Immediately show the "Accepted" state? 
-            // Usually not, usually you just dismiss.
-        }
-
-        function acceptEssentials() {
-            setCookie('cookieConsent', 'essential', 30);
-            hideCookieBanner();
+            if (!consent) {
+                // Show banner if no consent stored
+                setTimeout(() => {
+                    banner.classList.add('visible');
+                }, 1000); 
+            } else {
+                applyConsent(JSON.parse(consent));
+                // Welcome Back logic
+                const contentContainer = banner.querySelector('.cookie-content');
+                if (contentContainer) {
+                     contentContainer.innerHTML = `
+                        <p>Welcome back. You have previously accepted our cookies. <a href="#" onclick="openModal('privacyModal'); return false;">Privacy Policy</a>.</p>
+                        <div class="cookie-actions">
+                            <button onclick="hideCookieBanner()">Close</button>
+                            <button onclick="resetCookies()" style="background-color: transparent; border: 1px solid #ffffff; color: #ffffff;">Reset</button>
+                        </div>
+                    `;
+                    setTimeout(() => {
+                        banner.classList.add('visible');
+                    }, 1000);
+                }
+            }
         }
 
         function hideCookieBanner() {
@@ -1857,8 +2113,59 @@
         }
 
         function resetCookies() {
-            eraseCookie('cookieConsent');
-            location.reload(); // Reload to show the original banner
+            localStorage.removeItem(COOKIE_NAME);
+            location.reload(); 
+        }
+
+        function acceptAllCookies() {
+            const consent = { analytics: true };
+            saveAndClose(consent);
+        }
+
+        function acceptEssentials() {
+            const consent = { analytics: false };
+            saveAndClose(consent);
+        }
+
+        function savePreferences() {
+            const analytics = document.getElementById('analyticsToggle').checked;
+            const consent = { analytics: analytics };
+            saveAndClose(consent);
+        }
+
+        function saveAndClose(consent) {
+            localStorage.setItem(COOKIE_NAME, JSON.stringify(consent));
+            applyConsent(consent);
+            document.getElementById('cookie-banner').classList.remove('visible');
+            closeModal('prefModal');
+            
+            // Reload page to show welcome message after first accept if desired, 
+            // or just update UI. Here we just update UI.
+            const banner = document.getElementById('cookie-banner');
+            const contentContainer = banner.querySelector('.cookie-content');
+             contentContainer.innerHTML = `
+                <p>Preferences Saved. <a href="#" onclick="openModal('privacyModal'); return false;">Privacy Policy</a>.</p>
+                <div class="cookie-actions">
+                    <button onclick="hideCookieBanner()">Close</button>
+                    <button onclick="resetCookies()" style="background-color: transparent; border: 1px solid #ffffff; color: #ffffff;">Reset</button>
+                </div>
+            `;
+            setTimeout(() => {
+                 banner.classList.add('visible');
+            }, 500);
+        }
+
+        function applyConsent(consent) {
+            // Update Toggle UI
+            const toggle = document.getElementById('analyticsToggle');
+            if (toggle) toggle.checked = consent.analytics;
+
+            if (consent.analytics) {
+                console.log("Analytics Scripts Loaded (GDPR Compliant)");
+                // Inject Analytics here if needed
+            } else {
+                console.log("Analytics Blocked");
+            }
         }
 
         // Initialize on page load
