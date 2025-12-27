@@ -126,6 +126,7 @@
         .main-container {
             display: flex;
             flex: 1;
+            width: 100%;
             position: relative;
         }
 
@@ -838,22 +839,26 @@
         /* =========================================
        12. COMPONENT: COOKIE BANNER (MODERN DARK)
        ========================================= */
-       /* Keeps the Banner Look Dark as requested */
+        /* Keeps the Banner Look Dark as requested */
         .cookie-banner {
             position: fixed;
-            bottom: 30px; /* Floating look on desktop */
+            bottom: 30px;
+            /* Floating look on desktop */
             left: 0;
             right: 0;
             margin: 0 auto;
             width: 90%;
             max-width: 1000px;
-            background-color: #1c1c1c; /* Dark background for contrast against beige */
+            background-color: #1c1c1c;
+            /* Dark background for contrast against beige */
             color: #ebe0d5;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px; /* Modern rounded corners */
+            border-radius: 16px;
+            /* Modern rounded corners */
             padding: 24px 32px;
             z-index: 2000000000000;
-            transform: translateY(150%); /* Hidden state */
+            transform: translateY(150%);
+            /* Hidden state */
             transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
             display: flex;
             justify-content: center;
@@ -878,7 +883,8 @@
         .cookie-content p {
             margin: 0;
             font-size: 16px !important;
-            color: #ebe0d5; /* Slightly off-white for readability */
+            color: #ebe0d5;
+            /* Slightly off-white for readability */
             flex: 1;
             min-width: 300px;
         }
@@ -896,7 +902,8 @@
         }
 
         .cookie-actions button {
-            background-color: #ffffff; /* White button */
+            background-color: #ebe0d5;
+            /* White button */
             border: none;
             color: #000000;
             padding: 12px 24px;
@@ -904,11 +911,12 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            border-radius: 8px; /* Slightly rounded buttons */
+            border-radius: 8px;
+            /* Slightly rounded buttons */
         }
 
         .cookie-actions button:hover {
-            background-color: #e0e0e0;
+            background-color: #d6cfc1;
             transform: translateY(-2px);
         }
 
@@ -930,11 +938,12 @@
                 bottom: 0;
                 width: 100%;
                 max-width: 100%;
-                border-radius: 20px 20px 0 0; /* Bottom sheet style */
+                border-radius: 20px 20px 0 0;
+                /* Bottom sheet style */
                 padding: 24px;
                 transform: translateY(100%);
             }
-            
+
             .cookie-banner.visible {
                 transform: translateY(0);
             }
@@ -963,8 +972,8 @@
         }
 
         /* =========================================
-        13. GDPR COMPONENTS (NEW BEIGE THEME)
-        ========================================= */
+       13. GDPR COMPONENTS (NEW BEIGE THEME)
+       ========================================= */
         /* Common Overlay */
         .gdpr-overlay {
             position: fixed;
@@ -973,7 +982,8 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.85);
-            z-index: 2000000000001; /* Higher than banner */
+            z-index: 2000000000001;
+            /* Higher than banner */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -1133,10 +1143,14 @@
         /* Floating Settings Button (White Circle) */
         .floating-gdpr-btn {
             position: fixed;
-            bottom: 60px; /* Aligned with Back to Top */
-            left: 30px;   /* Symmetrical inset */
-            width: 50px; /* Match Back to Top size */
-            height: 50px; /* Match Back to Top size */
+            bottom: 60px;
+            /* Aligned with Back to Top */
+            left: 30px;
+            /* Symmetrical inset */
+            width: 50px;
+            /* Match Back to Top size */
+            height: 50px;
+            /* Match Back to Top size */
             background-color: #fff;
             border-radius: 50%;
             display: flex;
@@ -1156,13 +1170,15 @@
         /* Update mobile queries to match Back to Top movement */
         @media (max-width: 768px) {
             .floating-gdpr-btn {
-                bottom: 80px; /* Match mobile Back to Top */
+                display: none !important;
+                /* HIDE ON MOBILE AS REQUESTED */
             }
         }
 
         @media (max-width: 500px) {
             .floating-gdpr-btn {
-                bottom: 120px; /* Match small mobile Back to Top */
+                bottom: 120px;
+                /* Match small mobile Back to Top */
             }
         }
     </style>
@@ -1365,7 +1381,7 @@
                         they’re seen.
                     </p>
 
-                    <b>OOH Advertising with Gucci:</b>
+                    <b style="">OOH Advertising with Gucci:</b>
                     <p>
                         Giacomo, founder of Luxury Method has worked with Gucci and was involved in several campaigns
                         for the brand.
@@ -1404,7 +1420,7 @@
                             src="https://luxury-method.vercel.app/Luxury%20Magazine%20Print%20Ad.jpg" />
                     </div>
 
-                    <b>Gucci’s Vogue Italia Cover: A Luxury Print Ad Highlight:</b>
+                    <b style="">Gucci’s Vogue Italia Cover: A Luxury Print Ad Highlight:</b>
 
                     <p>
                         Your luxury brand can make a strong impression with timeless visual storytelling in print.
@@ -1584,7 +1600,7 @@
                     in a way
                     that feels real and appealing. Great content marketing for <a target="_blank"
                         href="https://www.luxury-method.com/industries/luxury-real-estate-marketing">real estate</a>
-                    brings out the
+                    bring out the
                     lifestyle and experience behind every listing, builds trust, and helps attract the right buyers.</p>
             </div>
 
@@ -1825,6 +1841,8 @@
                 <a href="tel:+393920034695"><small>(+39) 3920034695</small></a>
                 <small>P.IVA: 17906211002</small>
                 <small><a href="https://www.luxury-method.com/privacy-policy" target="_blank">Privacy Policy</a></small>
+                <!-- Added Cookie Preferences Link Here -->
+                <small><a href="#" onclick="openModal('prefModal'); return false;">Cookie Preferences</a></small>
             </div>
 
             <div class="social-icons">
@@ -2082,18 +2100,18 @@
         function initCookieBanner() {
             const consent = localStorage.getItem(COOKIE_NAME);
             const banner = document.getElementById('cookie-banner');
-            
+
             if (!consent) {
                 // Show banner if no consent stored
                 setTimeout(() => {
                     banner.classList.add('visible');
-                }, 1000); 
+                }, 1000);
             } else {
                 applyConsent(JSON.parse(consent));
                 // Welcome Back logic
                 const contentContainer = banner.querySelector('.cookie-content');
                 if (contentContainer) {
-                     contentContainer.innerHTML = `
+                    contentContainer.innerHTML = `
                         <p>Welcome back. You have previously accepted our cookies. <a href="#" onclick="openModal('privacyModal'); return false;">Privacy Policy</a>.</p>
                         <div class="cookie-actions">
                             <button onclick="hideCookieBanner()">Close</button>
@@ -2114,7 +2132,7 @@
 
         function resetCookies() {
             localStorage.removeItem(COOKIE_NAME);
-            location.reload(); 
+            location.reload();
         }
 
         function acceptAllCookies() {
@@ -2138,12 +2156,12 @@
             applyConsent(consent);
             document.getElementById('cookie-banner').classList.remove('visible');
             closeModal('prefModal');
-            
+
             // Reload page to show welcome message after first accept if desired, 
             // or just update UI. Here we just update UI.
             const banner = document.getElementById('cookie-banner');
             const contentContainer = banner.querySelector('.cookie-content');
-             contentContainer.innerHTML = `
+            contentContainer.innerHTML = `
                 <p>Preferences Saved. <a href="#" onclick="openModal('privacyModal'); return false;">Privacy Policy</a>.</p>
                 <div class="cookie-actions">
                     <button onclick="hideCookieBanner()">Close</button>
@@ -2151,7 +2169,7 @@
                 </div>
             `;
             setTimeout(() => {
-                 banner.classList.add('visible');
+                banner.classList.add('visible');
             }, 500);
         }
 
