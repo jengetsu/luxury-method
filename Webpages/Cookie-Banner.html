@@ -15,8 +15,8 @@
 
     <style>
         /* =========================================
-       1. RESET & GLOBAL STYLES
-       ========================================= */
+        1. RESET & GLOBAL STYLES
+        ========================================= */
         * {
             box-sizing: border-box;
             scroll-behavior: smooth;
@@ -49,8 +49,8 @@
         }
 
         /* =========================================
-       2. TYPOGRAPHY
-       ========================================= */
+        2. TYPOGRAPHY
+        ========================================= */
         h1 {
             color: #ebe0d5;
             text-align: center;
@@ -89,8 +89,8 @@
         }
 
         /* =========================================
-       3. TEXT REVEAL ANIMATION (NEW)
-       ========================================= */
+        3. TEXT REVEAL ANIMATION (NEW)
+        ========================================= */
         .reveal-text {
             opacity: 0.1;
             /* Start almost invisible */
@@ -121,8 +121,8 @@
         }
 
         /* =========================================
-       4. LAYOUT & CONTAINERS
-       ========================================= */
+        4. LAYOUT & CONTAINERS
+        ========================================= */
         .main-container {
             display: flex;
             flex: 1;
@@ -175,8 +175,8 @@
         }
 
         /* =========================================
-       5. COMPONENT: HERO SECTION
-       ========================================= */
+        5. COMPONENT: HERO SECTION
+        ========================================= */
         .hero {
             width: 100%;
             height: 100vh;
@@ -208,8 +208,8 @@
         }
 
         /* =========================================
-       6. COMPONENT: SIDEBAR
-       ========================================= */
+        6. COMPONENT: SIDEBAR
+        ========================================= */
         .sidebar {
             width: 340px;
             background-color: #ebe0d5;
@@ -339,8 +339,8 @@
 
 
         /* =========================================
-       7. COMPONENT: IMAGES & MEDIA
-       ========================================= */
+        7. COMPONENT: IMAGES & MEDIA
+        ========================================= */
         .image {
             display: flex;
             justify-content: center;
@@ -412,8 +412,8 @@
         }
 
         /* =========================================
-       8. COMPONENT: FAQ
-       ======================================== */
+        8. COMPONENT: FAQ
+        ======================================== */
         .faq-container {
             margin-top: 20px;
             z-index: 99999999999999999999999999;
@@ -485,8 +485,8 @@
         }
 
         /* =========================================
-       9. COMPONENT: FOOTER & CONTACT
-       ========================================= */
+        9. COMPONENT: FOOTER & CONTACT
+        ========================================= */
         .luxury-footer {
             background-image: url("https://luxury-method.vercel.app/Footer.png");
             background-size: cover;
@@ -573,8 +573,8 @@
         }
 
         /* =========================================
-       10. COMPONENT: BACK TO TOP
-       ========================================= */
+        10. COMPONENT: BACK TO TOP
+        ========================================= */
         .back-to-top {
             position: fixed;
             bottom: 60px;
@@ -611,8 +611,8 @@
         }
 
         /* =========================================
-       11. MEDIA QUERIES (CONSOLIDATED)
-       ========================================= */
+        11. MEDIA QUERIES (CONSOLIDATED)
+        ========================================= */
 
         /* Max Width 768px (Tablet/Mobile) */
         @media screen and (max-width: 768px) {
@@ -837,8 +837,8 @@
         }
 
         /* =========================================
-       12. COMPONENT: COOKIE BANNER (MODERN DARK)
-       ========================================= */
+        12. COMPONENT: COOKIE BANNER (MODERN DARK)
+        ========================================= */
         /* Keeps the Banner Look Dark as requested */
         .cookie-banner {
             position: fixed;
@@ -924,6 +924,7 @@
         .cookie-actions button:first-child {
             background-color: transparent;
             border: 1px solid rgba(255, 255, 255, 0.4);
+            border-color: #fff;
             color: #ebe0d5;
         }
 
@@ -972,8 +973,8 @@
         }
 
         /* =========================================
-       13. GDPR COMPONENTS (NEW BEIGE THEME)
-       ========================================= */
+        13. GDPR COMPONENTS (NEW BEIGE THEME)
+        ========================================= */
         /* Common Overlay */
         .gdpr-overlay {
             position: fixed;
@@ -2115,7 +2116,6 @@
                         <p>Welcome back. You have previously accepted our cookies. <a href="#" onclick="openModal('privacyModal'); return false;">Privacy Policy</a>.</p>
                         <div class="cookie-actions">
                             <button onclick="hideCookieBanner()">Close</button>
-                            <button onclick="resetCookies()" style="background-color: transparent; border: 1px solid #ffffff; color: #ffffff;">Reset</button>
                         </div>
                     `;
                     setTimeout(() => {
@@ -2165,7 +2165,6 @@
                 <p>Preferences Saved. <a href="#" onclick="openModal('privacyModal'); return false;">Privacy Policy</a>.</p>
                 <div class="cookie-actions">
                     <button onclick="hideCookieBanner()">Close</button>
-                    <button onclick="resetCookies()" style="background-color: transparent; border: 1px solid #ffffff; color: #ffffff;">Reset</button>
                 </div>
             `;
             setTimeout(() => {

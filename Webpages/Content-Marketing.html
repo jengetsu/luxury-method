@@ -10,11 +10,13 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
+    <!-- Added FontAwesome for the Cookie Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         /* =========================================
-       1. RESET & GLOBAL STYLES
-       ========================================= */
+        1. RESET & GLOBAL STYLES
+        ========================================= */
         * {
             box-sizing: border-box;
             scroll-behavior: smooth;
@@ -47,8 +49,8 @@
         }
 
         /* =========================================
-       2. TYPOGRAPHY
-       ========================================= */
+        2. TYPOGRAPHY
+        ========================================= */
         h1 {
             color: #ebe0d5;
             text-align: center;
@@ -59,23 +61,36 @@
             margin: 0;
         }
 
+
         h2 {
             text-align: center;
-            text-decoration: underline;
+
+            font-size: 32px;
+            margin-block-start: 0.83em;
+            margin-block-end: 0.83em;
         }
 
         h3 {
             text-align: center;
+            font-size: 24px;
+            font-weight: 500;
+            color: #1a1a1a;
+            font-weight: bold;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            text-decoration: underline;
         }
 
         p {
-            font-size: larger !important;
-            line-height: 1.7;
+            font-size: 18.7px !important;
+            /* Matches approx 14pt */
+            line-height: 1.656;
+            color: #000;
         }
 
         /* =========================================
-       3. TEXT REVEAL ANIMATION (NEW)
-       ========================================= */
+        3. TEXT REVEAL ANIMATION (NEW)
+        ========================================= */
         .reveal-text {
             opacity: 0.1;
             /* Start almost invisible */
@@ -106,11 +121,12 @@
         }
 
         /* =========================================
-       4. LAYOUT & CONTAINERS
-       ========================================= */
+        4. LAYOUT & CONTAINERS
+        ========================================= */
         .main-container {
             display: flex;
             flex: 1;
+            width: 100%;
             position: relative;
         }
 
@@ -139,7 +155,7 @@
         .top-section {
             width: 100%;
             background-color: #ebe0d5;
-            padding: 10px;
+            /* padding: 10px; */
             margin-bottom: 0;
             position: relative;
         }
@@ -159,8 +175,8 @@
         }
 
         /* =========================================
-       5. COMPONENT: HERO SECTION
-       ========================================= */
+        5. COMPONENT: HERO SECTION
+        ========================================= */
         .hero {
             width: 100%;
             height: 100vh;
@@ -192,8 +208,8 @@
         }
 
         /* =========================================
-       6. COMPONENT: SIDEBAR
-       ========================================= */
+        6. COMPONENT: SIDEBAR
+        ========================================= */
         .sidebar {
             width: 340px;
             background-color: #ebe0d5;
@@ -323,8 +339,8 @@
 
 
         /* =========================================
-       7. COMPONENT: IMAGES & MEDIA
-       ========================================= */
+        7. COMPONENT: IMAGES & MEDIA
+        ========================================= */
         .image {
             display: flex;
             justify-content: center;
@@ -396,8 +412,8 @@
         }
 
         /* =========================================
-       8. COMPONENT: FAQ
-       ======================================== */
+        8. COMPONENT: FAQ
+        ======================================== */
         .faq-container {
             margin-top: 20px;
             z-index: 99999999999999999999999999;
@@ -423,6 +439,7 @@
             font-weight: 500;
             color: #1a1a1a;
             text-align: left;
+            text-decoration: none;
         }
 
         .faq-toggle {
@@ -468,8 +485,8 @@
         }
 
         /* =========================================
-       9. COMPONENT: FOOTER & CONTACT
-       ========================================= */
+        9. COMPONENT: FOOTER & CONTACT
+        ========================================= */
         .luxury-footer {
             background-image: url("https://luxury-method.vercel.app/Footer.png");
             background-size: cover;
@@ -556,8 +573,8 @@
         }
 
         /* =========================================
-       10. COMPONENT: BACK TO TOP
-       ========================================= */
+        10. COMPONENT: BACK TO TOP
+        ========================================= */
         .back-to-top {
             position: fixed;
             bottom: 60px;
@@ -594,8 +611,8 @@
         }
 
         /* =========================================
-       11. MEDIA QUERIES (CONSOLIDATED)
-       ========================================= */
+        11. MEDIA QUERIES (CONSOLIDATED)
+        ========================================= */
 
         /* Max Width 768px (Tablet/Mobile) */
         @media screen and (max-width: 768px) {
@@ -608,7 +625,7 @@
             }
 
             .top-section {
-                padding: 5px;
+                /* padding: 5px; */
             }
 
             .faq-question {
@@ -782,6 +799,11 @@
                 transform: translateY(-8px) scale(1.05);
                 box-shadow: 0 20px 35px rgba(0, 0, 0, 0.22);
             }
+
+            /* Increased footer height for desktop */
+            .luxury-footer {
+                padding: 150px 0;
+            }
         }
 
         /* Max Width 500px (Small Mobile) */
@@ -811,6 +833,353 @@
 
             h3 {
                 font-size: 18px;
+            }
+        }
+
+        /* =========================================
+        12. COMPONENT: COOKIE BANNER (MODERN DARK)
+        ========================================= */
+        /* Keeps the Banner Look Dark as requested */
+        .cookie-banner {
+            position: fixed;
+            bottom: 30px;
+            /* Floating look on desktop */
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 90%;
+            max-width: 1000px;
+            background-color: #1c1c1c;
+            /* Dark background for contrast against beige */
+            color: #ebe0d5;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            /* Modern rounded corners */
+            padding: 24px 32px;
+            z-index: 2000000000000;
+            transform: translateY(150%);
+            /* Hidden state */
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+            opacity: 0;
+        }
+
+        .cookie-banner.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .cookie-content {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .cookie-content p {
+            margin: 0;
+            font-size: 16px !important;
+            color: #ebe0d5;
+            /* Slightly off-white for readability */
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .cookie-content a {
+            text-decoration: underline;
+            color: #ebe0d5;
+            text-underline-offset: 4px;
+        }
+
+        .cookie-actions {
+            display: flex;
+            gap: 15px;
+            flex-shrink: 0;
+        }
+
+        .cookie-actions button {
+            background-color: #ebe0d5;
+            /* White button */
+            border: none;
+            color: #000000;
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            /* Slightly rounded buttons */
+        }
+
+        .cookie-actions button:hover {
+            background-color: #d6cfc1;
+            transform: translateY(-2px);
+        }
+
+        /* Essentials button style (Outlined) */
+        .cookie-actions button:first-child {
+            background-color: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-color: #fff;
+            color: #ebe0d5;
+        }
+
+        .cookie-actions button:first-child:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: #fff;
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .cookie-banner {
+                bottom: 0;
+                width: 100%;
+                max-width: 100%;
+                border-radius: 20px 20px 0 0;
+                /* Bottom sheet style */
+                padding: 24px;
+                transform: translateY(100%);
+            }
+
+            .cookie-banner.visible {
+                transform: translateY(0);
+            }
+
+            .cookie-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .cookie-content p {
+                min-width: auto;
+                font-size: 15px !important;
+            }
+
+            .cookie-actions {
+                width: 100%;
+                justify-content: space-between;
+                gap: 10px;
+            }
+
+            .cookie-actions button {
+                flex: 1;
+                padding: 14px;
+            }
+        }
+
+        /* =========================================
+        13. GDPR COMPONENTS (NEW BEIGE THEME)
+        ========================================= */
+        /* Common Overlay */
+        .gdpr-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 2000000000001;
+            /* Higher than banner */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+
+        .gdpr-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Beige Modal Design from User Snippet */
+        .gdpr-modal {
+            background-color: #ebe0d5;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            border: 1px solid #000;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .gdpr-modal h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: normal;
+            border-bottom: 1px solid #000;
+            padding-bottom: 10px;
+            text-align: left;
+            color: #000;
+        }
+
+        .gdpr-modal p,
+        .gdpr-modal li {
+            font-size: 1.1rem !important;
+            margin-bottom: 15px;
+            color: #000;
+        }
+
+        .gdpr-modal h4 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #000;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        .gdpr-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            border: none;
+            background: none;
+            color: #000;
+        }
+
+        .gdpr-btn {
+            background-color: transparent;
+            border: 1px solid #000;
+            color: #000;
+            padding: 10px 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: "Cormorant Garamond", serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .gdpr-btn:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        /* Toggle Switch for Preferences */
+        .pref-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .pref-text h4 {
+            margin: 0;
+            font-size: 1.2rem;
+            text-align: left;
+            color: #000;
+        }
+
+        .pref-text p {
+            margin: 5px 0 0 0;
+            font-size: 0.9rem !important;
+            opacity: 0.8;
+            color: #333;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: #000;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(26px);
+        }
+
+        input:disabled+.slider {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Floating Settings Button (White Circle) */
+        .floating-gdpr-btn {
+            position: fixed;
+            bottom: 60px;
+            /* Aligned with Back to Top */
+            left: 30px;
+            /* Symmetrical inset */
+            width: 50px;
+            /* Match Back to Top size */
+            height: 50px;
+            /* Match Back to Top size */
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 9998;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+            color: #000;
+        }
+
+        .floating-gdpr-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Update mobile queries to match Back to Top movement */
+        @media (max-width: 768px) {
+            .floating-gdpr-btn {
+                display: none !important;
+                /* HIDE ON MOBILE AS REQUESTED */
+            }
+        }
+
+        @media (max-width: 500px) {
+            .floating-gdpr-btn {
+                bottom: 120px;
+                /* Match small mobile Back to Top */
             }
         }
     </style>
@@ -1013,7 +1382,7 @@
                         they’re seen.
                     </p>
 
-                    <b>OOH Advertising with Gucci:</b>
+                    <b style="">OOH Advertising with Gucci:</b>
                     <p>
                         Giacomo, founder of Luxury Method has worked with Gucci and was involved in several campaigns
                         for the brand.
@@ -1052,7 +1421,7 @@
                             src="https://luxury-method.vercel.app/Luxury%20Magazine%20Print%20Ad.jpg" />
                     </div>
 
-                    <b>Gucci’s Vogue Italia Cover: A Luxury Print Ad Highlight:</b>
+                    <b style="">Gucci’s Vogue Italia Cover: A Luxury Print Ad Highlight:</b>
 
                     <p>
                         Your luxury brand can make a strong impression with timeless visual storytelling in print.
@@ -1232,7 +1601,7 @@
                     in a way
                     that feels real and appealing. Great content marketing for <a target="_blank"
                         href="https://www.luxury-method.com/industries/luxury-real-estate-marketing">real estate</a>
-                    brings out the
+                    bring out the
                     lifestyle and experience behind every listing, builds trust, and helps attract the right buyers.</p>
             </div>
 
@@ -1332,6 +1701,8 @@
         <div class="contact-form-container">
             <a target="_blank" href="https://www.luxury-method.com/contact" class="contact-form-link">CONTACT FORM</a>
         </div>
+
+        
 
         <h2>Frequently Asked Questions</h2>
         <div class="faq-item">
@@ -1436,6 +1807,9 @@
                 </small>
                 <a href="tel:+393920034695"><small>(+39) 3920034695</small></a>
                 <small>P.IVA: 17906211002</small>
+                <small><a href="https://www.luxury-method.com/privacy-policy" target="_blank">Privacy Policy</a></small>
+                <!-- Added Cookie Preferences Link Here -->
+                <small><a href="#" onclick="openModal('prefModal'); return false;">Cookie Preferences</a></small>
             </div>
 
             <div class="social-icons">
@@ -1458,6 +1832,87 @@
         <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false">
             <path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z" fill="currentColor"></path>
         </svg>
+    </div>
+
+    <!-- =========================================
+    13. GDPR MODALS & BANNERS (NEW)
+    ========================================= -->
+
+    <!-- Floating Cookie Button (Right to Withdraw) -->
+    <div class="floating-gdpr-btn" onclick="openModal('prefModal')" title="Cookie Preferences">
+        <i class="fa-solid fa-cookie-bite"></i>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacyModal" class="gdpr-overlay">
+        <div class="gdpr-modal">
+            <button class="gdpr-close" onclick="closeModal('privacyModal')">&times;</button>
+            <h3>Privacy Policy</h3>
+            <p><strong>Effective Date:</strong> December 2025</p>
+            <p>At Luxury Method, we value your privacy and are committed to protecting your personal data in accordance
+                with the General Data Protection Regulation (GDPR).</p>
+
+            <h4>1. Data Collection</h4>
+            <p>We collect Identity Data (name) and Contact Data (email) when you voluntarily submit our contact forms.
+                We also collect Technical Data (IP address, browser type) via cookies if you consent.</p>
+
+            <h4>2. How We Use Data</h4>
+            <p>Your data is used solely to respond to inquiries and analyze website performance. We do not sell your
+                data to third parties.</p>
+
+            <h4>3. Your Rights</h4>
+            <p>You have the right to access, correct, or delete your data. You may withdraw consent at any time via the
+                settings button.</p>
+
+            <h4>4. Contact</h4>
+            <p>For privacy inquiries, please contact: giacomo@luxury-method.com</p>
+        </div>
+    </div>
+
+    <!-- Cookie Preferences Modal -->
+    <div id="prefModal" class="gdpr-overlay">
+        <div class="gdpr-modal">
+            <button class="gdpr-close" onclick="closeModal('prefModal')">&times;</button>
+            <h3>Cookie Preferences</h3>
+            <p>Manage how we use cookies. "Essential" cookies are necessary for the site to function.</p>
+
+            <div class="pref-row">
+                <div class="pref-text">
+                    <h4>Essential</h4>
+                    <p>Required for basic functionality.</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" checked disabled>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="pref-row">
+                <div class="pref-text">
+                    <h4>Analytics & Marketing</h4>
+                    <p>Help us improve our content strategy.</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="analyticsToggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <button class="gdpr-btn" onclick="savePreferences()" style="width: 100%; margin-top: 20px;">Save
+                Preferences</button>
+        </div>
+    </div>
+
+    <!-- Cookie Banner (Dark Mode) -->
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-content">
+            <p>We use cookies to ensure you get the best experience on our website. <a
+                    href="https://www.luxury-method.com/privacy-policy" target="_blank">Privacy Policy</a>.</p>
+            <div class="cookie-actions">
+                <button onclick="acceptEssentials()">Essentials Only</button>
+                <button onclick="acceptAllCookies()">Accept All</button>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -1595,10 +2050,112 @@
             }
         }
 
+        // =========================================
+        // GDPR LOGIC
+        // =========================================
+        const COOKIE_NAME = "luxury_gdpr_consent";
+
+        function openModal(id) {
+            document.getElementById(id).classList.add('visible');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('visible');
+        }
+
+        // Check local storage on load
+        function initCookieBanner() {
+            const consent = localStorage.getItem(COOKIE_NAME);
+            const banner = document.getElementById('cookie-banner');
+
+            if (!consent) {
+                // Show banner if no consent stored
+                setTimeout(() => {
+                    banner.classList.add('visible');
+                }, 1000);
+            } else {
+                applyConsent(JSON.parse(consent));
+                // Welcome Back logic
+                const contentContainer = banner.querySelector('.cookie-content');
+                if (contentContainer) {
+                    contentContainer.innerHTML = `
+                        <p>Welcome back. You have previously accepted our cookies. <a href="https://www.luxury-method.com/privacy-policy" target="_blank">Privacy Policy</a>.</p>
+                        <div class="cookie-actions">
+                            <button onclick="hideCookieBanner()">Close</button>
+                        </div>
+                    `;
+                    setTimeout(() => {
+                        banner.classList.add('visible');
+                    }, 1000);
+                }
+            }
+        }
+
+        function hideCookieBanner() {
+            const banner = document.getElementById('cookie-banner');
+            banner.classList.remove('visible');
+        }
+
+        function resetCookies() {
+            localStorage.removeItem(COOKIE_NAME);
+            location.reload();
+        }
+
+        function acceptAllCookies() {
+            const consent = { analytics: true };
+            saveAndClose(consent);
+        }
+
+        function acceptEssentials() {
+            const consent = { analytics: false };
+            saveAndClose(consent);
+        }
+
+        function savePreferences() {
+            const analytics = document.getElementById('analyticsToggle').checked;
+            const consent = { analytics: analytics };
+            saveAndClose(consent);
+        }
+
+        function saveAndClose(consent) {
+            localStorage.setItem(COOKIE_NAME, JSON.stringify(consent));
+            applyConsent(consent);
+            document.getElementById('cookie-banner').classList.remove('visible');
+            closeModal('prefModal');
+
+            // Reload page to show welcome message after first accept if desired, 
+            // or just update UI. Here we just update UI.
+            const banner = document.getElementById('cookie-banner');
+            const contentContainer = banner.querySelector('.cookie-content');
+            contentContainer.innerHTML = `
+                <p>Preferences Saved.  <a href="https://www.luxury-method.com/privacy-policy" target="_blank">Privacy Policy</a>.</p>
+                <div class="cookie-actions">
+                    <button onclick="hideCookieBanner()">Close</button>
+                </div>
+            `;
+            setTimeout(() => {
+                banner.classList.add('visible');
+            }, 500);
+        }
+
+        function applyConsent(consent) {
+            // Update Toggle UI
+            const toggle = document.getElementById('analyticsToggle');
+            if (toggle) toggle.checked = consent.analytics;
+
+            if (consent.analytics) {
+                console.log("Analytics Scripts Loaded (GDPR Compliant)");
+                // Inject Analytics here if needed
+            } else {
+                console.log("Analytics Blocked");
+            }
+        }
+
         // Initialize on page load
         document.addEventListener("DOMContentLoaded", function () {
             handleSidebar();
             handleBackToTopButton();
+            initCookieBanner();
 
             const sidebar = document.querySelector('.sidebar');
             const sidebar2 = document.querySelector('.sidebar2');
@@ -1646,6 +2203,7 @@
 
             const textObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
+                    console.log(entry);
                     if (entry.isIntersecting) {
                         entry.target.classList.add('active');
                     } else {
@@ -1654,8 +2212,10 @@
                     }
                 });
             }, {
-                threshold: 0.15, // Trigger when 15% visible
-                rootMargin: "-20px 0px -20px 0px" // Slight offset so it doesn't trigger at very edge
+                // threshold: 0.15, // Trigger when 15% visible
+                // rootMargin: "-20px 0px -20px 0px" // Slight offset so it doesn't trigger at very edge
+                root: null,
+                threshold: 0,
             });
 
             textElements.forEach(el => {
