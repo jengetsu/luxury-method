@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Updated viewport to include viewport-fit=cover for iPhone safe area detection -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>Luxury SEO Agency</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,8 +16,8 @@
 
     <style>
         /* =========================================
-       1. Variables & Reset
-       ========================================= */
+        1. Variables & Reset
+        ========================================= */
         :root {
             --bg-color: #ebe0d5;
             --text-color: #000000;
@@ -51,8 +52,8 @@
         }
 
         /* =========================================
-       2. Typography & Shared Classes
-       ========================================= */
+        2. Typography & Shared Classes
+        ========================================= */
         a {
             color: inherit;
             text-decoration: none;
@@ -141,8 +142,8 @@
         }
 
         /* =========================================
-       3. TEXT REVEAL ANIMATION (NEW)
-       ========================================= */
+        3. TEXT REVEAL ANIMATION (NEW)
+        ========================================= */
         .reveal-text {
             opacity: 0.1;
             /* Start almost invisible */
@@ -172,8 +173,8 @@
         }
 
         /* =========================================
-       4. Hero Section
-       ========================================= */
+        4. Hero Section
+        ========================================= */
         .hero {
             width: 100%;
             height: 100vh;
@@ -201,8 +202,8 @@
         }
 
         /* =========================================
-       5. Sidebar & Navigation
-       ========================================= */
+        5. Sidebar & Navigation
+        ========================================= */
         .sidebar {
             width: var(--sidebar-width);
             background-color: var(--bg-color);
@@ -308,8 +309,8 @@
 
 
         /* =========================================
-       6. Content Area
-       ========================================= */
+        6. Content Area
+        ========================================= */
         .main-container {
             display: flex;
             flex: 1;
@@ -332,8 +333,8 @@
         }
 
         /* =========================================
-       7. Images
-       ========================================= */
+        7. Images
+        ========================================= */
         .image-container {
             display: flex;
             justify-content: center;
@@ -393,8 +394,8 @@
         }
 
         /* =========================================
-       8. FAQ Section
-       ========================================= */
+        8. FAQ Section
+        ========================================= */
         .faq-container {
             margin-top: 20px;
             z-index: 2000;
@@ -462,8 +463,8 @@
         }
 
         /* =========================================
-       9. Footer & Contacts
-       ========================================= */
+        9. Footer & Contacts
+        ========================================= */
         .contact-icons {
             display: flex;
             gap: 100px;
@@ -536,8 +537,8 @@
 
 
         /* =========================================
-       10. Back to Top Button
-       ========================================= */
+        10. Back to Top Button
+        ========================================= */
         .back-to-top {
             position: fixed;
             bottom: 60px;
@@ -669,6 +670,8 @@
                 max-width: 100%;
                 border-radius: 20px 20px 0 0;
                 padding: 24px;
+                /* FIX: Add safe area inset for bottom padding so it sits above iPhone Home Bar/URL bar */
+                padding-bottom: calc(24px + env(safe-area-inset-bottom));
                 transform: translateY(100%);
             }
 
@@ -887,8 +890,8 @@
         }
 
         /* =========================================
-       11. Media Queries
-       ========================================= */
+        11. Media Queries
+        ========================================= */
 
         /* Tablet & Mobile (Max Width 768px) */
         @media screen and (max-width: 768px) {
@@ -969,6 +972,8 @@
 
             .back-to-top {
                 bottom: 80px;
+                /* Added safe area fix */
+                bottom: calc(80px + env(safe-area-inset-bottom));
             }
 
             .hover-3d {
@@ -1025,6 +1030,8 @@
         @media screen and (max-width: 500px) {
             .back-to-top {
                 bottom: 120px !important;
+                /* Added safe area fix */
+                bottom: calc(120px + env(safe-area-inset-bottom)) !important;
             }
 
             .floating-gdpr-btn {
@@ -1948,20 +1955,25 @@
         </div>
     </div>
 
-    <!-- Scripts -->
     <script>
         function toggleFAQ(element) {
             const answer = element.nextElementSibling;
             const toggle = element.querySelector(".faq-toggle");
 
+            // Close all other FAQs
             document.querySelectorAll(".faq-answer").forEach((item) => {
-                if (item !== answer) item.classList.remove("active");
+                if (item !== answer) {
+                    item.classList.remove("active");
+                }
             });
 
             document.querySelectorAll(".faq-toggle").forEach((item) => {
-                if (item !== toggle) item.classList.remove("active");
+                if (item !== toggle) {
+                    item.classList.remove("active");
+                }
             });
 
+            // Toggle current FAQ
             answer.classList.toggle("active");
             toggle.classList.toggle("active");
         }
@@ -1969,71 +1981,126 @@
         function scrollToSection(id) {
             const element = document.getElementById(id);
             const yOffset = -20;
-            const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
+            const y =
+                element.getBoundingClientRect().top + window.scrollY + yOffset;
             window.scrollTo({ top: y, behavior: "smooth" });
         }
 
+        // Back to Top functionality
         function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: "smooth" });
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
         }
 
+        // Show/hide back to top button
         function handleBackToTopButton() {
             const backToTopButton = document.getElementById('backToTop');
-            if (window.scrollY > 300) {
+            if (window.scrollY > 300) { // Show button after scrolling 300px
                 backToTopButton.classList.add('visible');
             } else {
                 backToTopButton.classList.remove('visible');
             }
         }
 
+        // Function to scroll sidebar horizontally on mobile
         function scrollSidebar(sidebarId, direction) {
             const sidebar = document.querySelector(`.${sidebarId}`);
-            const scrollAmount = 180;
+            const scrollAmount = 180; // Slightly larger scroll amount
 
             if (direction === 'left') {
-                sidebar.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                sidebar.scrollBy({
+                    left: -scrollAmount,
+                    behavior: 'smooth'
+                });
             } else {
-                sidebar.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                sidebar.scrollBy({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
             }
 
-            //setTimeout(() => { updateArrowVisibility(sidebarId); }, 300);
+            // Update arrow visibility after scrolling
+            setTimeout(() => {
+                updateArrowVisibility(sidebarId);
+            }, 300);
         }
 
-        // function updateArrowVisibility(sidebarId) {
-        //   const sidebar = document.querySelector(`.${sidebarId}`);
-        //   const leftArrow = sidebar.querySelector('.left-arrow');
-        //   const rightArrow = sidebar.querySelector('.right-arrow');
+        // Function to update arrow visibility based on scroll position
+        function updateArrowVisibility(sidebarId) {
+            const sidebar = document.querySelector(`.${sidebarId}`);
+            // Note: Arrows are manually placed outside sidebar in this structure
+            const leftBtnWrapper = document.getElementById(`${sidebarId === 'sidebar' ? 'sidebar1' : 'sidebar2'}-left`);
+            const rightBtnWrapper = document.getElementById(`${sidebarId === 'sidebar' ? 'sidebar1' : 'sidebar2'}-right`);
 
-        //   if (window.innerWidth <= 768) {
-        //     if (leftArrow) leftArrow.style.display = 'flex';
-        //     if (rightArrow) rightArrow.style.display = 'flex';
+            if (!leftBtnWrapper || !rightBtnWrapper) return;
 
-        //     if (leftArrow) leftArrow.style.opacity = (sidebar.scrollLeft <= 10) ? '0.4' : '1';
-        //     if (rightArrow) rightArrow.style.opacity = (sidebar.scrollLeft + sidebar.clientWidth >= sidebar.scrollWidth - 10) ? '0.4' : '1';
+            const leftBtn = leftBtnWrapper.querySelector('.scroll-btn');
+            const rightBtn = rightBtnWrapper.querySelector('.scroll-btn');
 
-        //     if (sidebar.scrollWidth <= sidebar.clientWidth) {
-        //       if (leftArrow) leftArrow.style.display = 'none';
-        //       if (rightArrow) rightArrow.style.display = 'none';
-        //     }
-        //   }
-        // }
+            // Only show arrows on mobile view (width <= 768px)
+            if (window.innerWidth <= 768) {
+                // Check if at the start or end of scrolling
+                if (sidebar.scrollLeft <= 10) {
+                    leftBtn.style.opacity = '0.4';
+                } else {
+                    leftBtn.style.opacity = '1';
+                }
 
+                if (sidebar.scrollLeft + sidebar.clientWidth >= sidebar.scrollWidth - 10) {
+                    rightBtn.style.opacity = '0.4';
+                } else {
+                    rightBtn.style.opacity = '1';
+                }
+
+                // Check if sidebar has enough content to scroll
+                if (sidebar.scrollWidth <= sidebar.clientWidth) {
+                    leftBtnWrapper.style.display = 'none';
+                    rightBtnWrapper.style.display = 'none';
+                } else {
+                    leftBtnWrapper.style.display = 'block';
+                    rightBtnWrapper.style.display = 'block';
+                }
+            }
+        }
+
+        // Function to handle the sidebar visibility
         function handleSidebar() {
             const bottomsection = document.querySelector(".hero");
             const sidebar = document.querySelector(".sidebar");
             const Faq = document.querySelector(".faq-container");
 
-            if (!bottomsection || !sidebar || !Faq) return;
-
+            // Get the bottom position of the top section
             const FaqBottom = Faq.getBoundingClientRect().top;
             const topSectiontopBottom = bottomsection.getBoundingClientRect().bottom;
 
+            // First hide all scroll buttons
+            if (window.innerWidth <= 768) {
+                document.querySelectorAll('.scroll-btn-left, .scroll-btn-right').forEach(btn => {
+                    btn.style.display = 'none';
+                });
+            }
+
+            // If we've scrolled past the top section, show the sidebar
             if (topSectiontopBottom <= 100 && FaqBottom > 200) {
-                sidebar.classList.add("main-container-visible");
                 sidebar.style.transform = "translateY(0)";
+
+                // Make the first sidebar's scroll buttons active
+                if (window.innerWidth <= 768) {
+                    // Trigger arrow visibility check
+                    updateArrowVisibility('sidebar');
+                }
             } else {
-                sidebar.classList.remove("main-container-visible");
-                sidebar.style.transform = "translateY(100vh)";
+                // Hide sidebar
+                if (window.innerWidth > 768) {
+                    sidebar.style.transform = "translateY(100vh)";
+                } else {
+                    // On mobile, we might want it to slide down or stay fixed? 
+                    // Original logic implies sliding away or staying fixed depending on interpretation.
+                    // Based on "transform: translateY(100vh)" in CSS, it hides.
+                    sidebar.style.transform = "translateY(100vh)";
+                }
             }
         }
 
@@ -2066,7 +2133,7 @@
                 const contentContainer = banner.querySelector('.cookie-content');
                 if (contentContainer) {
                     contentContainer.innerHTML = `
-                        <p>Welcome back. You have previously accepted our cookies. <a href="https://www.luxury-method.com/privacy-policy" target="_blank">Privacy Policy</a>.</p>
+                        <p>Welcome back. You have previously accepted our cookies.  <a href="https://www.luxury-method.com/privacy-policy" target="_blank">Privacy Policy</a>.</p>
                         <div class="cookie-actions">
                             <button onclick="hideCookieBanner()">Close</button>
                         </div>
@@ -2115,7 +2182,7 @@
             const banner = document.getElementById('cookie-banner');
             const contentContainer = banner.querySelector('.cookie-content');
             contentContainer.innerHTML = `
-                <p>Preferences Saved. <a href="https://www.luxury-method.com/privacy-policy" target="_blank">Privacy Policy</a>.</p>
+                <p>Preferences Saved.  <a href="https://www.luxury-method.com/privacy-policy" target="_blank">Privacy Policy</a>.</p>
                 <div class="cookie-actions">
                     <button onclick="hideCookieBanner()">Close</button>
                 </div>
@@ -2138,43 +2205,25 @@
             }
         }
 
+        // Initialize on page load
         document.addEventListener("DOMContentLoaded", function () {
             handleSidebar();
             handleBackToTopButton();
             initCookieBanner();
 
+            // Add scroll event listeners to sidebars for button visibility updates
             const sidebar = document.querySelector('.sidebar');
-            // if (sidebar) {
-            //   sidebar.addEventListener('scroll', function () {
-            //     updateScrollButtonVisibility('sidebar');
-            //   });
-            // }
+            if (sidebar) {
+                sidebar.addEventListener('scroll', function () {
+                    updateArrowVisibility('sidebar');
+                });
+            }
 
+            // Add window resize event listener
             window.addEventListener('resize', function () {
                 handleSidebar();
             });
 
-            // 3D Text Animation Observer
-            const textElements = document.querySelectorAll('h1, h2, h3, p, .faq-item');
-            const textObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    } else {
-                        entry.target.classList.remove('active');
-                    }
-                });
-            }, {
-                threshold: 0.15,
-                rootMargin: "-20px 0px -20px 0px"
-            });
-
-            textElements.forEach(el => {
-                el.classList.add('reveal-text');
-                textObserver.observe(el);
-            });
-
-            // Image Hover Animation Observer (Mobile)
             if (window.innerWidth <= 768) {
                 const hoverElements = document.querySelectorAll('.hover-3d');
                 const observer = new IntersectionObserver((entries) => {
@@ -2186,7 +2235,7 @@
                         }
                     });
                 }, {
-                    threshold: 0.5
+                    threshold: 0.5 // earlier trigger for stronger effect
                 });
 
                 hoverElements.forEach(el => {
@@ -2194,8 +2243,34 @@
                 });
             }
 
+            // ==========================================
+            // NEW TEXT REVEAL ANIMATION (ALL DEVICES)
+            // ==========================================
+            // Selector targets hero title, main content headings/paras, FAQ headers, FAQ intro, and FAQ items
+            const textElements = document.querySelectorAll('h1, .top-section p, .content h2, .content h3, .content p, .faq-container h2, .faq-intro, .faq-item');
+
+            const textObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    } else {
+                        // Fade out when scrolling away
+                        entry.target.classList.remove('active');
+                    }
+                });
+            }, {
+                threshold: 0.15, // Trigger when 15% visible
+                rootMargin: "-20px 0px -20px 0px" // Slight offset so it doesn't trigger at very edge
+            });
+
+            textElements.forEach(el => {
+                el.classList.add('reveal-text'); // Add the animation class dynamically
+                textObserver.observe(el);
+            });
+
         });
 
+        // Add scroll event listener
         window.addEventListener("scroll", function () {
             handleSidebar();
             handleBackToTopButton();

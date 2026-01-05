@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Updated viewport to include viewport-fit=cover for iPhone safe area detection -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>Luxury Content Marketing</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -719,7 +720,9 @@
             }
 
             .back-to-top {
+                /* Adjusted for Safe Area */
                 bottom: 80px;
+                bottom: calc(80px + env(safe-area-inset-bottom));
             }
 
             /* Image Resets for Mobile */
@@ -810,6 +813,8 @@
         @media screen and (max-width: 500px) {
             .back-to-top {
                 bottom: 120px !important;
+                /* Added safe area fix */
+                bottom: calc(120px + env(safe-area-inset-bottom)) !important;
             }
 
             /* Contact Buttons Wrap */
@@ -942,6 +947,8 @@
                 border-radius: 20px 20px 0 0;
                 /* Bottom sheet style */
                 padding: 24px;
+                /* FIX: Add safe area inset for bottom padding so it sits above iPhone Home Bar/URL bar */
+                padding-bottom: calc(24px + env(safe-area-inset-bottom));
                 transform: translateY(100%);
             }
 

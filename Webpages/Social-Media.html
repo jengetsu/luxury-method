@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Updated viewport to include viewport-fit=cover for iPhone safe area detection -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -606,8 +607,8 @@
         }
 
         /* =========================================
-        12. COOKIE BANNER (MODERN DARK)
-        ========================================= */
+       12. COOKIE BANNER (MODERN DARK)
+       ========================================= */
         .cookie-banner {
             position: fixed;
             bottom: 30px;
@@ -701,6 +702,8 @@
                 max-width: 100%;
                 border-radius: 20px 20px 0 0;
                 padding: 24px;
+                /* FIX: Add safe area inset for bottom padding so it sits above iPhone Home Bar/URL bar */
+                padding-bottom: calc(24px + env(safe-area-inset-bottom));
                 transform: translateY(100%);
             }
 
@@ -732,8 +735,8 @@
         }
 
         /* =========================================
-        13. GDPR COMPONENTS (NEW BEIGE THEME)
-        ========================================= */
+       13. GDPR COMPONENTS (NEW BEIGE THEME)
+       ========================================= */
         .gdpr-overlay {
             position: fixed;
             top: 0;
@@ -997,6 +1000,8 @@
 
             .back-to-top {
                 bottom: 80px;
+                /* Added safe area fix */
+                bottom: calc(80px + env(safe-area-inset-bottom));
             }
 
             .industry_Image img {
@@ -1075,6 +1080,8 @@
         @media screen and (max-width: 500px) {
             .back-to-top {
                 bottom: 120px !important;
+                /* Added safe area fix */
+                bottom: calc(120px + env(safe-area-inset-bottom)) !important;
             }
 
             .contact-icons-container {
@@ -2371,32 +2378,37 @@
         // Function to update arrow visibility based on scroll position
         function updateArrowVisibility(sidebarId) {
             const sidebar = document.querySelector(`.${sidebarId}`);
-            const leftArrow = sidebar.querySelector('.left-arrow');
-            const rightArrow = sidebar.querySelector('.right-arrow');
+            // Note: Arrows are manually placed outside sidebar in this structure
+            const leftBtnWrapper = document.getElementById(`${sidebarId === 'sidebar' ? 'sidebar1' : 'sidebar2'}-left`);
+            const rightBtnWrapper = document.getElementById(`${sidebarId === 'sidebar' ? 'sidebar1' : 'sidebar2'}-right`);
+
+            if (!leftBtnWrapper || !rightBtnWrapper) return;
+
+            const leftBtn = leftBtnWrapper.querySelector('.scroll-btn');
+            const rightBtn = rightBtnWrapper.querySelector('.scroll-btn');
 
             // Only show arrows on mobile view (width <= 768px)
             if (window.innerWidth <= 768) {
-                // Make sure arrows are visible
-                if (leftArrow) leftArrow.style.display = 'flex';
-                if (rightArrow) rightArrow.style.display = 'flex';
-
                 // Check if at the start or end of scrolling
                 if (sidebar.scrollLeft <= 10) {
-                    if (leftArrow) leftArrow.style.opacity = '0.4';
+                    leftBtn.style.opacity = '0.4';
                 } else {
-                    if (leftArrow) leftArrow.style.opacity = '1';
+                    leftBtn.style.opacity = '1';
                 }
 
                 if (sidebar.scrollLeft + sidebar.clientWidth >= sidebar.scrollWidth - 10) {
-                    if (rightArrow) rightArrow.style.opacity = '0.4';
+                    rightBtn.style.opacity = '0.4';
                 } else {
-                    if (rightArrow) rightArrow.style.opacity = '1';
+                    rightBtn.style.opacity = '1';
                 }
 
                 // Check if sidebar has enough content to scroll
                 if (sidebar.scrollWidth <= sidebar.clientWidth) {
-                    if (leftArrow) leftArrow.style.display = 'none';
-                    if (rightArrow) rightArrow.style.display = 'none';
+                    leftBtnWrapper.style.display = 'none';
+                    rightBtnWrapper.style.display = 'none';
+                } else {
+                    leftBtnWrapper.style.display = 'block';
+                    rightBtnWrapper.style.display = 'block';
                 }
             }
         }
@@ -2432,43 +2444,6 @@
                 }
             } else {
                 sidebar.style.transform = "translateY(100vh)";
-            }
-        }
-
-        // Function to update scroll button visibility based on scroll position
-        function updateScrollButtonVisibility(sidebarId) {
-            // Logic for scroll buttons - checks if elements exist first
-            const sidebar = document.querySelector(`.${sidebarId}`);
-            if (!sidebar) return;
-
-            const leftWrapper = document.getElementById(`${sidebarId === 'sidebar' ? 'sidebar1' : 'sidebar2'}-left`);
-            const rightWrapper = document.getElementById(`${sidebarId === 'sidebar' ? 'sidebar1' : 'sidebar2'}-right`);
-
-            if (!leftWrapper || !rightWrapper) return;
-
-            const leftBtn = leftWrapper.querySelector('.scroll-btn');
-            const rightBtn = rightWrapper.querySelector('.scroll-btn');
-
-            // Only show buttons on mobile view (width <= 768px)
-            if (window.innerWidth <= 768) {
-                // Check if at the start or end of scrolling
-                if (sidebar.scrollLeft <= 10) {
-                    leftBtn.style.opacity = '0.4';
-                } else {
-                    leftBtn.style.opacity = '1';
-                }
-
-                if (sidebar.scrollLeft + sidebar.clientWidth >= sidebar.scrollWidth - 10) {
-                    rightBtn.style.opacity = '0.4';
-                } else {
-                    rightBtn.style.opacity = '1';
-                }
-
-                // Check if sidebar has enough content to scroll
-                if (sidebar.scrollWidth <= sidebar.clientWidth) {
-                    leftWrapper.style.display = 'none';
-                    rightWrapper.style.display = 'none';
-                }
             }
         }
 
@@ -2550,7 +2525,7 @@
             const banner = document.getElementById('cookie-banner');
             const contentContainer = banner.querySelector('.cookie-content');
             contentContainer.innerHTML = `
-                <p>Preferences Saved. <a href="https://www.luxury-method.com/privacy-policy" target="_blank">Privacy Policy</a>.</p>
+                <p>Preferences Saved.  <a href="https://www.luxury-method.com/privacy-policy" target="_blank">Privacy Policy</a>.</p>
                 <div class="cookie-actions">
                     <button onclick="hideCookieBanner()">Close</button>
                 </div>
@@ -2581,21 +2556,13 @@
 
             // Add scroll event listeners to sidebars for button visibility updates
             const sidebar = document.querySelector('.sidebar');
-            const sidebar2 = document.querySelector('.sidebar2');
-
             if (sidebar) {
                 sidebar.addEventListener('scroll', function () {
-                    updateScrollButtonVisibility('sidebar');
+                    updateArrowVisibility('sidebar');
                 });
             }
 
-            if (sidebar2) {
-                sidebar2.addEventListener('scroll', function () {
-                    updateScrollButtonVisibility('sidebar2');
-                });
-            }
-
-            // Add window resize event listener to update button visibility
+            // Add window resize event listener
             window.addEventListener('resize', function () {
                 handleSidebar();
             });
@@ -2623,7 +2590,7 @@
             // NEW TEXT REVEAL ANIMATION (ALL DEVICES)
             // ==========================================
             // Selector targets hero title, main content headings/paras, FAQ headers, FAQ intro, and FAQ items
-            const textElements = document.querySelectorAll('h1, h2, h3, p, .faq-item');
+            const textElements = document.querySelectorAll('h1, .top-section p, .content h2, .content h3, .content p, .faq-container h2, .faq-intro, .faq-item');
 
             const textObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -2649,7 +2616,7 @@
         // Add scroll event listener
         window.addEventListener("scroll", function () {
             handleSidebar();
-            handleBackToTopButton(); // Check back to top button on scroll
+            handleBackToTopButton();
         });
     </script>
 </body>
