@@ -41,6 +41,11 @@
             display: none;
         }
 
+        html {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
         body {
             margin: 0;
             background-color: var(--bg-color);
@@ -575,23 +580,29 @@
         }
 
         /* =========================================
-        12. COOKIE BANNER (MODERN DARK)
+        12. COOKIE BANNER (MODERN DARK - UPDATED)
         ========================================= */
+        /* Keeps the Banner Look Dark as requested */
         .cookie-banner {
             position: fixed;
-            bottom: 30px;
+            bottom: 50px;
+            /* LIFTED HIGHER for safety on desktop */
+            /* Floating look on desktop */
             left: 0;
             right: 0;
             margin: 0 auto;
             width: 90%;
             max-width: 1000px;
             background-color: #1c1c1c;
+            /* Dark background for contrast against beige */
             color: #ebe0d5;
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 16px;
+            /* Modern rounded corners */
             padding: 24px 32px;
             z-index: 2000000000000;
             transform: translateY(150%);
+            /* Hidden state */
             transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
             display: flex;
             justify-content: center;
@@ -617,6 +628,7 @@
             margin: 0;
             font-size: 16px !important;
             color: #ebe0d5;
+            /* Slightly off-white for readability */
             flex: 1;
             min-width: 300px;
         }
@@ -635,6 +647,7 @@
 
         .cookie-actions button {
             background-color: #ebe0d5;
+            /* White button */
             border: none;
             color: #000000;
             padding: 12px 24px;
@@ -643,6 +656,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             border-radius: 8px;
+            /* Slightly rounded buttons */
         }
 
         .cookie-actions button:hover {
@@ -650,6 +664,7 @@
             transform: translateY(-2px);
         }
 
+        /* Essentials button style (Outlined) */
         .cookie-actions button:first-child {
             background-color: transparent;
             border: 1px solid rgba(255, 255, 255, 0.4);
@@ -663,48 +678,10 @@
             color: #fff;
         }
 
-        @media (max-width: 768px) {
-            .cookie-banner {
-                bottom: 0;
-                width: 100%;
-                max-width: 100%;
-                border-radius: 20px 20px 0 0;
-                padding: 24px;
-                /* FIX: Add safe area inset for bottom padding so it sits above iPhone Home Bar/URL bar */
-                padding-bottom: calc(24px + env(safe-area-inset-bottom));
-                transform: translateY(100%);
-            }
-
-            .cookie-banner.visible {
-                transform: translateY(0);
-            }
-
-            .cookie-content {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 20px;
-            }
-
-            .cookie-content p {
-                min-width: auto;
-                font-size: 15px !important;
-            }
-
-            .cookie-actions {
-                width: 100%;
-                justify-content: space-between;
-                gap: 10px;
-            }
-
-            .cookie-actions button {
-                flex: 1;
-                padding: 14px;
-            }
-        }
-
         /* =========================================
         13. GDPR COMPONENTS (NEW BEIGE THEME)
         ========================================= */
+        /* Common Overlay */
         .gdpr-overlay {
             position: fixed;
             top: 0;
@@ -713,6 +690,7 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.85);
             z-index: 2000000000001;
+            /* Higher than banner */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -726,6 +704,7 @@
             visibility: visible;
         }
 
+        /* Beige Modal Design from User Snippet */
         .gdpr-modal {
             background-color: #ebe0d5;
             padding: 40px;
@@ -794,6 +773,7 @@
             color: #fff;
         }
 
+        /* Toggle Switch for Preferences */
         .pref-row {
             display: flex;
             justify-content: space-between;
@@ -867,12 +847,17 @@
             cursor: not-allowed;
         }
 
+        /* Floating Settings Button (White Circle) */
         .floating-gdpr-btn {
             position: fixed;
             bottom: 60px;
+            /* Aligned with Back to Top */
             left: 30px;
+            /* Symmetrical inset */
             width: 50px;
+            /* Match Back to Top size */
             height: 50px;
+            /* Match Back to Top size */
             background-color: #fff;
             border-radius: 50%;
             display: flex;
@@ -890,13 +875,19 @@
         }
 
         /* =========================================
-        11. Media Queries
+        11. Media Queries (UPDATED FOR FLOATING BANNER)
         ========================================= */
 
         /* Tablet & Mobile (Max Width 768px) */
         @media screen and (max-width: 768px) {
             h1 {
                 font-size: 30px !important;
+                letter-spacing: 0.1rem !important; /* Fix for horizontal overflow */
+            }
+
+            .contact-icons {
+                gap: 20px !important; /* Fix for horizontal overflow */
+                flex-wrap: wrap;
             }
 
             .top-section {
@@ -912,7 +903,6 @@
                 width: 100%;
                 height: 80px;
                 padding: 20px 20px 0 20px;
-                /* Added padding to prevent edge sticking */
                 position: fixed;
                 top: 0;
                 left: 0;
@@ -923,16 +913,13 @@
                 flex-direction: row;
                 white-space: nowrap;
                 gap: 12px;
-                /* Increased gap */
                 scrollbar-width: none;
                 justify-content: flex-start;
             }
 
             .sidebar button {
                 padding: 10px 16px;
-                /* Better spacing */
                 font-size: 3.5vw;
-                /* Increased size */
                 height: fit-content;
             }
 
@@ -963,7 +950,6 @@
 
             .faq-container {
                 padding: 0 5vw !important;
-                /* Fixed padding for mobile */
             }
 
             .faq-question {
@@ -972,7 +958,6 @@
 
             .back-to-top {
                 bottom: 80px;
-                /* Added safe area fix */
                 bottom: calc(80px + env(safe-area-inset-bottom));
             }
 
@@ -998,7 +983,6 @@
             .luxury-footer-contact {
                 margin-bottom: 20px;
                 text-align: center;
-                /* optional, to center text */
             }
 
             .social-icons {
@@ -1006,9 +990,58 @@
                 margin-top: 20px;
             }
 
-            /* Hide Floating GDPR on mobile */
             .floating-gdpr-btn {
                 display: none !important;
+                /* HIDE ON MOBILE AS REQUESTED */
+            }
+
+            .cookie-banner {
+                /* Changed to Floating Banner for Mobile */
+                bottom: 90px;
+                /* Lifted into safe space */
+                bottom: calc(150px + env(safe-area-inset-bottom));
+
+                /* Floating dimensions */
+                width: 90%;
+                max-width: 400px;
+                left: 0;
+                right: 0;
+                margin: 0 auto;
+
+                /* Rounded corners all around */
+                border-radius: 16px;
+
+                /* Standard padding (safe area handled by bottom property) */
+                padding: 24px;
+                padding-bottom: 24px;
+
+                transform: translateY(150%);
+            }
+
+            .cookie-banner.visible {
+                transform: translateY(0);
+            }
+
+            .cookie-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .cookie-content p {
+                min-width: auto;
+                font-size: 15px !important;
+            }
+
+            .cookie-actions {
+                width: 100%;
+                justify-content: space-between;
+                gap: 10px;
+            }
+
+            .cookie-actions button {
+                flex: 1;
+                padding: 14px;
             }
         }
 
@@ -1030,13 +1063,17 @@
         @media screen and (max-width: 500px) {
             .back-to-top {
                 bottom: 120px !important;
-                /* Added safe area fix */
                 bottom: calc(120px + env(safe-area-inset-bottom)) !important;
             }
 
             .floating-gdpr-btn {
                 bottom: 120px;
-                /* Match small mobile Back to Top */
+            }
+
+            /* Even smaller cookie banner adjustment for small screens */
+            .cookie-banner {
+                bottom: 120px;
+                bottom: calc(150px + env(safe-area-inset-bottom));
             }
         }
 
@@ -1046,6 +1083,12 @@
                 display: flex;
                 flex-direction: column;
                 gap: 30px;
+            }
+
+            .sidebar button {
+                padding: 8px;
+                font-size: 3.5vw;
+                height: fit-content;
             }
 
             h3 {
@@ -1551,7 +1594,8 @@
                         <span class="text-base">With our</span><a class="XqQF9c" target="_blank"
                             href="https://www.luxury-method.com/industries/luxury-real-estate-marketing"><span
                                 class="text-base text-underline">
-                            </span></a><span class="text-base">luxury SEO real estate website</span><span
+                            </span></a><span class="text-base text-link text-underline">
+                        </span><span class="text-base">luxury SEO real estate website</span><span
                             class="text-base text-link text-underline">
                         </span><span class="text-base">solutions, we focus on generating high-value organic
                             leads,
