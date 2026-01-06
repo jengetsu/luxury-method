@@ -1,0 +1,2624 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <!-- Updated viewport to include viewport-fit=cover for iPhone safe area detection -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <!-- Added FontAwesome for the Cookie Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Luxury Social Media Services | Luxury Method</title>
+
+    <style>
+        /* =========================================
+       1. RESET & GLOBAL STYLES
+       ========================================= */
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: "Cormorant Garamond", serif;
+            scrollbar-width: none;
+            /* Firefox */
+            -ms-overflow-style: none;
+            /* IE/Edge */
+            color: #000;
+        }
+
+        /* Hide scrollbar for Chrome/Safari/Opera */
+        *::-webkit-scrollbar {
+            display: none;
+        }
+
+        body {
+            margin: 0;
+            background-color: #ebe0d5;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            /* Replaced 100vw */
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        a:visited {
+            color: #000;
+        }
+
+        /* =========================================
+       2. TYPOGRAPHY
+       ========================================= */
+        h1 {
+            color: #ebe0d5;
+            text-align: center;
+            z-index: 2;
+            font-weight: normal;
+            font-size: 4rem;
+            letter-spacing: 0.5rem;
+            margin: 0;
+        }
+
+        h2 {
+            text-align: center;
+            text-decoration: underline;
+            font-size: 1.5em;
+            margin-block-start: 0.83em;
+            margin-block-end: 0.83em;
+        }
+
+        h3 {
+            text-align: center;
+            font-size: 1.17em;
+            font-weight: bold;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+        }
+
+        /* Standardized Paragraph Style to match previous inline styles */
+        p {
+            font-size: 18.7px !important;
+            /* Matches approx 14pt */
+            line-height: 1.656;
+            color: #000;
+            margin-bottom: 0;
+            margin-top: 0;
+        }
+
+        p.intro-spacing {
+            margin-bottom: 1em;
+        }
+
+        strong {
+            font-weight: 700;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-italic {
+            font-style: italic;
+        }
+
+        /* =========================================
+       3. TEXT REVEAL ANIMATION (NEW)
+       ========================================= */
+        .reveal-text {
+            opacity: 0.1;
+            /* Start almost invisible */
+            transform: translateY(30px) scale(0.95) rotateX(10deg);
+            /* 3D Drop effect */
+            filter: blur(4px);
+            /* Luxury fog effect */
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+            /* Elegant easing */
+            transform-origin: center top;
+            will-change: opacity, transform, filter;
+        }
+
+        .reveal-text.active {
+            opacity: 1;
+            transform: translateY(0) scale(1) rotateX(0deg);
+            filter: blur(0);
+        }
+
+        /* Ensure FAQ items animate as a block */
+        .faq-item.reveal-text {
+            transform: translateY(20px);
+        }
+
+        .faq-item.reveal-text.active {
+            transform: translateY(0);
+        }
+
+        /* =========================================
+       4. LAYOUT UTILITIES
+       ========================================= */
+        .main-container {
+            display: flex;
+            flex: 1;
+            position: relative;
+        }
+
+        .content {
+            background-color: #ebe0d5;
+            color: #000;
+            width: 100%;
+            flex: 1;
+            transition: all 1ms;
+        }
+
+        /* Spacing Helpers */
+        .mrginleft {
+            margin-left: 340px;
+        }
+
+        .paddingleftright {
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+
+        .section {
+            margin-bottom: 80px;
+        }
+
+        .top-section {
+            width: 100%;
+            background-color: #ebe0d5;
+            padding: 10px;
+            margin-bottom: 0;
+        }
+
+        .top-section-spacer {
+            margin-top: 80px;
+        }
+
+        /* =========================================
+       5. HERO SECTION
+       ========================================= */
+        .hero {
+            width: 100%;
+            height: 100vh;
+            background-image: url('https://luxury-method.vercel.app/SocialMediaHero.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* iOS fix for fixed background */
+        @supports (-webkit-touch-callout: none) {
+            .hero {
+                background-attachment: scroll !important;
+            }
+        }
+
+        .hero-overlay {
+            background-color: black;
+            opacity: 0.5;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        /* =========================================
+       6. SIDEBAR & NAVIGATION
+       ========================================= */
+        .sidebar,
+        .sidebar2 {
+            width: 340px;
+            background-color: #ebe0d5;
+            color: white;
+            padding: 16px 40px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            transform: translateY(100vh);
+            transition: transform 0.3s ease;
+            z-index: 100;
+            height: fit-content;
+        }
+
+        .sidebar {
+            justify-content: flex-start;
+        }
+
+        .main-container-visible .sidebar,
+        .main-container-visible .sidebar2 {
+            transform: translateY(0);
+        }
+
+        /* Buttons */
+        button {
+            background-color: #000;
+            color: #fff;
+            padding: 12px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        button:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        /* Scroll Buttons (Mobile) */
+        .scroll-btn-left,
+        .scroll-btn-right {
+            display: none;
+            position: fixed;
+            top: 5px;
+            z-index: 30;
+        }
+
+        .scroll-btn-left {
+            left: 0px;
+        }
+
+        .scroll-btn-right {
+            right: 0px;
+        }
+
+        .scroll-btn {
+            background-color: rgba(235, 224, 213, 0.95);
+            border: none;
+            width: 30px;
+            height: 60px;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            border-radius: 0px;
+        }
+
+        .scroll-btn:hover {
+            background-color: rgba(235, 224, 213, 1);
+        }
+
+        .scroll-btn svg {
+            fill: #000;
+        }
+
+        .left-arrow,
+        .right-arrow {
+            font-size: 20px;
+            color: #000;
+            cursor: pointer;
+            position: absolute;
+            top: 35%;
+            z-index: 15;
+            display: none;
+            /* Hide by default on desktop */
+        }
+
+        .left-arrow {
+            left: 5px;
+            margin-right: 10px;
+        }
+
+        .right-arrow {
+            right: 5px;
+            margin-left: 10px;
+        }
+
+        /* =========================================
+       7. IMAGE STYLES
+       ========================================= */
+        .socialimg {
+            width: 80%;
+            border-radius: 20px;
+        }
+
+        /* Wrapper for generic images */
+        .image-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+            margin-top: 10px;
+        }
+
+        .image-wrapper-large {
+            width: 100%;
+            height: 570px;
+            background: #ebe0d5;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
+        .image-wrapper-large img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 20px;
+        }
+
+        /* Specific Industry Images */
+        .industry_Image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-block: 40px;
+            width: 100%;
+        }
+
+        .industry_Image img {
+            display: block;
+            width: 100%;
+            object-fit: cover;
+            object-position: center center;
+            max-height: 500px;
+            /* Responsive replacement for fixed height */
+            height: auto;
+            min-height: 400px;
+            /* Ensures visibility without vh */
+            border-radius: 20px;
+        }
+
+        /* Legacy class support */
+        .FASHION-image {
+            max-width: 700px;
+            width: 100%;
+            height: 480px;
+            object-fit: contain;
+            border-radius: 8px;
+            background: #ebe0d5;
+            transition: object-fit 0.3s ease;
+        }
+
+        .hover-3d {
+            transform-style: preserve-3d;
+            will-change: transform, opacity;
+            transition:
+                transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1),
+                box-shadow 0.45s cubic-bezier(0.25, 0.8, 0.25, 1),
+                opacity 0.35s ease-out;
+            opacity: 1;
+            transform: translateY(15px) scale(0.95);
+        }
+
+        /* =========================================
+       8. FAQ SECTION
+       ========================================= */
+        .faq-container {
+            margin-top: 20px;
+            z-index: 99;
+            /* Lowered slightly from inline max */
+            position: relative;
+            padding: 0 100px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #696969;
+            overflow: hidden;
+            /* margin: 0 90px; */
+            padding: 20px;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question h3 {
+            font-size: 18px;
+            font-weight: 500;
+            color: #1a1a1a;
+            text-align: left;
+            margin: 0;
+        }
+
+        .faq-toggle {
+            width: 24px;
+            height: 24px;
+            background: transparent;
+            border: none;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .faq-toggle::before {
+            font-size: 18px;
+            /* Fallback */
+        }
+
+        .faq-toggle.active {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 0 0 2px;
+            color: #333;
+        }
+
+        .faq-answer.active {
+            max-height: 1000px;
+            /* Arbitrary large number for animation */
+            padding-bottom: 20px;
+            height: auto;
+        }
+
+        .faq-answer p {
+            margin-bottom: 10px;
+            font-size: 16px !important;
+            /* Specific size override for FAQ */
+            line-height: 1.5;
+        }
+
+        /* Contact Section in FAQ */
+        .contact-icons {
+            display: flex;
+            gap: 100px;
+            margin-top: 60px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .contact-icon-link {
+            padding: 20px;
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-btn-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            margin-bottom: 100px;
+        }
+
+        .contact-btn {
+            padding: 10px 80px;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            border: 1px solid #000;
+            color: #000;
+        }
+
+        /* =========================================
+       9. FOOTER
+       ========================================= */
+        .luxury-footer {
+            background-image: url("https://luxury-method.vercel.app/Footer.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 100px 0;
+            color: #e5d7b1;
+        }
+
+        .luxury-footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 1200px;
+            width: 90%;
+            margin: auto;
+        }
+
+        .luxury-footer-contact small {
+            display: block;
+            margin-bottom: 18px;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+            color: #e5d7b1;
+            text-decoration: none;
+        }
+
+        .luxury-footer-contact a {
+            color: #e5d7b1;
+            text-decoration: none;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            justify-content: flex-end;
+            /* desktop: right */
+            align-items: center;
+        }
+
+        .social-link img {
+            width: 40px;
+            object-fit: contain;
+        }
+
+        /* =========================================
+       10. BACK TO TOP BUTTON
+       ========================================= */
+        .back-to-top {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            z-index: 9999;
+            width: 50px;
+            height: 50px;
+            background-color: #ffffff;
+            color: #000000;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-to-top:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* =========================================
+       12. COOKIE BANNER (MODERN DARK)
+       ========================================= */
+        .cookie-banner {
+            position: fixed;
+            bottom: 30px;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 90%;
+            max-width: 1000px;
+            background-color: #1c1c1c;
+            color: #ebe0d5;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px 32px;
+            z-index: 2000000000000;
+            transform: translateY(150%);
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+            opacity: 0;
+        }
+
+        .cookie-banner.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .cookie-content {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .cookie-content p {
+            margin: 0;
+            font-size: 16px !important;
+            color: #ebe0d5;
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .cookie-content a {
+            text-decoration: underline;
+            color: #ebe0d5;
+            text-underline-offset: 4px;
+        }
+
+        .cookie-actions {
+            display: flex;
+            gap: 15px;
+            flex-shrink: 0;
+        }
+
+        .cookie-actions button {
+            background-color: #ebe0d5;
+            border: none;
+            color: #000000;
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .cookie-actions button:hover {
+            background-color: #d6cfc1;
+            transform: translateY(-2px);
+        }
+
+        .cookie-actions button:first-child {
+            background-color: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-color: #fff;
+            color: #ebe0d5;
+        }
+
+        .cookie-actions button:first-child:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: #fff;
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .cookie-banner {
+                bottom: 0;
+                width: 100%;
+                max-width: 100%;
+                border-radius: 20px 20px 0 0;
+                padding: 24px;
+                /* FIX: Add safe area inset for bottom padding so it sits above iPhone Home Bar/URL bar */
+                padding-bottom: calc(24px + env(safe-area-inset-bottom));
+                transform: translateY(100%);
+            }
+
+            .cookie-banner.visible {
+                transform: translateY(0);
+            }
+
+            .cookie-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .cookie-content p {
+                min-width: auto;
+                font-size: 15px !important;
+            }
+
+            .cookie-actions {
+                width: 100%;
+                justify-content: space-between;
+                gap: 10px;
+            }
+
+            .cookie-actions button {
+                flex: 1;
+                padding: 14px;
+            }
+        }
+
+        /* =========================================
+       13. GDPR COMPONENTS (NEW BEIGE THEME)
+       ========================================= */
+        .gdpr-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 2000000000001;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+
+        .gdpr-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .gdpr-modal {
+            background-color: #ebe0d5;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            border: 1px solid #000;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .gdpr-modal h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: normal;
+            border-bottom: 1px solid #000;
+            padding-bottom: 10px;
+            text-align: left;
+            color: #000;
+        }
+
+        .gdpr-modal p,
+        .gdpr-modal li {
+            font-size: 1.1rem !important;
+            margin-bottom: 15px;
+            color: #000;
+        }
+
+        .gdpr-modal h4 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #000;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        .gdpr-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            border: none;
+            background: none;
+            color: #000;
+        }
+
+        .gdpr-btn {
+            background-color: transparent;
+            border: 1px solid #000;
+            color: #000;
+            padding: 10px 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: "Cormorant Garamond", serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .gdpr-btn:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .pref-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .pref-text h4 {
+            margin: 0;
+            font-size: 1.2rem;
+            text-align: left;
+            color: #000;
+        }
+
+        .pref-text p {
+            margin: 5px 0 0 0;
+            font-size: 0.9rem !important;
+            opacity: 0.8;
+            color: #333;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: #000;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(26px);
+        }
+
+        input:disabled+.slider {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .floating-gdpr-btn {
+            position: fixed;
+            bottom: 60px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 9998;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+            color: #000;
+        }
+
+        .floating-gdpr-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* =========================================
+       11. MEDIA QUERIES
+       ========================================= */
+
+        /* Tablet & Mobile (Max-width: 768px) */
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 30px !important;
+            }
+
+            .top-section {
+                padding: 5px;
+            }
+
+            .faq-question {
+                padding: 0 !important;
+            }
+
+            .faq-container {
+                padding: 0 5vw !important;
+            }
+
+            .mrginleft {
+                margin-left: 0px;
+            }
+
+            .content {
+                margin-top: 100px;
+            }
+
+            /* Sidebar Mobile - IMPROVED SPACING */
+            .sidebar,
+            .sidebar2 {
+                width: 100%;
+                height: 80px;
+                padding: 20px 20px 0 20px;
+                /* Added padding to prevent edge sticking */
+                position: fixed;
+                top: 0;
+                left: 0;
+                background-color: #ebe0d5;
+                z-index: 10;
+                overflow-x: auto;
+                overflow-y: hidden;
+                flex-direction: row;
+                white-space: nowrap;
+                gap: 12px;
+                /* Increased gap */
+                justify-content: flex-start;
+                border-bottom: none;
+            }
+
+            .sidebar2 {
+                padding: 16px 40px;
+                gap: 10px;
+            }
+
+            .sidebar button {
+                padding: 8px 16px;
+                /* Better spacing */
+                font-size: 3.5vw;
+                /* Increased size */
+                height: fit-content;
+            }
+
+            /* Hiding Scroll Buttons */
+            .left-arrow,
+            .right-arrow,
+            .scroll-btn-left,
+            .scroll-btn-right {
+                display: none !important;
+            }
+
+            .scroll-btn {
+                display: none;
+            }
+
+            .back-to-top {
+                bottom: 80px;
+                /* Added safe area fix */
+                bottom: calc(80px + env(safe-area-inset-bottom));
+            }
+
+            .industry_Image img {
+                height: auto !important;
+                min-height: 0 !important;
+                max-width: 700px;
+                width: 100%;
+                border-radius: 20px;
+                object-fit: contain;
+            }
+
+            .socialimg {
+                width: 100%;
+            }
+
+            .hover-3d {
+                transform: scale(0.85);
+                opacity: 0.3;
+                transition:
+                    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                    opacity 0.35s ease-out;
+            }
+
+            .hover-3d.is-visible {
+                transform: scale(1.03);
+                opacity: 1;
+                box-shadow: 0 12px 22px rgba(0, 0, 0, 0.15);
+            }
+
+            .luxury-footer-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .luxury-footer-contact {
+                margin-bottom: 20px;
+                text-align: center;
+                /* optional, to center text */
+            }
+
+            .social-icons {
+                justify-content: center !important;
+                margin-top: 20px;
+            }
+
+            /* Hide Floating GDPR on mobile */
+            .floating-gdpr-btn {
+                display: none !important;
+            }
+        }
+
+        @media (min-width: 769px) {
+
+            /* Desktop elements always visible */
+            .hover-3d {
+                opacity: 1;
+                transform: none;
+            }
+
+            .hover-3d:hover {
+                transform: translateY(-8px) scale(1.05);
+                box-shadow: 0 20px 35px rgba(0, 0, 0, 0.22);
+            }
+        }
+
+
+        /* Small Mobile (Max-width: 600px) */
+        @media (max-width: 600px) {
+            .FASHION-image {
+                object-fit: cover;
+                height: auto;
+            }
+        }
+
+        /* Smaller Mobile (Max-width: 500px) */
+        @media screen and (max-width: 500px) {
+            .back-to-top {
+                bottom: 120px !important;
+                /* Added safe area fix */
+                bottom: calc(120px + env(safe-area-inset-bottom)) !important;
+            }
+
+            .contact-icons-container {
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+
+            .floating-gdpr-btn {
+                bottom: 120px;
+                /* Match small mobile Back to Top */
+            }
+        }
+
+        /* Tiny Mobile (Max-width: 400px) */
+        @media screen and (max-width: 400px) {
+            .luxury-footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            h3 {
+                font-size: 18px;
+            }
+
+            .sidebar button {
+                padding: 8px;
+                font-size: 3.5vw;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-overlay"></div>
+        <h1>LUXURY SOCIAL MEDIA</h1>
+    </div>
+
+    <div class="paddingleftright mrginleft">
+        <div class="top-section">
+            <div class="top-section-spacer">
+                <div class="jXK9ad-SmKAyb">
+                    <div class="tyJCtd mGzaTb Depvyb baZpAe">
+                        <p class="intro-spacing">
+                            Luxury social media is an effective tool for high-end businesses to
+                            <strong>generate exclusive, visually attractive content that attracts affluent customers and
+                                reinforces
+                                their premium image across many digital channels.</strong>
+                        </p>
+
+                        <p class="intro-spacing">
+                            A <a target="_blank" href="https://www.luxury-method.com/">luxury social media agency</a>
+                            can help
+                            transform your regular social media page into luxury social media by upgrading your brand’s
+                            visual
+                            identity and aesthetics to
+                            <strong>appeal to an elite, high-net-worth audience</strong>. This involves a combination of
+                            <a target="_blank" href="https://www.luxury-method.com/services/luxury-branding"
+                                style="text-decoration: underline;">premium branding</a>, tailored content, and
+                            distinctive features
+                            that resonate with people who seek
+                            <strong>sophistication, status, and exclusivity</strong>.
+                        </p>
+
+                        <p class="intro-spacing">
+                            Our luxury social media agency provides services designed to help luxury brands become some
+                            of the best
+                            luxury brands on social media. We help you create a
+                            <strong>distinctive, captivating digital presence</strong> that resonates with discerning
+                            audiences
+                            worldwide.
+                        </p>
+
+                        <p>
+                            We focus on picking elements that appeal to your clients' refined tastes. From social media
+                            strategy to
+                            social media ads and strategic engagement that creates community, we ensure your company
+                            communicates its
+                            worth and allure across platforms like Instagram, Facebook, Pinterest, and others.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-container" id="main-container">
+            <!-- Sidebar Navigation -->
+            <div class="sidebar">
+                <button onclick="scrollToSection('aud')">Our Luxury Social Media Services</button>
+                <button onclick="scrollToSection('impac')">The impact of social media on luxury brands</button>
+                <button onclick="scrollToSection('brand')">Best luxury brands on social media</button>
+                <button onclick="scrollToSection('indwor')">The industries we work with</button>
+            </div>
+
+            <!-- Content Area -->
+            <div class="content">
+                <!-- Services Section -->
+                <div id="top" class="top-section">
+                    <h2 id="aud">Our Luxury Social Media Services</h2>
+                </div>
+
+                <div id="top" class="top-section">
+                    <h3 id="audience" style="text-decoration: none;">Social Media Audit</h3>
+                </div>
+
+                <div class="section">
+                    <p class="intro-spacing">
+                        You might be asking, what is a social media audit? A social media audit includes several steps
+                        taken to
+                        evaluate your social media presence, performance and strategy across all your platforms. By
+                        conducting the
+                        audit, we can gain a clear understanding of your current performance and see what is and isn't
+                        working well.
+                        This enables us to perfect your luxury social media and find new development prospects.
+                    </p>
+                    <p>
+                        With a social media audit, our luxury social media agency can guide you in identifying the next
+                        steps to
+                        take in order to achieve meaningful improvements and success across your social media platforms.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Strategy Section -->
+        <div class="content" id="con2">
+            <div id="top2" class="top-section">
+                <h3 id="mindmap" style="text-decoration: none">Social Media Strategy for Luxury Brands</h3>
+            </div>
+
+            <div class="image-wrapper">
+                <img src="https://luxury-method.vercel.app/1.png" class="socialimg hover-3d"
+                    style="max-width: 550px; width: 100%; height: auto; object-fit: cover;" alt="">
+            </div>
+
+            <div class="tyJCtd mGzaTb Depvyb baZpAe">
+                <p class="intro-spacing">
+                    A social media marketing strategy is a plan detailing how your company will use social media
+                    platforms to
+                    achieve specific goals. It involves identifying target audiences, establishing objectives, and
+                    developing a
+                    content strategy that matches these aims. A social media strategy for luxury brands is designed to
+                    enhance
+                    brand visibility, grow your audience, build a community, and boost customer engagement.
+                </p>
+                <p class="intro-spacing">
+                    The first step to developing a luxury brand social media marketing strategy is to establish KPIs,
+                    set goals
+                    and identify the target audience. This is essential for creating a clear direction and laying the
+                    groundwork
+                    for what you aim to achieve through social media. Another important step is competitor research,
+                    which
+                    analyses who your competitors are, what platforms they are using, and what they are doing on social
+                    media;
+                    this gives good insights into their strategies, and helps identify opportunities for
+                    differentiation. By
+                    understanding their strengths and weaknesses, you can refine your own approach to better appeal to
+                    your target
+                    audience and stand out in the competitive luxury market.
+                </p>
+                <p>
+                    Our luxury social media agency can help with all of this. We will create a luxury social media
+                    strategy and
+                    plan engaging content to
+                    <strong>showcase your products or services</strong> in a visually appealing way and
+                    <strong>connect with affluent consumers</strong> who value
+                    <strong>craftsmanship and prestige</strong>.
+                </p>
+            </div>
+        </div>
+
+        <!-- Management Section -->
+        <div class="content" id="con3">
+            <div id="top2" class="top-section">
+                <h3 id="industry" style="text-decoration: none;">Luxury Social Media Management</h3>
+            </div>
+
+            <p>
+                Managing one social media account let alone multiple can be time-consuming. We will take away the burden
+                by
+                creating content, scheduling posts, engaging with your audience, and tracking analytics so you don’t
+                have to.
+                Having a luxury social media agency will free up your time so you can focus on other aspects of your
+                business.
+            </p>
+        </div>
+
+        <!-- Content Creation Section -->
+        <div class="content" id="con3">
+            <div id="top2" class="top-section">
+                <h3 id="Cont" style="text-decoration: none;">Content Creation Services</h3>
+            </div>
+
+            <p class="intro-spacing">
+                Look no further than Luxury Method if you're searching for unique, creative ideas that can be
+                transformed into
+                content for your luxury social media that complements your brand image and aesthetic. Our luxury social
+                media
+                agency has experts in content creation who will take care of planning content and creating compelling
+                stories
+                that captivate your audience.
+            </p>
+
+            <p>
+                We will keep an eye on all the latest social media trends so your content is up-to-date and relevant, as
+                well as
+                produce high-quality content including static posts, videos, stories, and more.
+            </p>
+        </div>
+
+        <!-- Paid Media Section -->
+        <div class="content" id="con3">
+            <div id="top2" class="top-section">
+                <h3 id="paid" style="text-decoration: none;">Paid Social Media Services</h3>
+            </div>
+
+            <div class="image-wrapper" style="margin-bottom: 40px; overflow: hidden;">
+                <img src="https://luxury-method.vercel.app/SocialMedia3.jpg" class="socialimg hover-3d"
+                    style="max-width: 450px; width: 100%; height: auto; object-fit: contain;" alt="Paid Social Media">
+            </div>
+
+            <div class="tyJCtd mGzaTb Depvyb baZpAe">
+                <p class="intro-spacing">
+                    Luxury ads are a great method to boost your brand's visibility, sales, and even customer loyalty.
+                    Luxury ads
+                    work by utilizing various social media platforms to target
+                    <strong>high-net-worth individuals</strong> who seek quality, exclusivity, and image and lead them
+                    <strong>straight to the products or services on your website</strong>. We help you grab your
+                    audience's
+                    attention with calls to action, intriguing visuals, and psychology to influence the way people think
+                    about
+                    your brand/product.
+                </p>
+                <p class="intro-spacing">
+                    The benefits of <a target="_blank"
+                        href="https://www.luxury-method.com/services/luxury-social-media-agency/paid-social"
+                        style="text-decoration: underline;">Social media advertising</a> include increased brand
+                    awareness; with
+                    billions of people using social media every day, your ads will appear in front of people who are
+                    unfamiliar
+                    with your brand and make an impression on potential customers. It’s more cost-effective than
+                    traditional
+                    advertising as you can
+                    <strong>control your budget, set precise bids, and monitor your advertisements' performance</strong>
+                    in real
+                    time to make sure you're getting the most out of your investment. We help you reach targeted
+                    audiences as
+                    social platforms allow you to target your ads based on factors like demographics, behaviours, and
+                    location.
+                </p>
+                <p>
+                    We specialized in Meta ads as they’re ideal for
+                    <strong>reaching affluent consumers with targeted, visually captivating campaigns</strong>. They
+                    showcase
+                    exclusivity and drive awareness and sales while maintaining the brand's premium image. Our
+                    customised methods
+                    make sure your business stands out in the overcrowded luxury social media scene, whether your goal
+                    is to
+                    increase sales or brand awareness.
+                </p>
+            </div>
+        </div>
+
+        <!-- Community Management Section -->
+        <div class="content" id="con3">
+            <div id="top2" class="top-section">
+                <h3 id="soci" style="text-decoration: none;">Social Media Community Management</h3>
+            </div>
+            <p>
+                is used to manage and build your online community by keeping up to date with your audience's comments,
+                queries
+                and messages. Community management builds genuine and valuable connections between your audience and
+                your brand.
+                We specialize in building and maintaining these connections. Giving us the ability to manage your
+                community will
+                free up more time for you to concentrate on and prioritise other crucial aspects of your business.
+            </p>
+        </div>
+
+        <!-- Influencer Marketing Section -->
+        <div class="content" id="con3">
+            <div id="top2" class="top-section">
+                <h3 id="infl" style="text-decoration: none;">Luxury Influencer marketing</h3>
+            </div>
+
+            <p class="intro-spacing">
+                <a target="_blank" href="https://www.luxury-method.com/services/luxury-influencer-marketing"
+                    style="text-decoration: underline;">Luxury influencer marketing</a> involves selecting influencers
+                with
+                comparable audiences to work with and utilising them and their following to boost brand awareness. Using
+                their
+                social media accounts, influencers promote brands they work with by sharing posts, reels, or stories
+                that
+                discuss or showcase the products they have been asked to advocate for.
+            </p>
+            <p>
+                Influencer marketing is a great service to use to increase sales as people are more likely to follow and
+                purchase from a brand that’s recommended by someone they already know and trust. Our luxury social media
+                agency
+                only partners with the best, most trusted influencers who we believe will
+                <strong>create content that reflects the exclusivity, sophistication, and high standards of your
+                    brand</strong>,
+                ensuring a seamless alignment with your luxury image and resonating with your discerning audience.
+            </p>
+        </div>
+
+        <!-- Monitoring Section -->
+        <div class="content" id="con3">
+            <div id="top2" class="top-section">
+                <h3 id="moni" style="text-decoration: none;">Monitoring and Reporting</h3>
+            </div>
+
+            <div class="image-wrapper" style="margin-bottom: 25px; margin-top: 25px;">
+                <img src="https://luxury-method.vercel.app/SocialMedia4.jpg" class="socialimg hover-3d"
+                    style="max-width: 600px; width: 100%; height: auto; object-fit: cover;"
+                    alt="Monitoring and reporting">
+            </div>
+
+            <div class="tyJCtd mGzaTb Depvyb baZpAe">
+                <p class="intro-spacing">
+                    Monitoring and reporting is crucial for identifying trends, assessing the performance of your social
+                    media
+                    strategies, and making data-driven decisions.
+                </p>
+                <p class="intro-spacing">
+                    <strong>Social media monitoring</strong> is the process of actively tracking and listening to
+                    conversations
+                    and mentions related to your brand and/or products across various social media platforms. By
+                    gathering all
+                    information about what is being said, we can then understand and oversee your brand's online
+                    reputation and
+                    popularity, address any negative comments, uncover consumer inquiries, and track emerging industry
+                    trends.
+                </p>
+                <p class="intro-spacing">
+                    <strong>Social media reporting</strong> is the process of collecting data about a brand's
+                    performance across
+                    multiple social platforms and analyzing that data with the goal being to evaluate the effectiveness
+                    of your
+                    social media strategy as well as tracking KPIs. This helps businesses understand what is working,
+                    identify
+                    areas for improvement, and make informed decisions to optimize future campaigns, increase
+                    engagement, and
+                    drive better results.
+                </p>
+                <p>
+                    Our luxury social media agency will create a flawless report for you with an
+                    <strong>examination of your brand's performance on all platforms</strong>, monitoring important
+                    metrics, and
+                    providing practical advice to improve your social media strategy, increase engagement, and precisely
+                    accomplish your business objectives.
+                </p>
+            </div>
+        </div>
+
+        <!-- Impact Section -->
+        <div class="content" id="con3">
+            <div id="top2" class="top-section">
+                <h2 id="impac">The impact of social media on luxury brands</h2>
+            </div>
+
+            <div class="image-wrapper-large">
+                <img class="hover-3d" src="https://luxury-method.vercel.app/SocialMedia5.jpg"
+                    alt="The impact of social media on luxury brands" />
+            </div>
+
+            <p class="intro-spacing" style="margin-top: 12pt;">
+                Social media has significantly impacted luxury brands by transforming how they engage with their audience
+                and
+                promote their products. Through platforms like Instagram, luxury brands can share visually stunning
+                content that
+                aligns with their image, offering a curated glimpse into their exclusive world. Luxury social media
+                agencies
+                have become essential partners for these brands, expertly crafting strategies that help them maintain
+                exclusivity while reaching a wider audience. A luxury brand social media agency understands the
+                <strong>balance between showcasing the luxury experience and keeping the brand’s image
+                    aspirational</strong>.
+            </p>
+
+            <p class="intro-spacing" style="margin-top: 12pt;">
+                The social media marketing efforts of luxury brands on Instagram have been very effective, as the
+                platform’s
+                visual nature aligns perfectly with the luxurious aesthetics that these brands want to portray.
+                Influencer
+                collaborations and organic content have allowed luxury brands to humanize their image while retaining
+                their
+                allure. Social media and luxury brands have come to rely on each other for creating meaningful
+                connections with
+                both existing and potential customers. The rise of social media agencies for luxury brands has led to a
+                new era
+                in digital marketing where brands can manage their reputation, tell their stories, and drive engagement
+                in ways
+                that traditional methods could not achieve.
+            </p>
+
+            <p class="intro-spacing">
+                Overall, it is incredible how luxury brands use social media has reshaped the industry, with marketing
+                agencies
+                for luxury brands playing a crucial role in making these efforts more strategic and impactful.
+            </p>
+
+            <p>
+                How has social media affected luxury marketing? It has allowed brands to
+                <strong>reach global audiences and build an online community,</strong> all while maintaining their
+                exclusivity.
+            </p>
+        </div>
+
+        <!-- Best Brands Section -->
+        <div class="content" id="con3">
+            <div id="top2" class="top-section">
+                <h2 id="brand">Best luxury brands on social media</h2>
+            </div>
+
+            <p>
+                The best luxury brands on social media are called the best for a reason; these listed brands all share
+                one thing
+                in common, they know how to distinguish their luxury identity from that of an ordinary brand.
+            </p>
+
+            <!-- Chanel -->
+            <div class="content" id="con3">
+                <div id="top2" class="top-section">
+                    <h3 style="text-decoration: none;">Chanel</h3>
+                </div>
+
+                <p>
+                    With over 60 million Instagram followers, it’s obvious that the iconic <a target="_blank"
+                        href="https://www.luxury-method.com/industries/luxury-fashion-marketing"
+                        style="text-decoration: underline;">luxury fashion</a> brand knows how to run a successful
+                    social media
+                    page. Channel’s Instagram feed is full of visuals that exude luxury showcasing their timeless
+                    craftsmanship,
+                    exclusive collections, and aspirational lifestyle that perfectly align with their prestigious <a
+                        target="_blank" href="https://www.luxury-method.com/services/luxury-branding"
+                        style="text-decoration: underline;">brand identity</a>. They are very consistent with their
+                    posting and have
+                    a well-organised feed layout.
+                </p>
+
+                <div class="image-wrapper" style="margin-top: 20px;">
+                    <img src="https://luxury-method.vercel.app/Chanel.png" class="socialimg hover-3d"
+                        style="max-width: 500px; height: auto; object-fit: cover;" alt="">
+                </div>
+            </div>
+
+            <!-- Hermes -->
+            <div class="content" id="con3">
+                <div id="top2" class="top-section">
+                    <h3 style="text-decoration: none;">Hermès</h3>
+                </div>
+
+                <p>
+                    Hermès is another hugely successful luxury house with a powerful social-media presence. Hermès’
+                    Instagram
+                    (@hermes) has over 15 million followers, and the brand also keeps an active TikTok presence. Hermès
+                    engages
+                    its audience with artisan-focused storytelling, influencer collaborations, behind-the-scenes content
+                    and
+                    carefully timed product launches (including its Hermès Beauty collections), positioning itself as
+                    the ultimate
+                    in craftsmanship and quiet luxury while maintaining a refined, visually cohesive feed.
+                </p>
+
+                <div class="image-wrapper" style="margin-top: 10px;">
+                    <img src="https://luxury-method.vercel.app/Hermes.png" class="socialimg hover-3d"
+                        style="max-width: 550px; height: auto; object-fit: cover;" alt="">
+                </div>
+            </div>
+
+            <!-- Four Seasons -->
+            <div class="content" id="con3">
+                <div id="top2" class="top-section">
+                    <h3 style="text-decoration: none;">Four Seasons</h3>
+                </div>
+
+                <p>
+                    Four Seasons is a <a target="_blank"
+                        href="https://www.luxury-method.com/industries/luxury-hospitality-marketing-agency"
+                        style="text-decoration: underline;">luxury hospitality</a> brand and has effectively integrated
+                    social media
+                    into both its website and overall marketing strategy, consistently growing its presence on platforms
+                    like
+                    Facebook, Twitter, Weibo, Pinterest, and TripAdvisor. Their corporate Facebook page boasts over
+                    800,000 fans
+                    and their Twitter account has more than 200,000 followers. It’s clear that the brand places
+                    significant
+                    emphasis on engaging with guests and interacting with those sharing their experiences online.
+                </p>
+
+                <div class="image-wrapper" style="margin-top: 20px;">
+                    <img src="https://luxury-method.vercel.app/FourSeasons.png" class="socialimg hover-3d"
+                        style="max-width: 500px; height: auto; object-fit: cover;" alt="">
+                </div>
+            </div>
+
+            <!-- Cartier -->
+            <div class="content" id="con3">
+                <div id="top2" class="top-section">
+                    <h3 style="text-decoration: none;">Cartier</h3>
+                </div>
+
+                <p>
+                    Cartier maintains a polished and sophisticated social media presence, using platforms such as
+                    Instagram,
+                    Facebook, and YouTube to highlight its timeless luxury, craftsmanship, and iconic pieces. The brand
+                    emphasizes
+                    its heritage, exquisite jewelry, and elegant watches, showcasing beautiful designs and exclusive
+                    events
+                    through visually stunning videos. Cartier frequently features high-profile collaborations, legendary
+                    collections, and behind-the-scenes glimpses, creating a captivating narrative that reinforces its
+                    position as
+                    a leader in the world of fine jewelry and luxury timepieces.
+                </p>
+
+                <div class="image-wrapper" style="margin-top: 20px;">
+                    <img src="https://luxury-method.vercel.app/Cartier.png" class="socialimg hover-3d"
+                        style="max-width: 500px; height: auto; object-fit: cover;" alt="">
+                </div>
+            </div>
+
+            <!-- Aston Martin -->
+            <div class="content" id="con3">
+                <div id="top2" class="top-section">
+                    <h3 style="text-decoration: none;">Aston Martin</h3>
+                </div>
+
+                <p>
+                    Aston Martin's social media presence perfectly encapsulates the characteristics of elegance, speed,
+                    and
+                    precision. The brand uses social media to exhibit its classic cars, like the DB11 and Vantage, as
+                    well as
+                    exclusive events and collaborations. The content emphasises the elegant design, smart engineering,
+                    and
+                    performance of these high-end automobiles, which appeal to luxury car enthusiasts. Aston Martin's
+                    social media
+                    channels include stunning imagery, behind-the-scenes information, and high-profile endorsements,
+                    maintaining
+                    the brand's image of elegance and luxury while engaging a community of ardent automotive
+                    enthusiasts.
+                </p>
+
+                <div class="image-wrapper" style="margin-top: 20px;">
+                    <img src="https://luxury-method.vercel.app/AstonMartin.png" class="socialimg hover-3d"
+                        style="max-width: 500px; height: auto; object-fit: cover;" alt="">
+                </div>
+            </div>
+        </div>
+
+        <!-- Industries Section -->
+        <div class="content" id="con3">
+            <div id="top2" class="top-section">
+                <h2 id="indwor">The Industries We Work With</h2>
+            </div>
+
+            <!-- Fashion -->
+            <div>
+                <h3>Social media marketing for fashion brands</h3>
+                <div class="industry_Image">
+                    <img class="hover-3d" src="https://luxury-method.vercel.app/FASHION.png" alt="Fashion Industry">
+                </div>
+
+                <p>
+                    Social media marketing for <a target="_blank"
+                        href="https://www.luxury-method.com/industries/luxury-fashion-marketing"
+                        style="text-decoration: none;"><span style="text-decoration: underline;">luxury fashion
+                            brands</span></a>
+                    involves more than just posting photographs; it is about developing a dynamic online presence and a
+                    <strong>truly luxurious image that resonates with your target audience</strong>. With millions of
+                    consumers
+                    accessing fashion-related material every day, your fashion brand has the opportunity to reach a
+                    worldwide
+                    audience and increase sales. But it also needs the correct strategy to stand out in a competitive
+                    market.
+                </p>
+                <p>
+                    Effective content marketing for fashion brands requires highlighting the brand's distinct style,
+                    trends, and
+                    craftsmanship. By showcasing these elements on social platforms, you’ll foster an emotional
+                    connection with
+                    the audience, strengthen brand loyalty, and ultimately boost sales.
+                </p>
+                <p>
+                    by collaborating with the right influencers, you can present your products in a natural, desirable
+                    environment, making them more appealing to potential buyers. Additionally, these influencers'
+                    endorsements can
+                    add a sense of authenticity and trustworthiness, which is critical for attracting high-net-worth
+                    individuals.
+                </p>
+            </div>
+
+            <!-- Hospitality -->
+            <div>
+                <h3 style="margin-top: 80px;">Social media marketing for hospitality</h3>
+                <div class="industry_Image">
+                    <img class="hover-3d" src="https://luxury-method.vercel.app/HOSPITALITY.png"
+                        alt="Hospitality Industry">
+                </div>
+
+                <div class="tyJCtd mGzaTb Depvyb baZpAe">
+                    <p>
+                        Luxury social media plays a vital role in the <a target="_blank"
+                            href="https://www.luxury-method.com/industries/luxury-hospitality-marketing-agency"
+                            style="text-decoration: underline;">luxury hospitality</a> sector by helping brands create a
+                        strong online
+                        presence that reflects their exclusivity and high-end services. Social media marketing for
+                        hospitality
+                        enables luxury hotels, restaurants, and bars to connect with their target audience, showcase
+                        quality
+                        offerings, and cultivate an aspirational image. Through platforms like Instagram and TikTok,
+                        luxury hotel
+                        social media can highlight <strong>stunning visuals of their properties</strong>, share guest
+                        experiences,
+                        and offer behind-the-scenes glimpses that appeal to affluent travelers.
+                    </p>
+                    <br />
+                    <p>
+                        By using influencer collaborations and tailored content, luxury hospitality brands can drive
+                        engagement,
+                        increase bookings, and enhance customer loyalty. We use social media platforms to <strong>share
+                            updates on
+                            special events, offers, and new amenities</strong> to increase awareness and generate
+                        bookings.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Real Estate -->
+            <div>
+                <h3 style="margin-top: 80px;">Social media for Luxury Real Estate</h3>
+                <div class="industry_Image">
+                    <img class="hover-3d" src="https://luxury-method.vercel.app/REAL_ESTATE.png"
+                        alt="Real Estate Industry">
+                </div>
+
+                <div class="tyJCtd mGzaTb Depvyb baZpAe">
+                    <p class="intro-spacing">
+                        In the <a target="_blank"
+                            href="https://www.luxury-method.com/industries/luxury-real-estate-marketing"
+                            style="text-decoration: underline;">luxury real estate</a> sector, social media marketing
+                        has become a key
+                        strategy for <strong>reaching affluent buyers and showcasing exclusive properties</strong>.
+                        Luxury real
+                        estate social media allows brands to present high-end listings in visually appealing ways,
+                        reaching a global
+                        audience while maintaining the exclusivity that defines the sector.
+                    </p>
+                    <p>
+                        Social media for luxury real estate is an essential tool for targeting specific buyers through
+                        curated
+                        content, virtual tours, and behind-the-scenes glimpses of properties and sales. Social media
+                        platforms like
+                        Instagram and Facebook enable luxury real estate marketing agencies to run targeted <a
+                            target="_blank"
+                            href="https://www.luxury-method.com/services/luxury-social-media-agency/paid-social"
+                            style="text-decoration: underline;">paid ads</a>, ensuring the right audience is engaged.
+                        Luxury real
+                        estate marketing agencies leverage social media marketing for real estate to build brand
+                        awareness, generate
+                        leads, and drive sales, making social media an invaluable asset in today’s competitive market.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Watches -->
+            <div>
+                <h3 style="margin-top: 80px;">Social media for Watches</h3>
+                <div class="industry_Image">
+                    <img class="hover-3d" src="https://luxury-method.vercel.app/WATCHES.png" alt="Watches Industry">
+                </div>
+
+                <p>
+                    The luxury <a target="_blank" href="https://www.luxury-method.com/industries/luxury-watches-marketing"
+                        style="text-decoration: underline;">watch sector</a> uses social media marketing to connect with
+                    a global
+                    audience, especially watch collectors. Platforms like Instagram allow watch brands to showcase their
+                    craftsmanship and exclusivity, creating visually appealing content that resonates with collectors.
+                    Luxury
+                    social media provides a space for watch brands on Instagram to highlight new releases,
+                    collaborations, and
+                    limited editions, while engaging directly with followers. This helps build brand loyalty, increase
+                    visibility,
+                    and drive sales in the competitive luxury watch market.
+                </p>
+            </div>
+
+            <!-- Travel -->
+            <div>
+                <h3 style="margin-top: 80px;">Social media for Travel</h3>
+                <div class="industry_Image">
+                    <img class="hover-3d" src="https://luxury-method.vercel.app/TRAVEL.png" alt="Travel Industry">
+                </div>
+
+                <div class="tyJCtd mGzaTb Depvyb baZpAe">
+                    <p class="intro-spacing">
+                        Social media marketing for travel has become a crucial tool for the <a target="_blank"
+                            href="https://www.luxury-method.com/industries/luxury-travel-marketing"
+                            style="text-decoration: underline;">luxury travel</a> sector, enabling companies to reach a
+                        global,
+                        affluent audience. Social media and travel go hand in hand, with platforms like Instagram and
+                        YouTube
+                        showcasing breathtaking destinations, exclusive experiences, and personalized itineraries.
+                        Influencers in
+                        the luxury travel space often use live videos to share real-time travel experiences, giving
+                        followers an
+                        authentic look at high-end resorts, unique destinations, and activities.
+                    </p>
+                    <p>
+                        The advantages of social media in the travel and tourism industry include increased brand
+                        visibility, direct
+                        engagement with potential clients, and the ability to inspire wanderlust. Luxury travel
+                        marketing thrives
+                        through captivating visuals and influencer partnerships, driving bookings and enhancing the
+                        travel
+                        experience for customers. Social media marketing for the travel industry has made it easier than
+                        ever to
+                        influence and guide travel decisions.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Jewellery -->
+            <div>
+                <h3 style="margin-top: 80px;">Social media for Jewellery</h3>
+                <div class="industry_Image">
+                    <img class="hover-3d" src="https://luxury-method.vercel.app/JEWELLERY.png"
+                        alt="Jewellery Industry">
+                </div>
+
+                <div class="tyJCtd mGzaTb Depvyb baZpAe">
+                    <p class="intro-spacing">
+                        Social media marketing for jewellery has become a powerful tool for <a target="_blank"
+                            href="https://www.luxury-method.com/industries/luxury-jewelry-marketing"
+                            style="text-decoration: underline;">luxury jewellery</a> brands to showcase their elegance
+                        and
+                        craftsmanship to a global audience. Through jewelry social media, brands can highlight their
+                        unique designs,
+                        share behind-the-scenes content, and engage with followers in an authentic way.
+                    </p>
+                    <p>
+                        A well-crafted social media strategy for jewellery brand can include influencer partnerships,
+                        visually
+                        stunning posts, and even interactive campaigns like giveaways and competitions, which help
+                        increase
+                        engagement and brand visibility. Creating captivating content for jewellery not only drives
+                        awareness but
+                        also fosters customer loyalty, making social media an essential platform for luxury jewellery
+                        businesses to
+                        connect with their target market and increase sales.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Retail -->
+            <div>
+                <h3 style="margin-top: 80px;">Social media for Retail</h3>
+                <div class="industry_Image">
+                    <img class="hover-3d" src="https://luxury-method.vercel.app/RETAIL.png" alt="Retail Industry">
+                </div>
+
+                <div class="tyJCtd mGzaTb Depvyb baZpAe">
+                    <p class="intro-spacing">
+                        Social media marketing for retail brands has become an essential strategy in the <a
+                            target="_blank" class="XqQF9c"
+                            href="https://www.luxury-method.com/industries/luxury-retail-marketing"
+                            style="text-decoration: underline;">luxury retail</a> sector, offering a direct way to
+                        engage with
+                        affluent consumers. Social media retail allows luxury brands to showcase their exclusive
+                        products, highlight
+                        seasonal collections, and create aspirational content that aligns with their high-end image.
+                    </p>
+                    <p>
+                        A well-crafted retail social media strategy helps brands connect with customers, build brand
+                        loyalty, and
+                        drive traffic to both online and physical stores. Social media strategy for retail store often
+                        includes
+                        influencer partnerships, interactive campaigns, and targeted ads, allowing luxury retail
+                        businesses to
+                        increase visibility and sales. Additionally, social media marketing strategies used by small
+                        retail
+                        businesses can be adapted to create personalized, high-impact campaigns that resonate with
+                        specific luxury
+                        audiences.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Food and Beverage -->
+            <div>
+                <h3 style="margin-top: 80px;">Social media for Food and Beverage</h3>
+                <div class="industry_Image">
+                    <img class="hover-3d" src="https://luxury-method.vercel.app/FOOD_AND_BEVERAGES.png"
+                        alt="Food and Beverages Industry">
+                </div>
+
+                <div class="tyJCtd mGzaTb Depvyb baZpAe">
+                    <p class="intro-spacing">
+                        In the <a target="_blank" href="https://www.luxury-method.com/industries/luxury-food-marketing"
+                            style="text-decoration: underline;">luxury food and beverage</a> sector, social media
+                        marketing for food
+                        brands plays a key role in showcasing high-quality products and creating a visually appealing
+                        brand
+                        presence. Food social media platforms like Instagram are perfect for sharing stunning
+                        photography of premium
+                        offerings, from gourmet chocolates to fine wines. Brands such as Dom Perignon, Lindt, and
+                        Nespresso have
+                        mastered food in social media, using high-end visuals and curated layouts to engage their
+                        affluent audience.
+                    </p>
+                    <p class="intro-spacing">
+                        Collaborations with social media food influencers and dedicated food social media agencies help
+                        elevate
+                        brand awareness and create aspirational content. Wine social media and social media chocolate
+                        campaigns are
+                        particularly effective at highlighting the craftsmanship and luxury behind each product.
+                    </p>
+                    <p>
+                        Through luxury food marketing, these brands not only create visual storytelling but also connect
+                        directly
+                        with consumers, building loyalty and driving sales. Food and beverage social media marketing
+                        enhances brand
+                        visibility, while social media marketing for food business allows brands to engage with their
+                        audience in
+                        innovative and interactive ways, further solidifying their luxury status.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Who We Are -->
+        <div id="bottom2" class="top-section" style="padding-top: 0px !important;">
+            <h2 id="content" style="text-decoration: none">WHO WE ARE</h2>
+            <p style="text-align: start;">
+                Luxury Method is a luxury SEO agency that specialises in assisting high-end brands in attracting the
+                appropriate
+                target audience. Concentrating on sectors including apparel, jewellery, watches, and, retail and hotels.
+                Our
+                speciality is creating custom marketing solutions that are suited to the particular requirements of
+                luxury
+                brands. Our headquarters is in Rome, and we operate all over the globe.
+            </p>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="faq-container paddingleftright top-section">
+        <p class="text-center text-italic" style="font-size: 24px !important;">
+            Experience the difference of a marketing agency dedicated to luxury.
+        </p>
+
+        <!-- Contact Icons -->
+        <div class="contact-icons">
+            <a target="_blank"
+                href="https://www.google.com/url?q=https%3A%2F%2Fwa.me%2F%2B393920034695&sa=D&sntz=1&usg=AOvVaw2a9hG2asZNJfADOdAWUper"
+                class="contact-icon-link">
+                <img src="https://i.postimg.cc/HkGt0VxV/whatsapp.png"
+                    style="width: 30px; border-radius: 100%; height: 30px;" alt="">
+            </a>
+            <a target="_blank" href="mailto:giacomo@luxury-method.com" class="contact-icon-link">
+                <img src="https://i.postimg.cc/mr4tBFZf/image-978.png"
+                    style="width: 30px; border-radius: 100%; background-color: #5f6368; height: 30px;" alt="">
+            </a>
+            <a target="_blank"
+                href="https://www.google.com/url?q=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Fluxurymethod%2F&sa=D&sntz=1&usg=AOvVaw0MER64fKjxQpgMZC_E-MgX"
+                class="contact-icon-link">
+                <img src="https://i.postimg.cc/BvtQqcWz/image-979.png"
+                    style="width: 30px; border-radius: 100%; background-color: #2867b2; height: 30px;" alt="">
+            </a>
+        </div>
+
+        <div class="contact-btn-wrapper">
+            <a target="_blank" href="https://www.luxury-method.com/contact" class="contact-btn">CONTACT FORM</a>
+        </div>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3><strong>What is a luxury social media agency?</strong></h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <p>
+                    A luxury social media agency is a marketing firm that specialises in helping brands in the luxury
+                    sector
+                    improve and boost their social media presence.
+                </p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3><strong>Why should I choose Luxury Method to help with my business?</strong></h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <p>
+                    Luxury Method's expertise in luxury marketing ensures that your brand's unique values, exclusivity,
+                    and
+                    high-end offerings are showcased in a way that resonates with the right customers. With a
+                    specialized focus on
+                    luxury industries, Luxury Method has a deep understanding of how to craft sophisticated, tailored
+                    marketing
+                    strategies across various platforms, including social media marketing and influencer partnerships.
+                    We excel at
+                    creating content that not only highlights your product or service but also builds an aspirational
+                    image that
+                    enhances your brand’s prestige. Whether you’re in luxury real estate, fashion, or travel, Luxury
+                    Method offers
+                    a comprehensive and personalized approach to help your business stand out in a competitive market.
+                </p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3><strong>How effective is luxury social media marketing?</strong></h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <p>
+                    Luxury social media marketing is a powerful tool for reaching high-end consumers and enhancing brand
+                    image. By
+                    using platforms like Instagram, luxury brands can showcase their products in visually compelling
+                    ways,
+                    maintaining exclusivity while engaging directly with their audience. Through strategic content,
+                    influencer
+                    collaborations, and targeted campaigns, brands can increase visibility, foster brand loyalty, and
+                    build
+                    stronger emotional connections with their customers. This makes social media an essential strategy
+                    for success
+                    in the luxury market.
+                </p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3><strong>What sets standard social media marketing and luxury social media marketing apart?</strong>
+                </h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <p>
+                    Luxury social media marketing is different from traditional social media marketing by its emphasis
+                    on
+                    exclusivity, prestige, and a refined brand image. While typical marketing strives for broad audience
+                    reach and
+                    engagement through easily accessible content, promotions, and influencer collaborations, luxury
+                    marketing
+                    focuses on a select, luxurious clientele with carefully curated, high-end content.
+                </p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3><strong>Is a social media strategy the right fit for my business?</strong></h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <p>
+                    A well-planned social media strategy benefits a any business by improving brand visibility, engaging
+                    with
+                    target audiences, and fostering client loyalty. It allows for direct engagement with customers,
+                    increases
+                    traffic to their website, and can create leads or sales.
+                </p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3><strong>What social media platforms are best for my business?</strong></h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <p>
+                    Every social media platform has it’s useful purposes but every business is different. Contact us to
+                    find out
+                    what would work best for you so you get the most of out using social media
+                </p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3><strong>What are the best luxury brands on social media?</strong></h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <p>
+                    As you can see on this page, we have included some of the best luxury brands that are smashing it on
+                    social
+                    media!
+                </p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3><strong>How has social media affected luxury marketing?</strong></h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <p>
+                    Social media has drastically impacted luxury marketing by providing firms with a direct, dynamic
+                    means to
+                    communicate with their target audience while preserving an air of exclusivity. Traditionally, luxury
+                    firms
+                    relied on a small number of high-end advertising channels, but social media has expanded their reach
+                    while
+                    maintaining status. Platforms like Instagram, Facebook, and Pinterest allow firms to graphically
+                    present their
+                    items, appealing to affluent consumers worldwide.
+                </p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3><strong>Do you recommend marketing paid ads?</strong></h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <p>
+                    Marketing paid ads can be really useful to a business when it comes to creating brand awareness and
+                    generating
+                    sales, however it’s one of many good marketing options and your business might not need paid ads it
+                    depends on
+                    your goals and objectives
+                </p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3><strong>Content marketing vs social media marketing</strong></h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <p>
+                    Content marketing focuses on creating valuable, informative content (like blogs and videos) to build
+                    long-term
+                    engagement and brand authority. Social media marketing, on the other hand, uses platforms like
+                    Instagram and
+                    Facebook to promote content, engage with audiences in real time, and drive immediate traffic or
+                    sales. While
+                    content marketing builds a foundation for brand growth, social media marketing amplifies that
+                    content,
+                    fostering direct interaction and increasing visibility. Both strategies work together to strengthen
+                    a brand’s
+                    presence online.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="luxury-footer">
+        <div class="luxury-footer-content">
+            <div class="luxury-footer-contact">
+                <small>
+                    <a target="_blank" style="font-weight: bold; text-decoration: none"
+                        href="mailto:giacomo@luxury-method.com">giacomo@luxury-method.com</a>
+                </small>
+                <a href="tel:+393920034695"><small>(+39) 3920034695</small></a>
+                <small>P.IVA: 17906211002</small>
+                <!-- Added Privacy & Cookie Links -->
+                <small><a href="https://www.luxury-method.com/privacy-policy" target="_blank">Privacy Policy</a></small>
+                <small><a href="#" onclick="openModal('prefModal'); return false;">Cookie Preferences</a></small>
+            </div>
+
+            <div class="social-icons">
+                <div class="social-link">
+                    <a href="https://www.instagram.com/luxurymethod_agency/" target="_blank">
+                        <img src="https://i.postimg.cc/XJSn0GKM/image-976.png" alt="Instagram" />
+                    </a>
+                </div>
+                <div class="social-link">
+                    <a href="https://x.com/luxury_method" target="_blank">
+                        <img src="https://luxury-method.vercel.app/twitter-logo.png" alt="X" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false">
+            <path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z" fill="currentColor"></path>
+        </svg>
+    </div>
+
+    <!-- =========================================
+    11. GDPR MODALS & BANNERS
+    ========================================= -->
+
+    <!-- Floating Cookie Button (Right to Withdraw) -->
+    <div class="floating-gdpr-btn" onclick="openModal('prefModal')" title="Cookie Preferences">
+        <i class="fa-solid fa-cookie-bite"></i>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacyModal" class="gdpr-overlay">
+        <div class="gdpr-modal">
+            <button class="gdpr-close" onclick="closeModal('privacyModal')">&times;</button>
+            <h3>Privacy Policy</h3>
+            <p><strong>Effective Date:</strong> December 2025</p>
+            <p>At Luxury Method, we value your privacy and are committed to protecting your personal data in accordance
+                with the General Data Protection Regulation (GDPR).</p>
+
+            <h4>1. Data Collection</h4>
+            <p>We collect Identity Data (name) and Contact Data (email) when you voluntarily submit our contact forms.
+                We also collect Technical Data (IP address, browser type) via cookies if you consent.</p>
+
+            <h4>2. How We Use Data</h4>
+            <p>Your data is used solely to respond to inquiries and analyze website performance. We do not sell your
+                data to third parties.</p>
+
+            <h4>3. Your Rights</h4>
+            <p>You have the right to access, correct, or delete your data. You may withdraw consent at any time via the
+                settings button.</p>
+
+            <h4>4. Contact</h4>
+            <p>For privacy inquiries, please contact: giacomo@luxury-method.com</p>
+        </div>
+    </div>
+
+    <!-- Cookie Preferences Modal -->
+    <div id="prefModal" class="gdpr-overlay">
+        <div class="gdpr-modal">
+            <button class="gdpr-close" onclick="closeModal('prefModal')">&times;</button>
+            <h3>Cookie Preferences</h3>
+            <p>Manage how we use cookies. "Essential" cookies are necessary for the site to function.</p>
+
+            <div class="pref-row">
+                <div class="pref-text">
+                    <h4>Essential</h4>
+                    <p>Required for basic functionality.</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" checked disabled>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="pref-row">
+                <div class="pref-text">
+                    <h4>Analytics & Marketing</h4>
+                    <p>Help us improve our content strategy.</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="analyticsToggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <button class="gdpr-btn" onclick="savePreferences()" style="width: 100%; margin-top: 20px;">Save
+                Preferences</button>
+        </div>
+    </div>
+
+    <!-- Cookie Banner (Dark Mode) -->
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-content">
+            <p>We use cookies to ensure you get the best experience on our website. <a
+                    href="https://www.luxury-method.com/privacy-policy" target="_blank">Privacy Policy</a>.</p>
+            <div class="cookie-actions">
+                <button onclick="acceptEssentials()">Essentials Only</button>
+                <button onclick="acceptAllCookies()">Accept All</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const toggle = element.querySelector(".faq-toggle");
+
+            // Close all other FAQs
+            document.querySelectorAll(".faq-answer").forEach((item) => {
+                if (item !== answer) {
+                    item.classList.remove("active");
+                }
+            });
+
+            document.querySelectorAll(".faq-toggle").forEach((item) => {
+                if (item !== toggle) {
+                    item.classList.remove("active");
+                }
+            });
+
+            // Toggle current FAQ
+            answer.classList.toggle("active");
+            toggle.classList.toggle("active");
+        }
+
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            const yOffsetDesktop = -20;
+            const yOffsetMobile = -80; // tuned for typical mobile headers
+            const isMobile = window.innerWidth <= 768; // Typical mobile breakpoint
+            const yOffset = isMobile ? yOffsetMobile : yOffsetDesktop;
+
+            const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
+            window.scrollTo({ top: y, behavior: "smooth" });
+        }
+
+        // Back to Top functionality
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+        // Show/hide back to top button
+        function handleBackToTopButton() {
+            const backToTopButton = document.getElementById('backToTop');
+            if (window.scrollY > 300) { // Show button after scrolling 300px
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        }
+
+        // Function to scroll sidebar horizontally on mobile
+        function scrollSidebar(sidebarId, direction) {
+            const sidebar = document.querySelector(`.${sidebarId}`);
+            const scrollAmount = 180; // Slightly larger scroll amount
+
+            if (direction === 'left') {
+                sidebar.scrollBy({
+                    left: -scrollAmount,
+                    behavior: 'smooth'
+                });
+            } else {
+                sidebar.scrollBy({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+            }
+
+            // Update arrow visibility after scrolling
+            setTimeout(() => {
+                updateArrowVisibility(sidebarId);
+            }, 300);
+        }
+
+        // Function to update arrow visibility based on scroll position
+        function updateArrowVisibility(sidebarId) {
+            const sidebar = document.querySelector(`.${sidebarId}`);
+            // Note: Arrows are manually placed outside sidebar in this structure
+            const leftBtnWrapper = document.getElementById(`${sidebarId === 'sidebar' ? 'sidebar1' : 'sidebar2'}-left`);
+            const rightBtnWrapper = document.getElementById(`${sidebarId === 'sidebar' ? 'sidebar1' : 'sidebar2'}-right`);
+
+            if (!leftBtnWrapper || !rightBtnWrapper) return;
+
+            const leftBtn = leftBtnWrapper.querySelector('.scroll-btn');
+            const rightBtn = rightBtnWrapper.querySelector('.scroll-btn');
+
+            // Only show arrows on mobile view (width <= 768px)
+            if (window.innerWidth <= 768) {
+                // Check if at the start or end of scrolling
+                if (sidebar.scrollLeft <= 10) {
+                    leftBtn.style.opacity = '0.4';
+                } else {
+                    leftBtn.style.opacity = '1';
+                }
+
+                if (sidebar.scrollLeft + sidebar.clientWidth >= sidebar.scrollWidth - 10) {
+                    rightBtn.style.opacity = '0.4';
+                } else {
+                    rightBtn.style.opacity = '1';
+                }
+
+                // Check if sidebar has enough content to scroll
+                if (sidebar.scrollWidth <= sidebar.clientWidth) {
+                    leftBtnWrapper.style.display = 'none';
+                    rightBtnWrapper.style.display = 'none';
+                } else {
+                    leftBtnWrapper.style.display = 'block';
+                    rightBtnWrapper.style.display = 'block';
+                }
+            }
+        }
+
+
+        // Function to handle the sidebar visibility
+        function handleSidebar() {
+            const bottomsection = document.querySelector(".hero");
+            const sidebar = document.querySelector(".sidebar");
+            const Faq = document.querySelector(".faq-container");
+
+            // Get the bottom position of the top section
+            const FaqBottom = Faq.getBoundingClientRect().top;
+            const topSectiontopBottom = bottomsection.getBoundingClientRect().bottom;
+
+            // First hide all scroll buttons
+            if (window.innerWidth <= 768) {
+                document.querySelectorAll('.scroll-btn-left, .scroll-btn-right').forEach(btn => {
+                    btn.style.display = 'none';
+                });
+            }
+
+            // If we've scrolled past the top section, show the sidebar
+            if (topSectiontopBottom <= 100 && FaqBottom > 200) {
+                sidebar.style.transform = "translateY(0)";
+                // Make the first sidebar's scroll buttons active
+                if (window.innerWidth <= 768) {
+                    const sidebarLeft = document.getElementById('sidebar1-left');
+                    const sidebarRight = document.getElementById('sidebar1-right');
+                    if (sidebarLeft) sidebarLeft.style.display = 'block';
+                    if (sidebarRight) sidebarRight.style.display = 'block';
+                    updateScrollButtonVisibility('sidebar');
+                }
+            } else {
+                sidebar.style.transform = "translateY(100vh)";
+            }
+        }
+
+        // =========================================
+        // GDPR LOGIC
+        // =========================================
+        const COOKIE_NAME = "luxury_gdpr_consent";
+
+        function openModal(id) {
+            document.getElementById(id).classList.add('visible');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('visible');
+        }
+
+        // Check local storage on load
+        function initCookieBanner() {
+            const consent = localStorage.getItem(COOKIE_NAME);
+            const banner = document.getElementById('cookie-banner');
+
+            if (!consent) {
+                // Show banner if no consent stored
+                setTimeout(() => {
+                    banner.classList.add('visible');
+                }, 1000);
+            } else {
+                applyConsent(JSON.parse(consent));
+                // Welcome Back logic
+                const contentContainer = banner.querySelector('.cookie-content');
+                if (contentContainer) {
+                    contentContainer.innerHTML = `
+                        <p>Welcome back. You have previously accepted our cookies. <a href="https://www.luxury-method.com/privacy-policy" target="_blank">Privacy Policy</a>.</p>
+                        <div class="cookie-actions">
+                            <button onclick="hideCookieBanner()">Close</button>
+                        </div>
+                    `;
+                    setTimeout(() => {
+                        banner.classList.add('visible');
+                    }, 1000);
+                }
+            }
+        }
+
+        function hideCookieBanner() {
+            const banner = document.getElementById('cookie-banner');
+            banner.classList.remove('visible');
+        }
+
+        function resetCookies() {
+            localStorage.removeItem(COOKIE_NAME);
+            location.reload();
+        }
+
+        function acceptAllCookies() {
+            const consent = { analytics: true };
+            saveAndClose(consent);
+        }
+
+        function acceptEssentials() {
+            const consent = { analytics: false };
+            saveAndClose(consent);
+        }
+
+        function savePreferences() {
+            const analytics = document.getElementById('analyticsToggle').checked;
+            const consent = { analytics: analytics };
+            saveAndClose(consent);
+        }
+
+        function saveAndClose(consent) {
+            localStorage.setItem(COOKIE_NAME, JSON.stringify(consent));
+            applyConsent(consent);
+            document.getElementById('cookie-banner').classList.remove('visible');
+            closeModal('prefModal');
+
+            // Reload page to show welcome message after first accept if desired, 
+            // or just update UI. Here we just update UI.
+            const banner = document.getElementById('cookie-banner');
+            const contentContainer = banner.querySelector('.cookie-content');
+            contentContainer.innerHTML = `
+                <p>Preferences Saved.  <a href="https://www.luxury-method.com/privacy-policy" target="_blank">Privacy Policy</a>.</p>
+                <div class="cookie-actions">
+                    <button onclick="hideCookieBanner()">Close</button>
+                </div>
+            `;
+            setTimeout(() => {
+                banner.classList.add('visible');
+            }, 500);
+        }
+
+        function applyConsent(consent) {
+            // Update Toggle UI
+            const toggle = document.getElementById('analyticsToggle');
+            if (toggle) toggle.checked = consent.analytics;
+
+            if (consent.analytics) {
+                console.log("Analytics Scripts Loaded (GDPR Compliant)");
+                // Inject Analytics here if needed
+            } else {
+                console.log("Analytics Blocked");
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener("DOMContentLoaded", function () {
+            handleSidebar();
+            handleBackToTopButton();
+            initCookieBanner();
+
+            // Add scroll event listeners to sidebars for button visibility updates
+            const sidebar = document.querySelector('.sidebar');
+            if (sidebar) {
+                sidebar.addEventListener('scroll', function () {
+                    updateArrowVisibility('sidebar');
+                });
+            }
+
+            // Add window resize event listener
+            window.addEventListener('resize', function () {
+                handleSidebar();
+            });
+
+            if (window.innerWidth <= 768) {
+                const hoverElements = document.querySelectorAll('.hover-3d');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                        } else {
+                            entry.target.classList.remove('is-visible');
+                        }
+                    });
+                }, {
+                    threshold: 0.5 // earlier trigger for stronger effect
+                });
+
+                hoverElements.forEach(el => {
+                    observer.observe(el);
+                });
+            }
+
+            // ==========================================
+            // NEW TEXT REVEAL ANIMATION (ALL DEVICES)
+            // ==========================================
+            // Selector targets hero title, main content headings/paras, FAQ headers, FAQ intro, and FAQ items
+            const textElements = document.querySelectorAll('h1, .top-section p, .content h2, .content h3, .content p, .faq-container h2, .faq-intro, .faq-item');
+
+            const textObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    } else {
+                        // Fade out when scrolling away
+                        entry.target.classList.remove('active');
+                    }
+                });
+            }, {
+                threshold: 0.15, // Trigger when 15% visible
+                rootMargin: "-20px 0px -20px 0px" // Slight offset so it doesn't trigger at very edge
+            });
+
+            textElements.forEach(el => {
+                el.classList.add('reveal-text'); // Add the animation class dynamically
+                textObserver.observe(el);
+            });
+
+        });
+
+        // Add scroll event listener
+        window.addEventListener("scroll", function () {
+            handleSidebar();
+            handleBackToTopButton();
+        });
+    </script>
+</body>
+
+</html>

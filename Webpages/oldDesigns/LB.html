@@ -1,0 +1,2145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <!-- Updated viewport to include viewport-fit=cover for iPhone safe area detection -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Luxury Branding</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* =========================================
+        1. GLOBAL RESET & UTILITIES
+        ========================================= */
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: "Cormorant Garamond", serif;
+            scrollbar-width: none;
+            /* animation-duration: 800ms; Removed to avoid conflict */
+            color: #000;
+        }
+
+        /* Hide scrollbar */
+        *::-webkit-scrollbar {
+            display: none;
+        }
+
+        body {
+            margin: 0;
+            background-color: #ebe0d5;
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        a:visited {
+            color: #000;
+        }
+
+        /* Utility Classes */
+        .paddingleftright {
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+
+        .mrginleft {
+            margin-left: 340px;
+        }
+
+        .no-top-padding {
+            padding-top: 0px !important;
+        }
+
+        .mt-large {
+            margin-top: 80px;
+        }
+
+        /* =========================================
+        2. TYPOGRAPHY
+        ========================================= */
+        h1 {
+            font-weight: normal;
+            font-size: 4rem;
+            letter-spacing: 0.5rem;
+            text-align: center;
+            color: #ebe0d5;
+            margin: 0;
+            z-index: 999999999999;
+        }
+
+        h2 {
+            text-align: center;
+            text-decoration: underline;
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+        p {
+            font-size: large !important;
+            line-height: 1.7;
+        }
+
+        /* =========================================
+        3. TEXT REVEAL ANIMATION (NEW)
+        ========================================= */
+        .reveal-text {
+            opacity: 0.1;
+            /* Start almost invisible */
+            transform: translateY(30px) scale(0.95) rotateX(10deg);
+            /* 3D Drop effect */
+            filter: blur(4px);
+            /* Luxury fog effect */
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+            /* Elegant easing */
+            transform-origin: center top;
+            will-change: opacity, transform, filter;
+        }
+
+        .reveal-text.active {
+            opacity: 1;
+            transform: translateY(0) scale(1) rotateX(0deg);
+            filter: blur(0);
+        }
+
+        /* Ensure FAQ items animate as a block */
+        .faq-item.reveal-text {
+            transform: translateY(20px);
+        }
+
+        .faq-item.reveal-text.active {
+            transform: translateY(0);
+        }
+
+        /* =========================================
+        4. HERO SECTION
+        ========================================= */
+        .hero {
+            width: 100%;
+            height: 100vh;
+            background-image: url('http://luxury-method.vercel.app/LuxuryBrandingHero.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .overlay {
+            background-color: black;
+            opacity: 0.5;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* iOS Touch Fix */
+        @supports (-webkit-touch-callout: none) {
+            .hero {
+                background-attachment: scroll !important;
+            }
+        }
+
+        /* =========================================
+        5. MAIN LAYOUT & SECTIONS
+        ========================================= */
+        .main-container {
+            display: flex;
+            flex: 1;
+            position: relative;
+        }
+
+        .content {
+            transition: all 1ms;
+            background-color: #ebe0d5;
+            color: #000;
+            width: 100%;
+            flex: 1;
+        }
+
+        .top-section {
+            width: 100%;
+            background-color: #ebe0d5;
+            padding: 10px;
+            margin-bottom: 0;
+        }
+
+        .section {
+            margin-bottom: 80px;
+        }
+
+        .section p {
+            line-height: 1.7;
+        }
+
+        /* =========================================
+        6. SIDEBAR NAVIGATION
+        ========================================= */
+        .sidebar {
+            width: 340px;
+            background-color: #ebe0d5;
+            color: white;
+            padding: 16px 40px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            gap: 14px;
+            justify-content: center;
+            /* Animation */
+            transform: translateY(100vh);
+            transition: transform 0.3s ease;
+            z-index: 100;
+        }
+
+        .sidebar2 {
+            width: 340px;
+            background-color: #ebe0d5;
+            color: white;
+            padding: 24px;
+            position: fixed;
+            height: fit-content;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            transform: translateY(100vh);
+            transition: transform 0.3s ease;
+            z-index: 100;
+        }
+
+        .main-container-visible .sidebar,
+        .main-container-visible .sidebar2 {
+            transform: translateY(0);
+        }
+
+        .sidebar button {
+            background-color: #000;
+            color: #fff;
+            padding: 12px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .sidebar button:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        /* Mobile Scroll Buttons for Sidebar (Hidden as per request) */
+        .scroll-btn-left,
+        .scroll-btn-right {
+            display: none;
+            position: fixed;
+            top: 5px;
+            z-index: 30;
+        }
+
+        .scroll-btn-left {
+            left: 0px;
+        }
+
+        .scroll-btn-right {
+            right: 0px;
+        }
+
+        .scroll-btn {
+            background-color: rgba(235, 224, 213, 0.95);
+            border: none;
+            width: 30px;
+            height: 60px;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            border-radius: 0px;
+        }
+
+        .scroll-btn:hover {
+            background-color: rgba(235, 224, 213, 1);
+        }
+
+        .scroll-btn svg {
+            fill: #000;
+        }
+
+        .left-arrow,
+        .right-arrow {
+            font-size: 20px;
+            color: #000;
+            cursor: pointer;
+            position: absolute;
+            top: 35%;
+            z-index: 15;
+            display: none;
+        }
+
+        .left-arrow {
+            left: 5px;
+            margin-right: 10px;
+        }
+
+        .right-arrow {
+            right: 5px;
+            margin-left: 10px;
+        }
+
+        /* =========================================
+        7. IMAGES
+        ========================================= */
+        .image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .image img {
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        /* Industry Images - Shorter Height */
+        .industry_Image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-block: 40px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .industry_Image img {
+            display: block;
+            width: 100%;
+            height: 73vh;
+            /* Reduced height as requested */
+            /* max-height: 500px; */
+            /* Cap the height */
+            object-fit: cover;
+            object-position: center center;
+            border-radius: 20px;
+        }
+
+        /* 3D Effect- Shared */
+        .hover-3d {
+            transform-style: preserve-3d;
+            will-change: transform, opacity;
+            transition:
+                transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1),
+                box-shadow 0.45s cubic-bezier(0.25, 0.8, 0.25, 1),
+                opacity 0.35s ease-out;
+            opacity: 1;
+            transform: translateY(15px) scale(0.95);
+        }
+
+        /* =========================================
+        8. FAQ SECTION
+        ========================================= */
+        .faq-container {
+            margin-top: 20px;
+            z-index: 999;
+            position: relative;
+            padding: 0 100px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #696969;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question h3 {
+            font-size: 18px;
+            font-weight: 500;
+            color: #1a1a1a;
+            text-align: left;
+        }
+
+        .faq-toggle {
+            width: 24px;
+            height: 24px;
+            background: transparent;
+            border: none;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .faq-toggle::before {
+            font-size: 18px;
+            color: #1a1a1a;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-toggle.active {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 0 0 2px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .faq-answer.active {
+            max-height: fit-content;
+            padding-bottom: 20px;
+            height: fit-content;
+        }
+
+        .faq-answer p {
+            margin-bottom: 10px;
+            font-size: 16px;
+            line-height: 1.5;
+            height: fit-content;
+            margin-top: 0;
+        }
+
+        /* =========================================
+        9. FOOTER & BACK TO TOP
+        ========================================= */
+        .luxury-footer {
+            background-image: url("https://luxury-method.vercel.app/Footer.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 100px 0;
+            color: #e5d7b1;
+        }
+
+        .luxury-footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 1200px;
+            width: 90%;
+            margin: auto;
+        }
+
+        .luxury-footer-contact small {
+            display: block;
+            margin-bottom: 18px;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+            color: #e5d7b1;
+            text-decoration: none;
+        }
+
+        .luxury-footer-contact a {
+            color: #e5d7b1;
+            text-decoration: none;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            justify-content: flex-end;
+            /* desktop: right */
+            align-items: center;
+        }
+
+        .social-link img {
+            width: 40px;
+            object-fit: contain;
+        }
+
+
+        .back-to-top {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            z-index: 999999;
+            width: 50px;
+            height: 50px;
+            background-color: #ffffff;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-to-top:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* =========================================
+        10. COOKIE BANNER (MODERN DARK)
+        ========================================= */
+        /* Keeps the Banner Look Dark as requested */
+        .cookie-banner {
+            position: fixed;
+            bottom: 30px;
+            /* Floating look on desktop */
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 90%;
+            max-width: 1000px;
+            background-color: #1c1c1c;
+            /* Dark background for contrast against beige */
+            color: #ebe0d5;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            /* Modern rounded corners */
+            padding: 24px 32px;
+            z-index: 2000000000000;
+            transform: translateY(150%);
+            /* Hidden state */
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+            opacity: 0;
+        }
+
+        .cookie-banner.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .cookie-content {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .cookie-content p {
+            margin: 0;
+            font-size: 16px !important;
+            color: #ebe0d5;
+            /* Slightly off-white for readability */
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .cookie-content a {
+            text-decoration: underline;
+            color: #ebe0d5;
+            text-underline-offset: 4px;
+        }
+
+        .cookie-actions {
+            display: flex;
+            gap: 15px;
+            flex-shrink: 0;
+        }
+
+        .cookie-actions button {
+            background-color: #ebe0d5;
+            /* White button */
+            border: none;
+            color: #000000;
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            /* Slightly rounded buttons */
+        }
+
+        .cookie-actions button:hover {
+            background-color: #d6cfc1;
+            transform: translateY(-2px);
+        }
+
+        /* Essentials button style (Outlined) */
+        .cookie-actions button:first-child {
+            background-color: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-color: #fff;
+            color: #ebe0d5;
+        }
+
+        .cookie-actions button:first-child:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: #fff;
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .cookie-banner {
+                bottom: 0;
+                width: 100%;
+                max-width: 100%;
+                border-radius: 20px 20px 0 0;
+                /* Bottom sheet style */
+                padding: 24px;
+                /* FIX: Add safe area inset for bottom padding so it sits above iPhone Home Bar/URL bar */
+                padding-bottom: calc(24px + env(safe-area-inset-bottom));
+                transform: translateY(100%);
+            }
+
+            .cookie-banner.visible {
+                transform: translateY(0);
+            }
+
+            .cookie-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .cookie-content p {
+                min-width: auto;
+                font-size: 15px !important;
+            }
+
+            .cookie-actions {
+                width: 100%;
+                justify-content: space-between;
+                gap: 10px;
+            }
+
+            .cookie-actions button {
+                flex: 1;
+                padding: 14px;
+            }
+        }
+
+        /* =========================================
+        11. GDPR COMPONENTS (NEW BEIGE THEME)
+        ========================================= */
+        /* Common Overlay */
+        .gdpr-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 2000000000001;
+            /* Higher than banner */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+
+        .gdpr-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Beige Modal Design from User Snippet */
+        .gdpr-modal {
+            background-color: #ebe0d5;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            border: 1px solid #000;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .gdpr-modal h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: normal;
+            border-bottom: 1px solid #000;
+            padding-bottom: 10px;
+            text-align: left;
+            color: #000;
+        }
+
+        .gdpr-modal p,
+        .gdpr-modal li {
+            font-size: 1.1rem !important;
+            margin-bottom: 15px;
+            color: #000;
+        }
+
+        .gdpr-modal h4 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #000;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        .gdpr-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            border: none;
+            background: none;
+            color: #000;
+        }
+
+        .gdpr-btn {
+            background-color: transparent;
+            border: 1px solid #000;
+            color: #000;
+            padding: 10px 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: "Cormorant Garamond", serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .gdpr-btn:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        /* Toggle Switch for Preferences */
+        .pref-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .pref-text h4 {
+            margin: 0;
+            font-size: 1.2rem;
+            text-align: left;
+            color: #000;
+        }
+
+        .pref-text p {
+            margin: 5px 0 0 0;
+            font-size: 0.9rem !important;
+            opacity: 0.8;
+            color: #333;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: #000;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(26px);
+        }
+
+        input:disabled+.slider {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Floating Settings Button (White Circle) */
+        .floating-gdpr-btn {
+            position: fixed;
+            bottom: 60px;
+            /* Aligned with Back to Top */
+            left: 30px;
+            /* Symmetrical inset */
+            width: 50px;
+            /* Match Back to Top size */
+            height: 50px;
+            /* Match Back to Top size */
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 9998;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+            color: #000;
+        }
+
+        .floating-gdpr-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* =========================================
+        12. RESPONSIVE MEDIA QUERIES
+        ========================================= */
+        @media screen and (max-width: 768px) {
+
+            /* Typography */
+            h1 {
+                font-size: 30px !important;
+            }
+
+            h3 {
+                font-size: 18px;
+            }
+
+            p {
+                font-size: large;
+            }
+
+            /* Layout */
+            .mrginleft {
+                margin-left: 0px;
+            }
+
+            .content {
+                margin-top: 100px;
+                margin-left: 0px;
+            }
+
+            .top-section {
+                padding: 5px;
+            }
+
+            .paddingleftright {
+                padding-left: 5vw;
+                padding-right: 5vw;
+            }
+
+            /* Sidebar Mobile - IMPROVED SPACING */
+            .sidebar,
+            .sidebar2 {
+                width: 100%;
+                height: 80px;
+                padding: 20px 20px 0 20px;
+                /* Added padding to prevent edge sticking */
+                position: fixed;
+                top: 0;
+                left: 0;
+                background-color: #ebe0d5;
+                z-index: 10;
+                overflow-x: auto;
+                overflow-y: hidden;
+                flex-direction: row;
+                white-space: nowrap;
+                gap: 12px;
+                /* Increased gap */
+                justify-content: flex-start;
+            }
+
+            .sidebar button {
+                font-size: 3.5vw;
+                /* Increased font size */
+                padding: 8px 16px;
+                /* Better spacing */
+                height: fit-content;
+            }
+
+            /* Hiding Scroll Buttons */
+            .scroll-btn-left,
+            .scroll-btn-right {
+                display: none !important;
+            }
+
+            .scroll-btn {
+                display: none;
+            }
+
+            .left-arrow,
+            .right-arrow {
+                display: none !important;
+            }
+
+            /* Images */
+            .industry_Image img {
+                height: auto !important;
+                max-width: 700px;
+                max-height: 400px;
+                width: 100%;
+            }
+
+            /* FAQ */
+            .faq-container {
+                padding: 0 5vw !important;
+                /* Fixed padding for mobile */
+            }
+
+            .faq-question {
+                padding: 0 0 !important;
+            }
+
+            /* Back to top */
+            .back-to-top {
+                bottom: 80px;
+                /* Added safe area fix */
+                bottom: calc(80px + env(safe-area-inset-bottom));
+            }
+
+            .hover-3d {
+                transform: scale(0.85);
+                opacity: 0.3;
+                transition:
+                    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                    opacity 0.35s ease-out;
+            }
+
+            .hover-3d.is-visible {
+                transform: scale(1.03);
+                opacity: 1;
+                box-shadow: 0 12px 22px rgba(0, 0, 0, 0.15);
+            }
+
+            .luxury-footer-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .luxury-footer-contact {
+                margin-bottom: 20px;
+                text-align: center;
+                /* optional, to center text */
+            }
+
+            .social-icons {
+                justify-content: center !important;
+                margin-top: 20px;
+            }
+
+            /* Hide Floating GDPR on mobile */
+            .floating-gdpr-btn {
+                display: none !important;
+            }
+        }
+
+        @media (min-width: 769px) {
+
+            /* Desktop elements always visible */
+            .hover-3d {
+                opacity: 1;
+                transform: none;
+            }
+
+            .hover-3d:hover {
+                transform: translateY(-8px) scale(1.05);
+                box-shadow: 0 20px 35px rgba(0, 0, 0, 0.22);
+            }
+        }
+
+        @media screen and (max-width: 500px) {
+            .back-to-top {
+                bottom: 120px !important;
+                /* Added safe area fix */
+                bottom: calc(120px + env(safe-area-inset-bottom)) !important;
+            }
+
+            .floating-gdpr-btn {
+                bottom: 120px;
+                /* Match small mobile Back to Top */
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            .luxury-footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hero">
+        <div class="overlay"></div>
+        <h1>LUXURY BRANDING</h1>
+    </div>
+
+    <div class="paddingleftright mrginleft">
+        <div class="top-section">
+            <div class="mt-large">
+                <p>
+                    At <a target="_blank" href="https://www.luxury-method.com">Luxury Method</a> we believe that luxury
+                    branding
+                    goes far beyond visuals — it’s about creating a meaningful emotional connection that resonates at
+                    every
+                    touchpoint. At its core, luxury branding is about curating a distinctive brand — where every detail
+                    reinforces
+                    a sense of exclusivity, purpose, and prestige. Every decision — from typography to messaging — must
+                    reflect
+                    high quality and clear intent of high- end branding. No matter the industry, a clearly defined
+                    luxury brand
+                    identity is key to building customer trust and sustaining long-term brand loyalty. Strong luxury
+                    branding
+                    strategies balance exclusivity with relevance, creating desire while maintaining distance — a core
+                    part of
+                    effective luxury brand exclusivity strategies. A specialised luxury branding agency like Luxury
+                    Method
+                    understands how to execute this balance, ensuring the luxury brand positioning strategy aligns with
+                    both
+                    audience expectations and cultural shifts. A well-crafted luxury industry brand identity is the
+                    foundation for
+                    long-term recognition and success that we aim to deliver to our clients.
+                </p>
+            </div>
+        </div>
+
+        <div class="main-container" id="main-container">
+            <div class="sidebar">
+                <button onclick="scrollToSection('audience')">Our branding services</button>
+                <button onclick="scrollToSection('mindmap')">Best luxury branding examples</button>
+                <button onclick="scrollToSection('industry')">Industries we work with</button>
+                <button onclick="scrollToSection('content')">Where we operate</button>
+            </div>
+
+            <div class="content">
+                <div class="top-section no-top-padding">
+                    <h2>How to start a Luxury Brand</h2>
+                    <p style="text-align: start;">
+                        Launching a luxury brand means building something that feels meaningful and exclusive from the
+                        very
+                        beginning. If you’re asking how to start a luxury brand, the process begins by <strong>defining
+                            your brand
+                            DNA </strong>— its values, purpose, and personality. This identity can be shaped using tools
+                        like the <a target="_blank"
+                            href="https://howbrandsarebuilt.com/the-brand-identity-prism-and-how-it-works/"
+                            target="_blank">luxury brand identity prism</a>, which lays the groundwork for consistent,
+                        compelling
+                        communication. Next, comes <strong>storytelling</strong>: a powerful narrative that reflects
+                        your vision and
+                        connects emotionally with your audience. <strong>Design</strong> plays a fundamental role in
+                        bringing all of
+                        this to life. From branding elements like logo and packaging to marketing channels like your <a
+                            target="_blank" href="https://www.luxury-method.com/services/web-development">website</a>
+                        and <a target="_blank"
+                            href="https://www.luxury-method.com/services/luxury-social-media-agency">social media</a>,
+                        every detail must reflect the quality and exclusivity of your brand. <strong>Smart market
+                            placement</strong>, through precise <strong>targeting </strong>and <strong>clear
+                            positioning</strong>,
+                        ensures your brand resonates with the right clientele. As a trusted luxury brand building
+                        agency, <strong>we
+                            guide you through every step — offering tailored luxury branding strategies</strong>, a
+                        refined luxury
+                        brand launch strategy, and expert advice on how to build a luxury brand that stands out and
+                        endures.
+                    </p>
+                </div>
+
+                <div class="top-section no-top-padding">
+                    <h2>How to sell luxury</h2>
+                    <p style="text-align: start;">
+                        Selling luxury is about more than transactions — <strong>it’s about selling a story, an
+                            experience, and a
+                            sense of belonging.</strong> If you're wondering how to sell luxury, it starts with
+                        understanding
+                        <strong>what is a luxury brand</strong> and <strong>how emotional value drives desire.</strong>
+                        Products
+                        must be positioned as exclusive, high-end, and meaningful, using carefully designed luxury ads
+                        and messaging
+                        that speaks to aspiration and identity. Whether it’s how to sell luxury goods, items, or
+                        products,
+                        <strong>success lies in consistency across all touchpoints — online and offline.</strong> A
+                        well-crafted
+                        digital strategy, including <a target="_blank"
+                            href="https://www.luxury-method.com/services/luxury-seo-agency">SEO</a>, content, and
+                        social
+                        media, plays
+                        a major role in how to market luxury products to today’s audience. At Luxury Method, we
+                        specialise in
+                        helping brands not only launch but grow — guiding clients through how to create a luxury brand
+                        and how to
+                        sell luxury.
+                    </p>
+                </div>
+
+                <div id="editorial2" class="section">
+                    <h2 style="text-decoration: underline">Marketing vs Branding</h2>
+                    <p>Branding and Marketing services are often confused, but they play distinct roles — especially in
+                        the luxury
+                        sector. Understanding the difference between a branding strategy vs <a target="_blank"
+                            href="https://www.luxury-method.com/services/luxury-marketing-strategy"> marketing
+                            strategy</a> is
+                        essential. <strong>Branding defines your identity</strong>: who you are, what you stand for, and
+                        how you
+                        want to be perceived. It includes your values, voice, and visual world — forming the emotional
+                        and strategic
+                        foundation of your business. <strong>Marketing</strong>, by contrast, <strong>determines how
+                            that identity
+                            is shared</strong> with the world. It includes the tools, channels, and campaigns used to
+                        promote your
+                        message. A well-developed luxury marketing strategy amplifies a brand’s presence through a
+                        thoughtful luxury
+                        brand promotion strategy that ensures visibility, desirability, and relevance among the right
+                        audiences.
+                        Without a clear brand, marketing loses direction; without marketing, branding lacks reach.
+                        <strong>In
+                            luxury, the two must work hand in hand — one builds meaning, the other builds
+                            momentum.</strong>
+                    </p>
+                </div>
+
+                <div id="top" class="top-section ">
+                    <h2 id="audience" style="text-decoration: none;">OUR BRANDING SERVICES</h2>
+                </div>
+
+                <div class="section">
+                    <h3>1) Naming</h3>
+                    <p>
+                        Luxury brand naming is a vital part of successful branding, capturing the essence of your
+                        identity while
+                        resonating with your target audience. Whether launching a new brand or repositioning an existing
+                        one, we
+                        develop refined, <strong>emotionally intelligent names</strong> that spark recognition and
+                        <strong>elevate
+                            perception from the very first impression</strong>.
+                    </p>
+                </div>
+
+                <div class="section">
+                    <h3>2) Brand Strategy & Positioning</h3>
+                    <p>
+                        Our brand strategy and positioning service lays the foundation for everything your brand will
+                        become. This
+                        process defines the <strong>who, what, and why of your brand</strong>; marketing comes next,
+                        deciding how
+                        and where to communicate it. Our strategic process begins with defining your <strong>mission and
+                            vision
+                            statements</strong>, mapping your <strong>target audience profile</strong>, and identifying
+                        key luxury
+                        branding elements. We create positioning strategies that distinguish your brand in a saturated
+                        market and
+                        help it resonate with a discerning clientele. Every brand we work with is positioned
+                        strategically — always
+                        with long-term prestige and relevance in mind.
+                    </p>
+                </div>
+
+                <div class="section">
+                    <h3>3) Brand Identity & Logo Design</h3>
+                    <p>We create refined visual identities that embody your brand’s values, positioning, and
+                        personality.
+                        <strong>From bespoke logo creation to full visual systems</strong>, our design process ensures
+                        that we
+                        deliver refined logo variations—including primary, secondary, monochrome, and responsive
+                        formats—that
+                        maintain impact across all digital and physical touchpoints.
+
+                        To support consistent brand expression, we develop a style guide that outlines iconography,
+                        typography,
+                        photography direction, font usage, and color palettes. With clearly defined logo usage rules, we
+                        help
+                        safeguard the visual integrity of your brand across platforms. These foundational elements form
+                        a cohesive
+                        visual language that reinforces your luxury positioning.
+                    </p>
+                </div>
+
+                <div id="calendar" class="section">
+                    <h3>4) Brand Storytelling & Messaging</h3>
+                    <p>Our process includes <strong>tone of voice development, core message frameworks, and narrative
+                            structure</strong> — forming the foundation of a consistent and powerful messaging branding
+                        strategy. We
+                        align internal values with external perception, shaping a compelling brand image message
+                        strategy that
+                        builds trust and emotional connection with your audience. Whether you’re launching a new brand
+                        or
+                        repositioning an established one, our storytelling work ensures your voice feels intentional,
+                        authentic, and
+                        uniquely yours.</p>
+                </div>
+
+                <div id="editorial" class="section">
+                    <h3>5) Brand guidelines</h3>
+                    <p>Full luxury brand guidelines serve as the definitive reference for how your brand should look,
+                        feel, and
+                        sound. <strong>This document collates all written and visual rules</strong> — from logo usage
+                        and typography
+                        to tone of voice and visual guidelines — <strong>ensuring consistency across every platform and
+                            partner
+                            interaction</strong>. Designed for internal teams, collaborators, and suppliers, brand
+                        guidelines provide
+                        a clear understanding of your company’s identity and how to correctly apply its assets both
+                        online and
+                        offline.</p>
+                </div>
+
+                <div id="distribution" class="section">
+                    <h3>6) Brand architecture</h3>
+                    <p>We help luxury brands bring clarity and cohesion to complex brand portfolios through strategic
+                        brand
+                        architecture. Whether you're managing multiple product lines,
+                        sub-brands, or planning for future expansion, <strong>we refine the structure of your brand
+                            ecosystem to
+                            ensure consistency and scalability.</strong> Through expert luxury brand design and graphic
+                        design for
+                        luxury, we ensure that each brand element fits within a clearly defined hierarchy while
+                        maintaining
+                        individual strength.</p>
+                </div>
+
+                <div id="effectiveness" class="section">
+                    <h3>7) Luxury Rebranding</h3>
+                    <p>We work closely with luxury brands that need rebranding to <strong>evolve</strong> their
+                        <strong>narrative</strong>, <strong>update</strong> their <strong>visual identity</strong>, and
+                        <strong>sharpen</strong> their <strong>market positioning</strong> — without losing the essence
+                        that made
+                        the brand desirable in the first place.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="content" id="con2">
+            <div id="top2" class="top-section">
+                <h2 id="mindmap" style="text-decoration: underline">Best Luxury Branding Examples</h2>
+            </div>
+            <div id="audience2" class="section">
+                <h3><a style="text-decoration: none;" target="_blank"
+                        href="https://us.louisvuitton.com/eng-us/products/neverfull-mm-monogram-nvprod5350101v/M46987">Louis
+                        Vuitton</a></h3>
+
+                <div class="image">
+                    <img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-neverfull-mm--M46987_PM1_Detail%20view.png?wid=730&hei=730"
+                        class="image hover-3d" alt="louisvuitton" />
+                </div>
+
+                <p>As one of the best luxury branding examples, the luxury brand strategy of Louis Vuitton is built
+                    around its
+                    iconic monogram canvas — a symbol of heritage, craftsmanship, and exclusivity. Introduced in 1896,
+                    the floral
+                    motifs were inspired by Japanese design, adding cultural depth to one of the most iconic luxury
+                    brand logos.
+                    The brand honours its heritage while staying culturally relevant. Through collaborations with
+                    artists and
+                    designers like Takashi Murakami, Yayoi Kusama, and Virgil Abloh, LV continuously reinvents its
+                    visual identity
+                    without losing its core.</p>
+            </div>
+
+            <div id="mindmap2" class="section">
+                <h3><a style="text-decoration: none;" target="_blank" href="https://www.aman.com/">Aman Resorts</a></h3>
+                <div class="image">
+                    <img src="https://i.postimg.cc/HnRvxZwB/Frame.png" class="image hover-3d" alt="Aman Resorts" />
+                </div>
+
+                <p>Aman Resorts embodies a “less is more” philosophy, making it a standout in luxury hotel brand
+                    strategy. It
+                    uses neutral tones, clean lines, and a deliberate absence of logos to project calm, exclusivity, and
+                    sophistication. Its branding avoids extravagant fonts or saturated colours, often favouring modern
+                    sans-serif
+                    typography and earth-toned environments. This subtle, quiet presence positions Aman as a leader in
+                    luxury
+                    branding strategy setting it apart as one of the top high end brands in the world. Aman Resorts is a
+                    strong
+                    luxury brand storytelling example — proving that emotional connection can be achieved through
+                    restraint rather
+                    than excess.</p>
+            </div>
+
+            <div id="content2" class="section">
+                <h3><a style="text-decoration: none;" target="_blank" href="https://ivycollection.com/">The Ivy</a></h3>
+                <div class="image">
+                    <img src="https://images.squarespace-cdn.com/content/v1/5cc70ce165019fb0a5652905/1565271814293-NG36EJKR3M4SQTQ07Z8P/IVY_CollectionLogo_02_Foiled.jpg?format=1500w"
+                        class="image hover-3d" alt="" />
+                </div>
+                <p>The Ivy stands out among luxury branding examples for its fusion of iconic British glamour with a
+                    contemporary twist. Its branding draws heavily from Art Deco design and the visual identity captures
+                    the
+                    cultural essence of a classic British dining experience: theatrical, refined, and socially vibrant.
+                </p>
+            </div>
+
+            <div id="calendar2" class="section">
+                <h3><a style="text-decoration: none;" target="_blank" href="https://www.cipriani.com/">Cipriani</a></h3>
+                <div class="image">
+                    <img src="https://i.postimg.cc/MG3FNpnC/Frame-1.png" class="image hover-3d" alt="" />
+                </div>
+                <p>Cipriani exemplifies timeless Italian
+                    elegance, with a brand identity that reflects its Venetian
+                    heritage and
+                    discreet luxury. The logo features a stylised illustration of a bartender — a nod to the brand’s
+                    origins at
+                    the legendary Harry’s Bar — paired with a bold, modern sans-serif font. The branding avoids excess,
+                    instead
+                    communicating confidence and character through simplicity. This distinctive symbol has become one of
+                    the most
+                    iconic luxury brand logos in hospitality; Its refined yet welcoming identity reflects an
+                    expert-level luxury
+                    branding strategy that blends prestige with approachability.</p>
+            </div>
+        </div>
+
+
+        <div class="content" id="con3">
+            <div id="top2" class="top-section">
+                <h2 id="industry" style="text-decoration: none;">INDUSTRIES WE WORK WITH</h2>
+                <p style="text-align: center;">At Luxury Method, we develop tailored, high-impact branding systems
+                    designed for
+                    the unique demands of each luxury sector:</p>
+            </div>
+
+            <div id="audience2" class="section">
+                <h3>Fashion</h3>
+                <div class="industry_Image">
+                    <img src="https://luxury-method.vercel.app/FASHION.png" class="hover-3d" alt="Fashion Industry">
+                </div>
+                <p>In an <strong>industry defined by rapid trends</strong> and high aesthetic standards, as a <a
+                        target="_blank" href="https://www.luxury-method.com/industries/luxury-fashion-marketing">luxury
+                        fashion</a> branding agency we build enduring brand identities for labels seeking lasting
+                    recognition.</p>
+            </div>
+
+            <div id="mindmap2" class="section">
+                <h3>Travel</h3>
+
+                <div class="industry_Image">
+                    <img src="https://luxury-method.vercel.app/TRAVEL.png" class="hover-3d" alt="Travel Industry">
+                </div>
+
+                <p>In the <a target="_blank"
+                        href="https://www.luxury-method.com/industries/luxury-travel-marketing">travel industry</a>
+                    , branding is about <strong>evoking emotion, aspiration, and escape.</strong>
+                    We create
+                    elevated identities that turn destinations into immersive experiences. Through refined storytelling,
+                    design,
+                    and positioning, our branding captures the essence of place — building desire and connection before
+                    the
+                    journey even begins.</p>
+            </div>
+
+            <div id="content2" class="section">
+                <h3>Hospitality</h3>
+                <div class="industry_Image">
+                    <img src="https://luxury-method.vercel.app/HOSPITALITY.png" class="hover-3d"
+                        alt="Hospitality Industry">
+                </div>
+
+                <p>In a <strong>sector where experience and emotion define value, we craft refined identities that
+                        capture
+                        elegance and atmosphere.</strong> As a luxury hotel
+                    branding agency, we develop cohesive brand
+                    systems
+                    rooted in storytelling and service. Our work in <a target="_blank"
+                        href="https://www.luxury-method.com/industries/luxury-hospitality-marketing-agency">hospitality
+                        luxury branding</a> includes naming, visual identity, and tone of voice — all aligned with
+                    timeless luxury hotel branding strategies.</p>
+            </div>
+
+            <div id="calendar2" class="section">
+                <h3>Real Estate</h3>
+                <div class="industry_Image">
+                    <img src="https://luxury-method.vercel.app/REAL_ESTATE.png" class="hover-3d"
+                        alt="Real Estate Industry">
+                </div>
+
+                <p>In <a target="_blank"
+                        href="https://www.luxury-method.com/industries/luxury-real-estate-marketing">luxury real
+                        estate</a>, branding must convey <strong>trust, exclusivity, and aspiration.</strong> As a
+                    luxury
+                    property branding agency, we craft identities that elevate developments and speak directly to
+                    high-net-worth
+                    audiences.</p>
+            </div>
+
+            <div id="editorial2" class="section">
+                <h3>Watches & Jewellery</h3>
+                <div class="industry_Image">
+                    <img src="https://luxury-method.vercel.app/WATCHES.png" class="hover-3d" alt="Watches Industry">
+                </div>
+
+                <p><a target="_blank" href="https://www.luxury-method.com/industries/luxury-watches-marketing">Branding
+                        for luxury watches</a> demands a <strong>focus on craftsmanship, legacy, and precision.</strong>
+                    We
+                    build
+                    tailored and refined identities that highlight heritage and timeless value. From emblematic logos to
+                    material-driven storytelling, we create luxury brand systems that honour artisanal excellence while
+                    appealing
+                    to today’s discerning clientele.</p>
+            </div>
+
+            <div id="distribution2" class="section">
+                <h3>Food and Beverages</h3>
+
+                <div class="industry_Image">
+                    <img src="https://luxury-method.vercel.app/FOOD_AND_BEVERAGES.png" class="hover-3d"
+                        alt="Food and Beverages Industry">
+                </div>
+
+                <p>In the luxury food sector, branding is a <strong>sensory experience</strong> that must express
+                    <strong>quality, origin, and craftsmanship.</strong> We specialise in food branding that captures
+                    flavour,
+                    texture, and emotion through thoughtful packaging, naming, and visual identity. Our <a
+                        target="_blank" href="https://www.luxury-method.com/industries/luxury-food-marketing">luxury
+                        food branding</a> approach transforms premium food products into aspirational, story-driven
+                    brands that stand out on the shelf and connect deeply with discerning consumers.
+                </p>
+            </div>
+
+            <div id="effectiveness2" class="section">
+                <h3>Retail</h3>
+
+                <div class="industry_Image">
+                    <img src="https://luxury-method.vercel.app/RETAIL.png" class="hover-3d"
+                        alt="Food and Beverages Industry">
+                </div>
+                <p>In <a target="_blank" href="https://www.luxury-method.com/industries/luxury-retail-marketing">luxury
+                        retail</a>, branding is about crafting a <strong>multi-sensory experience that engages
+                        customers from
+                        the first glance to the final purchase.</strong> We specialise in retail branding that blends
+                    visual
+                    identity with spatial and tactile storytelling. Through purposeful design and storytelling in luxury
+                    retail
+                    branding, we help brands create immersive environments and packaging that reflect their essence. Our
+                    luxury
+                    retail branding solutions ensure consistency and emotional resonance across every customer
+                    touchpoint.</p>
+            </div>
+        </div>
+
+        <div id="bottom2" class="top-section no-top-padding">
+            <h2 id="content" style="text-decoration: none;">WHERE WE OPERATE</h2>
+            <p style="text-align: start;">
+                We tailor our luxury branding strategies to reflect the unique cultural values and market expectations
+                of each
+                global region we serve.
+            </p>
+
+            <li>
+                <strong>In the UK</strong>, where tradition blends with innovation, we craft brand identities that
+                balance
+                legacy with contemporary relevance. As a multidisciplinary luxury branding agency operating in London,
+                we offer
+                tailored solutions including UK luxury brand strategy services, premium branding, and launch
+                support—grounded in
+                emotional insight and creative precision.
+            </li>
+            <li>
+                <strong>Across Europe</strong>, our approach embraces artisanal craftsmanship and design-led thinking,
+                catering
+                to markets that prioritise aesthetics, quality, and creative authenticity.
+            </li>
+            <li>
+                <strong>In the Middle East</strong>, where branding is synonymous with prestige and personalisation, we
+                tailor
+                high-impact solutions that reflect cultural expectations of exclusivity. We operate with insight across
+                the
+                region through our teams in Dubai and Qatar, trusted by discerning clients seeking top-tier luxury
+                branding.
+            </li>
+            <li>
+                <strong>In the USA</strong>, our solutions capture the spirit of aspiration, innovation, and
+                self-expression,
+                resonating with a market driven by bold identity and personal storytelling.
+            </li>
+        </div>
+    </div>
+
+
+    <div class="faq-container paddingleftright top-section">
+        <p style="text-align: center; font-size: 24px !important; font-style: italic;">
+            Experience the difference of a marketing agency dedicated to luxury.
+        </p>
+        <div style="display: flex; gap: 100px; margin-top: 60px; width: 100%; justify-content: center;">
+            <a target="_blank"
+                href="https://www.google.com/url?q=https%3A%2F%2Fwa.me%2F%2B393920034695&sa=D&sntz=1&usg=AOvVaw2a9hG2asZNJfADOdAWUper"
+                class="padding:20px; background-color: #fff; border-radius: 100%;"><img
+                    src="https://i.postimg.cc/HkGt0VxV/whatsapp.png"
+                    style="width: 30px; border-radius: 100%; height: 30px;" alt=""></a>
+            <a target="_blank" href="mailto:giacomo@luxury-method.com"
+                class="padding:20px; background-color: #5f6368; border-radius: 100%; "><img
+                    src="https://i.postimg.cc/mr4tBFZf/image-978.png"
+                    style="width: 30px; border-radius: 100%; background-color: #5f6368; height: 30px;" alt=""></a>
+            <a target="_blank"
+                href="https://www.google.com/url?q=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Fluxurymethod%2F&sa=D&sntz=1&usg=AOvVaw0MER64fKjxQpgMZC_E-MgX"
+                class="padding:20px;  border-radius: 100%; "><img src="https://i.postimg.cc/BvtQqcWz/image-979.png"
+                    style="width: 30px; border-radius: 100%; background-color: #2867b2; height: 30px;" alt=""></a>
+        </div>
+
+        <div style="display: flex; justify-content: center; margin-top: 40px; margin-bottom: 100px;">
+            <a target="_blank" href="https://www.luxury-method.com/contact"
+                style="padding-left: 80px; text-decoration: none; font-size: 18px; border-radius: 5px; padding-right: 80px; border: #000; border: 1px solid; padding-top: 10px; padding-bottom: 10px;">CONTACT
+                FORM</a>
+        </div>
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3><strong>How can small businesses benefit from strong branding?</strong></h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <p>
+                    <strong> High-end branding isn’t just for big companies—</strong>small business branding helps
+                    establish
+                    credibility, attract ideal customers, and communicate value from day one. With the right approach,
+                    branding
+                    for small companies can create a premium presence that drives long-term growth.
+                </p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3><strong>How do luxury brand campaigns differ from the mass market?</strong></h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <p>
+                    <strong>Luxury brand advertising campaigns prioritize subtlety, aspiration, and brand heritage over
+                        direct
+                        selling.</strong> Rather than highlighting price or features, luxury brand campaigns focus on
+                    symbolic
+                    value, curated imagery, and emotional connection. In contrast, mass-market strategies prioritize
+                    high volume
+                    and immediate conversions—driving sales through accessibility rather than desire.
+                </p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3>
+                    <strong>What’s the difference between brand identity and brand image?</strong>
+                </h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <p>
+                    The difference between brand identity and brand image lies in control—brand identity is what a
+                    company
+                    intentionally creates (logo, voice, values), while brand image is how the audience actually
+                    perceives it.
+                    Strong branding ensures the two align.
+                </p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3>
+                    <strong>When should a brand consider rebranding?</strong>
+                </h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <p>
+                    Rebranding is worth considering when a brand experiences <strong>market shifts,</strong> targets
+                    <strong>a new
+                        audience,</strong> or its <strong>identity no longer reflects who it is.</strong> Brands that
+                    need
+                    rebranding may show signs of reduced engagement or a disconnect with their values.
+                </p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3>
+                    <strong>What are the most common branding mistakes businesses make?</strong>
+                </h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <p>
+                    Common branding mistakes include misaligned messaging, inconsistent visual identity, and unclear
+                    brand
+                    positioning. These issues confuse audiences, weaken trust, and prevent a brand from standing out in
+                    a crowded
+                    market.
+                </p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3>
+                    <strong>Marketing vs Branding: what is the difference?</strong>
+                </h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <p>
+                    <strong>Branding defines who you are</strong> — your voice, values, and identity — while <strong><a
+                            target="_blank"
+                            href="https://www.luxury-method.com/services/luxury-marketing-strategy">marketing</a> is
+                        how you communicate that</strong> to the world such as through Paid ads, email or content
+                    marketing,
+                    influencer collaborations or print & Outdoor Advertising, etc.
+                </p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3><strong>What are the key aspects of social media strategy for premium brands?</strong></h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <p>
+                    A thoughtful social media strategy for luxury brands <strong>values quality over
+                        quantity</strong>—emphasising
+                    curated visuals, brand storytelling, and exclusivity. As a <a target="_blank"
+                        href="https://www.luxury-method.com/services/luxury-social-media-agency">luxury brands social
+                        media
+                        strategy</a>, we ensure brands stay desirable without overexposure.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="luxury-footer">
+        <div class="luxury-footer-content">
+            <div class="luxury-footer-contact">
+                <small>
+                    <a target="_blank" style="font-weight: bold; text-decoration: none"
+                        href="mailto:giacomo@luxury-method.com">giacomo@luxury-method.com</a>
+                </small>
+                <a href="tel:+393920034695"><small>(+39) 3920034695</small></a>
+                <small>P.IVA: 17906211002</small>
+                <!-- Added Privacy & Cookie Links -->
+                <small><a href="https://www.luxury-method.com/privacy-policy" target="_blank">Privacy Policy</a></small>
+                <small><a href="#" onclick="openModal('prefModal'); return false;">Cookie Preferences</a></small>
+            </div>
+
+            <div class="social-icons">
+                <div class="social-link">
+                    <a href="https://www.instagram.com/luxurymethod_agency/" target="_blank">
+                        <img src="https://i.postimg.cc/XJSn0GKM/image-976.png" alt="Instagram" />
+                    </a>
+                </div>
+                <div class="social-link">
+                    <a href="https://x.com/luxury_method" target="_blank">
+                        <img src="https://luxury-method.vercel.app/twitter-logo.png" alt="X" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false">
+            <path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z" fill="currentColor"></path>
+        </svg>
+    </div>
+
+    <!-- =========================================
+    11. GDPR MODALS & BANNERS
+    ========================================= -->
+
+    <!-- Floating Cookie Button (Right to Withdraw) -->
+    <div class="floating-gdpr-btn" onclick="openModal('prefModal')" title="Cookie Preferences">
+        <i class="fa-solid fa-cookie-bite"></i>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacyModal" class="gdpr-overlay">
+        <div class="gdpr-modal">
+            <button class="gdpr-close" onclick="closeModal('privacyModal')">&times;</button>
+            <h3>Privacy Policy</h3>
+            <p><strong>Effective Date:</strong> December 2025</p>
+            <p>At Luxury Method, we value your privacy and are committed to protecting your personal data in accordance
+                with the General Data Protection Regulation (GDPR).</p>
+
+            <h4>1. Data Collection</h4>
+            <p>We collect Identity Data (name) and Contact Data (email) when you voluntarily submit our contact forms.
+                We also collect Technical Data (IP address, browser type) via cookies if you consent.</p>
+
+            <h4>2. How We Use Data</h4>
+            <p>Your data is used solely to respond to inquiries and analyze website performance. We do not sell your
+                data to third parties.</p>
+
+            <h4>3. Your Rights</h4>
+            <p>You have the right to access, correct, or delete your data. You may withdraw consent at any time via the
+                settings button.</p>
+
+            <h4>4. Contact</h4>
+            <p>For privacy inquiries, please contact: giacomo@luxury-method.com</p>
+        </div>
+    </div>
+
+    <!-- Cookie Preferences Modal -->
+    <div id="prefModal" class="gdpr-overlay">
+        <div class="gdpr-modal">
+            <button class="gdpr-close" onclick="closeModal('prefModal')">&times;</button>
+            <h3>Cookie Preferences</h3>
+            <p>Manage how we use cookies. "Essential" cookies are necessary for the site to function.</p>
+
+            <div class="pref-row">
+                <div class="pref-text">
+                    <h4>Essential</h4>
+                    <p>Required for basic functionality.</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" checked disabled>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="pref-row">
+                <div class="pref-text">
+                    <h4>Analytics & Marketing</h4>
+                    <p>Help us improve our content strategy.</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="analyticsToggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <button class="gdpr-btn" onclick="savePreferences()" style="width: 100%; margin-top: 20px;">Save
+                Preferences</button>
+        </div>
+    </div>
+
+    <!-- Cookie Banner (Dark Mode) -->
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-content">
+            <p>We use cookies to ensure you get the best experience on our website. <a
+                    href="https://www.luxury-method.com/privacy-policy" target="_blank">Privacy Policy</a>.</p>
+            <div class="cookie-actions">
+                <button onclick="acceptEssentials()">Essentials Only</button>
+                <button onclick="acceptAllCookies()">Accept All</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const toggle = element.querySelector(".faq-toggle");
+
+            // Close all other FAQs
+            document.querySelectorAll(".faq-answer").forEach((item) => {
+                if (item !== answer) {
+                    item.classList.remove("active");
+                }
+            });
+
+            document.querySelectorAll(".faq-toggle").forEach((item) => {
+                if (item !== toggle) {
+                    item.classList.remove("active");
+                }
+            });
+
+            // Toggle current FAQ
+            answer.classList.toggle("active");
+            toggle.classList.toggle("active");
+        }
+
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            const yOffset = -20;
+            const y =
+                element.getBoundingClientRect().top + window.scrollY + yOffset;
+            window.scrollTo({ top: y, behavior: "smooth" });
+        }
+
+        // Back to Top functionality
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+        // Show/hide back to top button
+        function handleBackToTopButton() {
+            const backToTopButton = document.getElementById('backToTop');
+            if (window.scrollY > 300) { // Show button after scrolling 300px
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        }
+
+        // Function to scroll sidebar horizontally on mobile
+        function scrollSidebar(sidebarId, direction) {
+            const sidebar = document.querySelector(`.${sidebarId}`);
+            const scrollAmount = 180; // Slightly larger scroll amount
+
+            if (direction === 'left') {
+                sidebar.scrollBy({
+                    left: -scrollAmount,
+                    behavior: 'smooth'
+                });
+            } else {
+                sidebar.scrollBy({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+            }
+
+            // Update arrow visibility after scrolling
+            setTimeout(() => {
+                updateArrowVisibility(sidebarId);
+            }, 300);
+        }
+
+        // Function to update arrow visibility based on scroll position
+        function updateArrowVisibility(sidebarId) {
+            const sidebar = document.querySelector(`.${sidebarId}`);
+            // Note: Arrows are manually placed outside sidebar in this structure
+            const leftBtnWrapper = document.getElementById(`${sidebarId === 'sidebar' ? 'sidebar1' : 'sidebar2'}-left`);
+            const rightBtnWrapper = document.getElementById(`${sidebarId === 'sidebar' ? 'sidebar1' : 'sidebar2'}-right`);
+
+            if (!leftBtnWrapper || !rightBtnWrapper) return;
+
+            const leftBtn = leftBtnWrapper.querySelector('.scroll-btn');
+            const rightBtn = rightBtnWrapper.querySelector('.scroll-btn');
+
+            // Only show arrows on mobile view (width <= 768px)
+            if (window.innerWidth <= 768) {
+                // Check if at the start or end of scrolling
+                if (sidebar.scrollLeft <= 10) {
+                    leftBtn.style.opacity = '0.4';
+                } else {
+                    leftBtn.style.opacity = '1';
+                }
+
+                if (sidebar.scrollLeft + sidebar.clientWidth >= sidebar.scrollWidth - 10) {
+                    rightBtn.style.opacity = '0.4';
+                } else {
+                    rightBtn.style.opacity = '1';
+                }
+
+                // Check if sidebar has enough content to scroll
+                if (sidebar.scrollWidth <= sidebar.clientWidth) {
+                    leftBtnWrapper.style.display = 'none';
+                    rightBtnWrapper.style.display = 'none';
+                } else {
+                    leftBtnWrapper.style.display = 'block';
+                    rightBtnWrapper.style.display = 'block';
+                }
+            }
+        }
+
+        // Function to handle the sidebar visibility
+        function handleSidebar() {
+            const bottomsection = document.querySelector(".hero");
+            const sidebar = document.querySelector(".sidebar");
+            const Faq = document.querySelector(".faq-container");
+
+            // Get the bottom position of the top section
+            const FaqBottom = Faq.getBoundingClientRect().top;
+            const topSectiontopBottom = bottomsection.getBoundingClientRect().bottom;
+
+            // First hide all scroll buttons
+            if (window.innerWidth <= 768) {
+                document.querySelectorAll('.scroll-btn-left, .scroll-btn-right').forEach(btn => {
+                    btn.style.display = 'none';
+                });
+            }
+
+            // If we've scrolled past the top section, show the sidebar
+            if (topSectiontopBottom <= 100 && FaqBottom > 200) {
+                sidebar.style.transform = "translateY(0)";
+
+                // Make the first sidebar's scroll buttons active
+                if (window.innerWidth <= 768) {
+                    // Trigger arrow visibility check
+                    updateArrowVisibility('sidebar');
+                }
+            } else {
+                // Hide sidebar
+                if (window.innerWidth > 768) {
+                    sidebar.style.transform = "translateY(100vh)";
+                } else {
+                    // On mobile, we might want it to slide down or stay fixed? 
+                    // Original logic implies sliding away or staying fixed depending on interpretation.
+                    // Based on "transform: translateY(100vh)" in CSS, it hides.
+                    sidebar.style.transform = "translateY(100vh)";
+                }
+            }
+        }
+
+        // =========================================
+        // GDPR LOGIC
+        // =========================================
+        const COOKIE_NAME = "luxury_gdpr_consent";
+
+        function openModal(id) {
+            document.getElementById(id).classList.add('visible');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('visible');
+        }
+
+        // Check local storage on load
+        function initCookieBanner() {
+            const consent = localStorage.getItem(COOKIE_NAME);
+            const banner = document.getElementById('cookie-banner');
+
+            if (!consent) {
+                // Show banner if no consent stored
+                setTimeout(() => {
+                    banner.classList.add('visible');
+                }, 1000);
+            } else {
+                applyConsent(JSON.parse(consent));
+                // Welcome Back logic
+                const contentContainer = banner.querySelector('.cookie-content');
+                if (contentContainer) {
+                    contentContainer.innerHTML = `
+                        <p>Welcome back. You have previously accepted our cookies.  <a href="https://www.luxury-method.com/privacy-policy" target="_blank">Privacy Policy</a>.</p>
+                        <div class="cookie-actions">
+                            <button onclick="hideCookieBanner()">Close</button>
+                        </div>
+                    `;
+                    setTimeout(() => {
+                        banner.classList.add('visible');
+                    }, 1000);
+                }
+            }
+        }
+
+        function hideCookieBanner() {
+            const banner = document.getElementById('cookie-banner');
+            banner.classList.remove('visible');
+        }
+
+        function resetCookies() {
+            localStorage.removeItem(COOKIE_NAME);
+            location.reload();
+        }
+
+        function acceptAllCookies() {
+            const consent = { analytics: true };
+            saveAndClose(consent);
+        }
+
+        function acceptEssentials() {
+            const consent = { analytics: false };
+            saveAndClose(consent);
+        }
+
+        function savePreferences() {
+            const analytics = document.getElementById('analyticsToggle').checked;
+            const consent = { analytics: analytics };
+            saveAndClose(consent);
+        }
+
+        function saveAndClose(consent) {
+            localStorage.setItem(COOKIE_NAME, JSON.stringify(consent));
+            applyConsent(consent);
+            document.getElementById('cookie-banner').classList.remove('visible');
+            closeModal('prefModal');
+
+            // Reload page to show welcome message after first accept if desired, 
+            // or just update UI. Here we just update UI.
+            const banner = document.getElementById('cookie-banner');
+            const contentContainer = banner.querySelector('.cookie-content');
+            contentContainer.innerHTML = `
+                <p>Preferences Saved.  <a href="https://www.luxury-method.com/privacy-policy" target="_blank">Privacy Policy</a>.</p>
+                <div class="cookie-actions">
+                    <button onclick="hideCookieBanner()">Close</button>
+                </div>
+            `;
+            setTimeout(() => {
+                banner.classList.add('visible');
+            }, 500);
+        }
+
+        function applyConsent(consent) {
+            // Update Toggle UI
+            const toggle = document.getElementById('analyticsToggle');
+            if (toggle) toggle.checked = consent.analytics;
+
+            if (consent.analytics) {
+                console.log("Analytics Scripts Loaded (GDPR Compliant)");
+                // Inject Analytics here if needed
+            } else {
+                console.log("Analytics Blocked");
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener("DOMContentLoaded", function () {
+            handleSidebar();
+            handleBackToTopButton();
+            initCookieBanner();
+
+            // Add scroll event listeners to sidebars for button visibility updates
+            const sidebar = document.querySelector('.sidebar');
+            if (sidebar) {
+                sidebar.addEventListener('scroll', function () {
+                    updateArrowVisibility('sidebar');
+                });
+            }
+
+            // Add window resize event listener
+            window.addEventListener('resize', function () {
+                handleSidebar();
+            });
+
+            if (window.innerWidth <= 768) {
+                const hoverElements = document.querySelectorAll('.hover-3d');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                        } else {
+                            entry.target.classList.remove('is-visible');
+                        }
+                    });
+                }, {
+                    threshold: 0.5 // earlier trigger for stronger effect
+                });
+
+                hoverElements.forEach(el => {
+                    observer.observe(el);
+                });
+            }
+
+            // ==========================================
+            // NEW TEXT REVEAL ANIMATION (ALL DEVICES)
+            // ==========================================
+            // Selector targets hero title, main content headings/paras, FAQ headers, FAQ intro, and FAQ items
+            const textElements = document.querySelectorAll('h1, .top-section p, .content h2, .content h3, .content p, .faq-container h2, .faq-intro, .faq-item');
+
+            const textObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    } else {
+                        // Fade out when scrolling away
+                        entry.target.classList.remove('active');
+                    }
+                });
+            }, {
+                threshold: 0.15, // Trigger when 15% visible
+                rootMargin: "-20px 0px -20px 0px" // Slight offset so it doesn't trigger at very edge
+            });
+
+            textElements.forEach(el => {
+                el.classList.add('reveal-text'); // Add the animation class dynamically
+                textObserver.observe(el);
+            });
+
+        });
+
+        // Add scroll event listener
+        window.addEventListener("scroll", function () {
+            handleSidebar();
+            handleBackToTopButton();
+        });
+    </script>
+</body>
+
+</html>

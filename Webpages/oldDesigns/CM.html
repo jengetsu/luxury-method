@@ -847,7 +847,7 @@
         /* Keeps the Banner Look Dark as requested */
         .cookie-banner {
             position: fixed;
-            bottom: 50px; /* LIFTED HIGHER for safety on desktop */
+            bottom: 30px;
             /* Floating look on desktop */
             left: 0;
             right: 0;
@@ -941,26 +941,15 @@
 
         @media (max-width: 768px) {
             .cookie-banner {
-                /* Changed to Floating Banner for Mobile */
-                bottom: 90px;
-                /* Lifted into safe space */
-                bottom: calc(130px + env(safe-area-inset-bottom));
-                
-                /* Floating dimensions */
-                width: 90%;
-                max-width: 400px;
-                left: 0;
-                right: 0;
-                margin: 0 auto;
-                
-                /* Rounded corners all around */
-                border-radius: 16px;
-                
-                /* Standard padding (safe area handled by bottom property) */
+                bottom: 0;
+                width: 100%;
+                max-width: 100%;
+                border-radius: 20px 20px 0 0;
+                /* Bottom sheet style */
                 padding: 24px;
-                padding-bottom: 24px;
-                
-                transform: translateY(150%);
+                /* FIX: Add safe area inset for bottom padding so it sits above iPhone Home Bar/URL bar */
+                padding-bottom: calc(24px + env(safe-area-inset-bottom));
+                transform: translateY(100%);
             }
 
             .cookie-banner.visible {
@@ -1720,7 +1709,7 @@
             <a target="_blank" href="https://www.luxury-method.com/contact" class="contact-form-link">CONTACT FORM</a>
         </div>
 
-         
+        
 
         <h2>Frequently Asked Questions</h2>
         <div class="faq-item">
