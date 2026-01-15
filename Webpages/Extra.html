@@ -486,38 +486,236 @@
         }
 
         /* =========================================
-        9. COMPONENT: FOOTER & CONTACT
+        9. COMPONENT: FOOTER & CONTACT (UPDATED)
         ========================================= */
         .luxury-footer {
             background-image: url("https://luxury-method.vercel.app/Footer.png");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            padding: 100px 0;
+            padding: 80px 0 40px 0;
             color: #e5d7b1;
+            position: relative;
+            overflow: hidden;
         }
 
-        .luxury-footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
+        .luxury-footer::before {
+            /* Optional overlay to ensure text readability if needed, keeping it subtle */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        /* Forces all text within footer to be the correct color */
+        .luxury-footer p,
+        .luxury-footer h4,
+        .luxury-footer span,
+        .luxury-footer a,
+        .luxury-footer a:visited {
+            color: #e5d7b1 !important;
+        }
+
+        .luxury-footer-container {
             max-width: 1200px;
             width: 90%;
             margin: auto;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
         }
 
-        .luxury-footer-contact small {
-            display: block;
-            margin-bottom: 18px;
+        .footer-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .footer-column.center {
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-column.right {
+            align-items: flex-end;
+            text-align: right;
+        }
+
+        /* Footer Links */
+        .footer-link-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .luxury-footer a {
+            text-decoration: none;
             font-size: 18px;
             letter-spacing: 0.5px;
-            color: #e5d7b1;
-            text-decoration: none;
+            transition: opacity 0.3s ease, color 0.3s ease;
+            position: relative;
+            width: fit-content;
+        }
+        
+        /* Underline effect on hover */
+        .luxury-footer a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: #e5d7b1;
+            transition: width 0.3s ease;
         }
 
-        .luxury-footer-contact a {
-            color: #e5d7b1;
-            text-decoration: none;
+        .luxury-footer a:hover::after {
+            width: 100%;
+        }
+
+        .luxury-footer a:hover {
+            opacity: 0.8;
+        }
+
+        /* Contact Details */
+        .footer-contact-item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .footer-contact-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            opacity: 0.7;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+        }
+
+        .footer-contact-value {
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        /* Social Icons (Refined) */
+        .footer-socials {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .social-icon-link img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            filter: brightness(0.9);
+        }
+
+        .social-icon-link:hover img {
+            transform: scale(1.1);
+            filter: brightness(1);
+        }
+
+        /* Bottom Bar */
+        .footer-bottom {
+            border-top: 1px solid rgba(229, 215, 177, 0.2);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .footer-bottom-links a {
+             font-size: 14px;
+        }
+
+        /* Footer Animation Classes */
+        .footer-fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .footer-fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger delays for nicer effect */
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+
+        /* Mobile Adjustments for Footer */
+        @media screen and (max-width: 768px) {
+            .footer-top-row {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 50px;
+            }
+
+            .footer-column, 
+            .footer-column.center, 
+            .footer-column.right {
+                align-items: center;
+                text-align: center;
+                width: 100%;
+            }
+
+            .luxury-footer a::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .luxury-footer a:hover::after {
+                 width: 100%; /* Or fixed width if centered */
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .footer-bottom-links {
+                justify-content: center;
+            }
+            
+            .footer-text-group {
+                align-items: center !important;
+                text-align: center !important;
+            }
+            
+            .footer-socials {
+                justify-content: center !important;
+            }
         }
 
         .social-icons {
@@ -612,54 +810,7 @@
         }
 
         /* =========================================
-        11. LANGUAGE TOGGLE (NEW CAPSULE)
-        ========================================= */
-        .lang-capsule {
-            position: fixed;
-            top: 30px;
-            right: 30px;
-            background: rgba(235, 224, 213, 0.85);
-            /* Theme beige with blur */
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 50px;
-            padding: 5px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            z-index: 999999999999999;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .lang-btn {
-            border: none;
-            background: transparent;
-            font-family: "Cormorant Garamond", serif;
-            font-size: 16px;
-            font-weight: 700;
-            padding: 6px 14px;
-            cursor: pointer;
-            border-radius: 40px;
-            transition: all 0.3s ease;
-            color: #000;
-            line-height: 1;
-            letter-spacing: 0.5px;
-        }
-
-        .lang-btn:hover {
-            background-color: rgba(0, 0, 0, 0.05);
-        }
-
-        .lang-btn.active {
-            background: #000;
-            color: #ebe0d5;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        /* =========================================
-        12. MEDIA QUERIES (CONSOLIDATED)
+        11. MEDIA QUERIES (CONSOLIDATED)
         ========================================= */
 
         /* Max Width 768px (Tablet/Mobile) */
@@ -674,18 +825,6 @@
 
             .top-section {
                 /* padding: 5px; */
-            }
-
-            /* Language Toggle Mobile Adjust */
-            .lang-capsule {
-                top: 20px;
-                right: 20px;
-                padding: 4px;
-            }
-
-            .lang-btn {
-                font-size: 14px;
-                padding: 5px 12px;
             }
 
             .faq-question {
@@ -864,7 +1003,7 @@
 
             /* Increased footer height for desktop */
             .luxury-footer {
-                padding: 150px 0;
+                padding: 150px 0 60px 0;
             }
         }
 
@@ -901,13 +1040,12 @@
         }
 
         /* =========================================
-        13. COMPONENT: COOKIE BANNER (MODERN DARK)
+        12. COMPONENT: COOKIE BANNER (MODERN DARK)
         ========================================= */
         /* Keeps the Banner Look Dark as requested */
         .cookie-banner {
             position: fixed;
-            bottom: 50px;
-            /* LIFTED HIGHER for safety on desktop */
+            bottom: 50px; /* LIFTED HIGHER for safety on desktop */
             /* Floating look on desktop */
             left: 0;
             right: 0;
@@ -945,8 +1083,7 @@
             gap: 40px;
         }
 
-        /* FIX: Ensure span color inherits correctly in dark banner */
-        .cookie-content p, .cookie-content p span {
+        .cookie-content p {
             margin: 0;
             font-size: 16px !important;
             color: #ebe0d5;
@@ -1006,21 +1143,21 @@
                 bottom: 90px;
                 /* Lifted into safe space */
                 bottom: calc(150px + env(safe-area-inset-bottom));
-
+                
                 /* Floating dimensions */
                 width: 90%;
                 max-width: 400px;
                 left: 0;
                 right: 0;
                 margin: 0 auto;
-
+                
                 /* Rounded corners all around */
                 border-radius: 16px;
-
+                
                 /* Standard padding (safe area handled by bottom property) */
                 padding: 24px;
                 padding-bottom: 24px;
-
+                
                 transform: translateY(150%);
             }
 
@@ -1052,7 +1189,7 @@
         }
 
         /* =========================================
-        14. GDPR COMPONENTS (NEW BEIGE THEME)
+        13. GDPR COMPONENTS (NEW BEIGE THEME)
         ========================================= */
         /* Common Overlay */
         .gdpr-overlay {
@@ -1265,17 +1402,10 @@
 </head>
 
 <body>
-    <!-- Language Toggle Capsule -->
-    <div class="lang-capsule">
-        <button class="lang-btn active" onclick="changeLanguage('en')" id="btn-en">EN</button>
-        <span style="opacity: 0.3;">|</span>
-        <button class="lang-btn" onclick="changeLanguage('it')" id="btn-it">IT</button>
-    </div>
-
     <!-- Hero Section -->
     <div class="hero">
         <div class="hero-overlay"></div>
-        <h1 data-i18n="hero_title">LUXURY CONTENT MARKETING</h1>
+        <h1>LUXURY CONTENT MARKETING</h1>
     </div>
 
     <!-- Main Content Wrapper -->
@@ -1284,7 +1414,7 @@
         <!-- Intro Section -->
         <div class="top-section">
             <div class="mt-80">
-                <p data-i18n="intro_text">
+                <p>
                     What makes luxury content marketing different? It’s less about clicks and more about connection.
                     Luxury
                     content transforms your brand into a lifestyle, your product into a compelling story, and your
@@ -1303,13 +1433,13 @@
 
             <!-- Sidebar -->
             <div class="sidebar">
-                <button onclick="scrollToSection('audience')" data-i18n="btn_services">
+                <button onclick="scrollToSection('audience')">
                     Our content services
                 </button>
-                <button onclick="scrollToSection('mindmap')" data-i18n="btn_industries">
+                <button onclick="scrollToSection('mindmap')">
                     The industries we work with
                 </button>
-                <button onclick="scrollToSection('who-we-are')" data-i18n="btn_who_we_are">
+                <button onclick="scrollToSection('who-we-are')">
                     Who We Are
                 </button>
             </div>
@@ -1318,8 +1448,8 @@
             <div class="content">
 
                 <div class="top-section pt-0">
-                    <h2 data-i18n="section1_title">What Is Luxury Content Marketing?</h2>
-                    <p style="text-align: start;" data-i18n="section1_text">
+                    <h2>What Is Luxury Content Marketing?</h2>
+                    <p style="text-align: start;">
                         <b>Luxury content marketing</b> is the way to build a unique brand image by focusing on every
                         little detail
                         across all brand elements. <b>Luxury content</b> focuses on quality, crafting messages that
@@ -1336,8 +1466,8 @@
                 </div>
 
                 <div class="top-section pt-0">
-                    <h2 data-i18n="section2_title">The Role of Luxury Content in Building Exclusivity and Prestige</h2>
-                    <p style="text-align: start;" data-i18n="section2_text1">
+                    <h2>The Role of Luxury Content in Building Exclusivity and Prestige</h2>
+                    <p style="text-align: start;">
                         <b>Luxury content creators</b> aim to drive traffic and generate leads for luxury brands; they
                         also focus on
                         prestige, emotion, and storytelling. <b>Luxury content</b> connects with individuals who value
@@ -1349,7 +1479,7 @@
                     <img class="styled-img hover-3d image"
                         src="https://images.pexels.com/photos/4549411/pexels-photo-4549411.jpeg" alt="" />
 
-                    <p style="text-align: start;" data-i18n="section2_text2">
+                    <p style="text-align: start;">
                         <b>Content marketing for luxury brands</b> should be built on a strategy based on connection,
                         not just
                         communication. It’s elegant, emotional, and carefully designed to reflect a lifestyle, which
@@ -1366,12 +1496,11 @@
                 </div>
 
                 <div id="editorial2" class="section">
-                    <h2 style="text-decoration:none;" data-i18n="services_main_title">OUR SERVICES IN LUXURY CONTENT
-                        MARKETING</h2>
+                    <h2 style="text-decoration:none;">OUR SERVICES IN LUXURY CONTENT MARKETING</h2>
                     <div id="top" class="top-section " style="position: relative;">
                         <span id="audience" class="anchor-offset"></span>
                     </div>
-                    <p data-i18n="services_intro">
+                    <p>
                         As a <b>luxury content agency</b>, we offer content marketing solutions matched to your brand’s
                         elegance
                         and identity. From SEO and email marketing to social media content creation and elite print
@@ -1386,8 +1515,8 @@
                 </div>
 
                 <div class="section">
-                    <h3 data-i18n="service1_title">1) SEO and Content Writing for Luxury Brands</h3>
-                    <p data-i18n="service1_text">
+                    <h3>1) SEO and Content Writing for Luxury Brands</h3>
+                    <p>
                         <b>SEO for luxury brands</b> will <b>improve</b> your rankings by optimizing your website’s
                         presence to
                         reach audiences organically. Our <a target="_blank"
@@ -1411,7 +1540,7 @@
 
                     <img class="image hover-3d styled-img" src="https://luxury-method.vercel.app/3.png" alt="" />
 
-                    <p data-i18n="service1_example">
+                    <p>
                         For example, look at the <b style="color: rgb(0, 0, 0);">Louis Vuitton</b> site in the image
                         above: clean
                         design and high rankings. That’s the result of great luxury brand SEO. We use the same approach
@@ -1423,11 +1552,11 @@
                 </div>
 
                 <div class="section">
-                    <h3 data-i18n="service2_title">2) Social media: Design & Content Creation for Luxury Brands</h3>
+                    <h3>2) Social media: Design & Content Creation for Luxury Brands</h3>
                     <img class="image hover-3d styled-img"
                         src="https://luxury-method.vercel.app/CMSocialMediaDesign.png" alt="" />
 
-                    <p data-i18n="service2_text1">
+                    <p>
                         <b>Luxury brands</b> need clean, elegant posts that reflect their identity. That’s why they hire
                         trusted
                         agencies to work on their social media accounts. From the visuals to the message, everything is
@@ -1444,7 +1573,7 @@
 
                     <img class="image hover-3d styled-img" alt=""
                         src="https://luxury-method.vercel.app/Social%20media.png" />
-                    <p data-i18n="service2_text2">
+                    <p>
                         Just like you see in these images from <b style="color: rgb(0, 0, 0);">Patek Philippe’s</b>
                         Instagram,
                         luxury watch brands can achieve powerful organic growth with the right luxury watch marketing
@@ -1456,8 +1585,8 @@
                 </div>
 
                 <div class="section">
-                    <h3 data-i18n="service3_title">3) Printed Material: OOH, magazine ads</h3>
-                    <p data-i18n="service3_text">
+                    <h3>3) Printed Material: OOH, magazine ads</h3>
+                    <p>
                         <b>Traditional marketing</b> still plays a vital role in luxury branding. Whether it’s bold
                         <b>OOH
                             print</b> or elegant <b>luxury brand print ads</b>, these pieces give your brand a real,
@@ -1469,8 +1598,8 @@
                         they’re seen.
                     </p>
 
-                    <b style="" data-i18n="service3_subtitle1">OOH Advertising with Gucci:</b>
-                    <p data-i18n="service3_text_gucci">
+                    <b style="">OOH Advertising with Gucci:</b>
+                    <p>
                         Giacomo, founder of Luxury Method has worked with Gucci and was involved in several campaigns
                         for the brand.
                         This OOH project in Piccadilly Circus is one of them.
@@ -1487,9 +1616,9 @@
                             alt="Luxury Advertising with Gucci" />
                     </div>
 
-                    <b style="" data-i18n="service3_subtitle2">Luxury Magazine Print Ad:</b>
+                    <b style="">Luxury Magazine Print Ad:</b>
 
-                    <p data-i18n="service3_text_magazine">
+                    <p>
                         Many luxury companies still rely on <b>luxury brand print ads</b> to connect with readers who
                         appreciate
                         high-end magazines. These ads are crafted to reflect the style and mood elite audiences expect,
@@ -1508,10 +1637,9 @@
                             src="https://luxury-method.vercel.app/Luxury%20Magazine%20Print%20Ad.jpg" />
                     </div>
 
-                    <b style="" data-i18n="service3_subtitle3">Gucci’s Vogue Italia Cover: A Luxury Print Ad
-                        Highlight:</b>
+                    <b style="">Gucci’s Vogue Italia Cover: A Luxury Print Ad Highlight:</b>
 
-                    <p data-i18n="service3_text_vogue">
+                    <p>
                         Your luxury brand can make a strong impression with timeless visual storytelling in print.
                         Gucci’s Spring
                         2024 collection on the Vogue Italia cover is a great example of the <b>best magazine print
@@ -1526,8 +1654,8 @@
                 </div>
 
                 <div id="calendar" class="section">
-                    <h3 data-i18n="service4_title">4) Email Marketing for Luxury Brands</h3>
-                    <p data-i18n="service4_text1">
+                    <h3>4) Email Marketing for Luxury Brands</h3>
+                    <p>
                         <b>Email marketing for luxury brands</b> isn’t just about getting emails opened; it's about
                         creating
                         content and design templates that build an emotional connection with your clients by
@@ -1550,7 +1678,7 @@
                             src="https://luxury-method.vercel.app/Email%20Marketing%20.png" />
                     </div>
 
-                    <p data-i18n="service4_text2">
+                    <p>
                         <b>Email marketing for luxury brands</b> still makes a big impact when done right. Your brand
                         can stay close
                         to loyal clients with clean, refined messages just like the newsletter from <b
@@ -1565,12 +1693,11 @@
         <div class="content" id="con2" style="position: relative;">
             <div id="top2" class="top-section">
                 <span id="mindmap" class="anchor-offset"></span>
-                <h2 style="text-decoration: none" data-i18n="sectors_title">LUXURY CONTENT MARKETING ACROSS LUXURY
-                    SECTORS</h2>
+                <h2 style="text-decoration: none">LUXURY CONTENT MARKETING ACROSS LUXURY SECTORS</h2>
             </div>
 
             <div id="audience2" class="section">
-                <p data-i18n="sectors_intro">
+                <p>
                     Each <b>luxury sector</b> has its own style, voice, and audience, and a luxury content marketing
                     agency
                     should reflect and customize the content accordingly. From jewelry and watches to real estate,
@@ -1594,24 +1721,23 @@
             </div>
 
             <div id="mindmap2" class="section">
-                <h3 data-i18n="sector_jewelry_title">Luxury Jewelry & Luxury Watches Content Marketing</h3>
+                <h3>Luxury Jewelry & Luxury Watches Content Marketing</h3>
                 <div class="industry_Image">
                     <img src="https://luxury-method.vercel.app/WATCHES.png" alt="Watches Industry" class="hover-3d"
                         style="height:65vh;">
                 </div>
-                <p data-i18n="sector_jewelry_text1">
+                <p>
                     <a target="_blank" href="https://www.luxury-method.com/industries/luxury-jewelry-marketing">Luxury
                         jewelry</a> and
                     <a target="_blank" href="https://www.luxury-method.com/industries/luxury-watches-marketing">luxury
                         watch</a>
-                    marketing focuses on telling a story that is a mixture of heritage, craftsmanship, and
+                    marketing</a> focuses on telling a story that is a mixture of heritage, craftsmanship, and
                     exclusivity.
                     Whether showcasing a unique diamond or a limited-edition timepiece, the content highlights the
                     artistry of the
                     maker and the brand behind each piece.
                 </p>
-                <p data-i18n="sector_jewelry_text2"><b>Jewelry content marketing</b> brings out the emotional value and
-                    rarity of owning something truly
+                <p><b>Jewelry content marketing</b> brings out the emotional value and rarity of owning something truly
                     special.
                     <b>Luxury watch marketing</b> emphasizes precision and legacy, while luxury watch ads highlight the
                     exclusivity of owning a rare, high-end piece.
@@ -1619,8 +1745,8 @@
             </div>
 
             <div id="mindmap2" class="section">
-                <h3 data-i18n="sector_travel_title">Luxury Travel & Luxury Hospitality content marketing</h3>
-                <p data-i18n="sector_travel_text1">
+                <h3>Luxury Travel & Luxury Hospitality content marketing</h3>
+                <p>
                     <a target="_blank" href="https://www.luxury-method.com/industries/luxury-travel-marketing">Luxury
                         travel
                         marketing</a>
@@ -1637,7 +1763,7 @@
                         style="height:65vh;">
                 </div>
 
-                <p data-i18n="sector_travel_text2">
+                <p>
                     In hospitality, <b>content marketing for <a target="_blank"
                             href="https://www.luxury-method.com/industries/luxury-hospitality-marketing-agency">luxury
                             hotels</a></b>
@@ -1649,7 +1775,7 @@
             </div>
 
             <div id="content2" class="section">
-                <h3 data-i18n="sector_fashion_title">Luxury Fashion & Luxury Retail content marketing</h3>
+                <h3>Luxury Fashion & Luxury Retail content marketing</h3>
 
                 <div class="industry_Image"
                     style="display:flex; justify-content:center; align-items:center; margin:40px 0;">
@@ -1657,7 +1783,7 @@
                         style="width:100%; height:65vh; object-fit:cover; object-position:center center;">
                 </div>
 
-                <p data-i18n="sector_fashion_text1">
+                <p>
                     <b><a target="_blank" href="https://www.luxury-method.com/industries/luxury-fashion-marketing">Luxury
                             fashion</a>
                         content marketing</b>
@@ -1667,7 +1793,7 @@
                     and stylish
                     way.
                 </p>
-                <p data-i18n="sector_fashion_text2">
+                <p>
                     <b>Retail content marketing</b> supports this by making the shopping journey feel personal and
                     seamless online
                     and in-store. It highlights what matters most to luxury buyers, from quality to exclusivity. A
@@ -1681,14 +1807,13 @@
             </div>
 
             <div id="calendar2" class="section">
-                <h3 data-i18n="sector_realestate_title">Real Estate Content Marketing</h3>
+                <h3>Real Estate Content Marketing</h3>
                 <div class="industry_Image">
                     <img src="https://luxury-method.vercel.app/REAL_ESTATE.png" class="hover-3d"
                         alt="Real Estate Industry" style="height:65vh;">
                 </div>
 
-                <p data-i18n="sector_realestate_text"><b>Real estate content marketing</b> is about showing the design,
-                    location, and value of a property
+                <p><b>Real estate content marketing</b> is about showing the design, location, and value of a property
                     in a way
                     that feels real and appealing. Great content marketing for <a target="_blank"
                         href="https://www.luxury-method.com/industries/luxury-real-estate-marketing">real estate</a>
@@ -1697,16 +1822,14 @@
             </div>
 
             <div id="top2" class="top-section">
-                <h3 id="industry" style="text-decoration: none;" data-i18n="sector_ecommerce_title">eCommerce Content
-                    Marketing</h3>
+                <h3 id="industry" style="text-decoration: none;">eCommerce Content Marketing</h3>
 
                 <div class="industry_Image">
                     <img src="https://luxury-method.vercel.app/E_COMMERCE.png" style="height:65vh;" class="hover-3d"
                         alt="E Commerce Industry">
                 </div>
 
-                <p data-i18n="sector_ecommerce_text">On the digital side, the best ecommerce content marketing uses
-                    personalization and clean, stylish
+                <p>On the digital side, the best ecommerce content marketing uses personalization and clean, stylish
                     product
                     displays. Strong <b>content marketing for ecommerce sites</b> brings everything together: blogs,
                     email flows,
@@ -1718,16 +1841,14 @@
 
             <div id="audience2" class="section">
                 <h3><a target="_blank" style="text-decoration: none;"
-                        href="https://www.luxury-method.com/industries/luxury-food-marketing"
-                        data-i18n="sector_food_title">Content Marketing for
+                        href="https://www.luxury-method.com/industries/luxury-food-marketing">Content Marketing for
                         Restaurant & Food</a></h3>
                 <div class="industry_Image">
                     <img src="https://luxury-method.vercel.app/FOOD_AND_BEVERAGES.png" class="hover-3d"
                         alt="Food and Beverages Industry" style="height:65vh;">
                 </div>
 
-                <p data-i18n="sector_food_text"><b>Content marketing for restaurants</b> goes beyond food pictures. It
-                    shares the whole experience of
+                <p><b>Content marketing for restaurants</b> goes beyond food pictures. It shares the whole experience of
                     great
                     spaces, talented chefs, and the story behind each dish. Content marketing for food highlights the
                     atmosphere
@@ -1743,8 +1864,8 @@
 
         <div id="bottom2" class="top-section" style="padding-top: 0px !important; position: relative;">
             <span id="content" class="anchor-offset"></span>
-            <h2 id="who-we-are" style="text-decoration: none" data-i18n="who_we_are_title">WHO WE ARE</h2>
-            <p style="text-align: start;" data-i18n="who_we_are_text1">
+            <h2 id="who-we-are" style="text-decoration: none">WHO WE ARE</h2>
+            <p style="text-align: start;">
                 Luxury Method is a luxury SEO agency that specialises in assisting
                 high-end brands in attracting the appropriate target audience.
                 Concentrating on sectors including apparel, jewellery, watches, and,
@@ -1753,8 +1874,7 @@
                 headquarters is in Rome, and we operate all over the globe.
             </p>
 
-            <p data-i18n="who_we_are_text2">At <a target="_blank" href="https://www.luxury-method.com/">Luxury
-                    Method</a>, <b>we help luxury brands
+            <p>At <a target="_blank" href="https://www.luxury-method.com/">Luxury Method</a>, <b>we help luxury brands
                     grow
                     with smart, elegant content.</b> Our team of luxury content creators has years of experience working
                 with
@@ -1776,7 +1896,7 @@
 
     <div class="faq-container paddingleftright top-section">
 
-        <p style="text-align: center; font-size: 24px !important; font-style: italic;" data-i18n="experience_quote">
+        <p style="text-align: center; font-size: 24px !important; font-style: italic;">
             Experience the difference of a marketing agency dedicated to luxury.
         </p>
 
@@ -1795,14 +1915,15 @@
         </div>
 
         <div class="contact-form-container">
-            <a target="_blank" href="https://www.luxury-method.com/contact" class="contact-form-link"
-                data-i18n="contact_form_link">CONTACT FORM</a>
+            <a target="_blank" href="https://www.luxury-method.com/contact" class="contact-form-link">CONTACT FORM</a>
         </div>
 
-        <h2 data-i18n="faq_title">Frequently Asked Questions</h2>
+         
+
+        <h2>Frequently Asked Questions</h2>
         <div class="faq-item">
             <div class="faq-question" onclick="toggleFAQ(this)">
-                <h3><strong data-i18n="faq1_q">What is luxury content marketing?</strong></h3>
+                <h3><strong>What is luxury content marketing?</strong></h3>
                 <div class="faq-toggle">
                     <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
                         <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
@@ -1810,7 +1931,7 @@
                 </div>
             </div>
             <div class="faq-answer">
-                <p data-i18n="faq1_a">
+                <p>
                     It's a strategy focused on storytelling, emotion, and exclusivity to connect with premium audiences
                     without
                     relying on hard sales.
@@ -1820,7 +1941,7 @@
 
         <div class="faq-item">
             <div class="faq-question" onclick="toggleFAQ(this)">
-                <h3><strong data-i18n="faq2_q">How is Luxury Method different from other agencies? </strong> </h3>
+                <h3><strong>How is Luxury Method different from other agencies? </strong> </h3>
                 <div class="faq-toggle">
                     <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
                         <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
@@ -1828,7 +1949,7 @@
                 </div>
             </div>
             <div class="faq-answer">
-                <p data-i18n="faq2_a">
+                <p>
                     We only work with premium brands, so every piece of content we craft is tailored for high-end
                     audiences.
                 </p>
@@ -1838,7 +1959,7 @@
         <div class="faq-item">
             <div class="faq-question" onclick="toggleFAQ(this)">
                 <h3>
-                    <strong data-i18n="faq3_q">Why is content important for luxury brands?</strong>
+                    <strong>Why is content important for luxury brands?</strong>
                 </h3>
                 <div class="faq-toggle">
                     <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
@@ -1847,7 +1968,7 @@
                 </div>
             </div>
             <div class="faq-answer">
-                <p data-i18n="faq3_a">
+                <p>
                     Because it helps shape your brand image, build trust, and speak to high-end values.
                 </p>
             </div>
@@ -1856,7 +1977,7 @@
         <div class="faq-item">
             <div class="faq-question" onclick="toggleFAQ(this)">
                 <h3>
-                    <strong data-i18n="faq4_q">How does SEO help luxury brands?</strong>
+                    <strong>How does SEO help luxury brands?</strong>
                 </h3>
                 <div class="faq-toggle">
                     <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
@@ -1865,7 +1986,7 @@
                 </div>
             </div>
             <div class="faq-answer">
-                <p data-i18n="faq4_a">
+                <p>
                     It helps your brand show up in searches organically, attracting the right audience without paying
                     for ads.
                 </p>
@@ -1875,7 +1996,7 @@
         <div class="faq-item">
             <div class="faq-question" onclick="toggleFAQ(this)">
                 <h3>
-                    <strong data-i18n="faq5_q">Can you help launch a new luxury brand?</strong>
+                    <strong>Can you help launch a new luxury brand?</strong>
                 </h3>
                 <div class="faq-toggle">
                     <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
@@ -1884,7 +2005,7 @@
                 </div>
             </div>
             <div class="faq-answer">
-                <p data-i18n="faq5_a">
+                <p>
                     Yes, we help define your voice, visuals, and content strategy from the very beginning.
                 </p>
             </div>
@@ -1894,31 +2015,45 @@
 
     <!-- Footer -->
     <footer class="luxury-footer">
-        <div class="luxury-footer-content">
-            <div class="luxury-footer-contact">
-                <small>
-                    <a target="_blank" style="font-weight: bold; text-decoration: none"
-                        href="mailto:giacomo@luxury-method.com">giacomo@luxury-method.com</a>
-                </small>
-                <a href="tel:+393920034695"><small>(+39) 3920034695</small></a>
-                <small>P.IVA: 17906211002</small>
-                <small><a href="https://www.luxury-method.com/privacy-policy" target="_blank"
-                        data-i18n="privacy_policy_link">Privacy Policy</a></small>
-                <!-- Added Cookie Preferences Link Here -->
-                <small><a href="#" onclick="openModal('prefModal'); return false;"
-                        data-i18n="cookie_pref_link">Cookie Preferences</a></small>
+        <div class="luxury-footer-container">
+            <div class="footer-top-row">
+                <!-- Left Column: Company Info -->
+                <div class="footer-column footer-fade-in delay-1">
+                    <div class="footer-text-group">
+                        <h4 style="margin: 0; font-size: 20px; letter-spacing: 1px;">LUXURY METHOD</h4>
+                        <p style="margin: 5px 0 0 0; font-size: 16px;">ROTELLA GIACOMO</p>
+                        <p style="margin: 5px 0 0 0; font-size: 16px;">P.IVA: 17906211002</p>
+                        <a href="https://www.luxury-method.com/it/note-legali" target="_blank" style="margin-top: 10px; display: block;">Note Legali</a>
+                    </div>
+                </div>
+
+                <!-- Right Column: Contact & Partner -->
+                <div class="footer-column right footer-fade-in delay-2">
+                    <div class="footer-text-group" style="text-align: right; align-items: flex-end; display: flex; flex-direction: column;">
+                        <a href="mailto:giacomo@luxury-method.com">giacomo@luxury-method.com</a>
+                        <a href="tel:+393920034695" style="margin-top: 5px;">(+39) 3920034695</a>
+                        <p style="margin: 5px 0 0 0; font-size: 16px;">00133, Rome, Italy</p>
+                        <a href="https://www.technifyx.com/" target="_blank" style="margin-top: 5px;">Partner of TechnifyX</a>
+                        
+                        <!-- Social Icons -->
+                        <div class="footer-socials" style="margin-top: 20px; justify-content: flex-end;">
+                            <a href="https://www.instagram.com/luxurymethod_agency/" target="_blank" class="social-icon-link">
+                                <img src="https://i.postimg.cc/XJSn0GKM/image-976.png" alt="Instagram" />
+                            </a>
+                            <a href="https://x.com/luxury_method" target="_blank" class="social-icon-link">
+                                <img src="https://luxury-method.vercel.app/twitter-logo.png" alt="X" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="social-icons">
-                <div class="social-link">
-                    <a href="https://www.instagram.com/luxurymethod_agency/" target="_blank">
-                        <img src="https://i.postimg.cc/XJSn0GKM/image-976.png" alt="Instagram" />
-                    </a>
-                </div>
-                <div class="social-link">
-                    <a href="https://x.com/luxury_method" target="_blank">
-                        <img src="https://luxury-method.vercel.app/twitter-logo.png" alt="X" />
-                    </a>
+            <!-- Bottom Row: Privacy Text -->
+            <div class="footer-bottom footer-fade-in delay-3" style="border-top: 1px solid rgba(229, 215, 177, 0.2); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                <p style="margin: 0; font-size: 14px; opacity: 0.8; max-width: 600px;">We value your privacy. This site only uses essential technical cookies required to function.</p>
+                <div style="display:flex; gap: 20px;">
+                    <a href="#" onclick="openModal('prefModal'); return false;" style="font-size: 14px;">Cookie Preferences</a>
+                    <a href="https://www.luxury-method.com/privacy-policy" target="_blank" style="font-size: 14px;">Privacy Policy</a>
                 </div>
             </div>
         </div>
@@ -1933,7 +2068,7 @@
 
     <!-- =========================================
     13. GDPR MODALS & BANNERS (NEW)
-    ========================================= */
+    ========================================= */ -->
 
     <!-- Floating Cookie Button (Right to Withdraw) -->
     <div class="floating-gdpr-btn" onclick="openModal('prefModal')" title="Cookie Preferences">
@@ -1944,28 +2079,24 @@
     <div id="privacyModal" class="gdpr-overlay">
         <div class="gdpr-modal">
             <button class="gdpr-close" onclick="closeModal('privacyModal')">&times;</button>
-            <h3 data-i18n="privacy_modal_title">Privacy Policy</h3>
-            <p data-i18n="privacy_modal_date"><strong>Effective Date:</strong> December 2025</p>
-            <p data-i18n="privacy_modal_intro">At Luxury Method, we value your privacy and are committed to protecting
-                your personal data in accordance
+            <h3>Privacy Policy</h3>
+            <p><strong>Effective Date:</strong> December 2025</p>
+            <p>At Luxury Method, we value your privacy and are committed to protecting your personal data in accordance
                 with the General Data Protection Regulation (GDPR).</p>
 
-            <h4 data-i18n="privacy_modal_h1">1. Data Collection</h4>
-            <p data-i18n="privacy_modal_p1">We collect Identity Data (name) and Contact Data (email) when you
-                voluntarily submit our contact forms.
+            <h4>1. Data Collection</h4>
+            <p>We collect Identity Data (name) and Contact Data (email) when you voluntarily submit our contact forms.
                 We also collect Technical Data (IP address, browser type) via cookies if you consent.</p>
 
-            <h4 data-i18n="privacy_modal_h2">2. How We Use Data</h4>
-            <p data-i18n="privacy_modal_p2">Your data is used solely to respond to inquiries and analyze website
-                performance. We do not sell your
+            <h4>2. How We Use Data</h4>
+            <p>Your data is used solely to respond to inquiries and analyze website performance. We do not sell your
                 data to third parties.</p>
 
-            <h4 data-i18n="privacy_modal_h3">3. Your Rights</h4>
-            <p data-i18n="privacy_modal_p3">You have the right to access, correct, or delete your data. You may withdraw
-                consent at any time via the
+            <h4>3. Your Rights</h4>
+            <p>You have the right to access, correct, or delete your data. You may withdraw consent at any time via the
                 settings button.</p>
 
-            <h4 data-i18n="privacy_modal_h4">4. Contact</h4>
+            <h4>4. Contact</h4>
             <p>For privacy inquiries, please contact: giacomo@luxury-method.com</p>
         </div>
     </div>
@@ -1974,14 +2105,13 @@
     <div id="prefModal" class="gdpr-overlay">
         <div class="gdpr-modal">
             <button class="gdpr-close" onclick="closeModal('prefModal')">&times;</button>
-            <h3 data-i18n="cookie_modal_title">Cookie Preferences</h3>
-            <p data-i18n="cookie_modal_intro">Manage how we use cookies. "Essential" cookies are necessary for the site
-                to function.</p>
+            <h3>Cookie Preferences</h3>
+            <p>Manage how we use cookies. "Essential" cookies are necessary for the site to function.</p>
 
             <div class="pref-row">
                 <div class="pref-text">
-                    <h4 data-i18n="cookie_essential">Essential</h4>
-                    <p data-i18n="cookie_essential_desc">Required for basic functionality.</p>
+                    <h4>Essential</h4>
+                    <p>Required for basic functionality.</p>
                 </div>
                 <label class="switch">
                     <input type="checkbox" checked disabled>
@@ -1991,8 +2121,8 @@
 
             <div class="pref-row">
                 <div class="pref-text">
-                    <h4 data-i18n="cookie_analytics">Analytics & Marketing</h4>
-                    <p data-i18n="cookie_analytics_desc">Help us improve our content strategy.</p>
+                    <h4>Analytics & Marketing</h4>
+                    <p>Help us improve our content strategy.</p>
                 </div>
                 <label class="switch">
                     <input type="checkbox" id="analyticsToggle">
@@ -2000,8 +2130,7 @@
                 </label>
             </div>
 
-            <button class="gdpr-btn" onclick="savePreferences()" style="width: 100%; margin-top: 20px;"
-                data-i18n="cookie_save_btn">Save
+            <button class="gdpr-btn" onclick="savePreferences()" style="width: 100%; margin-top: 20px;">Save
                 Preferences</button>
         </div>
     </div>
@@ -2009,224 +2138,16 @@
     <!-- Cookie Banner (Dark Mode) -->
     <div id="cookie-banner" class="cookie-banner">
         <div class="cookie-content">
-            <p><span data-i18n="banner_text">We use cookies to ensure you get the best experience on our website.</span>
-                <a href="https://www.luxury-method.com/privacy-policy" target="_blank"
-                    data-i18n="privacy_policy_link">Privacy Policy</a>.</p>
+            <p>We use cookies to ensure you get the best experience on our website. <a
+                    href="https://www.luxury-method.com/privacy-policy" target="_blank">Privacy Policy</a>.</p>
             <div class="cookie-actions">
-                <button onclick="acceptEssentials()" data-i18n="banner_essential">Essentials Only</button>
-                <button onclick="acceptAllCookies()" data-i18n="banner_accept">Accept All</button>
+                <button onclick="acceptEssentials()">Essentials Only</button>
+                <button onclick="acceptAllCookies()">Accept All</button>
             </div>
         </div>
     </div>
 
     <script>
-        // =========================================
-        // LANGUAGE TRANSLATION LOGIC
-        // =========================================
-        const translations = {
-            en: {
-                hero_title: "LUXURY CONTENT MARKETING",
-                intro_text: "What makes luxury content marketing different? It’s less about clicks and more about connection. Luxury content transforms your brand into a lifestyle, your product into a compelling story, and your audience into devoted believers. Customers connect with luxury brands on a mental and emotional level long before making a purchasing decision. From SEO to social media to storytelling, luxury content marketing keeps your brand relevant, desirable, and unforgettable.",
-                btn_services: "Our content services",
-                btn_industries: "The industries we work with",
-                btn_who_we_are: "Who We Are",
-                section1_title: "What Is Luxury Content Marketing?",
-                section1_text: "<b>Luxury content marketing</b> is the way to build a unique brand image by focusing on every little detail across all brand elements. <b>Luxury content</b> focuses on quality, crafting messages that connect with the emotions and heritage of the target audience to create meaningful brand experiences. <b>Content marketing</b>, just like branding, is about reaching a broad audience by working on valuable and engaging content like blog posts, videos, or social media posts that increase brand <b>visibility</b> and <b>drive conversions.</b> What sets luxury content marketing apart is its emphasis on speaking to a more refined audience.",
-                section2_title: "The Role of Luxury Content in Building Exclusivity and Prestige",
-                section2_text1: "<b>Luxury content creators</b> aim to drive traffic and generate leads for luxury brands; they also focus on prestige, emotion, and storytelling. <b>Luxury content</b> connects with individuals who value heritage, craftsmanship, and exclusivity - those who see luxury as an extension of their identity and aspirations.",
-                section2_text2: "<b>Content marketing for luxury brands</b> should be built on a strategy based on connection, not just communication. It’s elegant, emotional, and carefully designed to reflect a lifestyle, which makes luxury content go beyond selling; it tells stories of heritage, quality, and meaning. With the support of a <b>luxury content agency,</b> your brand will receive custom <b>content marketing solutions</b> that connect with people who expect more than just a product. As a luxury content agency, our job is to be your partner in attracting the right audience for your luxury brand, those who care about meaning, value, and the story behind the product.",
-                services_main_title: "OUR SERVICES IN LUXURY CONTENT MARKETING",
-                services_intro: "As a <b>luxury content agency</b>, we offer content marketing solutions matched to your brand’s elegance and identity. From SEO and email marketing to social media content creation and elite print materials, our work is crafted to connect your brand with personalized target audiences. Our team of <b>content marketing experts</b> has the knowledge and experience to ensure every piece, whether digital or traditional, carries the right message, tone, and look to elevate your brand presence with meaning and exclusivity.",
-                service1_title: "1) SEO and Content Writing for Luxury Brands",
-                service1_text: "<b>SEO for luxury brands</b> will <b>improve</b> your rankings by optimizing your website’s presence to reach audiences organically. Our <a target='_blank' href='https://www.luxury-method.com/services/luxury-seo-agency'>luxury SEO services</a> target wealthy clients by identifying high-value keywords they search for, then enhancing your website’s on-page, off-page, and technical SEO to <b>rank higher</b> and appeal to them using our unique SEO work process. At <a target='_blank' href='https://www.luxury-method.com/'>Luxury Method</a>, we specialize in <b>luxury content writing</b> that brings the perfect balance in tone to connect your brand with the culture of elite audiences. Every piece of content is crafted to match your brand’s exclusive identity. Whether we’re optimizing for search engines or telling your story through compelling brand narratives, <b>our goal is simple:</b> to help your premium brand connect with the right audience and turn that connection into loyalty.",
-                service1_example: "For example, look at the <b style='color: rgb(0, 0, 0);'>Louis Vuitton</b> site in the image above: clean design and high rankings. That’s the result of great luxury brand SEO. We use the same approach through our <b>content marketing for fashion brands</b>, helping you get noticed on Google, build visibility, and drive conversions, all while keeping your luxury identity intact.",
-                service2_title: "2) Social media: Design & Content Creation for Luxury Brands",
-                service2_text1: "<b>Luxury brands</b> need clean, elegant posts that reflect their identity. That’s why they hire trusted agencies to work on their social media accounts. From the visuals to the message, everything is made to feel premium and on-brand. Content creation services and high-quality content production services matter. With strong <b>social media design services</b> and smart <a target='_blank' href='https://www.luxury-method.com/services/luxury-social-media-agency'>social media optimization services</a>, your brand can grow naturally, connect with the right audience, and transform its customers into loyal ones, building trust with the right presence on their social media accounts.",
-                service2_text2: "Just like you see in these images from <b style='color: rgb(0, 0, 0);'>Patek Philippe’s</b> Instagram, luxury watch brands can achieve powerful organic growth with the right luxury watch marketing strategy. Their feed is clean, branded, and consistent, showing how a social media content creation agency can help you build prestige and loyalty without relying on paid ads only.",
-                service3_title: "3) Printed Material: OOH, magazine ads",
-                service3_text: "<b>Traditional marketing</b> still plays a vital role in luxury branding. Whether it’s bold <b>OOH print</b> or elegant <b>luxury brand print ads</b>, these pieces give your brand a real, physical presence. From the street to the pages of premium magazines, good print design grabs attention and builds trust. We create the best print ads to match your brand style and leave a lasting impression wherever they’re seen.",
-                service3_subtitle1: "OOH Advertising with Gucci:",
-                service3_text_gucci: "Giacomo, founder of Luxury Method has worked with Gucci and was involved in several campaigns for the brand. This OOH project in Piccadilly Circus is one of them. It highlights how our real-world experience in luxury OOH helps us craft campaigns that leave a lasting impression. We bring this hands-on knowledge to help clients create the best <b>luxury print ads</b> and outdoor visuals that reflect their brand’s identity and values.",
-                service3_subtitle2: "Luxury Magazine Print Ad:",
-                service3_text_magazine: "Many luxury companies still rely on <b>luxury brand print ads</b> to connect with readers who appreciate high-end magazines. These ads are crafted to reflect the style and mood elite audiences expect, proving how strong visuals, a clean layout, and the right message can make a lasting impact. When the format is carefully designed, the result gives your brand the space to tell a story and stand out. At <b style='color: rgb(0, 0, 0);'>Luxury Method</b>, we understand how the right <b>luxury print ads</b> can place your brand in the perfect setting.",
-                service3_subtitle3: "Gucci’s Vogue Italia Cover: A Luxury Print Ad Highlight:",
-                service3_text_vogue: "Your luxury brand can make a strong impression with timeless visual storytelling in print. Gucci’s Spring 2024 collection on the Vogue Italia cover is a great example of the <b>best magazine print ads:</b> simple, elegant, and easy to remember. This luxury brand print ad blends classic style with a modern look, showing how <b>luxury print ads</b> help shape a <b>strong brand image.</b> A smart and well-placed luxury print ad like this keeps Gucci in mind for the interested audience and strengthens its presence in the world of high fashion.",
-                service4_title: "4) Email Marketing for Luxury Brands",
-                service4_text1: "<b>Email marketing for luxury brands</b> isn’t just about getting emails opened; it's about creating content and design templates that build an emotional connection with your clients by highlighting your product’s true value. Whether you’re reaching VIP clients or announcing something new, your luxury brand email marketing should reflect the same attention to detail in every element. At <b style='color: rgb(0, 0, 0);'>Luxury Method</b>, we create personalized campaigns that perfectly reflect your elite brand’s style and tone, from elegant designs to carefully chosen messaging. We ensure that your <b>luxury brand email marketing</b> maintains the level of quality and style your clients expect, whether it’s for a product launch, a private event, or a seasonal update.",
-                service4_text2: "<b>Email marketing for luxury brands</b> still makes a big impact when done right. Your brand can stay close to loyal clients with clean, refined messages just like the newsletter from <b style='color: rgb(0, 0, 0);'>Louis Vuitton</b>. With the right luxury email marketing approach, you can keep your audience informed, grow your reach, and drive real results.",
-                sectors_title: "LUXURY CONTENT MARKETING ACROSS LUXURY SECTORS",
-                sectors_intro: "Each <b>luxury sector</b> has its own style, voice, and audience, and a luxury content marketing agency should reflect and customize the content accordingly. From jewelry and watches to real estate, fashion, and travel, content needs to match the <b>high-end value</b> your brand offers. We craft <b>content marketing solutions</b> for each sector that fit the tone of your niche while staying true to what elite consumers expect: quality, emotion, and exclusivity. Luxury jewelry and watch marketing focuses on telling a story that is a mixture of heritage, craftsmanship, and exclusivity. Whether showcasing a unique diamond or a limited-edition timepiece, the content highlights the artistry of the maker and the brand behind each piece. Jewelry content marketing brings out the emotional value and rarity of owning something truly special. Luxury watch marketing emphasizes precision and legacy, while luxury watch ads highlight the exclusivity of owning a rare, high-end piece.",
-                sector_jewelry_title: "Luxury Jewelry & Luxury Watches Content Marketing",
-                sector_jewelry_text1: "<a target='_blank' href='https://www.luxury-method.com/industries/luxury-jewelry-marketing'>Luxury jewelry</a> and <a target='_blank' href='https://www.luxury-method.com/industries/luxury-watches-marketing'>luxury watch</a> marketing focuses on telling a story that is a mixture of heritage, craftsmanship, and exclusivity. Whether showcasing a unique diamond or a limited-edition timepiece, the content highlights the artistry of the maker and the brand behind each piece.",
-                sector_jewelry_text2: "<b>Jewelry content marketing</b> brings out the emotional value and rarity of owning something truly special. <b>Luxury watch marketing</b> emphasizes precision and legacy, while luxury watch ads highlight the exclusivity of owning a rare, high-end piece.",
-                sector_travel_title: "Luxury Travel & Luxury Hospitality content marketing",
-                sector_travel_text1: "<a target='_blank' href='https://www.luxury-method.com/industries/luxury-travel-marketing'>Luxury travel marketing</a> helps high-end travelers discover unique and unforgettable experiences. With strong travel content marketing, brands can showcase stunning places, luxury stays, and personalized service. Through quality visuals and stories, content marketing travel agency services highlight what makes each destination special.",
-                sector_travel_text2: "In hospitality, <b>content marketing for <a target='_blank' href='https://www.luxury-method.com/industries/luxury-hospitality-marketing-agency'>luxury hotels</a></b> focuses on the design, atmosphere, and service that set a hotel apart. A smart content marketing plan for hotels uses SEO, storytelling, and beautiful imagery to attract elite travelers and encourage bookings.",
-                sector_fashion_title: "Luxury Fashion & Luxury Retail content marketing",
-                sector_fashion_text1: "<b><a target='_blank' href='https://www.luxury-method.com/industries/luxury-fashion-marketing'>Luxury fashion</a> content marketing</b> works best when it focuses on seasonal collections, couture, and the lifestyle behind the brand. It helps create a real connection with high-end shoppers by showing what makes the brand special in a clear and stylish way.",
-                sector_fashion_text2: "<b>Retail content marketing</b> supports this by making the shopping journey feel personal and seamless online and in-store. It highlights what matters most to luxury buyers, from quality to exclusivity. A strong <b><a target='_blank' href='https://www.luxury-method.com/industries/luxury-retail-marketing'>luxury retail</a> strategy</b> uses the right tone, visuals, and content to reflect the premium experience people expect from a high-end brand.",
-                sector_realestate_title: "Real Estate Content Marketing",
-                sector_realestate_text: "<b>Real estate content marketing</b> is about showing the design, location, and value of a property in a way that feels real and appealing. Great content marketing for <a target='_blank' href='https://www.luxury-method.com/industries/luxury-real-estate-marketing'>real estate</a> bring out the lifestyle and experience behind every listing, builds trust, and helps attract the right buyers.",
-                sector_ecommerce_title: "eCommerce Content Marketing",
-                sector_ecommerce_text: "On the digital side, the best ecommerce content marketing uses personalization and clean, stylish product displays. Strong <b>content marketing for ecommerce sites</b> brings everything together: blogs, email flows, and <a target='_blank' href='https://www.luxury-method.com/services/luxury-seo-agency'>SEO</a> to drive sales and build brand loyalty.",
-                sector_food_title: "Content Marketing for Restaurant & Food",
-                sector_food_text: "<b>Content marketing for restaurants</b> goes beyond food pictures. It shares the whole experience of great spaces, talented chefs, and the story behind each dish. Content marketing for food highlights the atmosphere and the passion behind each meal. In the content marketing <a target='_blank' href='https://www.luxury-method.com/industries/luxury-food-marketing'>food industry</a>, it builds trust and excitement. Excellent <b>content marketing for restaurants</b> connects with the right people and makes them want to visit, whether it's a fine dining spot or a new place to try.",
-                who_we_are_title: "WHO WE ARE",
-                who_we_are_text1: "Luxury Method is a luxury SEO agency that specialises in assisting high-end brands in attracting the appropriate target audience. Concentrating on sectors including apparel, jewellery, watches, and, retail and hotels. Our speciality is creating custom marketing solutions that are suited to the particular requirements of luxury brands. Our headquarters is in Rome, and we operate all over the globe.",
-                who_we_are_text2: "At <a target='_blank' href='https://www.luxury-method.com/'>Luxury Method</a>, <b>we help luxury brands grow with smart, elegant content.</b> Our team of luxury content creators has years of experience working with brands like <b style='color: rgb(0, 0, 0);'>Gucci</b> and deep knowledge of the luxury sector and how to connect with a high-end audience. Today, we offer flexible <b>content marketing packages</b> for different luxury sectors, including fashion, travel, and real estate. With our <b>brand content marketing services</b>, you can strengthen your brand image and reach the people who truly matter for your products or services. Contact <b style='color: rgb(0, 0, 0);'>Luxury Method</b> now to start creating <b>luxury content</b> that connects you with an elite audience and increases your brand visibility and conversions.",
-                experience_quote: "Experience the difference of a marketing agency dedicated to luxury.",
-                contact_form_link: "CONTACT FORM",
-                faq_title: "Frequently Asked Questions",
-                faq1_q: "What is luxury content marketing?",
-                faq1_a: "It's a strategy focused on storytelling, emotion, and exclusivity to connect with premium audiences without relying on hard sales.",
-                faq2_q: "How is Luxury Method different from other agencies?",
-                faq2_a: "We only work with premium brands, so every piece of content we craft is tailored for high-end audiences.",
-                faq3_q: "Why is content important for luxury brands?",
-                faq3_a: "Because it helps shape your brand image, build trust, and speak to high-end values.",
-                faq4_q: "How does SEO help luxury brands?",
-                faq4_a: "It helps your brand show up in searches organically, attracting the right audience without paying for ads.",
-                faq5_q: "Can you help launch a new luxury brand?",
-                faq5_a: "Yes, we help define your voice, visuals, and content strategy from the very beginning.",
-                privacy_policy_link: "Privacy Policy",
-                cookie_pref_link: "Cookie Preferences",
-                privacy_modal_title: "Privacy Policy",
-                privacy_modal_date: "<strong>Effective Date:</strong> December 2025",
-                privacy_modal_intro: "At Luxury Method, we value your privacy and are committed to protecting your personal data in accordance with the General Data Protection Regulation (GDPR).",
-                privacy_modal_h1: "1. Data Collection",
-                privacy_modal_p1: "We collect Identity Data (name) and Contact Data (email) when you voluntarily submit our contact forms. We also collect Technical Data (IP address, browser type) via cookies if you consent.",
-                privacy_modal_h2: "2. How We Use Data",
-                privacy_modal_p2: "Your data is used solely to respond to inquiries and analyze website performance. We do not sell your data to third parties.",
-                privacy_modal_h3: "3. Your Rights",
-                privacy_modal_p3: "You have the right to access, correct, or delete your data. You may withdraw consent at any time via the settings button.",
-                privacy_modal_h4: "4. Contact",
-                cookie_modal_title: "Cookie Preferences",
-                cookie_modal_intro: "Manage how we use cookies. \"Essential\" cookies are necessary for the site to function.",
-                cookie_essential: "Essential",
-                cookie_essential_desc: "Required for basic functionality.",
-                cookie_analytics: "Analytics & Marketing",
-                cookie_analytics_desc: "Help us improve our content strategy.",
-                cookie_save_btn: "Save Preferences",
-                banner_text: "We use cookies to ensure you get the best experience on our website.",
-                banner_essential: "Essentials Only",
-                banner_accept: "Accept All"
-            },
-            it: {
-                hero_title: "CONTENT MARKETING DI LUSSO",
-                intro_text: "Cosa rende diverso il content marketing di lusso? Non si tratta solo di clic, ma di connessione. I contenuti di lusso trasformano il tuo brand in uno stile di vita, il tuo prodotto in una storia avvincente e il tuo pubblico in fedeli sostenitori. I clienti si connettono con i brand di lusso a livello mentale ed emotivo molto prima di prendere una decisione d'acquisto. Dalla SEO ai social media allo storytelling, il content marketing di lusso mantiene il tuo brand rilevante, desiderabile e indimenticabile.",
-                btn_services: "I nostri servizi di contenuti",
-                btn_industries: "I settori con cui lavoriamo",
-                btn_who_we_are: "Chi Siamo",
-                section1_title: "Cos'è il Content Marketing di Lusso?",
-                section1_text: "Il <b>content marketing di lusso</b> è il modo per costruire un'immagine di brand unica concentrandosi su ogni piccolo dettaglio in tutti gli elementi del marchio. I <b>contenuti di lusso</b> si concentrano sulla qualità, creando messaggi che si connettono con le emozioni e l'eredità del pubblico target per creare esperienze di brand significative. Il <b>content marketing</b>, proprio come il branding, riguarda il raggiungimento di un vasto pubblico lavorando su contenuti preziosi e coinvolgenti come post di blog, video o post sui social media che aumentano la <b>visibilità</b> del brand e <b>guidano le conversioni.</b> Ciò che distingue il content marketing di lusso è la sua enfasi nel parlare a un pubblico più raffinato.",
-                section2_title: "Il Ruolo dei Contenuti di Lusso nella Costruzione di Esclusività e Prestigio",
-                section2_text1: "I <b>creatori di contenuti di lusso</b> mirano a guidare il traffico e generare lead per i brand di lusso; si concentrano anche su prestigio, emozione e storytelling. I <b>contenuti di lusso</b> si connettono con individui che apprezzano l'eredità, l'artigianato e l'esclusività - coloro che vedono il lusso come un'estensione della loro identità e aspirazioni.",
-                section2_text2: "Il <b>content marketing per i brand di lusso</b> dovrebbe essere costruito su una strategia basata sulla connessione, non solo sulla comunicazione. È elegante, emotivo e progettato con cura per riflettere uno stile di vita, il che rende i contenuti di lusso oltre la vendita; raccontano storie di eredità, qualità e significato. Con il supporto di un'<b>agenzia di contenuti di lusso,</b> il tuo brand riceverà <b>soluzioni di content marketing</b> personalizzate che si connettono con persone che si aspettano più di un semplice prodotto. Come agenzia di contenuti di lusso, il nostro lavoro è essere il tuo partner nell'attrarre il pubblico giusto per il tuo brand di lusso, coloro che si preoccupano del significato, del valore e della storia dietro il prodotto.",
-                services_main_title: "I NOSTRI SERVIZI NEL CONTENT MARKETING DI LUSSO",
-                services_intro: "Come <b>agenzia di contenuti di lusso</b>, offriamo soluzioni di content marketing abbinate all'eleganza e all'identità del tuo brand. Dalla SEO all'email marketing alla creazione di contenuti per i social media e materiali stampati d'élite, il nostro lavoro è realizzato per connettere il tuo brand con un pubblico target personalizzato. Il nostro team di <b>esperti di content marketing</b> ha la conoscenza e l'esperienza per garantire che ogni pezzo, sia digitale che tradizionale, porti il giusto messaggio, tono e aspetto per elevare la presenza del tuo brand con significato ed esclusività.",
-                service1_title: "1) SEO e Scrittura di Contenuti per Brand di Lusso",
-                service1_text: "La <b>SEO per brand di lusso</b> <b>migliorerà</b> il tuo posizionamento ottimizzando la presenza del tuo sito web per raggiungere il pubblico organicamente. I nostri <a target='_blank' href='https://www.luxury-method.com/services/luxury-seo-agency'>servizi SEO di lusso</a> mirano a clienti facoltosi identificando parole chiave di alto valore che cercano, migliorando poi la SEO on-page, off-page e tecnica del tuo sito web per <b>posizionarsi più in alto</b> e attrarli utilizzando il nostro processo di lavoro SEO unico. In <a target='_blank' href='https://www.luxury-method.com/'>Luxury Method</a>, siamo specializzati nella <b>scrittura di contenuti di lusso</b> che portano il perfetto equilibrio nel tono per connettere il tuo brand con la cultura del pubblico d'élite. Ogni pezzo di contenuto è realizzato per corrispondere all'identità esclusiva del tuo brand. Sia che stiamo ottimizzando per i motori di ricerca o raccontando la tua storia attraverso narrazioni di brand avvincenti, <b>il nostro obiettivo è semplice:</b> aiutare il tuo brand premium a connettersi con il pubblico giusto e trasformare quella connessione in lealtà.",
-                service1_example: "Ad esempio, guarda il sito <b style='color: rgb(0, 0, 0);'>Louis Vuitton</b> nell'immagine sopra: design pulito e posizionamenti alti. Questo è il risultato di una grande SEO per brand di lusso. Utilizziamo lo stesso approccio attraverso il nostro <b>content marketing per brand di moda</b>, aiutandoti a farti notare su Google, costruire visibilità e guidare le conversioni, mantenendo intatta la tua identità di lusso.",
-                service2_title: "2) Social media: Design e Creazione di Contenuti per Brand di Lusso",
-                service2_text1: "I <b>brand di lusso</b> hanno bisogno di post puliti ed eleganti che riflettano la loro identità. Ecco perché assumono agenzie fidate per lavorare sui loro account social. Dalle immagini al messaggio, tutto è fatto per sentirsi premium e in linea con il brand. I servizi di creazione di contenuti e i servizi di produzione di contenuti di alta qualità contano. Con forti <b>servizi di design per social media</b> e intelligenti <a target='_blank' href='https://www.luxury-method.com/services/luxury-social-media-agency'>servizi di ottimizzazione social media</a>, il tuo brand può crescere naturalmente, connettersi con il pubblico giusto e trasformare i suoi clienti in clienti fedeli, costruendo fiducia con la giusta presenza sui loro account social.",
-                service2_text2: "Proprio come vedi in queste immagini dall'Instagram di <b style='color: rgb(0, 0, 0);'>Patek Philippe</b>, i brand di orologi di lusso possono ottenere una potente crescita organica con la giusta strategia di marketing per orologi di lusso. Il loro feed è pulito, brandizzato e coerente, mostrando come un'agenzia di creazione contenuti social media possa aiutarti a costruire prestigio e lealtà senza affidarsi solo agli annunci a pagamento.",
-                service3_title: "3) Materiale Stampato: OOH, annunci su riviste",
-                service3_text: "Il <b>marketing tradizionale</b> gioca ancora un ruolo vitale nel branding di lusso. Che si tratti di audaci <b>stampe OOH</b> o eleganti <b>annunci stampati di brand di lusso</b>, questi pezzi danno al tuo brand una presenza reale e fisica. Dalla strada alle pagine delle riviste premium, un buon design di stampa attira l'attenzione e costruisce fiducia. Creiamo i migliori annunci stampati per abbinare lo stile del tuo brand e lasciare un'impressione duratura ovunque vengano visti.",
-                service3_subtitle1: "Pubblicità OOH con Gucci:",
-                service3_text_gucci: "Giacomo, fondatore di Luxury Method ha lavorato con Gucci ed è stato coinvolto in diverse campagne per il brand. Questo progetto OOH a Piccadilly Circus è uno di questi. Evidenzia come la nostra esperienza nel mondo reale nell'OOH di lusso ci aiuta a realizzare campagne che lasciano un'impressione duratura. Portiamo questa conoscenza pratica per aiutare i clienti a creare i migliori <b>annunci stampati di lusso</b> e visuali esterni che riflettono l'identità e i valori del loro brand.",
-                service3_subtitle2: "Annuncio Stampato su Rivista di Lusso:",
-                service3_text_magazine: "Molte aziende di lusso si affidano ancora agli <b>annunci stampati di brand di lusso</b> per connettersi con i lettori che apprezzano le riviste di fascia alta. Questi annunci sono realizzati per riflettere lo stile e l'atmosfera che il pubblico d'élite si aspetta, dimostrando come forti visuali, un layout pulito e il giusto messaggio possano avere un impatto duraturo. Quando il formato è progettato con cura, il risultato dà al tuo brand lo spazio per raccontare una storia e distinguersi. In <b style='color: rgb(0, 0, 0);'>Luxury Method</b>, comprendiamo come i giusti <b>annunci stampati di lusso</b> possano posizionare il tuo brand nell'ambiente perfetto.",
-                service3_subtitle3: "Copertina di Vogue Italia di Gucci: Un Highlight di Annuncio Stampato di Lusso:",
-                service3_text_vogue: "Il tuo brand di lusso può fare una forte impressione con una narrazione visiva senza tempo sulla carta stampata. La collezione Primavera 2024 di Gucci sulla copertina di Vogue Italia è un ottimo esempio dei <b>migliori annunci stampati su rivista:</b> semplice, elegante e facile da ricordare. Questo annuncio stampato di brand di lusso fonde lo stile classico con un look moderno, mostrando come gli <b>annunci stampati di lusso</b> aiutino a plasmare una <b>forte immagine di brand.</b> Un annuncio stampato di lusso intelligente e ben posizionato come questo mantiene Gucci in mente per il pubblico interessato e rafforza la sua presenza nel mondo dell'alta moda.",
-                service4_title: "4) Email Marketing per Brand di Lusso",
-                service4_text1: "L'<b>email marketing per i brand di lusso</b> non riguarda solo far aprire le email; si tratta di creare contenuti e modelli di design che costruiscano una connessione emotiva con i tuoi clienti evidenziando il vero valore del tuo prodotto. Che tu stia raggiungendo clienti VIP o annunciando qualcosa di nuovo, l'email marketing del tuo brand di lusso dovrebbe riflettere la stessa attenzione ai dettagli in ogni elemento. In <b style='color: rgb(0, 0, 0);'>Luxury Method</b>, creiamo campagne personalizzate che riflettono perfettamente lo stile e il tono del tuo brand d'élite, dai design eleganti ai messaggi scelti con cura. Ci assicuriamo che il tuo <b>email marketing di brand di lusso</b> mantenga il livello di qualità e stile che i tuoi clienti si aspettano, sia per il lancio di un prodotto, un evento privato o un aggiornamento stagionale.",
-                service4_text2: "L'<b>email marketing per i brand di lusso</b> ha ancora un grande impatto quando fatto bene. Il tuo brand può rimanere vicino ai clienti fedeli con messaggi puliti e raffinati proprio come la newsletter di <b style='color: rgb(0, 0, 0);'>Louis Vuitton</b>. Con il giusto approccio di email marketing di lusso, puoi mantenere il tuo pubblico informato, far crescere la tua portata e guidare risultati reali.",
-                sectors_title: "MARKETING DI CONTENUTI DI LUSSO ATTRAVERSO I SETTORI DEL LUSSO",
-                sectors_intro: "Ogni <b>settore del lusso</b> ha il suo stile, voce e pubblico, e un'agenzia di content marketing di lusso dovrebbe riflettere e personalizzare i contenuti di conseguenza. Dai gioielli e orologi al settore immobiliare, moda e viaggi, i contenuti devono corrispondere al <b>valore di fascia alta</b> che il tuo brand offre. Creiamo <b>soluzioni di content marketing</b> per ogni settore che si adattano al tono della tua nicchia rimanendo fedeli a ciò che i consumatori d'élite si aspettano: qualità, emozione ed esclusività. Il marketing di gioielli e orologi di lusso si concentra sul raccontare una storia che è un mix di eredità, artigianato ed esclusività. Che si tratti di mostrare un diamante unico o un orologio in edizione limitata, il contenuto evidenzia l'arte del creatore e del brand dietro ogni pezzo. Il content marketing per gioielli fa emergere il valore emotivo e la rarità di possedere qualcosa di veramente speciale. Il marketing di orologi di lusso enfatizza precisione ed eredità, mentre gli annunci di orologi di lusso evidenziano l'esclusività di possedere un pezzo raro e di fascia alta.",
-                sector_jewelry_title: "Content Marketing per Gioielli di Lusso e Orologi di Lusso",
-                sector_jewelry_text1: "Il marketing di <a target='_blank' href='https://www.luxury-method.com/industries/luxury-jewelry-marketing'>gioielli di lusso</a> e <a target='_blank' href='https://www.luxury-method.com/industries/luxury-watches-marketing'>orologi di lusso</a> si concentra sul raccontare una storia che è un mix di eredità, artigianato ed esclusività. Che si tratti di mostrare un diamante unico o un orologio in edizione limitata, il contenuto evidenzia l'arte del creatore e del brand dietro ogni pezzo.",
-                sector_jewelry_text2: "Il <b>content marketing per gioielli</b> fa emergere il valore emotivo e la rarità di possedere qualcosa di veramente speciale. Il <b>marketing di orologi di lusso</b> enfatizza precisione ed eredità, mentre gli annunci di orologi di lusso evidenziano l'esclusività di possedere un pezzo raro e di fascia alta.",
-                sector_travel_title: "Content Marketing per Viaggi di Lusso e Ospitalità di Lusso",
-                sector_travel_text1: "Il <a target='_blank' href='https://www.luxury-method.com/industries/luxury-travel-marketing'>marketing di viaggi di lusso</a> aiuta i viaggiatori di fascia alta a scoprire esperienze uniche e indimenticabili. Con un forte content marketing di viaggio, i brand possono mostrare luoghi mozzafiato, soggiorni di lusso e servizi personalizzati. Attraverso visuali di qualità e storie, i servizi di content marketing per agenzie di viaggio evidenziano ciò che rende speciale ogni destinazione.",
-                sector_travel_text2: "Nell'ospitalità, il <b>content marketing per <a target='_blank' href='https://www.luxury-method.com/industries/luxury-hospitality-marketing-agency'>hotel di lusso</a></b> si concentra sul design, l'atmosfera e il servizio che distinguono un hotel. Un piano di content marketing intelligente per hotel utilizza SEO, storytelling e splendide immagini per attrarre viaggiatori d'élite e incoraggiare le prenotazioni.",
-                sector_fashion_title: "Content Marketing per Moda di Lusso e Retail di Lusso",
-                sector_fashion_text1: "Il <b>content marketing per <a target='_blank' href='https://www.luxury-method.com/industries/luxury-fashion-marketing'>moda di lusso</a></b> funziona meglio quando si concentra su collezioni stagionali, alta moda e lo stile di vita dietro il brand. Aiuta a creare una vera connessione con gli acquirenti di fascia alta mostrando ciò che rende speciale il brand in modo chiaro ed elegante.",
-                sector_fashion_text2: "Il <b>content marketing per il retail</b> supporta questo rendendo il viaggio di acquisto personale e fluido online e in negozio. Evidenzia ciò che conta di più per gli acquirenti di lusso, dalla qualità all'esclusività. Una forte <b>strategia per <a target='_blank' href='https://www.luxury-method.com/industries/luxury-retail-marketing'>retail di lusso</a></b> utilizza il giusto tono, visuali e contenuti per riflettere l'esperienza premium che le persone si aspettano da un brand di fascia alta.",
-                sector_realestate_title: "Content Marketing Immobiliare",
-                sector_realestate_text: "Il <b>content marketing immobiliare</b> riguarda mostrare il design, la posizione e il valore di una proprietà in un modo che sembri reale e attraente. Un ottimo content marketing per l'<a target='_blank' href='https://www.luxury-method.com/industries/luxury-real-estate-marketing'>immobiliare</a> fa emergere lo stile di vita e l'esperienza dietro ogni annuncio, costruisce fiducia e aiuta ad attrarre i giusti acquirenti.",
-                sector_ecommerce_title: "Content Marketing eCommerce",
-                sector_ecommerce_text: "Sul lato digitale, il miglior content marketing per ecommerce utilizza personalizzazione e display di prodotti puliti ed eleganti. Un forte <b>content marketing per siti ecommerce</b> riunisce tutto: blog, flussi di email e <a target='_blank' href='https://www.luxury-method.com/services/luxury-seo-agency'>SEO</a> per guidare le vendite e costruire la fedeltà al brand.",
-                sector_food_title: "Content Marketing per Ristoranti e Cibo",
-                sector_food_text: "Il <b>content marketing per ristoranti</b> va oltre le foto di cibo. Condivide l'intera esperienza di grandi spazi, chef talentuosi e la storia dietro ogni piatto. Il content marketing per il cibo evidenzia l'atmosfera e la passione dietro ogni pasto. Nel content marketing per l'<a target='_blank' href='https://www.luxury-method.com/industries/luxury-food-marketing'>industria alimentare</a>, costruisce fiducia ed eccitazione. Un eccellente <b>content marketing per ristoranti</b> si connette con le persone giuste e le fa desiderare di visitare, che si tratti di un posto di alta cucina o di un nuovo posto da provare.",
-                who_we_are_title: "CHI SIAMO",
-                who_we_are_text1: "Luxury Method è un'agenzia SEO di lusso specializzata nell'assistere brand di fascia alta nell'attrarre il pubblico target appropriato. Concentrandosi su settori tra cui abbigliamento, gioielleria, orologi e retail e hotel. La nostra specialità è creare soluzioni di marketing personalizzate adatte ai requisiti particolari dei brand di lusso. La nostra sede è a Roma e operiamo in tutto il mondo.",
-                who_we_are_text2: "In <a target='_blank' href='https://www.luxury-method.com/'>Luxury Method</a>, <b>aiutiamo i brand di lusso a crescere con contenuti intelligenti ed eleganti.</b> Il nostro team di creatori di contenuti di lusso ha anni di esperienza lavorando con brand come <b style='color: rgb(0, 0, 0);'>Gucci</b> e una profonda conoscenza del settore del lusso e di come connettersi con un pubblico di fascia alta. Oggi, offriamo <b>pacchetti di content marketing</b> flessibili per diversi settori del lusso, tra cui moda, viaggi e immobiliare. Con i nostri <b>servizi di content marketing di brand</b>, puoi rafforzare la tua immagine di brand e raggiungere le persone che contano davvero per i tuoi prodotti o servizi. Contatta <b style='color: rgb(0, 0, 0);'>Luxury Method</b> ora per iniziare a creare <b>contenuti di lusso</b> che ti connettano con un pubblico d'élite e aumentino la visibilità del tuo brand e le conversioni.",
-                experience_quote: "Sperimenta la differenza di un'agenzia di marketing dedicata al lusso.",
-                contact_form_link: "MODULO DI CONTATTO",
-                faq_title: "Domande Frequenti",
-                faq1_q: "Cos'è il content marketing di lusso?",
-                faq1_a: "È una strategia focalizzata sullo storytelling, l'emozione e l'esclusività per connettersi con un pubblico premium senza affidarsi a vendite aggressive.",
-                faq2_q: "In cosa differisce Luxury Method dalle altre agenzie?",
-                faq2_a: "Lavoriamo solo con brand premium, quindi ogni pezzo di contenuto che realizziamo è su misura per un pubblico di fascia alta.",
-                faq3_q: "Perché i contenuti sono importanti per i brand di lusso?",
-                faq3_a: "Perché aiutano a plasmare l'immagine del tuo brand, costruire fiducia e parlare ai valori di fascia alta.",
-                faq4_q: "Come aiuta la SEO i brand di lusso?",
-                faq4_a: "Aiuta il tuo brand ad apparire nelle ricerche organicamente, attraendo il pubblico giusto senza pagare per gli annunci.",
-                faq5_q: "Potete aiutare a lanciare un nuovo brand di lusso?",
-                faq5_a: "Sì, aiutiamo a definire la tua voce, i visual e la strategia dei contenuti fin dall'inizio.",
-                privacy_policy_link: "Informativa sulla Privacy",
-                cookie_pref_link: "Preferenze Cookie",
-                privacy_modal_title: "Informativa sulla Privacy",
-                privacy_modal_date: "<strong>Data di Entrata in Vigore:</strong> Dicembre 2025",
-                privacy_modal_intro: "In Luxury Method, valorizziamo la tua privacy e ci impegniamo a proteggere i tuoi dati personali in conformità con il Regolamento Generale sulla Protezione dei Dati (GDPR).",
-                privacy_modal_h1: "1. Raccolta Dati",
-                privacy_modal_p1: "Raccogliamo Dati Identificativi (nome) e Dati di Contatto (email) quando invii volontariamente i nostri moduli di contatto. Raccogliamo anche Dati Tecnici (indirizzo IP, tipo di browser) tramite cookie se acconsenti.",
-                privacy_modal_h2: "2. Come Utilizziamo i Dati",
-                privacy_modal_p2: "I tuoi dati vengono utilizzati esclusivamente per rispondere alle richieste e analizzare le prestazioni del sito web. Non vendiamo i tuoi dati a terzi.",
-                privacy_modal_h3: "3. I Tuoi Diritti",
-                privacy_modal_p3: "Hai il diritto di accedere, correggere o cancellare i tuoi dati. Puoi revocare il consenso in qualsiasi momento tramite il pulsante delle impostazioni.",
-                privacy_modal_h4: "4. Contatti",
-                cookie_modal_title: "Preferenze Cookie",
-                cookie_modal_intro: "Gestisci come utilizziamo i cookie. I cookie \"Essenziali\" sono necessari per il funzionamento del sito.",
-                cookie_essential: "Essenziale",
-                cookie_essential_desc: "Richiesto per le funzionalità di base.",
-                cookie_analytics: "Analisi e Marketing",
-                cookie_analytics_desc: "Aiutaci a migliorare la nostra strategia di contenuti.",
-                cookie_save_btn: "Salva Preferenze",
-                banner_text: "Utilizziamo i cookie per assicurarti la migliore esperienza sul nostro sito web.",
-                banner_essential: "Solo Essenziali",
-                banner_accept: "Accetta Tutto"
-            }
-        };
-
-        function changeLanguage(lang) {
-            // Update Text
-            const elements = document.querySelectorAll('[data-i18n]');
-            elements.forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (translations[lang] && translations[lang][key]) {
-                    el.innerHTML = translations[lang][key];
-                }
-            });
-
-            // Update Buttons
-            document.getElementById('btn-en').classList.remove('active');
-            document.getElementById('btn-it').classList.remove('active');
-            document.getElementById('btn-' + lang).classList.add('active');
-
-            // Optional: Save preference
-            localStorage.setItem('preferred_language', lang);
-        }
-
-        // Initialize Language based on saved preference or default to EN
-        document.addEventListener("DOMContentLoaded", function () {
-            const savedLang = localStorage.getItem('preferred_language') || 'en';
-            changeLanguage(savedLang);
-        });
-
-
-        // =========================================
-        // EXISTING LOGIC (Unchanged)
-        // =========================================
         function toggleFAQ(element) {
             const answer = element.nextElementSibling;
             const toggle = element.querySelector(".faq-toggle");
@@ -2389,17 +2310,10 @@
                 // Welcome Back logic
                 const contentContainer = banner.querySelector('.cookie-content');
                 if (contentContainer) {
-                    const currentLang = localStorage.getItem('preferred_language') || 'en';
-                    const welcomeText = currentLang === 'it' ?
-                        'Bentornato. Hai precedentemente accettato i nostri cookie.' :
-                        'Welcome back. You have previously accepted our cookies.';
-                    const policyText = currentLang === 'it' ? 'Informativa sulla Privacy' : 'Privacy Policy';
-                    const closeText = currentLang === 'it' ? 'Chiudi' : 'Close';
-
                     contentContainer.innerHTML = `
-                        <p>${welcomeText} <a href="https://www.luxury-method.com/privacy-policy" target="_blank">${policyText}</a>.</p>
+                        <p>Welcome back. You have previously accepted our cookies. <a href="https://www.luxury-method.com/privacy-policy" target="_blank">Privacy Policy</a>.</p>
                         <div class="cookie-actions">
-                            <button onclick="hideCookieBanner()">${closeText}</button>
+                            <button onclick="hideCookieBanner()">Close</button>
                         </div>
                     `;
                     setTimeout(() => {
@@ -2445,15 +2359,10 @@
             // or just update UI. Here we just update UI.
             const banner = document.getElementById('cookie-banner');
             const contentContainer = banner.querySelector('.cookie-content');
-            const currentLang = localStorage.getItem('preferred_language') || 'en';
-            const savedText = currentLang === 'it' ? 'Preferenze Salvate.' : 'Preferences Saved.';
-            const policyText = currentLang === 'it' ? 'Informativa sulla Privacy' : 'Privacy Policy';
-            const closeText = currentLang === 'it' ? 'Chiudi' : 'Close';
-
             contentContainer.innerHTML = `
-                <p>${savedText} <a href="https://www.luxury-method.com/privacy-policy" target="_blank">${policyText}</a>.</p>
+                <p>Preferences Saved.  <a href="https://www.luxury-method.com/privacy-policy" target="_blank">Privacy Policy</a>.</p>
                 <div class="cookie-actions">
-                    <button onclick="hideCookieBanner()">${closeText}</button>
+                    <button onclick="hideCookieBanner()">Close</button>
                 </div>
             `;
             setTimeout(() => {
@@ -2526,7 +2435,6 @@
 
             const textObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    console.log(entry);
                     if (entry.isIntersecting) {
                         entry.target.classList.add('active');
                     } else {
@@ -2544,6 +2452,24 @@
             textElements.forEach(el => {
                 el.classList.add('reveal-text'); // Add the animation class dynamically
                 textObserver.observe(el);
+            });
+
+            // ==========================================
+            // FOOTER REVEAL ANIMATION (NEW)
+            // ==========================================
+            const footerElements = document.querySelectorAll('.footer-fade-in');
+            const footerObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.2
+            });
+            
+            footerElements.forEach(el => {
+                footerObserver.observe(el);
             });
 
         });

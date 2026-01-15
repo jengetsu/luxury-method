@@ -34,6 +34,11 @@
             display: none;
         }
 
+        html {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
         body {
             margin: 0;
             background-color: #ebe0d5;
@@ -695,45 +700,6 @@
             color: #fff;
         }
 
-        @media (max-width: 768px) {
-            .cookie-banner {
-                bottom: 0;
-                width: 100%;
-                max-width: 100%;
-                border-radius: 20px 20px 0 0;
-                padding: 24px;
-                /* FIX: Add safe area inset for bottom padding so it sits above iPhone Home Bar/URL bar */
-                padding-bottom: calc(24px + env(safe-area-inset-bottom));
-                transform: translateY(100%);
-            }
-
-            .cookie-banner.visible {
-                transform: translateY(0);
-            }
-
-            .cookie-content {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 20px;
-            }
-
-            .cookie-content p {
-                min-width: auto;
-                font-size: 15px !important;
-            }
-
-            .cookie-actions {
-                width: 100%;
-                justify-content: space-between;
-                gap: 10px;
-            }
-
-            .cookie-actions button {
-                flex: 1;
-                padding: 14px;
-            }
-        }
-
         /* =========================================
        13. GDPR COMPONENTS (NEW BEIGE THEME)
        ========================================= */
@@ -929,6 +895,12 @@
         @media screen and (max-width: 768px) {
             h1 {
                 font-size: 30px !important;
+                letter-spacing: 0.1rem !important; /* Fix for horizontal overflow */
+            }
+
+            .contact-icons {
+                gap: 20px !important; /* Fix for horizontal overflow */
+                flex-wrap: wrap;
             }
 
             .top-section {
@@ -957,7 +929,6 @@
                 width: 100%;
                 height: 80px;
                 padding: 20px 20px 0 20px;
-                /* Added padding to prevent edge sticking */
                 position: fixed;
                 top: 0;
                 left: 0;
@@ -968,7 +939,6 @@
                 flex-direction: row;
                 white-space: nowrap;
                 gap: 12px;
-                /* Increased gap */
                 justify-content: flex-start;
                 border-bottom: none;
             }
@@ -979,10 +949,8 @@
             }
 
             .sidebar button {
-                padding: 8px 16px;
-                /* Better spacing */
+                padding: 10px 16px;
                 font-size: 3.5vw;
-                /* Increased size */
                 height: fit-content;
             }
 
@@ -1000,7 +968,6 @@
 
             .back-to-top {
                 bottom: 80px;
-                /* Added safe area fix */
                 bottom: calc(80px + env(safe-area-inset-bottom));
             }
 
@@ -1039,7 +1006,6 @@
             .luxury-footer-contact {
                 margin-bottom: 20px;
                 text-align: center;
-                /* optional, to center text */
             }
 
             .social-icons {
@@ -1050,6 +1016,46 @@
             /* Hide Floating GDPR on mobile */
             .floating-gdpr-btn {
                 display: none !important;
+            }
+
+            .cookie-banner {
+                bottom: 90px;
+                bottom: calc(150px + env(safe-area-inset-bottom));
+                width: 90%;
+                max-width: 400px;
+                left: 0;
+                right: 0;
+                margin: 0 auto;
+                border-radius: 16px;
+                padding: 24px;
+                padding-bottom: 24px;
+                transform: translateY(150%);
+            }
+
+            .cookie-banner.visible {
+                transform: translateY(0);
+            }
+
+            .cookie-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .cookie-content p {
+                min-width: auto;
+                font-size: 15px !important;
+            }
+
+            .cookie-actions {
+                width: 100%;
+                justify-content: space-between;
+                gap: 10px;
+            }
+
+            .cookie-actions button {
+                flex: 1;
+                padding: 14px;
             }
         }
 
@@ -1080,7 +1086,6 @@
         @media screen and (max-width: 500px) {
             .back-to-top {
                 bottom: 120px !important;
-                /* Added safe area fix */
                 bottom: calc(120px + env(safe-area-inset-bottom)) !important;
             }
 
@@ -1091,7 +1096,11 @@
 
             .floating-gdpr-btn {
                 bottom: 120px;
-                /* Match small mobile Back to Top */
+            }
+
+            .cookie-banner {
+                bottom: 120px;
+                bottom: calc(150px + env(safe-area-inset-bottom));
             }
         }
 
@@ -1645,33 +1654,39 @@
                     <img class="hover-3d" src="https://luxury-method.vercel.app/FASHION.png" alt="Fashion Industry">
                 </div>
 
-                <p>
-                    Social media marketing for <a target="_blank"
-                        href="https://www.luxury-method.com/industries/luxury-fashion-marketing"
-                        style="text-decoration: none;"><span style="text-decoration: underline;">luxury fashion
-                            brands</span></a>
-                    involves more than just posting photographs; it is about developing a dynamic online presence and a
-                    <strong>truly luxurious image that resonates with your target audience</strong>. With millions of
-                    consumers
-                    accessing fashion-related material every day, your fashion brand has the opportunity to reach a
-                    worldwide
-                    audience and increase sales. But it also needs the correct strategy to stand out in a competitive
-                    market.
-                </p>
-                <p>
-                    Effective content marketing for fashion brands requires highlighting the brand's distinct style,
-                    trends, and
-                    craftsmanship. By showcasing these elements on social platforms, you’ll foster an emotional
-                    connection with
-                    the audience, strengthen brand loyalty, and ultimately boost sales.
-                </p>
-                <p>
-                    by collaborating with the right influencers, you can present your products in a natural, desirable
-                    environment, making them more appealing to potential buyers. Additionally, these influencers'
-                    endorsements can
-                    add a sense of authenticity and trustworthiness, which is critical for attracting high-net-worth
-                    individuals.
-                </p>
+                <div class="tyJCtd mGzaTb Depvyb baZpAe">
+                    <p>
+                        Social media marketing for <a target="_blank"
+                            href="https://www.luxury-method.com/industries/luxury-fashion-marketing"
+                            style="text-decoration: none;"><span style="text-decoration: underline;">luxury fashion
+                                brands</span></a>
+                        involves more than just posting photographs; it is about developing a dynamic online presence
+                        and a
+                        <strong>truly luxurious image that resonates with your target audience</strong>. With millions
+                        of
+                        consumers
+                        accessing fashion-related material every day, your fashion brand has the opportunity to reach a
+                        worldwide
+                        audience and increase sales. But it also needs the correct strategy to stand out in a
+                        competitive
+                        market.
+                    </p>
+                    <p>
+                        Effective content marketing for fashion brands requires highlighting the brand's distinct style,
+                        trends, and
+                        craftsmanship. By showcasing these elements on social platforms, you’ll foster an emotional
+                        connection with
+                        the audience, strengthen brand loyalty, and ultimately boost sales.
+                    </p>
+                    <p>
+                        by collaborating with the right influencers, you can present your products in a natural,
+                        desirable
+                        environment, making them more appealing to potential buyers. Additionally, these influencers'
+                        endorsements can
+                        add a sense of authenticity and trustworthiness, which is critical for attracting high-net-worth
+                        individuals.
+                    </p>
+                </div>
             </div>
 
             <!-- Hospitality -->
@@ -1755,7 +1770,8 @@
                 </div>
 
                 <p>
-                    The luxury <a target="_blank" href="https://www.luxury-method.com/industries/luxury-watches-marketing"
+                    The luxury <a target="_blank"
+                        href="https://www.luxury-method.com/industries/luxury-watches-marketing"
                         style="text-decoration: underline;">watch sector</a> uses social media marketing to connect with
                     a global
                     audience, especially watch collectors. Platforms like Instagram allow watch brands to showcase their
@@ -2220,8 +2236,8 @@
     </div>
 
     <!-- =========================================
-    11. GDPR MODALS & BANNERS
-    ========================================= -->
+   11. GDPR MODALS & BANNERS
+   ========================================= -->
 
     <!-- Floating Cookie Button (Right to Withdraw) -->
     <div class="floating-gdpr-btn" onclick="openModal('prefModal')" title="Cookie Preferences">
@@ -2525,7 +2541,7 @@
             const banner = document.getElementById('cookie-banner');
             const contentContainer = banner.querySelector('.cookie-content');
             contentContainer.innerHTML = `
-                <p>Preferences Saved.  <a href="https://www.luxury-method.com/privacy-policy" target="_blank">Privacy Policy</a>.</p>
+                <p>Preferences Saved. <a href="https://www.luxury-method.com/privacy-policy" target="_blank">Privacy Policy</a>.</p>
                 <div class="cookie-actions">
                     <button onclick="hideCookieBanner()">Close</button>
                 </div>
