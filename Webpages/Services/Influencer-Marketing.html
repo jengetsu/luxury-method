@@ -73,35 +73,68 @@
         }
 
         /* =========================================
-        3. TEXT REVEAL ANIMATION (NEW)
-        ========================================= */
+   3. TEXT REVEAL ANIMATION (FINAL)
+========================================= */
+
         .reveal-text {
-            opacity: 0.1;
-            /* Start almost invisible */
-            transform: translateY(30px) scale(0.95) rotateX(10deg);
-            /* 3D Drop effect */
-            filter: blur(4px);
-            /* Luxury fog effect */
-            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-            /* Elegant easing */
-            transform-origin: center top;
-            will-change: opacity, transform, filter;
+            opacity: 0;
+            transform: translateY(16px);
+            transition:
+                opacity 0.45s ease-out,
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
         }
 
         .reveal-text.active {
             opacity: 1;
-            transform: translateY(0) scale(1) rotateX(0deg);
-            filter: blur(0);
+            transform: translateY(0);
         }
 
         /* Ensure FAQ items animate as a block */
         .faq-item.reveal-text {
-            transform: translateY(20px);
+            opacity: 0;
+            transform: translateY(14px);
+            transition:
+                opacity 0.4s ease-out,
+                transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .faq-item.reveal-text.active {
+            opacity: 1;
             transform: translateY(0);
         }
+
+        /* ================================
+   TEXT STABILITY FIX FOR HEADINGS
+================================ */
+
+        h1.reveal-text,
+        h2.reveal-text,
+        h3.reveal-text {
+            opacity: 0;
+            transform: translateY(12px);
+            transition:
+                opacity 0.35s ease-out,
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        h1.reveal-text.active,
+        h2.reveal-text.active,
+        h3.reveal-text.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h1,
+        h2,
+        h3,
+        p {
+            backface-visibility: hidden;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+
 
         /* =========================================
         4. HERO SECTION
@@ -482,7 +515,7 @@
         }
 
         /* =========================================
-        10. CONTACT & FOOTER
+        10. CONTACT & FOOTER (UPDATED)
         ========================================= */
         .contact-icons-container {
             display: flex;
@@ -512,44 +545,142 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            padding: 100px 0;
+            padding: 80px 0 40px 0;
             color: #e5d7b1;
+            position: relative;
+            overflow: hidden;
         }
 
-        .luxury-footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
+        .luxury-footer::before {
+            /* Optional overlay to ensure text readability if needed, keeping it subtle */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        /* Forces all text within footer to be the correct color */
+        .luxury-footer p,
+        .luxury-footer h4,
+        .luxury-footer span,
+        .luxury-footer a,
+        .luxury-footer a:visited {
+            color: #e5d7b1 !important;
+        }
+
+        .luxury-footer-container {
             max-width: 1200px;
             width: 90%;
             margin: auto;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
         }
 
-        .luxury-footer-contact small {
-            display: block;
-            margin-bottom: 18px;
+        .footer-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .footer-column.center {
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-column.right {
+            align-items: flex-end;
+            text-align: right;
+        }
+
+        .luxury-footer a {
+            text-decoration: none;
             font-size: 18px;
             letter-spacing: 0.5px;
-            color: #e5d7b1;
-            text-decoration: none;
+            transition: opacity 0.3s ease, color 0.3s ease;
+            position: relative;
+            width: fit-content;
         }
 
-        .luxury-footer-contact a {
-            color: #e5d7b1;
-            text-decoration: none;
+        /* Underline effect on hover */
+        .luxury-footer a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: #e5d7b1;
+            transition: width 0.3s ease;
         }
 
-        .social-icons {
+        .luxury-footer a:hover::after {
+            width: 100%;
+        }
+
+        .luxury-footer a:hover {
+            opacity: 0.8;
+        }
+
+        /* Social Icons (Refined) */
+        .footer-socials {
             display: flex;
-            gap: 20px;
-            justify-content: flex-end;
-            /* desktop: right */
+            gap: 25px;
             align-items: center;
         }
 
-        .social-link img {
-            width: 40px;
+        .social-icon-link img {
+            width: 28px;
+            height: 28px;
             object-fit: contain;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            filter: brightness(0.9);
+        }
+
+        .social-icon-link:hover img {
+            transform: scale(1.1);
+            filter: brightness(1);
+        }
+
+        /* Footer Animation Classes */
+        .footer-fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .footer-fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger delays for nicer effect */
+        .delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .delay-3 {
+            transition-delay: 0.3s;
         }
 
         .contact-form-container {
@@ -569,9 +700,6 @@
             padding-top: 10px;
             padding-bottom: 10px;
         }
-
-        /* Note: Original code had width:20px height:20px for some footer imgs but style attribute had max-height 500px. 
-        I am preserving the inline style behavior. */
 
         /* =========================================
         11. BACK TO TOP
@@ -617,7 +745,8 @@
         /* Keeps the Banner Look Dark as requested */
         .cookie-banner {
             position: fixed;
-            bottom: 50px; /* LIFTED HIGHER for safety on desktop */
+            bottom: 50px;
+            /* LIFTED HIGHER for safety on desktop */
             /* Floating look on desktop */
             left: 0;
             right: 0;
@@ -882,23 +1011,30 @@
         .floating-gdpr-btn {
             position: fixed;
             bottom: 60px;
-            /* Aligned with Back to Top */
+            /* Exact match to back-to-top */
             left: 30px;
-            /* Symmetrical inset */
+            /* Symmetrical to right: 30px */
             width: 50px;
-            /* Match Back to Top size */
             height: 50px;
-            /* Match Back to Top size */
-            background-color: #fff;
+            background-color: #ffffff;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
             z-index: 9998;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            /* Match shadow of back-to-top */
+            transition: transform 0.3s ease;
+            /* Match transition easing */
             color: #000;
+            line-height: 1;
+            /* Prevent line-height shifts */
+        }
+
+        .floating-gdpr-btn i {
+            font-size: 24px;
+            /* Explicit size to match SVG */
         }
 
         .floating-gdpr-btn:hover {
@@ -932,12 +1068,11 @@
                 margin-left: 0px;
             }
 
-            /* Sidebar Changes - UPDATED FOR SPACING */
+            /* Sidebar Changes */
             .sidebar {
                 width: 100%;
                 height: 80px;
                 padding: 20px 20px 0 20px;
-                /* Added horizontal padding */
                 left: 0;
                 top: 0;
                 background-color: #ebe0d5;
@@ -947,27 +1082,18 @@
                 flex-direction: row;
                 white-space: nowrap;
                 gap: 12px;
-                /* Increased gap from 4px to 12px */
                 justify-content: flex-start;
             }
 
             .sidebar button {
                 font-size: 3.5vw;
-                /* Increased slightly from 2.5vw */
                 padding: 10px 16px;
-                /* Better touch targets */
             }
 
-            /* Hiding scroll buttons as requested */
+            /* Hiding scroll buttons */
             .scroll-btn-left,
-            .scroll-btn-right {
-                display: none !important;
-            }
-
-            .scroll-btn {
-                display: none;
-            }
-
+            .scroll-btn-right,
+            .scroll-btn,
             .left-arrow,
             .right-arrow {
                 display: none !important;
@@ -975,7 +1101,6 @@
 
             .back-to-top {
                 bottom: 80px;
-                /* Added safe area fix */
                 bottom: calc(80px + env(safe-area-inset-bottom));
             }
 
@@ -1001,7 +1126,6 @@
             .luxury-footer-contact {
                 margin-bottom: 20px;
                 text-align: center;
-                /* optional, to center text */
             }
 
             .social-icons {
@@ -1023,31 +1147,22 @@
                 box-shadow: 0 12px 22px rgba(0, 0, 0, 0.15);
             }
 
+            /* HIDE FLOATING COOKIE BUTTON ON MOBILE */
             .floating-gdpr-btn {
                 display: none !important;
-                /* HIDE ON MOBILE AS REQUESTED */
             }
 
             .cookie-banner {
-                /* Changed to Floating Banner for Mobile */
                 bottom: 90px;
-                /* Lifted into safe space */
                 bottom: calc(150px + env(safe-area-inset-bottom));
-                
-                /* Floating dimensions */
                 width: 90%;
                 max-width: 400px;
                 left: 0;
                 right: 0;
                 margin: 0 auto;
-                
-                /* Rounded corners all around */
                 border-radius: 16px;
-                
-                /* Standard padding (safe area handled by bottom property) */
                 padding: 24px;
                 padding-bottom: 24px;
-                
                 transform: translateY(150%);
             }
 
@@ -1076,12 +1191,57 @@
                 flex: 1;
                 padding: 14px;
             }
+
+            /* Footer Mobile Adjustments */
+            .footer-top-row {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 50px;
+            }
+
+            .footer-column,
+            .footer-column.center,
+            .footer-column.right {
+                align-items: center;
+                text-align: center;
+                width: 100%;
+            }
+
+            .luxury-footer a::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .luxury-footer a:hover::after {
+                width: 100%;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .footer-bottom-links {
+                justify-content: center;
+            }
+
+            .footer-text-group {
+                align-items: center !important;
+                text-align: center !important;
+                display: flex !important;
+                flex-direction: column !important;
+                width: 100%;
+            }
+
+            .footer-socials {
+                justify-content: center !important;
+            }
         }
 
 
         @media (min-width: 769px) {
-
-            /* Desktop elements always visible */
             .hover-3d {
                 opacity: 1;
                 transform: none;
@@ -1097,7 +1257,6 @@
         @media screen and (max-width: 500px) {
             .back-to-top {
                 bottom: 120px !important;
-                /* Added safe area fix */
                 bottom: calc(120px + env(safe-area-inset-bottom)) !important;
             }
 
@@ -1108,10 +1267,8 @@
 
             .floating-gdpr-btn {
                 bottom: 120px;
-                /* Match small mobile Back to Top */
             }
 
-            /* Even smaller cookie banner adjustment for small screens */
             .cookie-banner {
                 bottom: 120px;
                 bottom: calc(150px + env(safe-area-inset-bottom));
@@ -1557,8 +1714,7 @@
                 <h3 class="mt-80" style="font-weight: bold;"> Luxury Influencer Marketing for Lifestyle</h3>
 
                 <div class="industry_Image img-lifestyle">
-                    <img src="https://luxury-method.vercel.app/LIFESTYLE.png" class="hover-3d"
-                        alt="Lifestyle Industry">
+                    <img src="https://luxury-method.vercel.app/LIFESTYLE.png" class="hover-3d" alt="Lifestyle Industry">
                 </div>
 
                 <p>Affluent consumers today don't just buy products—they invest in experiences, which is why luxury
@@ -1673,7 +1829,7 @@
             <a target="_blank" href="https://www.luxury-method.com/contact" class="contact-form-link">CONTACT FORM</a>
         </div>
 
-         
+
 
         <h2>Luxury Influencer Marketing FAQs</h2>
 
@@ -1812,31 +1968,54 @@
     </div>
 
     <!-- Footer -->
-
     <footer class="luxury-footer">
-        <div class="luxury-footer-content">
-            <div class="luxury-footer-contact">
-                <small>
-                    <a target="_blank" style="font-weight: bold; text-decoration: none"
-                        href="mailto:giacomo@luxury-method.com">giacomo@luxury-method.com</a>
-                </small>
-                <a href="tel:+393920034695"><small>(+39) 3920034695</small></a>
-                <small>P.IVA: 17906211002</small>
-                <small><a href="https://www.luxury-method.com/privacy-policy" target="_blank">Privacy Policy</a></small>
-                <!-- Added Cookie Preferences Link Here -->
-                <small><a href="#" onclick="openModal('prefModal'); return false;">Cookie Preferences</a></small>
+        <div class="luxury-footer-container">
+            <div class="footer-top-row">
+                <!-- Left Column: Company Info -->
+                <div class="footer-column footer-fade-in delay-1">
+                    <div class="footer-text-group">
+                        <h4 style="margin: 0; font-size: 20px; letter-spacing: 1px;">LUXURY METHOD</h4>
+                        <p style="margin: 5px 0 0 0; font-size: 16px;">ROTELLA GIACOMO</p>
+                        <p style="margin: 5px 0 0 0; font-size: 16px;">P.IVA: 17906211002</p>
+                        <a href="https://www.luxury-method.com/it/note-legali" target="_blank"
+                            style="margin-top: 10px; display: block;">Note Legali</a>
+                    </div>
+                </div>
+
+                <!-- Right Column: Contact & Partner -->
+                <div class="footer-column right footer-fade-in delay-2">
+                    <div class="footer-text-group"
+                        style="text-align: right; align-items: flex-end; display: flex; flex-direction: column;">
+                        <a href="mailto:giacomo@luxury-method.com">giacomo@luxury-method.com</a>
+                        <a href="tel:+393920034695" style="margin-top: 5px;">(+39) 3920034695</a>
+                        <p style="margin: 5px 0 0 0; font-size: 16px;">00133, Rome, Italy</p>
+                        <a href="https://www.technifyx.com/" target="_blank" style="margin-top: 5px;">Partner of
+                            TechnifyX</a>
+
+                        <!-- Social Icons -->
+                        <div class="footer-socials" style="margin-top: 20px; justify-content: flex-end;">
+                            <a href="https://www.instagram.com/luxurymethod_agency/" target="_blank"
+                                class="social-icon-link">
+                                <img src="https://i.postimg.cc/XJSn0GKM/image-976.png" alt="Instagram" />
+                            </a>
+                            <a href="https://x.com/luxury_method" target="_blank" class="social-icon-link">
+                                <img src="https://luxury-method.vercel.app/twitter-logo.png" alt="X" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="social-icons">
-                <div class="social-link">
-                    <a href="https://www.instagram.com/luxurymethod_agency/" target="_blank">
-                        <img src="https://i.postimg.cc/XJSn0GKM/image-976.png" alt="Instagram" />
-                    </a>
-                </div>
-                <div class="social-link">
-                    <a href="https://x.com/luxury_method" target="_blank">
-                        <img src="https://luxury-method.vercel.app/twitter-logo.png" alt="X" />
-                    </a>
+            <!-- Bottom Row: Privacy Text -->
+            <div class="footer-bottom footer-fade-in delay-3"
+                style="border-top: 1px solid rgba(229, 215, 177, 0.2); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                <p style="margin: 0; font-size: 14px; opacity: 0.8; max-width: 600px;">We value your privacy. This site
+                    only uses essential technical cookies required to function.</p>
+                <div style="display:flex; gap: 20px;">
+                    <a href="#" onclick="openModal('prefModal'); return false;" style="font-size: 14px;">Cookie
+                        Preferences</a>
+                    <a href="https://www.luxury-method.com/privacy-policy" target="_blank"
+                        style="font-size: 14px;">Privacy Policy</a>
                 </div>
             </div>
         </div>
@@ -1851,37 +2030,11 @@
 
     <!-- =========================================
     13. GDPR MODALS & BANNERS (NEW)
-    ========================================= -->
+    ========================================= */ -->
 
     <!-- Floating Cookie Button (Right to Withdraw) -->
     <div class="floating-gdpr-btn" onclick="openModal('prefModal')" title="Cookie Preferences">
         <i class="fa-solid fa-cookie-bite"></i>
-    </div>
-
-    <!-- Privacy Policy Modal -->
-    <div id="privacyModal" class="gdpr-overlay">
-        <div class="gdpr-modal">
-            <button class="gdpr-close" onclick="closeModal('privacyModal')">&times;</button>
-            <h3>Privacy Policy</h3>
-            <p><strong>Effective Date:</strong> December 2025</p>
-            <p>At Luxury Method, we value your privacy and are committed to protecting your personal data in accordance
-                with the General Data Protection Regulation (GDPR).</p>
-
-            <h4>1. Data Collection</h4>
-            <p>We collect Identity Data (name) and Contact Data (email) when you voluntarily submit our contact forms.
-                We also collect Technical Data (IP address, browser type) via cookies if you consent.</p>
-
-            <h4>2. How We Use Data</h4>
-            <p>Your data is used solely to respond to inquiries and analyze website performance. We do not sell your
-                data to third parties.</p>
-
-            <h4>3. Your Rights</h4>
-            <p>You have the right to access, correct, or delete your data. You may withdraw consent at any time via the
-                settings button.</p>
-
-            <h4>4. Contact</h4>
-            <p>For privacy inquiries, please contact: giacomo@luxury-method.com</p>
-        </div>
     </div>
 
     <!-- Cookie Preferences Modal -->
@@ -2118,11 +2271,6 @@
             banner.classList.remove('visible');
         }
 
-        function resetCookies() {
-            localStorage.removeItem(COOKIE_NAME);
-            location.reload();
-        }
-
         function acceptAllCookies() {
             const consent = { analytics: true };
             saveAndClose(consent);
@@ -2150,7 +2298,7 @@
             const banner = document.getElementById('cookie-banner');
             const contentContainer = banner.querySelector('.cookie-content');
             contentContainer.innerHTML = `
-                <p>Preferences Saved. <a href="#" onclick="openModal('privacyModal'); return false;">Privacy Policy</a>.</p>
+                <p>Preferences Saved.  <a href="https://www.luxury-method.com/privacy-policy" target="_blank">Privacy Policy</a>.</p>
                 <div class="cookie-actions">
                     <button onclick="hideCookieBanner()">Close</button>
                 </div>
@@ -2215,25 +2363,79 @@
             // NEW TEXT REVEAL ANIMATION (ALL DEVICES)
             // ==========================================
             // Selector targets hero title, main content headings/paras, FAQ headers, FAQ intro, and FAQ items
-            const textElements = document.querySelectorAll('h1, .top-section p, .content h2, .content h3, .content p, .faq-container h2, .faq-intro, .faq-item');
+            // const textElements = document.querySelectorAll('h1, .top-section p, .content h2, .content h3, .content p, .faq-container h2, .faq-intro, .faq-item');
 
-            const textObserver = new IntersectionObserver((entries) => {
+            // const textObserver = new IntersectionObserver((entries) => {
+            //     entries.forEach(entry => {
+            //         if (entry.isIntersecting) {
+            //             entry.target.classList.add('active');
+            //         } else {
+            //             // Fade out when scrolling away
+            //             entry.target.classList.remove('active');
+            //         }
+            //     });
+            // }, {
+            //     threshold: 0.15, // Trigger when 15% visible
+            //     rootMargin: "-20px 0px -20px 0px" // Slight offset so it doesn't trigger at very edge
+            // });
+
+            // textElements.forEach(el => {
+            //     el.classList.add('reveal-text'); // Add the animation class dynamically
+            //     textObserver.observe(el);
+            // });
+
+            const textElements = document.querySelectorAll(
+                'h1, .top-section p, .content h2, .content h3, .content p, .faq-container h2, .faq-intro, .faq-item'
+            );
+
+            const textObserver = new IntersectionObserver(
+                entries => {
+                    entries.forEach(entry => {
+                        if (entry.intersectionRatio > 0.25) {
+                            entry.target.classList.add('active');
+                        } else if (
+                            entry.intersectionRatio < 0.1 &&
+                            entry.target.classList.contains('active')
+                        ) {
+                            entry.target.classList.remove('active');
+                        }
+                    });
+                },
+                {
+                    threshold: [0, 0.1, 0.25, 1]
+                }
+            );
+
+            textElements.forEach(el => {
+                el.classList.add('reveal-text');
+            });
+
+            /* IMPORTANT: defer observation */
+            requestAnimationFrame(() => {
+                textElements.forEach(el => {
+                    textObserver.observe(el);
+                });
+            });
+
+
+
+
+            // ==========================================
+            // FOOTER REVEAL ANIMATION (NEW)
+            // ==========================================
+            const footerElements = document.querySelectorAll('.footer-fade-in');
+            const footerObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    } else {
-                        // Fade out when scrolling away
-                        entry.target.classList.remove('active');
+                        entry.target.classList.add('visible');
                     }
                 });
             }, {
-                threshold: 0.15, // Trigger when 15% visible
-                rootMargin: "-20px 0px -20px 0px" // Slight offset so it doesn't trigger at very edge
+                threshold: 0.2
             });
 
-            textElements.forEach(el => {
-                el.classList.add('reveal-text'); // Add the animation class dynamically
-                textObserver.observe(el);
+            footerElements.forEach(el => {
+                footerObserver.observe(el);
             });
 
         });
