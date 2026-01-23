@@ -1,0 +1,3010 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8" />
+    <!-- Updated viewport to include viewport-fit=cover for iPhone safe area detection -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Influencer Marketing di Lusso</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <!-- Added FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* =========================================
+        1. GLOBAL RESET & BASE STYLES
+        ========================================= */
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: "Cormorant Garamond", serif;
+            scrollbar-width: none;
+            color: #000;
+        }
+
+        *::-webkit-scrollbar {
+            display: none;
+        }
+
+        body {
+            margin: 0;
+            background-color: #ebe0d5;
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            overflow-x: hidden;
+            min-height: 100vh;
+            /* Hidden overflow initially for loader */
+            overflow: hidden;
+        }
+
+        /* Links: Default browser behavior (underlined) maintained except where overridden */
+        a:visited {
+            color: #000;
+        }
+
+        /* =========================================
+           LOADER CSS (Integrated)
+           Duration Increased 1.5x (Animation slowed to 6s)
+        ========================================= */
+        #loader-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ebe0d5;
+            /* Increased Z-Index to Max Safe Integer to beat H1 */
+            z-index: 2147483647;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+        }
+
+        #loader-overlay.loader-hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-content {
+            text-align: center;
+            padding: 20px;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .loader-logo {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 2.5rem;
+            letter-spacing: 0.2rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            animation: fadePulse 3s infinite ease-in-out;
+        }
+
+        .loader-message-container {
+            height: 2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loader-message {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            margin: 0;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .loader-message.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .loader-progress-container {
+            width: 150px;
+            height: 2px;
+            background-color: rgba(0, 0, 0, 0.1);
+            margin: 2rem auto 0;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .loader-progress-bar {
+            width: 0%;
+            height: 100%;
+            background-color: #000;
+            /* Duration increased to 6s to match the 1.5x JS timeout (~3.75s) comfortably */
+            animation: luxuryProgress 6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        @keyframes fadePulse {
+
+            0%,
+            100% {
+                opacity: 0.8;
+            }
+
+            50% {
+                opacity: 0.4;
+            }
+        }
+
+        @keyframes luxuryProgress {
+            0% {
+                width: 0%;
+            }
+
+            40% {
+                width: 30%;
+            }
+
+            70% {
+                width: 70%;
+            }
+
+            100% {
+                width: 95%;
+            }
+        }
+
+        /* =========================================
+           LANGUAGE SELECTOR STYLES
+        ========================================= */
+        .lang-container {
+            position: fixed;
+            top: 80px;
+            /* Lowered to avoid Google Sites Nav */
+            right: 30px;
+            z-index: 100000;
+        }
+
+        .lang-btn {
+            background-color: rgba(235, 224, 213, 0.9);
+            backdrop-filter: blur(5px);
+            border: 1px solid #000;
+            color: #000;
+            padding: 8px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-radius: 4px;
+            font-family: "Cormorant Garamond", serif;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .lang-btn:hover {
+            background-color: #000;
+            color: #ebe0d5;
+        }
+
+        .lang-btn:hover span,
+        .lang-btn:hover i {
+            color: #ebe0d5;
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 5px;
+            background-color: #ebe0d5;
+            border: 1px solid #000;
+            border-radius: 4px;
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+            min-width: 100%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .lang-dropdown.show {
+            display: flex;
+        }
+
+        .lang-option {
+            padding: 10px 16px;
+            text-decoration: none;
+            color: #000;
+            font-size: 16px;
+            transition: background 0.2s;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+
+        .lang-option:hover {
+            background-color: #d6cfc1;
+        }
+
+        /* Responsive Text for Language */
+        .lang-full {
+            display: inline;
+        }
+
+        .lang-short {
+            display: none;
+        }
+
+        @media screen and (max-width: 768px) {
+            .lang-full {
+                display: none;
+            }
+
+            .lang-short {
+                display: inline;
+            }
+
+            .lang-container {
+                top: 95px;
+                /* Lowered below the 80px sidebar to prevent overlap */
+                right: 20px;
+            }
+        }
+
+        /* =========================================
+           GLOBAL CUSTOM SCROLL BUTTON (DESKTOP ONLY)
+        ========================================= */
+        .custom-scroll-container {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 24px;
+            /* Wider hit area */
+            height: 100vh;
+            z-index: 2147483646;
+            /* Below loader, above content */
+            display: flex;
+            justify-content: center;
+            background: transparent;
+            pointer-events: none;
+            /* Let clicks pass through container */
+        }
+
+        .custom-scroll-thumb {
+            position: absolute;
+            top: 0;
+            right: 6px;
+            /* Spacing from edge */
+            width: 12px;
+            /* Distinct width */
+            background-color: #000000;
+            /* Pure Black */
+            border-radius: 20px;
+            /* Pill shape */
+            cursor: pointer;
+            pointer-events: auto;
+            /* Enable clicks on button */
+            user-select: none;
+            touch-action: none;
+            transition: opacity 0.2s ease, transform 0.1s ease;
+            min-height: 60px;
+            /* Minimum height for visibility */
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            /* Slight contrast if needed */
+        }
+
+        /* Hover effect */
+        .custom-scroll-thumb:hover {
+            transform: scaleX(1.2);
+        }
+
+        .custom-scroll-thumb:active {
+            background-color: #333;
+        }
+
+        /* Hide on Mobile/Tablet */
+        @media screen and (max-width: 1024px) {
+            .custom-scroll-container {
+                display: none;
+            }
+        }
+
+        /* =========================================
+        2. TYPOGRAPHY
+        ========================================= */
+        h1 {
+            font-size: 4rem;
+            /* Desktop Default */
+        }
+
+        h2 {
+            text-align: center;
+            text-decoration: underline;
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+        p {
+            font-size: 18.7px !important;
+            /* Matches approx 14pt/large */
+            line-height: 1.656;
+            color: #000;
+        }
+
+        .text-blue {
+            color: blue;
+        }
+
+        /* =========================================
+           3. TEXT REVEAL ANIMATION (FINAL)
+        ========================================= */
+
+        .reveal-text {
+            opacity: 0;
+            transform: translateY(16px);
+            transition:
+                opacity 0.45s ease-out,
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal-text.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Ensure FAQ items animate as a block */
+        .faq-item.reveal-text {
+            opacity: 0;
+            transform: translateY(14px);
+            transition:
+                opacity 0.4s ease-out,
+                transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .faq-item.reveal-text.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ================================
+           TEXT STABILITY FIX FOR HEADINGS
+        ================================ */
+
+        h1.reveal-text,
+        h2.reveal-text,
+        h3.reveal-text {
+            opacity: 0;
+            transform: translateY(12px);
+            transition:
+                opacity 0.35s ease-out,
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        h1.reveal-text.active,
+        h2.reveal-text.active,
+        h3.reveal-text.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h1,
+        h2,
+        h3,
+        p {
+            backface-visibility: hidden;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* =========================================
+        4. HERO SECTION
+        ========================================= */
+        .hero {
+            width: 100%;
+            height: 100vh;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url('https://luxury-method.vercel.app/InfluencerMarketingHero.jpg');
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.98;
+            position: relative;
+        }
+
+        .hero-overlay {
+            opacity: 0.5;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #000;
+        }
+
+        .hero-title {
+            color: #ebe0d5;
+            text-align: center;
+            z-index: 999999999999;
+            font-weight: normal;
+            font-size: 4rem;
+            letter-spacing: 0.5rem;
+            margin: 0;
+        }
+
+        @supports (-webkit-touch-callout: none) {
+            .hero {
+                background-attachment: scroll !important;
+            }
+        }
+
+        /* =========================================
+        5. LAYOUT & UTILITIES
+        ========================================= */
+        .main-container {
+            display: flex;
+            flex: 1;
+            position: relative;
+        }
+
+        .content {
+            transition: all 1ms;
+            background-color: #ebe0d5;
+            color: #000;
+            width: 100%;
+            flex: 1;
+        }
+
+        .top-section {
+            width: 100%;
+            background-color: #ebe0d5;
+            padding: 10px;
+            margin-bottom: 0;
+        }
+
+        .section {
+            margin-bottom: 80px;
+        }
+
+        .paddingleftright {
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+
+        .mrginleft {
+            margin-left: 340px;
+        }
+
+        .mt-80 {
+            margin-top: 80px;
+        }
+
+        .mt-60 {
+            margin-top: 60px;
+        }
+
+        .mt-40 {
+            margin-top: 40px;
+        }
+
+        .mb-30 {
+            margin-bottom: 30px;
+        }
+
+        .mb-100 {
+            margin-bottom: 100px;
+        }
+
+        .flex-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* =========================================
+        6. SIDEBAR
+        ========================================= */
+        .sidebar {
+            width: 340px;
+            background-color: #ebe0d5;
+            color: white;
+            padding: 24px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding: 16px 40px;
+            bottom: 0;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            gap: 14px;
+            transform: translateY(100vh);
+            transition: transform 0.3s ease;
+            z-index: 100;
+            justify-content: center;
+        }
+
+        /* Unifying sidebar scrollbar styles */
+        .sidebar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .sidebar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .main-container-visible .sidebar {
+            transform: translateY(0);
+        }
+
+        .sidebar button {
+            background-color: #000;
+            color: #fff;
+            padding: 12px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .sidebar button:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        /* =========================================
+        7. IMAGES
+        ========================================= */
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .socialimg {
+            max-width: 550px;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .industry_Image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-block: 40px;
+            width: 100%;
+        }
+
+        .industry_Image img {
+            display: block;
+            width: 100%;
+            height: 70vh;
+            object-fit: cover;
+            object-position: center center;
+            max-height: 600px;
+            border-radius: 20px;
+        }
+
+        .img-fashion {
+            margin-top: 10px;
+        }
+
+        .img-jewellery {
+            height: 65vh;
+        }
+
+        .img-lifestyle {
+            margin-top: 10px;
+            margin-bottom: 30px;
+        }
+
+        /* 3D Effect- Shared */
+        .hover-3d {
+            transform-style: preserve-3d;
+            will-change: transform, opacity;
+            transition:
+                transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1),
+                box-shadow 0.45s cubic-bezier(0.25, 0.8, 0.25, 1),
+                opacity 0.35s ease-out;
+            opacity: 1;
+            transform: translateY(15px) scale(0.95);
+        }
+
+        /* =========================================
+        8. NAVIGATION CONTROLS (Arrows & Scroll)
+        ========================================= */
+        .left-arrow,
+        .right-arrow {
+            font-size: 20px;
+            color: #000;
+            cursor: pointer;
+            position: absolute;
+            top: 35%;
+            z-index: 15;
+            display: none;
+        }
+
+        .left-arrow {
+            left: 5px;
+            margin-right: 10px;
+        }
+
+        .right-arrow {
+            right: 5px;
+            margin-left: 10px;
+        }
+
+        .scroll-btn-left,
+        .scroll-btn-right {
+            display: none;
+            position: fixed;
+            top: 5px;
+            z-index: 30;
+        }
+
+        .scroll-btn-left {
+            left: 0px;
+        }
+
+        .scroll-btn-right {
+            right: 0px;
+        }
+
+        .scroll-btn {
+            background-color: rgba(235, 224, 213, 0.95);
+            border: none;
+            width: 30px;
+            height: 60px;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            border-radius: 0px;
+        }
+
+        .scroll-btn:hover {
+            background-color: rgba(235, 224, 213, 1);
+        }
+
+        .scroll-btn svg {
+            fill: #000;
+        }
+
+        /* =========================================
+        9. FAQ SECTION
+        ========================================= */
+        .faq-container {
+            margin-top: 20px;
+            z-index: 99999999999999999999999999;
+            position: relative;
+        }
+
+        .faq-intro {
+            text-align: center;
+            font-size: 24px !important;
+            font-style: italic;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #696969;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question h3 {
+            font-size: 18px;
+            font-weight: 500;
+            color: #1a1a1a;
+            text-align: left;
+        }
+
+        .faq-toggle {
+            width: 24px;
+            height: 24px;
+            background: transparent;
+            border: none;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .faq-toggle::before {
+            font-size: 18px;
+            color: #1a1a1a;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-toggle.active {
+            rotate: 180deg;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 0 0 2px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .faq-answer.active {
+            max-height: fit-content;
+            padding-bottom: 20px;
+            height: fit-content;
+        }
+
+        .faq-answer p {
+            margin-bottom: 10px;
+            font-size: 16px;
+            line-height: 1.5;
+            height: fit-content;
+            margin-top: 0;
+        }
+
+        /* Styled text replacement */
+        .faq-text-styled {
+            color: #000000;
+            font-size: 14pt;
+            font-variant: normal;
+            vertical-align: baseline;
+        }
+
+        /* =========================================
+        10. CONTACT & FOOTER (UPDATED)
+        ========================================= */
+        .contact-icons-container {
+            display: flex;
+            gap: 100px;
+            margin-top: 60px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .contact-btn {
+            padding: 20px;
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-btn img {
+            width: 30px;
+            height: 30px;
+            border-radius: 100%;
+        }
+
+
+        .luxury-footer {
+            background-image: url("https://luxury-method.vercel.app/Footer.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 80px 0 40px 0;
+            color: #e5d7b1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .luxury-footer::before {
+            /* Optional overlay to ensure text readability */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        /* Forces all text within footer to be the correct color */
+        .luxury-footer p,
+        .luxury-footer h4,
+        .luxury-footer span,
+        .luxury-footer a,
+        .luxury-footer a:visited {
+            color: #e5d7b1 !important;
+        }
+
+        .luxury-footer-container {
+            max-width: 1200px;
+            width: 90%;
+            margin: auto;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        .footer-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .footer-column.center {
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-column.right {
+            align-items: flex-end;
+            text-align: right;
+        }
+
+        .luxury-footer a {
+            text-decoration: none;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+            transition: opacity 0.3s ease, color 0.3s ease;
+            position: relative;
+            width: fit-content;
+        }
+
+        /* Underline effect on hover */
+        .luxury-footer a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: #e5d7b1;
+            transition: width 0.3s ease;
+        }
+
+        .luxury-footer a:hover::after {
+            width: 100%;
+        }
+
+        .luxury-footer a:hover {
+            opacity: 0.8;
+        }
+
+        /* Social Icons (Refined) */
+        .footer-socials {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .social-icon-link img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            filter: brightness(0.9);
+        }
+
+        .social-icon-link:hover img {
+            transform: scale(1.1);
+            filter: brightness(1);
+        }
+
+        /* Footer Animation Classes */
+        .footer-fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .footer-fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger delays for nicer effect */
+        .delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        .contact-form-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            margin-bottom: 100px;
+        }
+
+        .contact-form-link {
+            padding-left: 80px;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            padding-right: 80px;
+            border: 1px solid #000;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        /* =========================================
+        11. BACK TO TOP
+        ========================================= */
+        .back-to-top {
+            position: fixed;
+            bottom: 60px;
+            right: 30px;
+            z-index: 99999999999999;
+            width: 50px;
+            height: 50px;
+            background-color: #ffffff;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-to-top:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* =========================================
+        12. COOKIE BANNER (MODERN DARK)
+        ========================================= */
+        /* Keeps the Banner Look Dark as requested */
+        .cookie-banner {
+            position: fixed;
+            bottom: 50px;
+            /* LIFTED HIGHER for safety on desktop */
+            /* Floating look on desktop */
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 90%;
+            max-width: 1000px;
+            background-color: #1c1c1c;
+            /* Dark background for contrast against beige */
+            color: #ebe0d5;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            /* Modern rounded corners */
+            padding: 24px 32px;
+            z-index: 2000000000000;
+            transform: translateY(150%);
+            /* Hidden state */
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+            opacity: 0;
+        }
+
+        .cookie-banner.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .cookie-content {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .cookie-content p {
+            margin: 0;
+            font-size: 16px !important;
+            color: #ebe0d5;
+            /* Slightly off-white for readability */
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .cookie-content a {
+            text-decoration: underline;
+            color: #ebe0d5;
+            text-underline-offset: 4px;
+        }
+
+        .cookie-actions {
+            display: flex;
+            gap: 15px;
+            flex-shrink: 0;
+        }
+
+        .cookie-actions button {
+            background-color: #ebe0d5;
+            /* White button */
+            border: none;
+            color: #000000;
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            /* Slightly rounded buttons */
+        }
+
+        .cookie-actions button:hover {
+            background-color: #d6cfc1;
+            transform: translateY(-2px);
+        }
+
+        /* Essentials button style (Outlined) */
+        .cookie-actions button:first-child {
+            background-color: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-color: #fff;
+            color: #ebe0d5;
+        }
+
+        .cookie-actions button:first-child:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: #fff;
+            color: #fff;
+        }
+
+        /* =========================================
+        13. GDPR COMPONENTS (NEW BEIGE THEME)
+        ========================================= */
+        /* Common Overlay */
+        .gdpr-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 2000000000001;
+            /* Higher than banner */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+
+        .gdpr-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Beige Modal Design from User Snippet */
+        .gdpr-modal {
+            background-color: #ebe0d5;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            border: 1px solid #000;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .gdpr-modal h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: normal;
+            border-bottom: 1px solid #000;
+            padding-bottom: 10px;
+            text-align: left;
+            color: #000;
+        }
+
+        .gdpr-modal p,
+        .gdpr-modal li {
+            font-size: 1.1rem !important;
+            margin-bottom: 15px;
+            color: #000;
+        }
+
+        .gdpr-modal h4 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #000;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        .gdpr-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            border: none;
+            background: none;
+            color: #000;
+        }
+
+        .gdpr-btn {
+            background-color: transparent;
+            border: 1px solid #000;
+            color: #000;
+            padding: 10px 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: "Cormorant Garamond", serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .gdpr-btn:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        /* Toggle Switch for Preferences */
+        .pref-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .pref-text h4 {
+            margin: 0;
+            font-size: 1.2rem;
+            text-align: left;
+            color: #000;
+        }
+
+        .pref-text p {
+            margin: 5px 0 0 0;
+            font-size: 0.9rem !important;
+            opacity: 0.8;
+            color: #333;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: #000;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(26px);
+        }
+
+        input:disabled+.slider {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Floating Settings Button (White Circle) */
+        .floating-gdpr-btn {
+            position: fixed;
+            bottom: 60px;
+            /* Exact match to back-to-top */
+            left: 30px;
+            /* Symmetrical to right: 30px */
+            width: 50px;
+            height: 50px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 9998;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            /* Match shadow of back-to-top */
+            transition: transform 0.3s ease;
+            /* Match transition easing */
+            color: #000;
+            line-height: 1;
+            /* Prevent line-height shifts */
+        }
+
+        .floating-gdpr-btn i {
+            font-size: 24px;
+            /* Explicit size to match SVG */
+        }
+
+        .floating-gdpr-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* =========================================
+        14. MEDIA QUERIES
+        ========================================= */
+
+        /* --- Tablet/Mobile (Max Width 768px) --- */
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 30px !important;
+            }
+
+            p {
+                font-size: large;
+            }
+
+            .top-section {
+                padding: 5px;
+            }
+
+            .mrginleft {
+                margin-left: 0px;
+            }
+
+            .content {
+                margin-top: 100px;
+                margin-left: 0px;
+            }
+
+            /* Sidebar Changes */
+            .sidebar {
+                width: 100%;
+                height: 80px;
+                padding: 20px 20px 0 20px;
+                left: 0;
+                top: 0;
+                background-color: #ebe0d5;
+                z-index: 10;
+                overflow-x: auto;
+                overflow-y: hidden;
+                flex-direction: row;
+                white-space: nowrap;
+                gap: 12px;
+                justify-content: flex-start;
+            }
+
+            .sidebar button {
+                font-size: 3.5vw;
+                padding: 10px 16px;
+            }
+
+            /* Hiding scroll buttons */
+            .scroll-btn-left,
+            .scroll-btn-right,
+            .scroll-btn,
+            .left-arrow,
+            .right-arrow {
+                display: none !important;
+            }
+
+            .back-to-top {
+                bottom: 80px;
+                bottom: calc(80px + env(safe-area-inset-bottom));
+            }
+
+            .industry_Image img {
+                height: auto !important;
+                max-width: 700px;
+                width: 100%;
+            }
+
+            .faq-question {
+                padding: 0 0 !important;
+            }
+
+            .contact-icons-row {
+                justify-content: center !important;
+            }
+
+            .luxury-footer-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .luxury-footer-contact {
+                margin-bottom: 20px;
+                text-align: center;
+            }
+
+            .social-icons {
+                justify-content: center !important;
+                margin-top: 20px;
+            }
+
+            .hover-3d {
+                transform: scale(0.85);
+                opacity: 0.3;
+                transition:
+                    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                    opacity 0.35s ease-out;
+            }
+
+            .hover-3d.is-visible {
+                transform: scale(1.03);
+                opacity: 1;
+                box-shadow: 0 12px 22px rgba(0, 0, 0, 0.15);
+            }
+
+            /* HIDE FLOATING COOKIE BUTTON ON MOBILE */
+            .floating-gdpr-btn {
+                display: none !important;
+            }
+
+            .cookie-banner {
+                bottom: 90px;
+                bottom: calc(150px + env(safe-area-inset-bottom));
+                width: 90%;
+                max-width: 400px;
+                left: 0;
+                right: 0;
+                margin: 0 auto;
+                border-radius: 16px;
+                padding: 24px;
+                padding-bottom: 24px;
+                transform: translateY(150%);
+            }
+
+            .cookie-banner.visible {
+                transform: translateY(0);
+            }
+
+            .cookie-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .cookie-content p {
+                min-width: auto;
+                font-size: 15px !important;
+            }
+
+            .cookie-actions {
+                width: 100%;
+                justify-content: space-between;
+                gap: 10px;
+            }
+
+            .cookie-actions button {
+                flex: 1;
+                padding: 14px;
+            }
+
+            /* Footer Mobile Adjustments */
+            .footer-top-row {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 50px;
+            }
+
+            .footer-column,
+            .footer-column.center,
+            .footer-column.right {
+                align-items: center;
+                text-align: center;
+                width: 100%;
+            }
+
+            .luxury-footer a::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .luxury-footer a:hover::after {
+                width: 100%;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .footer-bottom-links {
+                justify-content: center;
+            }
+
+            .footer-text-group {
+                align-items: center !important;
+                text-align: center !important;
+                display: flex !important;
+                flex-direction: column !important;
+                width: 100%;
+            }
+
+            .footer-socials {
+                justify-content: center !important;
+            }
+        }
+
+
+        @media (min-width: 769px) {
+            .hover-3d {
+                opacity: 1;
+                transform: none;
+            }
+
+            .hover-3d:hover {
+                transform: translateY(-8px) scale(1.05);
+                box-shadow: 0 20px 35px rgba(0, 0, 0, 0.22);
+            }
+        }
+
+        /* --- Small Mobile (Max Width 500px) --- */
+        @media screen and (max-width: 500px) {
+            .back-to-top {
+                bottom: 120px !important;
+                bottom: calc(120px + env(safe-area-inset-bottom)) !important;
+            }
+
+            .contact-icons-container {
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+
+            .floating-gdpr-btn {
+                bottom: 120px;
+            }
+
+            .cookie-banner {
+                bottom: 120px;
+                bottom: calc(150px + env(safe-area-inset-bottom));
+            }
+        }
+
+        /* --- Tiny Mobile (Max Width 400px) --- */
+        @media screen and (max-width: 400px) {
+            h3 {
+                font-size: 18px;
+            }
+
+            .luxury-footer-content {
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .sidebar button {
+                padding: 8px;
+                font-size: 3.5vw;
+                height: fit-content;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ============================================
+         LANGUAGE SELECTOR (Top Right)
+         ============================================ -->
+    <div class="lang-container">
+        <button class="lang-btn" onclick="toggleLangMenu()">
+            <span class="lang-full">Italiano</span>
+            <span class="lang-short">IT</span>
+            <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="lang-dropdown" id="langDropdown">
+            <a href="#" class="lang-option" onclick="selectLang('it')">
+                <span class="lang-full">Italiano</span>
+                <span class="lang-short">IT</span>
+            </a>
+            <!-- Link to English version (Placeholder URL) -->
+            <a href="https://luxury-method.vercel.app/Webpages/Extra.html" class="lang-option"
+                onclick="selectLang('en')">
+                <span class="lang-full">English</span>
+                <span class="lang-short">EN</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-overlay"></div>
+        <h1 class="hero-title">
+            INFLUENCER MARKETING DI LUSSO
+        </h1>
+    </div>
+
+    <div class="paddingleftright mrginleft">
+        <!-- Intro Section -->
+        <div class="top-section">
+            <div class="mt-80">
+                <p>L'influencer marketing di lusso è una componente cruciale delle moderne strategie di marketing di
+                    lusso per i brand che cercano
+                    di interagire con un pubblico di fascia alta. Soprattutto in un mercato esclusivo dove il
+                    comportamento dei consumatori è guidato
+                    dall'autenticità di un brand.
+
+                    Collaborando con i giusti influencer che si allineano con i giusti valori ed estetica, il tuo brand
+                    non può
+                    solo mantenere la sua immagine esclusiva, ma anche promuoverla. Il tutto costruendo connessioni
+                    genuine
+                    all'interno del tuo
+                    mercato target, oltre a navigare nel frenetico mondo del marketing digitale.
+                </p>
+                <p>Un'<a target="_blank" href="https://www.luxury-method.com/luxury-marketing-agency">agenzia di
+                        influencer marketing di lusso</a>
+                    è specializzata nella creazione di strategie di influencer marketing che si concentrano sulla
+                    promozione di una campagna o
+                    prodotto.
+
+                    Con l'esclusività nell'influencer marketing al centro della nostra filosofia, Luxury Method aiuta il
+                    tuo brand a
+                    condividere
+                    storie, amplificare la tua portata e costruire connessioni leali, trasformando momenti influenti in
+                    esperienze di brand
+                    iconiche.
+                </p>
+            </div>
+        </div>
+
+        <div class="main-container" id="main-container">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <button onclick="scrollToSection('aud')">Trend dell'Influencer Marketing 2025</button>
+                <button onclick="scrollToSection('impac')">I settori con cui lavoriamo</button>
+                <button onclick="scrollToSection('brand')">Chi Siamo</button>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="content">
+
+                <!-- Section 1 -->
+                <div id="top" class="top-section">
+                    <h2 style="font-weight: bold;">Influencer Marketing sulle Piattaforme Social Media</h2>
+                </div>
+                <div class="section">
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1592839930500-3445eb72b8ad?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            class="socialimg hover-3d" alt="Influencer Marketing">
+                    </div>
+
+                    <p><strong>Le strategie di marketing digitale per i brand di lusso</strong> devono mirare ad
+                        aumentare la visibilità
+                        e incrementare
+                        il coinvolgimento. E i canali <a target="_blank"
+                            href="https://www.luxury-method.com/services/luxury-social-media-agency">social media</a>
+                        sono il percorso perfetto per fare proprio questo. Piattaforme come Instagram, Pinterest e
+                        TikTok si sono
+                        evolute in canali essenziali per i brand di lusso per costruire relazioni con clienti
+                        facoltosi.</p>
+
+                    <p>Lavorare con i <strong>migliori influencer di content marketing</strong> è fondamentale per un
+                        brand che opera in
+                        un mercato di lusso.
+                        Un brand di lusso che fa influencer marketing online può curare e perfezionare la propria
+                        presenza attraverso
+                        contenuti personalizzati
+                        a cui il loro pubblico può relazionarsi. Che sia attraverso un post estetico su Instagram, una
+                        bacheca
+                        Pinterest
+                        della tua ultima collezione, o anche partecipando a una sfida su TikTok che mostra un
+                        prodotto, ogni post
+                        è una descrizione visiva del tuo brand di lusso, e le partnership con influencer lo
+                        autenticano.</p>
+
+                    <p><strong>L'influencer marketing su Pinterest</strong> è particolarmente efficace per i brand di
+                        lusso nei settori
+                        retail,
+                        home decor e viaggi, in quanto consente una narrazione visiva dell'artigianato dietro le
+                        aziende di
+                        lusso.
+                        Mentre un'<strong>agenzia di influencer Instagram</strong> può aiutare un brand a promuovere
+                        un'esclusiva
+                        collaborazione di brand all'interno di pubblicità visivamente accattivanti, che conducono un
+                        pubblico mirato
+                        direttamente
+                        ai prodotti o servizi sulla tua pagina. Allo stesso modo, un'<strong>agenzia di influencer
+                            TikTok</strong>
+                        offre una vetrina divertente
+                        e dinamica di un brand attraverso contenuti virali mantenendo l'essenza di
+                        esclusività.</p>
+
+                    <p>In Luxury Method, collaboriamo con gli <strong>influencer di marketing online</strong> più
+                        fidati che
+                        creeranno contenuti che riflettono gli standard elevati del tuo brand e svilupperanno un
+                        allineamento perfetto
+                        con la tua
+                        immagine di lusso. Posizionare il tuo brand di lusso sulla piattaforma giusta è il primo passo
+                        per distinguersi
+                        e
+                        catturare l'attenzione di un pubblico sofisticato e su misura. Sfrutta il potere dell'influencer
+                        marketing per brand di
+                        lusso
+                        ed eleva il tuo brand a nuove vette.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Trends -->
+        <div class="content" id="con2">
+            <div id="top2" class="top-section">
+                <h2 id="aud" style="font-weight: bold;">Trend dell'Influencer Marketing 2025</h2>
+            </div>
+
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1735293840436-b6950d1cdb1a?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    class="socialimg hover-3d" alt="Paid Social Media">
+            </div>
+
+            <p><b>I trend dell'influencer marketing nel 2025</b> stanno rapidamente rimodellando il modo in cui i brand
+                di lusso comunicano con
+                i loro
+                consumatori d'élite. Poiché una connessione emotiva più profonda e la coerenza del brand diventano un
+                tratto della personalità, piuttosto che un
+                piano aziendale, stiamo assistendo a un importante spostamento verso <b>collaborazioni di brand di
+                    lusso</b> a lungo termine con
+                creator di nicchia.
+                Invece di fare affidamento su post promozionali una tantum, le etichette favoriscono influencer del
+                mercato del lusso che
+                si allineano veramente con l'immagine di un brand per sviluppare uno storytelling sostenuto che
+                costruisce fiducia e lealtà.</p>
+
+            <p>Un'altra evoluzione chiave è l'ascesa dell'<b>influencer marketing locale</b>. È qui che i brand si
+                rivolgono a
+                micro-comunità attraverso creator regionalmente influenti. Questo approccio iper-mirato offre di
+                costruire
+                una connessione più genuina e impattante con un micro pubblico. La priorità è un coinvolgimento più
+                alto piuttosto che un
+                alto
+                conteggio di follower, per garantire esperienze curate che risuonano a livello personale.</p>
+
+            <p>Inoltre, i <b>trend nell'influencer marketing</b> si stanno muovendo verso esperienze immersive per
+                catturare veramente
+                i <b>consumatori di fascia alta</b>. Questo può essere presentato in video di prova visivi, contenuti
+                lifestyle dietro le quinte,
+                posizionamento virtuale di prodotti in ambienti reali e persino vlogging "day in the life" guidati dagli
+                influencer.
+            </p>
+
+            <p>Con i consumatori della Gen Z e Millennial che continuano a dominare il mercato, c'è una crescente
+                pressione per
+                trasparenza, innovazione e storytelling genuinamente interessante da parte di un brand.</p>
+
+            <p>Sebbene questi trend forniscano una moltitudine di <b>pro e contro dell'influencer marketing</b>, è
+                chiaro che
+                i brand di lusso che restano al passo con questi trend dell'influencer marketing di lusso manterranno il
+                loro vantaggio in uno
+                spazio digitale sempre più competitivo.</p>
+        </div>
+
+        <!-- Section 3: Influencer vs Affiliate -->
+        <div class="content" id="con3">
+            <div id="top2" class="top-section">
+                <h2 id="industry" style="font-weight: bold;">Influencer Vs. Affiliate Marketing</h2>
+            </div>
+
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1741851578333-b17d003679c7?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    class="socialimg hover-3d" alt="Influencer Vs. Affiliate Marketing">
+            </div>
+
+            <p>Nel mercato del lusso, confrontare <b>influencer vs affiliate marketing</b> evidenzia una chiara
+                differenza in
+                strategia e influenza. Mentre l'affiliate marketing è basato sulle prestazioni, guadagnando commissioni
+                dai
+                partner
+                che guidano click e vendite, spesso manca l'elemento emotivo dello storytelling che attrae
+                conversazioni da
+                clienti di fascia alta.</p>
+
+            <p>D'altra parte, gli influencer di marketing online eccellono nel creare contenuti eccezionali, fatti a
+                mano, che
+                si allineano direttamente
+                con gli stili di vita di lusso. Uno dei principali <b>vantaggi dell'influencer marketing</b> è la
+                capacità
+                di
+                costruire fiducia e desiderio attraverso relazioni a lungo termine all'interno di comunità affiatate di
+                follower facoltosi. Questo
+                mercato apprezza l'esclusività e l'esperienza che deriva solo da narrazioni visivamente ricche.</p>
+
+            <p>L'affiliate marketing si basa sul volume frenetico di ogni vendita, lead o azione. Il lusso richiede un
+                approccio più
+                raffinato quando si eleva la percezione del brand. Un <b>Influencer marketing di prodotti di lusso</b>
+                combina
+                immagine, influenza ed emozione poiché incarnano l'intera essenza di un brand.</p>
+
+            <p>Perché il tuo brand di prestigio mantenga il fascino guidando al contempo il coinvolgimento, l'influencer
+                marketing di lusso si distingue
+                come il metodo più efficace per connettersi con un pubblico selettivo in modo significativo.</p>
+        </div>
+
+        <!-- Section 4: Top Influencers -->
+        <div class="content" id="con3">
+            <div id="top2" class="top-section">
+                <h2 id="Cont" style="font-weight: bold;">I Migliori Influencer di Lusso</h2>
+            </div>
+
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    class="socialimg hover-3d" alt="">
+            </div>
+
+            <p>Gli influencer di lusso di oggi stanno ridefinendo gli standard del <span class="text-blue"><a
+                        target="_blank" href="https://www.luxury-method.com/services/luxury-branding">branding di fascia
+                        alta</a></span>
+                attraverso
+                contenuti visivamente sbalorditivi e strategicamente realizzati. Come top influencer di content
+                marketing, guidano
+                coinvolgimento
+                e fiducia nei settori moda, viaggi e retail. Questi <b>leader dell'influencer marketing della
+                    moda</b>—come
+                Leonie Hanne, Chriselle Lim e Nora Smith—fondono perfettamente eleganza con impatto digitale. Noti per
+                plasmare
+                i trend, si classificano anche tra i <b>più grandi influencer nel marketing online</b> oggi. La loro
+                influenza
+                si estende
+                globalmente, rendendoli ideali per campagne di influencer marketing retail e influencer marketing
+                viaggi.
+                Queste
+                voci potenti sono essenziali nel panorama odierno degli <b>influencer di content marketing</b>, guidando
+                visibilità
+                e valore per i brand di lusso.</p>
+        </div>
+
+        <!-- Section 5: Industries -->
+        <div class="content" id="con3">
+            <div id="top2" class="top-section">
+                <h2 id="impac" style="text-decoration:none; font-weight: bold;">I SETTORI CON CUI LAVORIAMO</h2>
+                <p>In Luxury Method, siamo specializzati nell'<b>elevare brand attraverso settori di fascia alta</b>,
+                    inclusi
+                    moda,
+                    viaggi, alta cucina e automotive, attraverso partnership di influencer marketing di lusso curate.
+                    Nelle
+                    sezioni seguenti, esploreremo come le nostre strategie di influencer su misura guidano il
+                    coinvolgimento e
+                    l'esclusività
+                    all'interno di ciascuno di questi settori d'élite.</p>
+            </div>
+
+            <div>
+                <h3 style="font-weight: bold;"> Influencer Marketing di Lusso per Brand di Moda</h3>
+                <div class="industry_Image img-fashion">
+                    <img src="https://luxury-method.vercel.app/FASHION.png" class="hover-3d" alt="Fashion Industry">
+                </div>
+
+                <p>I brand di moda di lusso utilizzano costantemente <a target="_blank"
+                        href="https://www.luxury-method.com/industries/luxury-fashion-marketing">strategie di
+                        marketing digitale
+                        per moda e brand di lusso</a>, per rimanere avanti nel mercato competitivo. E una delle tattiche
+                    più
+                    potenti è
+                    l'<b>influencer marketing nel settore della moda</b>.
+                </p>
+
+                <p>Stabilire partnership con influencer di lusso di alto profilo eleva la visibilità e
+                    desiderabilità di un brand e sviluppa la relazione tra il tuo brand e i suoi clienti facoltosi.</p>
+
+                <p>Una <b>strategia di marketing per brand di moda di lusso</b> di successo include tipicamente
+                    collaborazioni con
+                    influencer di brand di lusso
+                    che incarnano l'identità e l'essenza di un brand, costruendo sulla sua ideologia di lusso. Essi
+                    mostreranno
+                    prodotti e campagne attraverso le loro pagine social media, inclusi Instagram e TikTok.</p>
+
+                <p>I <b>top brand di moda che utilizzano l'influencer marketing</b>, come <b>Gucci, Dior o Chanel</b>,
+                    hanno
+                    dimostrato come partnership strategiche con influencer possano guidare il coinvolgimento e aumentare
+                    le vendite. Puoi vedere
+                    questi
+                    brand collaborare tipicamente con influencer durante le settimane della moda, lanci di prodotti ed
+                    eventi esclusivi
+                    per
+                    creare contenuti aspirazionali. Sia per etichette emergenti
+                    che consolidate, un'agenzia di influencer marketing di moda garantisce l'accesso a reti di
+                    influencer curate,
+                    gestione delle campagne e analisi delle prestazioni. </p>
+                <p>Con la rapida evoluzione dei canali digitali, l'influencer marketing di lusso rimane un pilastro
+                    essenziale
+                    del
+                    marketing della moda di lusso.</p>
+            </div>
+
+            <div>
+                <h3 class="mt-80" style="font-weight: bold;"> Influencer Marketing di Lusso per l'Immobiliare</h3>
+
+                <div class="industry_Image">
+                    <img src="https://luxury-method.vercel.app/REAL_ESTATE.png" class="hover-3d"
+                        alt="Real Estate Industry">
+                </div>
+
+                <p>I brand immobiliari di lusso stanno abbracciando il potere dell'<b>influencer marketing
+                        immobiliare</b> per
+                    connettersi con
+                    individui altamente selezionati in modo più autentico e impattante. Utilizzando l'<a target="_blank"
+                        href="https://www.luxury-method.com/industries/luxury-real-estate-marketing">immobiliare</a>,
+                    agenzie e
+                    sviluppatori possono mostrare proprietà attraverso voci fidate che hanno costruito credibilità e
+                    autorità
+                    online.
+                    Questo approccio umanizza gli annunci e crea contenuti aspirazionali che <b>risuonano con gli
+                        acquirenti di lusso</b>.
+                </p>
+
+                <p>Le strategie di influencer marketing immobiliare includono spesso tour virtuali delle proprietà,
+                    contenuti lifestyle,
+                    e
+                    scorci di vita dietro le quinte, che rappresentano non solo una casa, ma lo stile di vita di lusso
+                    che
+                    rappresenta.
+                </p>
+
+                <p>La crescente <b>influenza del marketing online sul business immobiliare</b> sottolinea il senso di
+                    fiducia
+                    e personalizzazione che impatta significativamente le decisioni di acquisto. Che si tratti di
+                    collaborare con influencer di lifestyle di lusso, trendsetter di interior design o creatori di
+                    contenuti immobiliari,
+                    l'obiettivo è elevare la visibilità della proprietà in modo curato e coinvolgente. </p>
+                <p>Guidato dal cambiamento del comportamento dei consumatori, l'influencer marketing di lusso sta ora
+                    trasformando il modo in cui le proprietà di fascia alta
+                    vengono commercializzate, offrendo esperienze immersive e basate sulla fiducia che superano di gran
+                    lunga la portata e l'impatto della
+                    pubblicità tradizionale.</p>
+            </div>
+
+            <div>
+                <h3 class="mt-80" style="font-weight: bold;"> Influencer Marketing di Lusso per l'Ospitalità</h3>
+                <div class="industry_Image">
+                    <img src="https://luxury-method.vercel.app/HOSPITALITY.png" class="hover-3d"
+                        alt="Hospitality Industry">
+                </div>
+
+                <p>L'influencer marketing di lusso è diventato una strategia vitale all'interno del settore
+                    dell'ospitalità per ridefinire
+                    la visibilità del brand
+                    e il coinvolgimento degli ospiti. Attraverso il <a target="_blank"
+                        href="https://www.luxury-method.com/industries/luxury-hospitality-marketing-agency">settore
+                        dell'ospitalità</a>, il tuo brand premium può creare esperienze autentiche che risuonano con
+                    viaggiatori facoltosi e
+                    clienti esigenti.</p>
+
+                <p>Le strategie di <a target="_blank"
+                        href="https://www.luxury-method.com/industries/luxury-food-marketing">influencer marketing per
+                        ristoranti</a>
+                    si concentrano sulla collaborazione con food blogger, influencer lifestyle e chef famosi per
+                    mostrare
+                    piatti d'autore, menu esclusivi ed esperienze culinarie curate. Allo stesso modo, le campagne di
+                    <b>influencer marketing per hotel</b> coinvolgono partnership con influencer di viaggio che mettono
+                    in risalto sistemazioni
+                    lussuose,
+                    servizi personalizzati e comfort unici. Questi influencer possono trasformare un soggiorno in una
+                    narrazione
+                    visivamente ricca e
+                    guidata dalla storia.</p>
+
+                <p>L'<b>influencer marketing food and beverage</b> migliora ulteriormente l'attrattiva delle offerte sia
+                    di hotel che
+                    di ristoranti
+                    coinvolgendo un pubblico di nicchia che segue i trend gourmet e le esperienze culinarie di fascia
+                    alta.
+                    Queste
+                    campagne costruiscono credibilità, generano interesse e incoraggiano le prenotazioni attingendo alla
+                    fiducia e
+                    all'influenza
+                    che questi creator hanno con i loro follower.</p>
+
+                <p>Poiché i viaggiatori cercano sempre più esperienze personalizzate, l'<b>influencer marketing nel
+                        settore dell'ospitalità</b> fornisce un modo potente per il tuo brand di lusso per costruire
+                    fiducia, aumentare la visibilità e
+                    guidare
+                    prenotazioni di alto valore.</p>
+            </div>
+
+            <div>
+                <h3 class="mt-80" style="font-weight: bold;"> Influencer Marketing di Lusso per il Retail</h3>
+
+                <div class="industry_Image">
+                    <img src="https://luxury-method.vercel.app/RETAIL.png" class="hover-3d" alt="Retail Industry">
+                </div>
+
+                <p>Nel panorama retail odierno guidato dall'esperienza, l'influencer marketing di lusso è uno strumento
+                    chiave che i brand premium
+                    stanno utilizzando per rivolgersi ai consumatori moderni e attenti allo stile. I <a target="_blank"
+                        href="https://www.luxury-method.com/industries/luxury-retail-marketing">brand di shopping
+                        retail</a> coinvolgono
+                    collaborazioni con influencer lifestyle e di moda, che attraggono clienti aspirazionali e usano
+                    la loro
+                    voce fidata per riflettere l'immagine del brand. Le partnership di <b>influencer marketing
+                        retail</b> possono
+                    mostrare
+                    collezioni esclusive, esperienze in negozio e uscite in edizione limitata.</p>
+
+                <p>Nelle capitali della moda come Milano, l'influencer marketing di lusso si è dimostrato
+                    particolarmente efficace, consentendo
+                    ai brand
+                    di fondere la cultura locale con l'attrattiva globale attraverso campagne digitali curate. Queste
+                    campagne elevano
+                    la presenza di un brand
+                    a più pubblico e guidano l'intento di acquisto tra i consumatori attivi.</p>
+
+                <p>Per quelli di voi che stanno esplorando <b>come far crescere il proprio business con l'influencer
+                        marketing</b>,
+                    allinearsi con
+                    l'influencer giusto - quelli che riflettono autenticamente l'immagine del tuo brand e costruiscono
+                    su di essa - è assolutamente
+                    cruciale.
+                    Questi influencer offrono un accesso unico a un pubblico di nicchia attraverso il loro strato di
+                    pubblicità
+                    autentica, il
+                    tipo che la pubblicità tradizionale non può offrire.</p>
+
+                <p>L'influencer marketing per brand di lusso consente conversazioni entusiaste nel mercato retail di
+                    lusso
+                    in continua evoluzione.</p>
+            </div>
+
+            <div>
+                <h3 class="mt-80" style="font-weight: bold;"> Influencer Marketing di Lusso per Gioielli</h3>
+
+                <div class="industry_Image">
+                    <img src="https://luxury-method.vercel.app/JEWELLERY.png" alt="Jewellery Industry"
+                        class="img-jewellery hover-3d">
+                </div>
+
+                <p>L'<a target="_blank"
+                        href="https://www.luxury-method.com/industries/luxury-jewelry-marketing">alta
+                        gioielleria</a> si è
+                    evoluta con l'ascesa dei social media, venendo ridefinita dall'uso strategico dell'<b>influencer
+                        marketing per
+                        gioielli</b>. I brand di alta gioielleria si rivolgono sempre più a influencer che incarnano
+                    l'autentica
+                    essenza dei brand di lusso e mostrano le collezioni al loro pubblico di prestigio.</p>
+
+                <p>Queste collaborazioni forniscono uno storytelling potente e contenuti accattivanti che ti consentono
+                    di distinguerti
+                    in un
+                    mercato competitivo della gioielleria di lusso. L'influencer marketing per brand di lusso non solo
+                    eleva un'identità
+                    di brand,
+                    ma la porta anche in vita all'interno di <b>contenuti lifestyle curati</b>.</p>
+
+                <p>Quando navighi nella <b>strategia di marketing per orologi di lusso</b> del tuo brand, allinearti con
+                    influencer noti
+                    per
+                    la loro raffinatezza e contenuti di alta classe può amplificare l'eredità e l'artigianato di un
+                    brand.</p>
+
+                <p>Questo approccio moderno consente al tuo brand di lusso di raggiungere consumatori più giovani e
+                    guidati dal digitale, che
+                    apprezzano
+                    il marketing autentico rispetto agli approcci tradizionali.</p>
+
+                <p>Investendo in partnership con influencer, puoi convertire i follower dei social media in clienti
+                    fedeli
+                    attraverso
+                    il miglioramento della tua presenza digitale. L'<b>influencer marketing per gioielli</b> non è più
+                    opzionale,
+                    è
+                    essenziale per rimanere rilevanti in un panorama digitale.</p>
+            </div>
+
+            <div>
+                <h3 class="mt-80" style="font-weight: bold;"> Influencer Marketing di Lusso per il Lifestyle</h3>
+
+                <div class="industry_Image img-lifestyle">
+                    <img src="https://luxury-method.vercel.app/LIFESTYLE.png" class="hover-3d"
+                        alt="Lifestyle Industry">
+                </div>
+
+                <p>I consumatori facoltosi oggi non acquistano solo prodotti: investono in esperienze, motivo per cui i
+                    servizi di marketing
+                    lifestyle
+                    di lusso stanno abbracciando le partnership con influencer.</p>
+
+                <p>Attraverso un fidato <a target="_blank"
+                        href="https://www.luxury-method.com/industries/luxury-lifestyle-marketing">lifestyle di
+                        lusso</a>,
+                    i brand possono connettersi con influencer che ispirano attraverso contenuti curati e di fascia
+                    alta.
+                    L'<b>influencer marketing nei viaggi e nel turismo</b> può evidenziare autenticamente destinazioni
+                    di lusso,
+                    prodotti di
+                    prestigio e servizi su misura attraverso contenuti visivamente avvincenti che raggiungono un
+                    pubblico di fascia alta.
+                    Per
+                    i brand che entrano in questo spazio, una <b>guida all'influencer marketing di viaggio</b> offre
+                    approfondimenti
+                    essenziali per
+                    costruire campagne ad alto impatto nel crescente <b>settore dell'influencer marketing di viaggio</b>.
+                </p>
+
+                <p>Sul lato fitness, l'<b>influencer marketing fitness</b> è diventato uno strumento potente per il
+                    benessere di lusso
+                    e i brand di abbigliamento sportivo. Una top <b>agenzia di influencer marketing fitness</b>
+                    garantisce la connessione tra un
+                    brand e
+                    un influencer che incarna prestazioni, salute e vita esclusiva. Queste qualità consentono a un
+                    influencer
+                    marketing fitness di connettere un pubblico che dà priorità sia alla qualità del prodotto che al
+                    fascino dello stile di vita con
+                    brand di
+                    fitness di lusso.</p>
+
+                <p>In un mercato lifestyle guidato dall'aspirazione, l'influencer marketing di lusso offre impatto e
+                    prestigio.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="mt-80" style="font-weight: bold; text-decoration: underline;">Il Futuro dell'Influencer
+                    Marketing</h3>
+
+                <div class="image-container mb-30">
+                    <img src="https://images.unsplash.com/photo-1663729312345-9fd2a8ff256c?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        class="socialimg hover-3d" alt="">
+                </div>
+
+                <p>Il <b>futuro dell'influencer marketing</b> sta evolvendo rapidamente, specialmente all'interno dello
+                    spazio di fascia alta
+                    dove
+                    esclusività e autenticità regnano. Poiché i consumatori richiedono un'esperienza più raffinata e
+                    personalizzata,
+                    le <b>agenzie di
+                        influencer marketing di lusso</b> stanno rimodellando il panorama digitale connettendo i brand
+                    con
+                    voci
+                    influenti che risuonano con i bisogni del pubblico facoltoso.
+                </p>
+
+                <p>Dalle esperienze immersive alla personalizzazione guidata dall'IA, le strategie di <b>marketing sui
+                        social media d'élite</b>
+                    stanno
+                    diventando più guidate dai dati e incentrate sull'esperienza. Questo mostra lo spostamento dalle
+                    sponsorizzazioni tradizionali
+                    a
+                    partnership a lungo termine, valorizzando autenticità e credibilità.</p>
+
+                <p>Mentre la Gen Z e i millennial influenzano sempre più il mercato del lusso, i brand devono adottare
+                    nuove tecnologie
+                    pur
+                    preservando la raffinatezza e l'esclusività che definiscono lo spazio. L'influencer marketing per
+                    brand di lusso
+                    sta
+                    diventando una strategia chiave, guidando l'ascesa di esperienze digitali curate che risuonano con
+                    un pubblico più giovane
+                    ed esperto di tecnologia.</p>
+
+                <p>I brand che collaborano con agenzie specializzate otterranno un vantaggio competitivo sfruttando
+                    profonde
+                    intuizioni del settore e una selezione raffinata degli influencer. Il futuro dell'influencer
+                    marketing di lusso risiede nel fondere
+                    innovazione con eredità per affascinare la clientela esigente di domani.</p>
+            </div>
+        </div>
+
+        <!-- Bottom Section: Who We Are -->
+        <div id="bottom2" class="top-section" style="padding-top: 0px !important; ">
+            <h2 id="brand" style="text-decoration: none; font-weight: bold;">CHI SIAMO</h2>
+            <p style="text-align: start;">
+                Luxury Method è un'agenzia di marketing di lusso globale con sede a Roma, dedicata ad aiutare i brand di
+                fascia alta
+                a connettersi
+                con il loro pubblico ideale. La nostra esperienza nella SEO costituisce solo una parte di un approccio
+                più ampio e integrato.
+                Offriamo
+                soluzioni di marketing su misura che comprendono anche strategia digitale, branding, creazione di
+                contenuti e
+                influencer
+                marketing—riunendo tutto ciò di cui i brand premium hanno bisogno per crescere e distinguersi. Lavoriamo
+                attraverso settori chiave
+                come moda, gioielleria, orologeria, retail e ospitalità, offrendo campagne orientate ai risultati con un
+                approccio raffinato e focalizzato sul lusso.
+            </p>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="faq-container paddingleftright top-section">
+
+        <p class="faq-intro">
+            Scopri la differenza di un'agenzia di marketing dedicata al lusso.
+        </p>
+
+        <!-- Fixed Contact Icons Structure -->
+        <div class="contact-icons-container">
+            <a target="_blank"
+                href="https://www.google.com/url?q=https%3A%2F%2Fwa.me%2F%2B393920034695&sa=D&sntz=1&usg=AOvVaw2a9hG2asZNJfADOdAWUper"
+                class="contact-btn" style="background-color: #ffffff00;"><img
+                    src="https://i.postimg.cc/HkGt0VxV/whatsapp.png" alt=""></a>
+            <a target="_blank" href="mailto:giacomo@luxury-method.com" class="contact-btn"
+                style="background-color: #5f636800;"><img src="https://i.postimg.cc/mr4tBFZf/image-978.png"
+                    style="background-color: #5f6368;" alt=""></a>
+            <a target="_blank"
+                href="https://www.google.com/url?q=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Fluxurymethod%2F&sa=D&sntz=1&usg=AOvVaw0MER64fKjxQpgMZC_E-MgX"
+                class="contact-btn"><img src="https://i.postimg.cc/BvtQqcWz/image-979.png"
+                    style="background-color: #2867b2;" alt=""></a>
+        </div>
+        <div class="contact-form-container">
+            <a target="_blank" href="https://www.luxury-method.com/contact" class="contact-form-link">MODULO DI
+                CONTATTO</a>
+        </div>
+
+
+
+        <h2>FAQ sull'Influencer Marketing di Lusso</h2>
+
+        <!-- FAQ Items -->
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3><strong>Quali sono i pro e i contro dell'influencer marketing?</strong></h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <p><b>Pro:</b> L'influencer marketing costruisce fiducia autentica nel brand, guida un alto
+                    coinvolgimento e crea
+                    accesso diretto
+                    a un pubblico di nicchia.</p>
+                <p><b>Contro:</b> Senza la giusta strategia o l'adattamento dell'influencer, le campagne possono mancare
+                    di ROI o diluire l'immagine del brand.
+                    In
+                    Luxury Method, mitighiamo questi rischi allineando i brand solo con voci d'élite e verificate.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3><strong>Cos'è l'influencer marketing di lusso?</strong></h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <span class="faq-text-styled">L'influencer
+                    marketing di lusso è l'uso strategico di creatori di contenuti di alto profilo che incarnano
+                    raffinatezza, esclusività e allineamento del brand per promuovere prodotti o servizi premium.
+                </span>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3><strong>Come far crescere il tuo business con l'influencer marketing?</strong></h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <p>Il successo deriva dalla selezione di influencer che si allineano genuinamente con i valori del tuo
+                    brand e parlano
+                    direttamente al
+                    tuo pubblico ideale. Con Luxury Method, la crescita è guidata da targeting di precisione,
+                    collaborazioni curate
+                    e
+                    strategie di contenuto che convertono la visibilità in fedeltà al brand.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3><strong>Quanto è efficace l'influencer marketing di lusso per i brand di fascia alta?</strong></h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <span class="faq-text-styled">È
+                    efficace perché fonde aspirazione con autenticità. I consumatori di fascia alta si fidano degli
+                    influencer d'élite
+                    come
+                    tastemaker. Una campagna artigianale dovrebbe promuovere sottilmente senza compromettere
+                    l'esclusività,
+                    rimanendo
+                    desiderabile ma raggiungibile.</span>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3><strong>Quali sono le strategie di marketing più efficaci per i brand di lusso per mantenere
+                        l'esclusività
+                        pur
+                        raggiungendo un pubblico globale?</strong></h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <ul>
+                    <li>Campagne digitali solo su invito</li>
+                    <li>Eventi privati per influencer</li>
+                    <li>Collaborazioni in edizione limitata</li>
+                    <li>Storytelling specifico per regione attraverso influencer selezionati</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3><strong>In che modo le collaborazioni tra brand di lusso influenzano la percezione del
+                        brand?</strong></h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <p>Le collaborazioni strategiche possono elevare lo status di un brand, introdurlo a un pubblico nuovo
+                    ma allineato,
+                    e creare
+                    un senso di novità senza diluire l'identità. Luxury Method aiuta i brand a co-creare momenti che
+                    sembrano
+                    esclusivi
+                    e culturalmente rilevanti, senza compromettere l'eredità.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3><strong>In che modo i brand di lusso utilizzano l'influencer marketing locale per mantenere
+                        l'esclusività pur
+                        espandendo la loro
+                        portata?</strong></h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <p>I brand di lusso collaborano con influencer locali curati che risuonano con il pubblico regionale pur
+                    incarnando
+                    l'eleganza
+                    globale. Questo approccio di micro-targeting consente la crescita nei mercati emergenti mantenendo
+                    l'accesso al brand limitato
+                    e controllato.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="luxury-footer">
+        <div class="luxury-footer-container">
+            <div class="footer-top-row">
+                <!-- Left Column: Company Info -->
+                <div class="footer-column footer-fade-in delay-1">
+                    <div class="footer-text-group">
+                        <h4 style="margin: 0; font-size: 20px; letter-spacing: 1px;">LUXURY METHOD</h4>
+                        <p style="margin: 5px 0 0 0; font-size: 16px;">ROTELLA GIACOMO</p>
+                        <p style="margin: 5px 0 0 0; font-size: 16px;">P.IVA: 17906211002</p>
+                        <a href="https://www.luxury-method.com/it/note-legali" target="_blank"
+                            style="margin-top: 10px; display: block;">Note Legali</a>
+                    </div>
+                </div>
+
+                <!-- Right Column: Contact & Partner -->
+                <div class="footer-column right footer-fade-in delay-2">
+                    <div class="footer-text-group"
+                        style="text-align: right; align-items: flex-end; display: flex; flex-direction: column;">
+                        <a href="mailto:giacomo@luxury-method.com">giacomo@luxury-method.com</a>
+                        <a href="tel:+393920034695" style="margin-top: 5px;">(+39) 3920034695</a>
+                        <p style="margin: 5px 0 0 0; font-size: 16px;">00133, Roma, Italia</p>
+                        
+
+                        <!-- Social Icons -->
+                        <div class="footer-socials" style="margin-top: 20px; justify-content: flex-end;">
+                            <a href="https://www.instagram.com/luxurymethod_agency/" target="_blank"
+                                class="social-icon-link">
+                                <img src="https://i.postimg.cc/XJSn0GKM/image-976.png" alt="Instagram" />
+                            </a>
+                            <a href="https://x.com/luxury_method" target="_blank" class="social-icon-link">
+                                <img src="https://luxury-method.vercel.app/twitter-logo.png" alt="X" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Row: Privacy Text -->
+            <div class="footer-bottom footer-fade-in delay-3"
+                style="border-top: 1px solid rgba(229, 215, 177, 0.2); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                <p style="margin: 0; font-size: 14px; opacity: 0.8; max-width: 600px;">Teniamo alla tua privacy. Questo
+                    sito
+                    utilizza solo cookie tecnici essenziali per funzionare.</p>
+                <div style="display:flex; gap: 20px;">
+                    <a href="#" onclick="openModal('prefModal'); return false;" style="font-size: 14px;">Preferenze
+                        Cookie</a>
+                    <a href="https://www.luxury-method.com/privacy-policy" target="_blank"
+                        style="font-size: 14px;">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false">
+            <path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z" fill="currentColor"></path>
+        </svg>
+    </div>
+
+    <!-- ============================================
+         CUSTOM SCROLLBAR HTML (DESKTOP ONLY)
+         ============================================ -->
+    <div class="custom-scroll-container">
+        <div class="custom-scroll-thumb" id="customScrollThumb"></div>
+    </div>
+
+    <!-- ============================================
+         LOADER OVERLAY
+         ============================================ -->
+    <div id="loader-overlay">
+        <div class="loader-content">
+            <!-- Text Logo Placeholder -->
+            <div class="loader-logo">LUXURY METHOD</div>
+
+            <!-- Rotating Messages Area -->
+            <div class="loader-message-container">
+                <p class="loader-message" id="loader-text"></p>
+            </div>
+
+            <!-- Elegant Progress Bar -->
+            <div class="loader-progress-container">
+                <div class="loader-progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================
+    13. GDPR MODALS & BANNERS (NEW)
+    ========================================= */ -->
+
+    <!-- Floating Cookie Button (Right to Withdraw) -->
+    <div class="floating-gdpr-btn" onclick="openModal('prefModal')" title="Preferenze Cookie">
+        <i class="fa-solid fa-cookie-bite"></i>
+    </div>
+
+    <!-- Cookie Preferences Modal -->
+    <div id="prefModal" class="gdpr-overlay">
+        <div class="gdpr-modal">
+            <button class="gdpr-close" onclick="closeModal('prefModal')">&times;</button>
+            <h3>Preferenze Cookie</h3>
+            <p>Gestisci l'utilizzo dei cookie. I cookie "Essenziali" sono necessari per il funzionamento del sito.</p>
+
+            <div class="pref-row">
+                <div class="pref-text">
+                    <h4>Essenziali</h4>
+                    <p>Necessari per le funzionalità di base.</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" checked disabled>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="pref-row">
+                <div class="pref-text">
+                    <h4>Analitici e Marketing</h4>
+                    <p>Ci aiutano a migliorare la nostra strategia di contenuti.</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="analyticsToggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <button class="gdpr-btn" onclick="savePreferences()" style="width: 100%; margin-top: 20px;">Salva
+                Preferenze</button>
+        </div>
+    </div>
+
+    <!-- Cookie Banner (Dark Mode) -->
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-content">
+            <p>Utilizziamo i cookie per assicurarti la migliore esperienza sul nostro sito web. <a
+                    href="https://www.luxury-method.com/privacy-policy" target="_blank">Privacy Policy</a>.</p>
+            <div class="cookie-actions">
+                <button onclick="acceptEssentials()">Solo Essenziali</button>
+                <button onclick="acceptAllCookies()">Accetta Tutto</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const toggle = element.querySelector(".faq-toggle");
+
+            // Close all other FAQs
+            document.querySelectorAll(".faq-answer").forEach((item) => {
+                if (item !== answer) {
+                    item.classList.remove("active");
+                }
+            });
+
+            document.querySelectorAll(".faq-toggle").forEach((item) => {
+                if (item !== toggle) {
+                    item.classList.remove("active");
+                }
+            });
+
+            // Toggle current FAQ
+            answer.classList.toggle("active");
+            toggle.classList.toggle("active");
+        }
+
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            const isMobile = window.innerWidth <= 768;
+            const yOffset = isMobile ? -90 : -80; // Adjusted for mobile header
+            const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
+            window.scrollTo({
+                top: y,
+                behavior: "smooth"
+            });
+        }
+
+        // Back to Top functionality
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+        // Show/hide back to top button
+        function handleBackToTopButton() {
+            const backToTopButton = document.getElementById('backToTop');
+            if (window.scrollY > 300) { // Show button after scrolling 300px
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        }
+
+        // Function to scroll sidebar horizontally on mobile
+        function scrollSidebar(sidebarId, direction) {
+            const sidebar = document.querySelector(`.${sidebarId}`);
+            const scrollAmount = 180;
+
+            if (direction === 'left') {
+                sidebar.scrollBy({
+                    left: -scrollAmount,
+                    behavior: 'smooth'
+                });
+            } else {
+                sidebar.scrollBy({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+            }
+
+            // Update arrow visibility after scrolling
+            setTimeout(() => {
+                updateScrollButtonVisibility(sidebarId);
+            }, 300);
+        }
+
+        // Function to update scroll button visibility based on scroll position
+        function updateScrollButtonVisibility(sidebarId) {
+            const sidebar = document.querySelector(`.${sidebarId}`);
+            // Only run for sidebar1 as per structure
+            const leftBtnWrapper = document.getElementById(`sidebar1-left`);
+            const rightBtnWrapper = document.getElementById(`sidebar1-right`);
+
+            if (!leftBtnWrapper || !rightBtnWrapper) return;
+
+            const leftBtn = leftBtnWrapper.querySelector('.scroll-btn');
+            const rightBtn = rightBtnWrapper.querySelector('.scroll-btn');
+
+            // Only show buttons on mobile view (width <= 768px)
+            if (window.innerWidth <= 768) {
+                // Check if at the start or end of scrolling
+                if (sidebar.scrollLeft <= 10) {
+                    leftBtn.style.opacity = '0.4';
+                } else {
+                    leftBtn.style.opacity = '1';
+                }
+
+                if (sidebar.scrollLeft + sidebar.clientWidth >= sidebar.scrollWidth - 10) {
+                    rightBtn.style.opacity = '0.4';
+                } else {
+                    rightBtn.style.opacity = '1';
+                }
+
+                // Check if sidebar has enough content to scroll
+                if (sidebar.scrollWidth <= sidebar.clientWidth) {
+                    leftBtnWrapper.style.display = 'none';
+                    rightBtnWrapper.style.display = 'none';
+                }
+            }
+        }
+
+        // Function to handle the sidebar visibility
+        function handleSidebar() {
+            const bottomsection = document.querySelector(".hero");
+            const sidebar = document.querySelector(".sidebar");
+            const Faq = document.querySelector(".faq-container");
+
+            // Get the bottom position of the top section
+            const FaqBottom = Faq.getBoundingClientRect().top;
+            const topSectiontopBottom = bottomsection.getBoundingClientRect().bottom;
+
+            // If we've scrolled past the top section, show the sidebar
+            if (topSectiontopBottom <= 100 && FaqBottom > 200) {
+                sidebar.classList.add("main-container-visible"); // Use class
+                sidebar.style.transform = "translateY(0)";
+                // Make the sidebar's scroll buttons active
+                if (window.innerWidth <= 768) {
+                    const leftBtnWrapper = document.getElementById('sidebar1-left');
+                    const rightBtnWrapper = document.getElementById('sidebar1-right');
+                    if (leftBtnWrapper) leftBtnWrapper.style.display = 'block';
+                    if (rightBtnWrapper) rightBtnWrapper.style.display = 'block';
+                    updateScrollButtonVisibility('sidebar');
+                }
+            } else {
+                sidebar.classList.remove("main-container-visible");
+                sidebar.style.transform = "translateY(100vh)";
+                // Hide buttons when sidebar is hidden
+                if (window.innerWidth <= 768) {
+                    const leftBtnWrapper = document.getElementById('sidebar1-left');
+                    const rightBtnWrapper = document.getElementById('sidebar1-right');
+                    if (leftBtnWrapper) leftBtnWrapper.style.display = 'none';
+                    if (rightBtnWrapper) rightBtnWrapper.style.display = 'none';
+                }
+            }
+        }
+
+        // =========================================
+        // LANGUAGE SELECTOR JS
+        // =========================================
+        function toggleLangMenu() {
+            const dropdown = document.getElementById('langDropdown');
+            dropdown.classList.toggle('show');
+        }
+
+        // Close dropdown when clicking outside
+        window.addEventListener('click', function (e) {
+            const langContainer = document.querySelector('.lang-container');
+            if (!langContainer.contains(e.target)) {
+                const dropdown = document.getElementById('langDropdown');
+                if (dropdown) dropdown.classList.remove('show');
+            }
+        });
+
+        function selectLang(lang) {
+            // Placeholder logic for future redirect
+            console.log("Language selected: " + lang);
+        }
+
+        // =========================================
+        // GDPR LOGIC
+        // =========================================
+        const COOKIE_NAME = "luxury_gdpr_consent";
+
+        function openModal(id) {
+            document.getElementById(id).classList.add('visible');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('visible');
+        }
+
+        // Check local storage on load
+        function initCookieBanner() {
+            const consent = localStorage.getItem(COOKIE_NAME);
+            const banner = document.getElementById('cookie-banner');
+
+            if (!consent) {
+                // Show banner if no consent stored
+                setTimeout(() => {
+                    banner.classList.add('visible');
+                }, 1000);
+            } else {
+                applyConsent(JSON.parse(consent));
+                // Welcome Back logic
+                const contentContainer = banner.querySelector('.cookie-content');
+                if (contentContainer) {
+                    contentContainer.innerHTML = `
+                        <p>Bentornato. Hai precedentemente accettato i nostri cookie. <a href="https://www.luxury-method.com/privacy-policy" target="_blank">Privacy Policy</a>.</p>
+                        <div class="cookie-actions">
+                            <button onclick="hideCookieBanner()">Chiudi</button>
+                        </div>
+                    `;
+                    setTimeout(() => {
+                        banner.classList.add('visible');
+                    }, 1000);
+                }
+            }
+        }
+
+        function hideCookieBanner() {
+            const banner = document.getElementById('cookie-banner');
+            banner.classList.remove('visible');
+        }
+
+        function acceptAllCookies() {
+            const consent = { analytics: true };
+            saveAndClose(consent);
+        }
+
+        function acceptEssentials() {
+            const consent = { analytics: false };
+            saveAndClose(consent);
+        }
+
+        function savePreferences() {
+            const analytics = document.getElementById('analyticsToggle').checked;
+            const consent = { analytics: analytics };
+            saveAndClose(consent);
+        }
+
+        function saveAndClose(consent) {
+            localStorage.setItem(COOKIE_NAME, JSON.stringify(consent));
+            applyConsent(consent);
+            document.getElementById('cookie-banner').classList.remove('visible');
+            closeModal('prefModal');
+
+            // Reload page to show welcome message after first accept if desired, 
+            // or just update UI. Here we just update UI.
+            const banner = document.getElementById('cookie-banner');
+            const contentContainer = banner.querySelector('.cookie-content');
+            contentContainer.innerHTML = `
+                <p>Preferenze Salvate.  <a href="https://www.luxury-method.com/privacy-policy" target="_blank">Privacy Policy</a>.</p>
+                <div class="cookie-actions">
+                    <button onclick="hideCookieBanner()">Chiudi</button>
+                </div>
+            `;
+            setTimeout(() => {
+                banner.classList.add('visible');
+            }, 500);
+        }
+
+        function applyConsent(consent) {
+            // Update Toggle UI
+            const toggle = document.getElementById('analyticsToggle');
+            if (toggle) toggle.checked = consent.analytics;
+
+            if (consent.analytics) {
+                console.log("Analytics Scripts Loaded (GDPR Compliant)");
+                // Inject Analytics here if needed
+            } else {
+                console.log("Analytics Blocked");
+            }
+        }
+
+        // =========================================
+        // LOADER JS (INTEGRATED)
+        // =========================================
+        function initLoader() {
+            // 1. Array of tips/messages to rotate (Translated to Italian)
+            const messages = [
+                "Il vostro partner nel marketing di lusso...",
+                "Curiamo la tua eredità digitale...",
+                "Eleviamo l'estetica del brand...",
+                "Creiamo narrazioni esclusive...",
+                "Definiamo il lusso sui social...",
+                "Connettiamo con un pubblico d'élite..."
+            ];
+
+            let msgIndex = 0;
+            const msgElement = document.getElementById('loader-text');
+            const overlay = document.getElementById('loader-overlay');
+
+            // Function to change text smoothly
+            function changeMessage() {
+                if (!msgElement) return;
+
+                // Fade out
+                msgElement.classList.remove('visible');
+
+                setTimeout(() => {
+                    // Update text
+                    msgElement.textContent = messages[msgIndex];
+                    // Fade in
+                    msgElement.classList.add('visible');
+
+                    // Next index loop
+                    msgIndex = (msgIndex + 1) % messages.length;
+                }, 500); // Wait for fade out
+            }
+
+            // Start cycling messages immediately
+            changeMessage();
+            const msgInterval = setInterval(changeMessage, 2500);
+
+            // 2. Hide loader logic
+            // Using a significantly longer duration per request (1.5x of original 2500ms = 3750ms)
+            // Ensuring styles for animation are set to ~6s in CSS to accommodate this.
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    clearInterval(msgInterval);
+                    overlay.classList.add('loader-hidden');
+
+                    // Remove from DOM entirely after transition prevents interaction issues
+                    overlay.addEventListener('transitionend', () => {
+                        overlay.remove();
+                        // Allow scrolling again and show main content
+                        document.body.style.overflow = "auto";
+                        // Trigger scrollbar update here
+                        if (window.updateScrollThumb) window.updateScrollThumb();
+                    });
+                }, 3750); // Increased Duration
+            });
+
+            // Fallback: If load takes too long (e.g. 10s), force remove loader
+            setTimeout(() => {
+                if (document.body.contains(overlay)) {
+                    overlay.classList.add('loader-hidden');
+                    setTimeout(() => overlay.remove(), 1000);
+                    document.body.style.overflow = "auto";
+                }
+            }, 10000);
+        }
+
+        // =========================================
+        // CUSTOM SCROLLBAR JS (Global & Draggable)
+        // =========================================
+        function initCustomScrollbar() {
+            const thumb = document.getElementById('customScrollThumb');
+            const track = document.querySelector('.custom-scroll-container');
+            if (!thumb || !track) return;
+
+            let isDragging = false;
+            let startY = 0;
+            let startScrollTop = 0;
+
+            // Sync thumb position with scroll
+            // Attach to window so initLoader can call it
+            window.updateScrollThumb = function () {
+                if (isDragging) return; // Don't update while dragging to avoid jitter
+                const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPercentage = window.scrollY / scrollHeight;
+                // Keep thumb within 0 to 100% of viewport minus thumb height
+                // Simplification: thumb top is percentage of viewport height
+                // Better: percentage of (windowHeight - thumbHeight)
+                const thumbHeight = thumb.offsetHeight;
+                const trackHeight = window.innerHeight;
+
+                const topPos = scrollPercentage * (trackHeight - thumbHeight);
+                thumb.style.top = `${topPos}px`;
+            }
+
+            window.addEventListener('scroll', window.updateScrollThumb);
+            window.addEventListener('resize', window.updateScrollThumb);
+
+            // Drag Functionality
+            thumb.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startY = e.clientY;
+                startScrollTop = window.scrollY;
+                document.body.style.userSelect = 'none'; // Prevent text selection
+                thumb.style.width = '14px'; // Keep active state
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                const deltaY = e.clientY - startY;
+                const trackHeight = window.innerHeight;
+                const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const thumbHeight = thumb.offsetHeight;
+
+                // Calculate how much we moved in percentage relative to track
+                const percentageMoved = deltaY / (trackHeight - thumbHeight);
+
+                // Update scroll
+                const newScrollTop = startScrollTop + (percentageMoved * scrollHeight);
+                window.scrollTo(0, newScrollTop);
+
+                // Update thumb visual immediately for responsiveness
+                const scrollPercentage = newScrollTop / scrollHeight;
+                const topPos = Math.max(0, Math.min(scrollPercentage * (trackHeight - thumbHeight), trackHeight - thumbHeight));
+                thumb.style.top = `${topPos}px`;
+            });
+
+            window.addEventListener('mouseup', () => {
+                isDragging = false;
+                document.body.style.userSelect = '';
+                thumb.style.width = ''; // Revert style
+            });
+
+            // Initial Position
+            window.updateScrollThumb();
+        }
+
+        // Initialize on page load
+        document.addEventListener("DOMContentLoaded", function () {
+            handleSidebar();
+            handleBackToTopButton();
+            initCookieBanner();
+            initLoader(); // Initialize loader
+            initCustomScrollbar(); // Initialize Custom Scrollbar
+
+            // Add scroll event listeners to sidebars for button visibility updates
+            const sidebar = document.querySelector('.sidebar');
+            if (sidebar) {
+                sidebar.addEventListener('scroll', function () {
+                    updateScrollButtonVisibility('sidebar');
+                });
+            }
+
+            // Add window resize event listener to update button visibility
+            window.addEventListener('resize', function () {
+                handleSidebar();
+            });
+
+            if (window.innerWidth <= 768) {
+                const hoverElements = document.querySelectorAll('.hover-3d');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                        } else {
+                            entry.target.classList.remove('is-visible');
+                        }
+                    });
+                }, {
+                    threshold: 0.5 // earlier trigger for stronger effect
+                });
+
+                hoverElements.forEach(el => {
+                    observer.observe(el);
+                });
+            }
+
+            // ==========================================
+            // NEW TEXT REVEAL ANIMATION (ALL DEVICES)
+            // ==========================================
+            const textElements = document.querySelectorAll(
+                'h1, .top-section p, .content h2, .content h3, .content p, .faq-container h2, .faq-intro, .faq-item'
+            );
+
+            const textObserver = new IntersectionObserver(
+                entries => {
+                    entries.forEach(entry => {
+                        if (entry.intersectionRatio > 0.25) {
+                            entry.target.classList.add('active');
+                        } else if (
+                            entry.intersectionRatio < 0.1 &&
+                            entry.target.classList.contains('active')
+                        ) {
+                            entry.target.classList.remove('active');
+                        }
+                    });
+                },
+                {
+                    threshold: [0, 0.1, 0.25, 1]
+                }
+            );
+
+            textElements.forEach(el => {
+                el.classList.add('reveal-text');
+            });
+
+            /* IMPORTANT: defer observation */
+            requestAnimationFrame(() => {
+                textElements.forEach(el => {
+                    textObserver.observe(el);
+                });
+            });
+
+            // ==========================================
+            // FOOTER REVEAL ANIMATION (NEW)
+            // ==========================================
+            const footerElements = document.querySelectorAll('.footer-fade-in');
+            const footerObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.2
+            });
+
+            footerElements.forEach(el => {
+                footerObserver.observe(el);
+            });
+
+        });
+
+        // Add scroll event listener
+        window.addEventListener("scroll", function () {
+            handleSidebar();
+            handleBackToTopButton();
+        });
+    </script>
+</body>
+
+</html>

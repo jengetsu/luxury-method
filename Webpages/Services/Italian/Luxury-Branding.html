@@ -5,25 +5,30 @@
     <meta charset="UTF-8" />
     <!-- Updated viewport to include viewport-fit=cover for iPhone safe area detection -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Content Marketing di Lusso</title>
+    <title>Branding di Lusso</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
-    <!-- Added FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         /* =========================================
-        1. RESET & GLOBAL STYLES
+        1. GLOBAL RESET & UTILITIES
         ========================================= */
         * {
             box-sizing: border-box;
             scroll-behavior: smooth;
             font-family: "Cormorant Garamond", serif;
             scrollbar-width: none;
+            /* animation-duration: 800ms; Removed to avoid conflict */
             color: #000;
+        }
+
+        /* Hide scrollbar */
+        *::-webkit-scrollbar {
+            display: none;
         }
 
         body {
@@ -36,10 +41,6 @@
             min-height: 100vh;
             /* Hidden overflow initially for loader */
             overflow: hidden;
-        }
-
-        ::-webkit-scrollbar {
-            display: none;
         }
 
         a {
@@ -166,7 +167,6 @@
         .lang-container {
             position: fixed;
             top: 80px;
-            /* Lowered to avoid Google Sites Nav */
             right: 30px;
             z-index: 100000;
         }
@@ -198,7 +198,6 @@
         .lang-btn:hover i {
             color: #ebe0d5;
         }
-
 
 
         .lang-dropdown {
@@ -256,7 +255,6 @@
 
             .lang-container {
                 top: 95px;
-                /* Lowered below the 80px sidebar to prevent overlap */
                 right: 20px;
             }
         }
@@ -269,41 +267,30 @@
             top: 0;
             right: 0;
             width: 24px;
-            /* Wider hit area */
             height: 100vh;
             z-index: 2147483646;
-            /* Below loader, above content */
             display: flex;
             justify-content: center;
             background: transparent;
             pointer-events: none;
-            /* Let clicks pass through container */
         }
 
         .custom-scroll-thumb {
             position: absolute;
             top: 0;
             right: 6px;
-            /* Spacing from edge */
             width: 12px;
-            /* Distinct width */
             background-color: #000000;
-            /* Pure Black */
             border-radius: 20px;
-            /* Pill shape */
             cursor: pointer;
             pointer-events: auto;
-            /* Enable clicks on button */
             user-select: none;
             touch-action: none;
             transition: opacity 0.2s ease, transform 0.1s ease;
             min-height: 60px;
-            /* Minimum height for visibility */
             box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-            /* Slight contrast if needed */
         }
 
-        /* Hover effect */
         .custom-scroll-thumb:hover {
             transform: scaleX(1.2);
         }
@@ -312,56 +299,60 @@
             background-color: #333;
         }
 
-        /* Hide on Mobile/Tablet */
         @media screen and (max-width: 1024px) {
             .custom-scroll-container {
                 display: none;
             }
         }
 
+        /* Utility Classes */
+        .paddingleftright {
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+
+        .mrginleft {
+            margin-left: 340px;
+        }
+
+        .no-top-padding {
+            padding-top: 0px !important;
+        }
+
+        .mt-large {
+            margin-top: 80px;
+        }
+
         /* =========================================
         2. TYPOGRAPHY
         ========================================= */
         h1 {
-            color: #ebe0d5;
-            text-align: center;
-            z-index: 999999999999;
             font-weight: normal;
             font-size: 4rem;
             letter-spacing: 0.5rem;
+            text-align: center;
+            color: #ebe0d5;
             margin: 0;
+            z-index: 999999999999;
         }
-
 
         h2 {
             text-align: center;
-
-            font-size: 32px;
-            margin-block-start: 0.83em;
-            margin-block-end: 0.83em;
+            text-decoration: underline;
         }
 
         h3 {
             text-align: center;
-            font-size: 24px;
-            font-weight: 500;
-            color: #1a1a1a;
-            font-weight: bold;
-            margin-block-start: 1em;
-            margin-block-end: 1em;
-            text-decoration: underline;
         }
 
         p {
-            font-size: 18.7px !important;
-            /* Matches approx 14pt */
-            line-height: 1.656;
-            color: #000;
+            font-size: large !important;
+            line-height: 1.7;
         }
 
         /* =========================================
-           3. TEXT REVEAL ANIMATION (FINAL)
-        ========================================= */
+   3. TEXT REVEAL ANIMATION (FINAL)
+========================================= */
 
         .reveal-text {
             opacity: 0;
@@ -392,8 +383,8 @@
         }
 
         /* ================================
-           TEXT STABILITY FIX FOR HEADINGS
-        ================================ */
+   TEXT STABILITY FIX FOR HEADINGS
+================================ */
 
         h1.reveal-text,
         h2.reveal-text,
@@ -424,77 +415,23 @@
 
 
         /* =========================================
-        4. LAYOUT & CONTAINERS
-        ========================================= */
-        .main-container {
-            display: flex;
-            flex: 1;
-            width: 100%;
-            position: relative;
-        }
-
-        .paddingleftright {
-            padding-left: 5vw;
-            padding-right: 5vw;
-        }
-
-        .mrginleft {
-            margin-left: 340px;
-        }
-
-        .content {
-            transition: all 1ms;
-            background-color: #ebe0d5;
-            color: #000;
-            width: 100%;
-            flex: 1;
-            position: relative;
-        }
-
-        .section {
-            margin-bottom: 80px;
-        }
-
-        .top-section {
-            width: 100%;
-            background-color: #ebe0d5;
-            /* padding: 10px; */
-            margin-bottom: 0;
-            position: relative;
-        }
-
-        /* Utility Classes extracted from inline styles */
-        .pt-0 {
-            padding-top: 0px !important;
-        }
-
-        .mt-80 {
-            margin-top: 80px;
-        }
-
-        .anchor-offset {
-            position: absolute;
-            top: -40px;
-        }
-
-        /* =========================================
-        5. COMPONENT: HERO SECTION
+        4. HERO SECTION
         ========================================= */
         .hero {
             width: 100%;
             height: 100vh;
-            background-image: url('https://luxury-method.vercel.app/ContentMarketingHeroN.jpg');
-            background-attachment: fixed;
+            background-image: url('https://luxury-method.vercel.app/LuxuryBrandingHero.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            background-attachment: fixed;
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
         }
 
-        .hero-overlay {
+        .overlay {
             background-color: black;
             opacity: 0.5;
             width: 100%;
@@ -504,6 +441,7 @@
             left: 0;
         }
 
+        /* iOS Touch Fix */
         @supports (-webkit-touch-callout: none) {
             .hero {
                 background-attachment: scroll !important;
@@ -511,30 +449,59 @@
         }
 
         /* =========================================
-        6. COMPONENT: SIDEBAR
+        5. MAIN LAYOUT & SECTIONS
+        ========================================= */
+        .main-container {
+            display: flex;
+            flex: 1;
+            position: relative;
+        }
+
+        .content {
+            transition: all 1ms;
+            background-color: #ebe0d5;
+            color: #000;
+            width: 100%;
+            flex: 1;
+        }
+
+        .top-section {
+            width: 100%;
+            background-color: #ebe0d5;
+            padding: 10px;
+            margin-bottom: 0;
+        }
+
+        .section {
+            margin-bottom: 80px;
+        }
+
+        .section p {
+            line-height: 1.7;
+        }
+
+        /* =========================================
+        6. SIDEBAR NAVIGATION
         ========================================= */
         .sidebar {
             width: 340px;
             background-color: #ebe0d5;
             color: white;
-            padding: 24px;
+            padding: 16px 40px;
             position: fixed;
             left: 0;
             top: 0;
             bottom: 0;
-            padding: 16px 40px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            /* Added from inline */
             height: fit-content;
             gap: 14px;
+            justify-content: center;
+            /* Animation */
             transform: translateY(100vh);
             transition: transform 0.3s ease;
             z-index: 100;
-            -ms-overflow-style: none;
-            scrollbar-width: none;
         }
 
         .sidebar2 {
@@ -554,8 +521,6 @@
             transform: translateY(100vh);
             transition: transform 0.3s ease;
             z-index: 100;
-            -ms-overflow-style: none;
-            scrollbar-width: none;
         }
 
         .main-container-visible .sidebar,
@@ -563,7 +528,7 @@
             transform: translateY(0);
         }
 
-        button {
+        .sidebar button {
             background-color: #000;
             color: #fff;
             padding: 12px;
@@ -576,12 +541,12 @@
             flex-shrink: 0;
         }
 
-        button:hover {
+        .sidebar button:hover {
             background-color: #fff;
             color: #000;
         }
 
-        /* Sidebar Scroll Buttons (Mobile) */
+        /* Mobile Scroll Buttons for Sidebar (Hidden as per request) */
         .scroll-btn-left,
         .scroll-btn-right {
             display: none;
@@ -640,9 +605,8 @@
             margin-left: 10px;
         }
 
-
         /* =========================================
-        7. COMPONENT: IMAGES & MEDIA
+        7. IMAGES
         ========================================= */
         .image {
             display: flex;
@@ -653,53 +617,32 @@
             margin-top: 20px;
         }
 
-        /* General styled image (extracted from inline) */
-        .styled-img {
+        .image img {
             max-height: 500px;
             object-fit: cover;
             border-radius: 20px;
         }
 
+        /* Industry Images - Shorter Height */
         .industry_Image {
             display: flex;
             justify-content: center;
             align-items: center;
             margin-block: 40px;
             width: 100%;
-
+            margin-top: 10px;
         }
 
         .industry_Image img {
             display: block;
             width: 100%;
-            height: auto;
+            height: 73vh;
+            /* Reduced height as requested */
+            /* max-height: 500px; */
+            /* Cap the height */
             object-fit: cover;
-            object-position: bottom;
-            max-height: 600px;
             object-position: center center;
             border-radius: 20px;
-        }
-
-        /* Specific fix for OOH Container zooming */
-        .ooh-container {
-            position: relative;
-            width: 100%;
-            padding-top: 56.25%;
-            /* 16:9 ratio – adjust if needed */
-            border-radius: 26px;
-            overflow: hidden;
-            margin: 30px 0;
-        }
-
-        .ooh-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            border-radius: 6px;
         }
 
         /* 3D Effect- Shared */
@@ -715,17 +658,18 @@
         }
 
         /* =========================================
-        8. COMPONENT: FAQ
-        ======================================== */
+        8. FAQ SECTION
+        ========================================= */
         .faq-container {
             margin-top: 20px;
-            z-index: 99999999999999999999999999;
+            z-index: 999;
+            position: relative;
+            padding: 0 100px;
         }
 
         .faq-item {
             border-bottom: 1px solid #696969;
             overflow: hidden;
-            margin: 0 90px;
         }
 
         .faq-question {
@@ -742,7 +686,6 @@
             font-weight: 500;
             color: #1a1a1a;
             text-align: left;
-            text-decoration: none;
         }
 
         .faq-toggle {
@@ -761,7 +704,7 @@
         }
 
         .faq-toggle.active {
-            rotate: 180deg;
+            transform: rotate(180deg);
         }
 
         .faq-answer {
@@ -788,7 +731,7 @@
         }
 
         /* =========================================
-        9. COMPONENT: FOOTER & CONTACT (UPDATED)
+        9. FOOTER & CONTACT (UPDATED)
         ========================================= */
         .luxury-footer {
             background-image: url("https://luxury-method.vercel.app/Footer.png");
@@ -859,13 +802,6 @@
             text-align: right;
         }
 
-        /* Footer Links */
-        .footer-link-group {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
         .luxury-footer a {
             text-decoration: none;
             font-size: 18px;
@@ -895,26 +831,6 @@
             opacity: 0.8;
         }
 
-        /* Contact Details */
-        .footer-contact-item {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .footer-contact-label {
-            font-size: 14px;
-            text-transform: uppercase;
-            opacity: 0.7;
-            letter-spacing: 1px;
-            margin-bottom: 2px;
-        }
-
-        .footer-contact-value {
-            font-size: 20px;
-            font-weight: 500;
-        }
-
         /* Social Icons (Refined) */
         .footer-socials {
             display: flex;
@@ -933,28 +849,6 @@
         .social-icon-link:hover img {
             transform: scale(1.1);
             filter: brightness(1);
-        }
-
-        /* Bottom Bar */
-        .footer-bottom {
-            border-top: 1px solid rgba(229, 215, 177, 0.2);
-            padding-top: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            font-size: 14px;
-            opacity: 0.8;
-        }
-
-        .footer-bottom-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        .footer-bottom-links a {
-            font-size: 14px;
         }
 
         /* Footer Animation Classes */
@@ -982,111 +876,8 @@
             transition-delay: 0.3s;
         }
 
-        /* Mobile Adjustments for Footer */
-        @media screen and (max-width: 768px) {
-            .footer-top-row {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                gap: 50px;
-            }
-
-            .footer-column,
-            .footer-column.center,
-            .footer-column.right {
-                align-items: center;
-                text-align: center;
-                width: 100%;
-            }
-
-            .luxury-footer a::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-
-            .luxury-footer a:hover::after {
-                width: 100%;
-                /* Or fixed width if centered */
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-                gap: 15px;
-            }
-
-            .footer-bottom-links {
-                justify-content: center;
-            }
-
-            .footer-text-group {
-                align-items: center !important;
-                text-align: center !important;
-                display: flex !important;
-                flex-direction: column !important;
-                width: 100%;
-            }
-
-            .footer-socials {
-                justify-content: center !important;
-            }
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 20px;
-            justify-content: flex-end;
-            /* desktop: right */
-            align-items: center;
-        }
-
-        .social-link img {
-            width: 40px;
-            object-fit: contain;
-        }
-
-        .contact-icons-container {
-            display: flex;
-            gap: 100px;
-            margin-top: 60px;
-            width: 100%;
-            justify-content: center;
-        }
-
-        .contact-btn {
-            padding: 20px;
-            border-radius: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .contact-btn img {
-            width: 30px;
-            height: 30px;
-            border-radius: 100%;
-        }
-
-        .contact-form-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 40px;
-            margin-bottom: 100px;
-        }
-
-        .contact-form-link {
-            padding-left: 80px;
-            text-decoration: none;
-            font-size: 18px;
-            border-radius: 5px;
-            padding-right: 80px;
-            border: 1px solid #000;
-            padding-top: 10px;
-            padding-bottom: 10px;
-        }
-
         /* =========================================
-        10. COMPONENT: BACK TO TOP
+        10. BACK TO TOP
         ========================================= */
         .back-to-top {
             position: fixed;
@@ -1124,237 +915,7 @@
         }
 
         /* =========================================
-        11. MEDIA QUERIES (CONSOLIDATED)
-        ========================================= */
-
-        /* Max Width 768px (Tablet/Mobile) */
-        @media screen and (max-width: 768px) {
-            h1 {
-                font-size: 30px !important;
-            }
-
-            p {
-                font-size: large;
-            }
-
-            .top-section {
-                /* padding: 5px; */
-            }
-
-            .faq-question {
-                padding: 0 0 !important;
-            }
-
-            .faq-item {
-
-                margin: 0;
-            }
-
-            /* Sidebar Mobile Styling */
-            .sidebar {
-                width: 100%;
-                height: 80px;
-                padding: 0;
-                padding-top: 20px;
-                padding-bottom: 0;
-                padding-left: 0;
-                position: fixed;
-                top: 0;
-                left: 0;
-                background-color: #ebe0d5;
-                z-index: 10;
-                overflow-x: auto;
-                overflow-y: hidden;
-                flex-direction: row;
-                white-space: nowrap;
-                gap: 4px;
-                justify-content: flex-start;
-                /* Reset alignment for horizontal scroll */
-            }
-
-            .sidebar::-webkit-scrollbar {
-                display: none;
-            }
-
-            .sidebar button {
-                background-color: #000;
-                color: #fff;
-                padding: 8px;
-                border-radius: 5px;
-                font-weight: 500;
-                font-size: 3.5vw;
-                height: fit-content;
-            }
-
-            .sidebar2 {
-                width: 100%;
-                height: 80px;
-                padding: 16px;
-                padding-left: 40px;
-                padding-right: 40px;
-                position: fixed;
-                top: 0;
-                left: 0;
-                background-color: #ebe0d5;
-                z-index: 10;
-                flex-direction: row;
-                overflow-x: auto;
-                overflow-y: hidden;
-                white-space: nowrap;
-                gap: 10px;
-            }
-
-            .sidebar2::-webkit-scrollbar {
-                display: none;
-            }
-
-            .left-arrow,
-            .right-arrow {
-                display: none !important;
-            }
-
-            .scroll-btn-left,
-            .scroll-btn-right {
-                display: block;
-            }
-
-            .scroll-btn {
-                display: flex;
-            }
-
-            .mrginleft {
-                margin-left: 0px;
-            }
-
-            .content {
-                margin-top: 100px;
-                margin-left: 0px;
-            }
-
-            .back-to-top {
-                /* Adjusted for Safe Area */
-                bottom: 80px;
-                bottom: calc(80px + env(safe-area-inset-bottom));
-            }
-
-            /* Image Resets for Mobile */
-            .industry_Image img {
-                height: auto !important;
-                max-width: 700px;
-                width: 100%;
-            }
-
-            .image {
-                height: auto !important;
-                width: 100% !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                display: block !important;
-            }
-
-            .image img {
-                width: 100% !important;
-                height: auto !important;
-                max-width: 100% !important;
-                object-fit: cover;
-                object-position: center;
-                display: block;
-                margin: 0 auto;
-            }
-
-            .ooh-container {
-                width: 100% !important;
-                max-width: 100% !important;
-                object-fit: cover;
-                object-position: center;
-                display: block;
-            }
-
-            /* Scroll Animation State for Mobile - Images */
-            .hover-3d {
-                transform: scale(0.85);
-                opacity: 0.3;
-                transition:
-                    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-                    opacity 0.35s ease-out;
-            }
-
-            .hover-3d.is-visible {
-                transform: scale(1.03);
-                opacity: 1;
-                box-shadow: 0 12px 22px rgba(0, 0, 0, 0.15);
-            }
-
-            .luxury-footer-content {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .luxury-footer-contact {
-                margin-bottom: 20px;
-                text-align: center;
-                /* optional, to center text */
-            }
-
-            .social-icons {
-                justify-content: center !important;
-                margin-top: 20px;
-            }
-        }
-
-        @media (min-width: 769px) {
-
-            /* Desktop elements always visible */
-            .hover-3d {
-                opacity: 1;
-                transform: none;
-            }
-
-            .hover-3d:hover {
-                transform: translateY(-8px) scale(1.05);
-                box-shadow: 0 20px 35px rgba(0, 0, 0, 0.22);
-            }
-
-            /* Increased footer height for desktop */
-            .luxury-footer {
-                padding: 150px 0 60px 0;
-            }
-        }
-
-        /* Max Width 500px (Small Mobile) */
-        @media screen and (max-width: 500px) {
-            .back-to-top {
-                bottom: 120px !important;
-                /* Added safe area fix */
-                bottom: calc(120px + env(safe-area-inset-bottom)) !important;
-            }
-
-            /* Contact Buttons Wrap */
-            .contact-icons-container {
-                gap: 20px;
-                flex-wrap: wrap;
-            }
-        }
-
-        /* Max Width 400px (Extra Small) */
-        @media screen and (max-width: 400px) {
-            .luxury-footer-content {
-                display: flex;
-                flex-direction: column;
-                gap: 30px;
-            }
-
-            .image2 {
-                max-width: 100%;
-            }
-
-            h3 {
-                font-size: 18px;
-            }
-        }
-
-        /* =========================================
-        12. COMPONENT: COOKIE BANNER (MODERN DARK)
+        11. COOKIE BANNER (MODERN DARK)
         ========================================= */
         /* Keeps the Banner Look Dark as requested */
         .cookie-banner {
@@ -1452,59 +1013,8 @@
             color: #fff;
         }
 
-        @media (max-width: 768px) {
-            .cookie-banner {
-                /* Changed to Floating Banner for Mobile */
-                bottom: 90px;
-                /* Lifted into safe space */
-                bottom: calc(150px + env(safe-area-inset-bottom));
-
-                /* Floating dimensions */
-                width: 90%;
-                max-width: 400px;
-                left: 0;
-                right: 0;
-                margin: 0 auto;
-
-                /* Rounded corners all around */
-                border-radius: 16px;
-
-                /* Standard padding (safe area handled by bottom property) */
-                padding: 24px;
-                padding-bottom: 24px;
-
-                transform: translateY(150%);
-            }
-
-            .cookie-banner.visible {
-                transform: translateY(0);
-            }
-
-            .cookie-content {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 20px;
-            }
-
-            .cookie-content p {
-                min-width: auto;
-                font-size: 15px !important;
-            }
-
-            .cookie-actions {
-                width: 100%;
-                justify-content: space-between;
-                gap: 10px;
-            }
-
-            .cookie-actions button {
-                flex: 1;
-                padding: 14px;
-            }
-        }
-
         /* =========================================
-        13. GDPR COMPONENTS (NEW BEIGE THEME)
+        12. GDPR COMPONENTS (NEW BEIGE THEME)
         ========================================= */
         /* Common Overlay */
         .gdpr-overlay {
@@ -1706,11 +1216,242 @@
             transform: scale(1.1);
         }
 
-        /* Update mobile queries to match Back to Top movement */
-        @media (max-width: 768px) {
+        /* =========================================
+        13. RESPONSIVE MEDIA QUERIES
+        ======================================== */
+        @media screen and (max-width: 768px) {
+
+            /* Typography */
+            h1 {
+                font-size: 30px !important;
+            }
+
+            h3 {
+                font-size: 18px;
+            }
+
+            p {
+                font-size: large;
+            }
+
+            /* Layout */
+            .mrginleft {
+                margin-left: 0px;
+            }
+
+            .content {
+                margin-top: 100px;
+                margin-left: 0px;
+            }
+
+            .top-section {
+                padding: 5px;
+            }
+
+            .paddingleftright {
+                padding-left: 5vw;
+                padding-right: 5vw;
+            }
+
+            /* Sidebar Mobile - IMPROVED SPACING */
+            .sidebar,
+            .sidebar2 {
+                width: 100%;
+                height: 80px;
+                padding: 20px 20px 0 20px;
+                position: fixed;
+                top: 0;
+                left: 0;
+                background-color: #ebe0d5;
+                z-index: 10;
+                overflow-x: auto;
+                overflow-y: hidden;
+                flex-direction: row;
+                white-space: nowrap;
+                gap: 12px;
+                justify-content: flex-start;
+            }
+
+            .sidebar button {
+                font-size: 3.5vw;
+                padding: 8px 16px;
+                height: fit-content;
+            }
+
+            /* Hiding Scroll Buttons */
+            .scroll-btn-left,
+            .scroll-btn-right,
+            .scroll-btn,
+            .left-arrow,
+            .right-arrow {
+                display: none !important;
+            }
+
+            /* Images */
+            .industry_Image img {
+                height: auto !important;
+                max-width: 700px;
+                max-height: 400px;
+                width: 100%;
+            }
+
+            /* FAQ */
+            .faq-container {
+                padding: 0 5vw !important;
+            }
+
+            .faq-question {
+                padding: 0 0 !important;
+            }
+
+            /* Back to top */
+            .back-to-top {
+                bottom: 80px;
+                bottom: calc(80px + env(safe-area-inset-bottom));
+            }
+
+            .hover-3d {
+                transform: scale(0.85);
+                opacity: 0.3;
+                transition:
+                    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                    opacity 0.35s ease-out;
+            }
+
+            .hover-3d.is-visible {
+                transform: scale(1.03);
+                opacity: 1;
+                box-shadow: 0 12px 22px rgba(0, 0, 0, 0.15);
+            }
+
+            /* Footer Adjustments */
+            .footer-top-row {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 50px;
+            }
+
+            .footer-column,
+            .footer-column.center,
+            .footer-column.right {
+                align-items: center;
+                text-align: center;
+                width: 100%;
+            }
+
+            .luxury-footer a::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .luxury-footer a:hover::after {
+                width: 100%;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .footer-bottom-links {
+                justify-content: center;
+            }
+
+            .footer-text-group {
+                align-items: center !important;
+                text-align: center !important;
+                display: flex !important;
+                flex-direction: column !important;
+                width: 100%;
+            }
+
+            .footer-socials {
+                justify-content: center !important;
+            }
+
+            /* Cookie Banner Mobile */
+            .cookie-banner {
+                bottom: 90px;
+                bottom: calc(150px + env(safe-area-inset-bottom));
+                width: 90%;
+                max-width: 400px;
+                left: 0;
+                right: 0;
+                margin: 0 auto;
+                border-radius: 16px;
+                padding: 24px;
+                padding-bottom: 24px;
+                transform: translateY(150%);
+            }
+
+            .cookie-banner.visible {
+                transform: translateY(0);
+            }
+
+            .cookie-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .cookie-content p {
+                min-width: auto;
+                font-size: 15px !important;
+            }
+
+            .cookie-actions {
+                width: 100%;
+                justify-content: space-between;
+                gap: 10px;
+            }
+
+            .cookie-actions button {
+                flex: 1;
+                padding: 14px;
+            }
+
+            /* Hide Floating GDPR on mobile */
             .floating-gdpr-btn {
                 display: none !important;
-                /* HIDE ON MOBILE AS REQUESTED */
+            }
+        }
+
+        @media (min-width: 769px) {
+
+            /* Desktop elements always visible */
+            .hover-3d {
+                opacity: 1;
+                transform: none;
+            }
+
+            .hover-3d:hover {
+                transform: translateY(-8px) scale(1.05);
+                box-shadow: 0 20px 35px rgba(0, 0, 0, 0.22);
+            }
+        }
+
+        @media screen and (max-width: 500px) {
+            .back-to-top {
+                bottom: 120px !important;
+                bottom: calc(120px + env(safe-area-inset-bottom)) !important;
+            }
+
+            .floating-gdpr-btn {
+                bottom: 120px;
+            }
+
+            .cookie-banner {
+                bottom: 120px;
+                bottom: calc(150px + env(safe-area-inset-bottom));
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            .luxury-footer-content {
+                flex-direction: column;
+                gap: 30px;
             }
         }
     </style>
@@ -1731,599 +1472,279 @@
                 <span class="lang-full">Italiano</span>
                 <span class="lang-short">IT</span>
             </a>
-            <!-- Link to English version (Placeholder URL) -->
-            <a href="https://luxury-method.vercel.app/Webpages/Extra.html" class="lang-option"
-                onclick="selectLang('en')">
+            <!-- Link to English version (Assuming index or root) -->
+            <a href="index.html" class="lang-option" onclick="selectLang('en')">
                 <span class="lang-full">English</span>
                 <span class="lang-short">EN</span>
             </a>
         </div>
     </div>
 
-    <!-- Hero Section -->
     <div class="hero">
-        <div class="hero-overlay"></div>
-        <h1>CONTENT MARKETING DI LUSSO</h1>
+        <div class="overlay"></div>
+        <h1>BRANDING DI LUSSO</h1>
     </div>
 
-    <!-- Main Content Wrapper -->
     <div class="paddingleftright mrginleft">
-
-        <!-- Intro Section -->
         <div class="top-section">
-            <div class="mt-80">
+            <div class="mt-large">
                 <p>
-                    Cosa rende diverso il content marketing di lusso? Meno click, più connessione.
-                    Il contenuto di lusso trasforma il tuo brand in uno stile di vita, il tuo prodotto in una storia
-                    avvincente e il tuo pubblico in
-                    devoti sostenitori.
-                    I clienti si connettono con i brand di lusso a livello mentale ed emotivo molto prima di prendere
-                    una decisione di acquisto.
-                    Dalla SEO ai social media fino allo storytelling, il content marketing di lusso mantiene il tuo
-                    brand rilevante,
-                    desiderabile e
-                    indimenticabile.
+                    In <a target="_blank" href="https://www.luxury-method.com">Luxury Method</a> crediamo che il branding di lusso vada ben oltre l'aspetto visivo: si tratta di creare una connessione emotiva significativa che risuoni in ogni punto di contatto. Al centro, il branding di lusso riguarda la cura di un brand distintivo, dove ogni dettaglio rafforza un senso di esclusività, scopo e prestigio. Ogni decisione — dalla tipografia ai messaggi — deve riflettere alta qualità e un chiaro intento di branding di alto livello. Indipendentemente dal settore, un'identità di brand di lusso chiaramente definita è fondamentale per costruire la fiducia del cliente e sostenere la fedeltà al brand a lungo termine. Le strategie forti di branding di lusso bilanciano l'esclusività con la rilevanza, creando desiderio pur mantenendo la distanza — una parte fondamentale delle strategie efficaci di esclusività del brand di lusso. Un'agenzia specializzata in branding di lusso come Luxury Method comprende come eseguire questo equilibrio, garantendo che la strategia di posizionamento del brand di lusso si allinei sia con le aspettative del pubblico che con i cambiamenti culturali. Un'identità di brand ben realizzata nel settore del lusso è la base per il riconoscimento e il successo a lungo termine che miriamo a fornire ai nostri clienti.
                 </p>
             </div>
         </div>
 
         <div class="main-container" id="main-container">
-
-            <!-- Sidebar -->
             <div class="sidebar">
-                <button onclick="scrollToSection('audience')">
-                    I nostri servizi di content
-                </button>
-                <button onclick="scrollToSection('mindmap')">
-                    I settori con cui lavoriamo
-                </button>
-                <button onclick="scrollToSection('who-we-are')">
-                    Chi Siamo
-                </button>
+                <button onclick="scrollToSection('audience')">I nostri servizi di branding</button>
+                <button onclick="scrollToSection('mindmap')">Migliori esempi di branding di lusso</button>
+                <button onclick="scrollToSection('industry')">Settori in cui operiamo</button>
+                <button onclick="scrollToSection('content')">Dove operiamo</button>
             </div>
 
-            <!-- Content -->
             <div class="content">
-
-                <div class="top-section pt-0">
-                    <h2>Cos'è il Content Marketing di Lusso?</h2>
+                <div class="top-section no-top-padding">
+                    <h2>Come lanciare un Brand di Lusso</h2>
                     <p style="text-align: start;">
-                        Il <b>content marketing di lusso</b> è il modo per costruire un'immagine di marca unica
-                        concentrandosi su ogni
-                        piccolo dettaglio
-                        in tutti gli elementi del brand. Il <b>contenuto di lusso</b> si concentra sulla qualità,
-                        creando
-                        messaggi che
-                        si connettono con le
-                        emozioni e l'eredità del pubblico target per creare esperienze di marca significative. Il
-                        <b>content
-                            marketing</b>, proprio come il branding, consiste nel raggiungere un vasto pubblico
-                        lavorando
-                        su
-                        contenuti di valore e coinvolgenti come post di blog, video o post sui social media che
-                        aumentano
-                        la <b>visibilità</b> del brand e
-                        <b>guidano le
-                            conversioni.</b> Ciò che distingue il content marketing di lusso è la sua enfasi nel parlare
-                        a un
-                        pubblico più raffinato.
+                        Lanciare un brand di lusso significa costruire qualcosa che sembri significativo ed esclusivo fin dall'inizio. Se ti stai chiedendo come avviare un brand di lusso, il processo inizia definendo il <strong>DNA del tuo brand</strong> — i suoi valori, il suo scopo e la sua personalità. Questa identità può essere plasmata utilizzando strumenti come il <a target="_blank" href="https://howbrandsarebuilt.com/the-brand-identity-prism-and-how-it-works/" target="_blank">prisma dell'identità del brand di lusso</a>, che getta le basi per una comunicazione coerente e avvincente. Successivamente, arriva lo <strong>storytelling</strong>: una narrazione potente che riflette la tua visione e si connette emotivamente con il tuo pubblico. Il <strong>Design</strong> gioca un ruolo fondamentale nel dare vita a tutto questo. Dagli elementi di branding come logo e packaging ai canali di marketing come il tuo <a target="_blank" href="https://www.luxury-method.com/services/web-development">sito web</a> e i <a target="_blank" href="https://www.luxury-method.com/services/luxury-social-media-agency">social media</a>, ogni dettaglio deve riflettere la qualità e l'esclusività del tuo brand. Un <strong>posizionamento di mercato intelligente</strong>, attraverso un <strong>targeting</strong> preciso e un <strong>posizionamento chiaro</strong>, assicura che il tuo brand risuoni con la clientela giusta. Come agenzia fidata di costruzione di brand di lusso, <strong>ti guidiamo in ogni passo — offrendo strategie di branding di lusso su misura</strong>, una raffinata strategia di lancio del brand e consulenza esperta su come costruire un brand di lusso che si distingua e duri nel tempo.
                     </p>
                 </div>
 
-                <div class="top-section pt-0">
-                    <h2>Il Ruolo dei Contenuti di Lusso nel Costruire Esclusività e Prestigio</h2>
+                <div class="top-section no-top-padding">
+                    <h2>Come vendere il lusso</h2>
                     <p style="text-align: start;">
-                        I <b>creatori di contenuti di lusso</b> mirano a generare traffico e lead per i brand di lusso;
-                        si concentrano anche su
-                        prestigio, emozione e storytelling. Il <b>contenuto di lusso</b> si connette con individui che
-                        apprezzano
-                        l'eredità,
-                        l'artigianato e l'esclusività - coloro che vedono il lusso come un'estensione della propria
-                        identità e delle proprie
-                        aspirazioni.
-                    </p>
-
-                    <img class="styled-img hover-3d image"
-                        src="https://images.pexels.com/photos/4549411/pexels-photo-4549411.jpeg" alt="" />
-
-                    <p style="text-align: start;">
-                        Il <b>content marketing per brand di lusso</b> dovrebbe essere basato su una strategia fondata
-                        sulla connessione,
-                        non solo sulla
-                        comunicazione. È elegante, emotivo e attentamente progettato per riflettere uno stile di vita,
-                        il
-                        che rende il
-                        contenuto di lusso qualcosa che va oltre la vendita; racconta storie di eredità, qualità e
-                        significato. Con il supporto
-                        di una
-                        <b>agenzia di contenuti di lusso,</b> il tuo brand riceverà <b>soluzioni di content
-                            marketing</b>
-                        personalizzate
-                        che si connettono
-                        con persone che si aspettano più di un semplice prodotto. Come agenzia di contenuti di
-                        lusso, il nostro lavoro è essere il tuo partner nell'attrarre il pubblico giusto per il tuo
-                        brand
-                        di lusso,
-                        coloro
-                        che si preoccupano del significato, del valore e della storia dietro il prodotto.
+                        Vendere il lusso va oltre le transazioni — <strong>si tratta di vendere una storia, un'esperienza e un senso di appartenenza.</strong> Se ti stai chiedendo come vendere il lusso, si inizia con la comprensione di <strong>cos'è un brand di lusso</strong> e <strong>come il valore emotivo guida il desiderio.</strong> I prodotti devono essere posizionati come esclusivi, di fascia alta e significativi, utilizzando annunci di lusso e messaggi attentamente progettati che parlino di aspirazione e identità. Che si tratti di come vendere beni di lusso, articoli o prodotti, <strong>il successo risiede nella coerenza in tutti i punti di contatto — online e offline.</strong> Una strategia digitale ben realizzata, inclusi <a target="_blank" href="https://www.luxury-method.com/services/luxury-seo-agency">SEO</a>, contenuti e social media, gioca un ruolo importante nel modo in cui commercializzare prodotti di lusso al pubblico di oggi. In Luxury Method, siamo specializzati nell'aiutare i brand non solo a lanciare ma a crescere — guidando i clienti su come creare un brand di lusso e come vendere il lusso.
                     </p>
                 </div>
 
                 <div id="editorial2" class="section">
-                    <h2 style="text-decoration:none;">I NOSTRI SERVIZI DI CONTENT MARKETING DI LUSSO</h2>
-                    <div id="top" class="top-section " style="position: relative;">
-                        <span id="audience" class="anchor-offset"></span>
-                    </div>
+                    <h2 style="text-decoration: underline">Marketing vs Branding</h2>
+                    <p>I servizi di Branding e Marketing sono spesso confusi, ma svolgono ruoli distinti — specialmente nel settore del lusso. Comprendere la differenza tra una strategia di branding e una <a target="_blank" href="https://www.luxury-method.com/services/luxury-marketing-strategy">strategia di marketing</a> è essenziale. <strong>Il Branding definisce la tua identità</strong>: chi sei, cosa rappresenti e come vuoi essere percepito. Include i tuoi valori, la tua voce e il tuo mondo visivo — formando le fondamenta emotive e strategiche del tuo business. <strong>Il Marketing</strong>, al contrario, <strong>determina come quell'identità viene condivisa</strong> con il mondo. Include gli strumenti, i canali e le campagne utilizzate per promuovere il tuo messaggio. Una strategia di marketing di lusso ben sviluppata amplifica la presenza di un brand attraverso una ponderata strategia di promozione che garantisce visibilità, desiderabilità e rilevanza tra i giusti pubblici. Senza un brand chiaro, il marketing perde direzione; senza marketing, il branding manca di portata. <strong>Nel lusso, i due devono lavorare mano nella mano — uno costruisce il significato, l'altro costruisce lo slancio.</strong>
+                    </p>
+                </div>
+
+                <div id="top" class="top-section ">
+                    <h2 id="audience" style="text-decoration: none;">I NOSTRI SERVIZI DI BRANDING</h2>
+                </div>
+
+                <div class="section">
+                    <h3>1) Naming</h3>
                     <p>
-                        Come <b>agenzia di contenuti di lusso</b>, offriamo soluzioni di content marketing abbinate
-                        all'eleganza del tuo brand
-                        e alla sua identità. Dalla SEO e l'email marketing alla creazione di contenuti per social media
-                        e
-                        materiali stampati d'élite, il nostro
-                        lavoro è creato per connettere il tuo brand con pubblici target personalizzati. Il nostro team
-                        di
-                        <b>esperti di content
-                            marketing</b> ha la conoscenza e l'esperienza per garantire che ogni pezzo, sia digitale
-                        che
-                        tradizionale,
-                        trasmetta il messaggio, il tono e l'aspetto giusti per elevare la presenza del tuo brand con
-                        significato ed
-                        esclusività.
+                        Il naming di un brand di lusso è una parte vitale del branding di successo, catturando l'essenza della tua identità mentre risuona con il tuo pubblico di riferimento. Che si tratti di lanciare un nuovo brand o riposizionarne uno esistente, sviluppiamo nomi raffinati ed <strong>emotivamente intelligenti</strong> che scatenano il riconoscimento ed <strong>elevano la percezione fin dalla prima impressione</strong>.
                     </p>
                 </div>
 
                 <div class="section">
-                    <h3>1) SEO e Content Writing per Brand di Lusso</h3>
+                    <h3>2) Strategia di Brand & Posizionamento</h3>
                     <p>
-                        La <b>SEO per brand di lusso</b> <b>migliorerà</b> il tuo posizionamento ottimizzando la
-                        presenza
-                        del tuo sito web per
-                        raggiungere il pubblico organicamente. I nostri <a target="_blank"
-                            href="https://www.luxury-method.com/services/luxury-seo-agency">servizi SEO di lusso</a>
-                        si rivolgono a clienti facoltosi identificando parole chiave di alto valore che cercano,
-                        quindi migliorando
-                        la SEO on-page, off-page e tecnica del tuo sito web per <b>posizionarsi più in alto</b> e
-                        attrarli
-                        utilizzando il nostro
-                        processo di lavoro SEO unico.
-                        In <a target="_blank" href="https://www.luxury-method.com/">Luxury Method</a>, siamo
-                        specializzati
-                        in
-                        <b>scrittura di contenuti di lusso</b> che portano il perfetto equilibrio nel tono per
-                        connettere
-                        il tuo brand con la
-                        cultura di
-                        un pubblico d'élite. Ogni pezzo di contenuto è realizzato per adattarsi all'identità esclusiva
-                        del
-                        tuo brand.
-                        Sia che stiamo ottimizzando per i motori di ricerca o raccontando la tua storia attraverso
-                        narrazioni avvincenti del brand,
-                        <b>il nostro obiettivo è semplice:</b> aiutare il tuo brand premium a connettersi con il
-                        pubblico
-                        giusto e trasformare
-                        quella
-                        connessione in lealtà.
-                    </p>
-
-                    <img class="image hover-3d styled-img" src="https://luxury-method.vercel.app/3.png" alt="" />
-
-                    <p>
-                        Ad esempio, guarda il sito di <b style="color: rgb(0, 0, 0);">Louis Vuitton</b> nell'immagine
-                        sopra: design
-                        pulito e posizionamento elevato. Questo è il risultato di un'ottima SEO per brand di lusso.
-                        Utilizziamo lo stesso approccio
-                        attraverso il nostro
-                        <b>content marketing per brand di moda</b>, aiutandoti a farti notare su Google, costruire
-                        visibilità e guidare le
-                        conversioni, il tutto mantenendo intatta la tua identità di lusso.
+                        Il nostro servizio di strategia e posizionamento del brand getta le basi per tutto ciò che il tuo brand diventerà. Questo processo definisce il <strong>chi, cosa e perché del tuo brand</strong>; il marketing viene dopo, decidendo come e dove comunicarlo. Il nostro processo strategico inizia con la definizione delle tue dichiarazioni di <strong>missione e visione</strong>, mappando il <strong>profilo del tuo pubblico target</strong> e identificando gli elementi chiave del branding di lusso. Creiamo strategie di posizionamento che distinguono il tuo brand in un mercato saturo e lo aiutano a risuonare con una clientela esigente. Ogni brand con cui lavoriamo è posizionato strategicamente — sempre con prestigio e rilevanza a lungo termine in mente.
                     </p>
                 </div>
 
                 <div class="section">
-                    <h3>2) Social Media: Design e Creazione Contenuti per Brand di Lusso</h3>
-                    <img class="image hover-3d styled-img"
-                        src="https://luxury-method.vercel.app/CMSocialMediaDesign.png" alt="" />
+                    <h3>3) Brand Identity & Design del Logo</h3>
+                    <p>Creiamo identità visive raffinate che incarnano i valori, il posizionamento e la personalità del tuo brand. <strong>Dalla creazione di loghi su misura a sistemi visivi completi</strong>, il nostro processo di design assicura che forniamo variazioni di logo raffinate — incluse formati primari, secondari, monocromatici e responsive — che mantengano l'impatto su tutti i punti di contatto digitali e fisici.
 
-                    <p>
-                        I <b>brand di lusso</b> necessitano di post puliti ed eleganti che riflettano la loro identità.
-                        Ecco perché assumono
-                        agenzie fidate
-                        per lavorare sui loro account social media. Dalle immagini al messaggio, tutto è
-                        fatto per sembrare
-                        premium e in linea con il brand. I servizi di creazione di contenuti e i servizi di produzione
-                        di
-                        contenuti di alta qualità
-                        sono importanti. Con
-                        solidi <b>servizi di design per social media</b> e intelligenti <a target="_blank"
-                            href="https://www.luxury-method.com/services/luxury-social-media-agency">servizi di
-                            ottimizzazione
-                            social media</a>, il tuo brand può crescere naturalmente, connettersi con il pubblico giusto
-                        e
-                        trasformare
-                        i suoi clienti
-                        in clienti fedeli, costruendo fiducia con la giusta presenza sui loro account social media.
-                    </p>
-
-                    <img class="image hover-3d styled-img" alt=""
-                        src="https://luxury-method.vercel.app/Social%20media.png" />
-                    <p>
-                        Proprio come vedi in queste immagini dall'Instagram di <b style="color: rgb(0, 0, 0);">Patek
-                            Philippe</b>,
-                        i brand di orologi di lusso possono ottenere una potente crescita organica con la giusta
-                        strategia
-                        di marketing per orologi di lusso.
-                        Il loro feed è pulito, brandizzato e coerente, mostrando come un'agenzia di creazione contenuti
-                        social media possa
-                        aiutarti a costruire prestigio e lealtà senza fare affidamento solo su annunci a pagamento.
-                    </p>
-                </div>
-
-                <div class="section">
-                    <h3>3) Materiale Stampato: OOH, pubblicità su riviste</h3>
-                    <p>
-                        Il <b>marketing tradizionale</b> gioca ancora un ruolo vitale nel branding di lusso. Che si
-                        tratti
-                        di audace
-                        <b>stampa OOH</b> o eleganti <b>pubblicità stampate per brand di lusso</b>, questi pezzi danno
-                        al
-                        tuo brand una presenza
-                        reale e
-                        fisica. Dalla strada alle pagine delle riviste premium, un buon design di stampa cattura
-                        l'attenzione
-                        e costruisce
-                        fiducia. Creiamo le migliori pubblicità stampate per abbinare lo stile del tuo brand e lasciare
-                        un'impressione duratura
-                        ovunque
-                        vengano viste.
-                    </p>
-
-                    <b style="">Pubblicità OOH con Gucci:</b>
-                    <p>
-                        Giacomo, fondatore di Luxury Method, ha lavorato con Gucci ed è stato coinvolto in diverse
-                        campagne
-                        per il brand.
-                        Questo progetto OOH a Piccadilly Circus è uno di questi.
-                        Evidenzia come la nostra esperienza nel mondo reale nell'OOH di lusso ci aiuti a creare campagne
-                        che lasciano un'impressione
-                        duratura. Portiamo questa conoscenza pratica per aiutare i clienti a creare le migliori
-                        <b>pubblicità stampate di lusso</b> e
-                        visual outdoor che riflettono l'identità e i valori del loro brand.
-                    </p>
-
-                    <div class="ooh-container">
-                        <img class="ooh-image hover-3d"
-                            src="https://luxury-method.vercel.app/OOH%20Advertising%20with%20Gucci.jpeg"
-                            alt="Luxury Advertising with Gucci" />
-                    </div>
-
-                    <b style="">Pubblicità su Riviste di Lusso:</b>
-
-                    <p>
-                        Molte aziende di lusso si affidano ancora alle <b>pubblicità stampate per brand di lusso</b> per
-                        connettersi con i lettori che
-                        apprezzano
-                        riviste di fascia alta. Queste pubblicità sono realizzate per riflettere lo stile e l'atmosfera
-                        che il pubblico d'élite si aspetta,
-                        dimostrando come
-                        immagini forti, un layout pulito e il messaggio giusto possano avere un impatto duraturo. Quando
-                        il formato è
-                        attentamente progettato, il risultato dà al tuo brand lo spazio per raccontare una storia e
-                        distinguersi. In <b style="color: rgb(0, 0, 0);">Luxury Method</b>, comprendiamo come le giuste
-                        <b>pubblicità stampate di lusso</b> possano
-                        posizionare
-                        il tuo brand nell'ambientazione perfetta.
-                    </p>
-
-                    <div style="display: flex; align-items: center; margin: 30px; justify-content: center;">
-                        <img class="hover-3d styled-img" style="max-width: 500px; width: 100vw;" alt=""
-                            src="https://luxury-method.vercel.app/Luxury%20Magazine%20Print%20Ad.jpg" />
-                    </div>
-
-                    <b style="">Copertina di Gucci su Vogue Italia: Un Esempio di Pubblicità Stampata di Lusso:</b>
-
-                    <p>
-                        Il tuo brand di lusso può fare una forte impressione con una narrazione visiva senza tempo sulla
-                        carta stampata.
-                        La collezione Primavera 2024 di Gucci sulla copertina di Vogue Italia è un ottimo esempio delle
-                        <b>migliori pubblicità stampate su riviste:</b> semplici,
-                        eleganti e facili da ricordare.
-                        Questa pubblicità stampata di un brand di lusso fonde lo stile classico con un look moderno,
-                        mostrando come le <b>pubblicità stampate di lusso</b> aiutino
-                        a plasmare una <b>forte immagine del brand.</b> Una pubblicità stampata di lusso intelligente e
-                        ben posizionata come questa mantiene Gucci
-                        nella mente del pubblico interessato e rafforza la sua presenza nel mondo dell'alta moda.
+                        Per supportare un'espressione coerente del brand, sviluppiamo una guida di stile che delinea iconografia, tipografia, direzione fotografica, uso dei font e palette di colori. Con regole di utilizzo del logo chiaramente definite, aiutiamo a salvaguardare l'integrità visiva del tuo brand su tutte le piattaforme. Questi elementi fondanti formano un linguaggio visivo coeso che rafforza il tuo posizionamento di lusso.
                     </p>
                 </div>
 
                 <div id="calendar" class="section">
-                    <h3>4) Email Marketing per Brand di Lusso</h3>
-                    <p>
-                        L'<b>email marketing per brand di lusso</b> non serve solo a far aprire le email; si tratta di
-                        creare
-                        contenuti e modelli di design che costruiscono una connessione emotiva con i tuoi clienti
-                        evidenziando il vero valore del tuo
-                        prodotto. Che tu stia raggiungendo clienti VIP o annunciando qualcosa di nuovo, il tuo
-                        email marketing per brand di lusso dovrebbe riflettere la stessa attenzione ai dettagli in ogni
-                        elemento.
-                        In <b style="color: rgb(0, 0, 0);">Luxury Method</b>, creiamo campagne personalizzate che
-                        riflettono perfettamente lo stile e il tono del tuo
-                        brand d'élite, dai design eleganti ai messaggi scelti con cura. Assicuriamo che il tuo
-                        <b>email marketing per brand di lusso</b> mantenga il livello di qualità e stile che i tuoi
-                        clienti
-                        si aspettano, sia che
-                        si tratti di un lancio di prodotto, un evento privato o un aggiornamento stagionale.
-                    </p>
+                    <h3>4) Brand Storytelling & Messaggistica</h3>
+                    <p>Il nostro processo include <strong>lo sviluppo del tono di voce, quadri di messaggi chiave e struttura narrativa</strong> — formando le fondamenta di una strategia di branding coerente e potente. Allineiamo i valori interni con la percezione esterna, plasmando una strategia di messaggio dell'immagine del brand avvincente che costruisce fiducia e connessione emotiva con il tuo pubblico. Che tu stia lanciando un nuovo brand o riposizionando uno stabilito, il nostro lavoro di storytelling assicura che la tua voce sembri intenzionale, autentica e unicamente tua.</p>
+                </div>
 
-                    <div style="display: flex; align-items: center; justify-content: center;">
-                        <img class="image hover-3d styled-img" style="max-width: 500px; width: 100vw;" alt=""
-                            src="https://luxury-method.vercel.app/Email%20Marketing%20.png" />
-                    </div>
+                <div id="editorial" class="section">
+                    <h3>5) Linee guida del Brand</h3>
+                    <p>Le linee guida complete del brand di lusso servono come riferimento definitivo per come il tuo brand dovrebbe apparire, sentirsi e suonare. <strong>Questo documento raccoglie tutte le regole scritte e visive</strong> — dall'uso del logo e tipografia al tono di voce e linee guida visive — <strong>garantendo coerenza attraverso ogni piattaforma e interazione con i partner</strong>. Progettate per team interni, collaboratori e fornitori, le linee guida del brand forniscono una chiara comprensione dell'identità della tua azienda e come applicare correttamente i suoi asset sia online che offline.</p>
+                </div>
 
-                    <p>
-                        L'<b>email marketing per brand di lusso</b> ha ancora un grande impatto se fatto bene. Il tuo
-                        brand
-                        può rimanere vicino
-                        ai clienti fedeli con messaggi puliti e raffinati proprio come la newsletter di <b
-                            style="color: rgb(0, 0, 0);">Louis Vuitton</b>. Con il giusto approccio di email marketing
-                        di
-                        lusso, puoi
-                        mantenere il tuo pubblico informato, far crescere la tua portata e guidare risultati reali.
+                <div id="distribution" class="section">
+                    <h3>6) Architettura del Brand</h3>
+                    <p>Aiutiamo i brand di lusso a portare chiarezza e coesione a portafogli di brand complessi attraverso un'architettura di brand strategica. Che tu stia gestendo più linee di prodotti, sotto-brand o pianificando un'espansione futura, <strong>affiniamo la struttura del tuo ecosistema di brand per garantire coerenza e scalabilità.</strong> Attraverso un esperto design di brand di lusso e graphic design per il lusso, assicuriamo che ogni elemento del brand si adatti all'interno di una gerarchia chiaramente definita pur mantenendo la forza individuale.</p>
+                </div>
+
+                <div id="effectiveness" class="section">
+                    <h3>7) Rebranding di Lusso</h3>
+                    <p>Lavoriamo a stretto contatto con brand di lusso che necessitano di rebranding per <strong>evolvere</strong> la loro <strong>narrazione</strong>, <strong>aggiornare</strong> la loro <strong>identità visiva</strong> e <strong>affinare</strong> il loro <strong>posizionamento di mercato</strong> — senza perdere l'essenza che ha reso il brand desiderabile in primo luogo.
                     </p>
                 </div>
             </div>
         </div>
 
-        <div class="content" id="con2" style="position: relative;">
+
+        <div class="content" id="con2">
             <div id="top2" class="top-section">
-                <span id="mindmap" class="anchor-offset"></span>
-                <h2 style="text-decoration: none">IL CONTENT MARKETING NEI SETTORI DEL LUSSO</h2>
+                <h2 id="mindmap" style="text-decoration: underline">Migliori Esempi di Branding di Lusso</h2>
             </div>
-
             <div id="audience2" class="section">
-                <p>
-                    Ogni <b>settore del lusso</b> ha il proprio stile, voce e pubblico, e un'agenzia di content
-                    marketing
-                    di lusso
-                    dovrebbe riflettere e personalizzare il contenuto di conseguenza. Dai gioielli e orologi
-                    all'immobiliare,
-                    alla moda e ai
-                    viaggi, il contenuto deve corrispondere al <b>valore di fascia alta</b> che il tuo brand offre.
-                    Creiamo
-                    <b>soluzioni di content
-                        marketing</b> per ogni settore che si adattano al tono della tua nicchia pur rimanendo fedeli a
-                    ciò che i consumatori d'élite
-                    si aspettano: qualità, emozione ed esclusività.
-                    Il marketing di gioielli e orologi di lusso si concentra sul raccontare una storia che è un mix di
-                    eredità,
-                    artigianato
-                    ed esclusività. Che si tratti di mostrare un diamante unico o un segnatempo in edizione limitata, il
-                    contenuto
-                    evidenzia
-                    l'arte del creatore e il brand dietro ogni pezzo.
-                    Il content marketing per gioielli fa emergere il valore emotivo e la rarità di possedere qualcosa di
-                    veramente
-                    speciale. Il marketing di orologi di lusso sottolinea precisione ed eredità, mentre le pubblicità di
-                    orologi di lusso evidenziano l'esclusività di
-                    possedere un
-                    pezzo raro e di alta gamma.
-                </p>
+                <h3><a style="text-decoration: none;" target="_blank"
+                        href="https://us.louisvuitton.com/eng-us/products/neverfull-mm-monogram-nvprod5350101v/M46987">Louis
+                        Vuitton</a></h3>
+
+                <div class="image">
+                    <img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-neverfull-mm--M46987_PM1_Detail%20view.png?wid=730&hei=730"
+                        class="image hover-3d" alt="louisvuitton" />
+                </div>
+
+                <p>Come uno dei migliori esempi di branding di lusso, la strategia del brand di lusso di Louis Vuitton è costruita attorno alla sua iconica tela monogramma — un simbolo di eredità, artigianato ed esclusività. Introdotto nel 1896, i motivi floreali erano ispirati al design giapponese, aggiungendo profondità culturale a uno dei loghi di brand di lusso più iconici. Il brand onora la sua eredità pur rimanendo culturalmente rilevante. Attraverso collaborazioni con artisti e designer come Takashi Murakami, Yayoi Kusama e Virgil Abloh, LV reinventa continuamente la sua identità visiva senza perdere il suo nucleo.</p>
             </div>
 
             <div id="mindmap2" class="section">
-                <h3>Content Marketing per Gioielli e Orologi di Lusso</h3>
-                <div class="industry_Image">
-                    <img src="https://luxury-method.vercel.app/WATCHES.png" alt="Industria Orologi" class="hover-3d"
-                        style="height:65vh;">
-                </div>
-                <p>
-                    Il marketing per <a target="_blank"
-                        href="https://www.luxury-method.com/industries/luxury-jewelry-marketing">gioielli di lusso</a> e
-                    <a target="_blank" href="https://www.luxury-method.com/industries/luxury-watches-marketing">orologi
-                        di lusso</a>
-                    si concentra sul raccontare una storia che è un mix di eredità, artigianato ed
-                    esclusività.
-                    Che si tratti di mostrare un diamante unico o un segnatempo in edizione limitata, il contenuto
-                    evidenzia
-                    l'arte del
-                    creatore e il brand dietro ogni pezzo.
-                </p>
-                <p><b>Il content marketing per gioielli</b> fa emergere il valore emotivo e la rarità di possedere
-                    qualcosa di veramente
-                    speciale.
-                    <b>Il marketing di orologi di lusso</b> sottolinea precisione ed eredità, mentre le pubblicità di
-                    orologi di lusso evidenziano
-                    l'esclusività di possedere un pezzo raro e di alta gamma.
-                </p>
-            </div>
-
-            <div id="mindmap2" class="section">
-                <h3>Content Marketing per Viaggi e Ospitalità di Lusso</h3>
-                <p>
-                    Il <a target="_blank"
-                        href="https://www.luxury-method.com/industries/luxury-travel-marketing">marketing per viaggi di
-                        lusso</a>
-                    aiuta i viaggiatori di fascia alta a scoprire esperienze uniche e indimenticabili. Con un forte
-                    content marketing di viaggio,
-                    i brand possono
-                    mostrare luoghi mozzafiato, soggiorni di lusso e servizi personalizzati. Attraverso immagini di
-                    qualità e
-                    storie, i servizi di agenzia di content marketing per viaggi evidenziano ciò che rende speciale ogni
-                    destinazione.
-                </p>
-
-                <div class="industry_Image">
-                    <img src="https://luxury-method.vercel.app/TRAVEL.png" alt="Travel Industry" class="hover-3d"
-                        style="height:65vh;">
+                <h3><a style="text-decoration: none;" target="_blank" href="https://www.aman.com/">Aman Resorts</a></h3>
+                <div class="image">
+                    <img src="https://i.postimg.cc/HnRvxZwB/Frame.png" class="image hover-3d" alt="Aman Resorts" />
                 </div>
 
-                <p>
-                    Nell'ospitalità, il <b>content marketing per <a target="_blank"
-                            href="https://www.luxury-method.com/industries/luxury-hospitality-marketing-agency">hotel di
-                            lusso</a></b>
-                    si concentra sul design, l'atmosfera e il servizio che distinguono un hotel. Un piano di content
-                    marketing intelligente per
-                    hotel utilizza SEO, storytelling e belle immagini per attrarre viaggiatori d'élite e incoraggiare
-                    le prenotazioni.
-                </p>
+                <p>Aman Resorts incarna una filosofia "less is more", rendendolo un esempio straordinario nella strategia del brand di hotel di lusso. Utilizza toni neutri, linee pulite e una deliberata assenza di loghi per proiettare calma, esclusività e raffinatezza. Il suo branding evita font stravaganti o colori saturi, favorendo spesso una moderna tipografia sans-serif e ambienti dai toni della terra. Questa presenza sottile e silenziosa posiziona Aman come leader nella strategia di branding di lusso, distinguendolo come uno dei migliori marchi di fascia alta al mondo. Aman Resorts è un forte esempio di storytelling di brand di lusso — dimostrando che la connessione emotiva può essere raggiunta attraverso la moderazione piuttosto che l'eccesso.</p>
             </div>
 
             <div id="content2" class="section">
-                <h3>Content Marketing per Moda e Retail di Lusso</h3>
-
-                <div class="industry_Image"
-                    style="display:flex; justify-content:center; align-items:center; margin:40px 0;">
-                    <img src="https://luxury-method.vercel.app/FASHION.png" class="hover-3d" alt=""
-                        style="width:100%; height:65vh; object-fit:cover; object-position:center center;">
+                <h3><a style="text-decoration: none;" target="_blank" href="https://ivycollection.com/">The Ivy</a></h3>
+                <div class="image">
+                    <img src="https://images.squarespace-cdn.com/content/v1/5cc70ce165019fb0a5652905/1565271814293-NG36EJKR3M4SQTQ07Z8P/IVY_CollectionLogo_02_Foiled.jpg?format=1500w"
+                        class="image hover-3d" alt="" />
                 </div>
-
-                <p>
-                    Il <b>content marketing per <a target="_blank"
-                            href="https://www.luxury-method.com/industries/luxury-fashion-marketing">moda di
-                            lusso</a></b>
-                    funziona meglio quando si concentra su collezioni stagionali, couture e lo stile di vita dietro il
-                    brand. Aiuta
-                    a creare una reale connessione con gli acquirenti di fascia alta mostrando ciò che rende speciale il
-                    brand in modo chiaro
-                    ed elegante.
-                </p>
-                <p>
-                    Il <b>content marketing per il retail</b> supporta questo rendendo il percorso di acquisto personale
-                    e
-                    senza interruzioni online
-                    e in negozio. Evidenzia ciò che conta di più per gli acquirenti di lusso, dalla qualità
-                    all'esclusività. Una
-                    forte <b>strategia per il <a target="_blank"
-                            href="https://www.luxury-method.com/industries/luxury-retail-marketing">retail di
-                            lusso</a></b>
-                    utilizza il
-                    giusto tono, visual e contenuti per riflettere l'esperienza premium che le persone si aspettano da
-                    un
-                    brand di fascia alta.
+                <p>The Ivy si distingue tra gli esempi di branding di lusso per la sua fusione di iconico glamour britannico con un tocco contemporaneo. Il suo branding attinge pesantemente dal design Art Deco e l'identità visiva cattura l'essenza culturale di una classica esperienza culinaria britannica: teatrale, raffinata e socialmente vivace.
                 </p>
             </div>
 
             <div id="calendar2" class="section">
-                <h3>Content Marketing Immobiliare</h3>
-                <div class="industry_Image">
-                    <img src="https://luxury-method.vercel.app/REAL_ESTATE.png" class="hover-3d"
-                        alt="Real Estate Industry" style="height:65vh;">
+                <h3><a style="text-decoration: none;" target="_blank" href="https://www.cipriani.com/">Cipriani</a></h3>
+                <div class="image">
+                    <img src="https://i.postimg.cc/MG3FNpnC/Frame-1.png" class="image hover-3d" alt="" />
                 </div>
-
-                <p><b>Il content marketing immobiliare</b> consiste nel mostrare il design, la posizione e il valore di
-                    una proprietà in un modo
-                    che sembri reale e attraente. Un ottimo content marketing per l'<a target="_blank"
-                        href="https://www.luxury-method.com/industries/luxury-real-estate-marketing">immobiliare</a>
-                    fa emergere lo
-                    stile di vita e l'esperienza dietro ogni annuncio, costruisce fiducia e aiuta ad attrarre gli
-                    acquirenti giusti.</p>
+                <p>Cipriani esemplifica l'eleganza italiana senza tempo, con un'identità di brand che riflette la sua eredità veneziana e il lusso discreto. Il logo presenta un'illustrazione stilizzata di un barista — un cenno alle origini del brand presso il leggendario Harry’s Bar — abbinato a un font sans-serif audace e moderno. Il branding evita l'eccesso, comunicando invece fiducia e carattere attraverso la semplicità. Questo simbolo distintivo è diventato uno dei loghi di brand di lusso più iconici nell'ospitalità; La sua identità raffinata ma accogliente riflette una strategia di branding di lusso di livello esperto che fonde prestigio con accessibilità.</p>
             </div>
+        </div>
 
+
+        <div class="content" id="con3">
             <div id="top2" class="top-section">
-                <h3 id="industry" style="text-decoration: none;">Content Marketing per eCommerce</h3>
-
-                <div class="industry_Image">
-                    <img src="https://luxury-method.vercel.app/E_COMMERCE.png" style="height:65vh;" class="hover-3d"
-                        alt="E Commerce Industry">
-                </div>
-
-                <p>Sul lato digitale, il miglior content marketing per ecommerce utilizza personalizzazione e
-                    presentazioni di prodotto pulite ed eleganti.
-                    Un forte <b>content marketing per siti ecommerce</b> mette tutto insieme: blog, flussi email,
-                    e <a target="_blank" href="https://www.luxury-method.com/services/luxury-seo-agency">SEO</a> per
-                    guidare le vendite
-                    e costruire la lealtà
-                    del brand.</p>
+                <h2 id="industry" style="text-decoration: none;">SETTORI IN CUI OPERIAMO</h2>
+                <p style="text-align: center;">In Luxury Method, sviluppiamo sistemi di branding su misura e ad alto impatto progettati per le esigenze uniche di ogni settore del lusso:</p>
             </div>
 
             <div id="audience2" class="section">
-                <h3><a target="_blank" style="text-decoration: none;"
-                        href="https://www.luxury-method.com/industries/luxury-food-marketing">Content Marketing per
-                        Ristoranti e Food</a></h3>
+                <h3>Moda</h3>
                 <div class="industry_Image">
-                    <img src="https://luxury-method.vercel.app/FOOD_AND_BEVERAGES.png" class="hover-3d"
-                        alt="Food and Beverages Industry" style="height:65vh;">
+                    <img src="https://luxury-method.vercel.app/FASHION.png" class="hover-3d" alt="Settore Moda">
+                </div>
+                <p>In un <strong>settore definito da tendenze rapide</strong> e alti standard estetici, come agenzia di branding di <a target="_blank" href="https://www.luxury-method.com/industries/luxury-fashion-marketing">moda di lusso</a> costruiamo identità di brand durature per etichette che cercano un riconoscimento duraturo.</p>
+            </div>
+
+            <div id="mindmap2" class="section">
+                <h3>Viaggi</h3>
+
+                <div class="industry_Image">
+                    <img src="https://luxury-method.vercel.app/TRAVEL.png" class="hover-3d" alt="Settore Viaggi">
                 </div>
 
-                <p><b>Il content marketing per ristoranti</b> va oltre le foto del cibo. Condivide l'intera esperienza
-                    di
-                    grandi
-                    spazi, chef di talento e la storia dietro ogni piatto. Il content marketing per il food evidenzia
-                    l'atmosfera
-                    e la passione dietro ogni pasto. Nell'<a target="_blank"
-                        href="https://www.luxury-method.com/industries/luxury-food-marketing">industria alimentare</a>
-                    del
-                    content marketing,
-                    costruisce fiducia ed
-                    eccitazione.
-                    Un eccellente <b>content marketing per ristoranti</b> si connette con le persone giuste e le spinge
-                    a
-                    visitare, che si tratti di un locale raffinato o di un nuovo posto da provare.</p>
+                <p>Nel <a target="_blank" href="https://www.luxury-method.com/industries/luxury-travel-marketing">settore dei viaggi</a>, il branding riguarda l'<strong>evocare emozione, aspirazione e fuga.</strong> Creiamo identità elevate che trasformano le destinazioni in esperienze immersive. Attraverso storytelling raffinato, design e posizionamento, il nostro branding cattura l'essenza del luogo — costruendo desiderio e connessione prima ancora che il viaggio inizi.</p>
+            </div>
+
+            <div id="content2" class="section">
+                <h3>Ospitalità</h3>
+                <div class="industry_Image">
+                    <img src="https://luxury-method.vercel.app/HOSPITALITY.png" class="hover-3d"
+                        alt="Settore Ospitalità">
+                </div>
+
+                <p>In un <strong>settore in cui l'esperienza e l'emozione definiscono il valore, creiamo identità raffinate che catturano eleganza e atmosfera.</strong> Come agenzia di branding per hotel di lusso, sviluppiamo sistemi di brand coesi radicati nello storytelling e nel servizio. Il nostro lavoro nel <a target="_blank" href="https://www.luxury-method.com/industries/luxury-hospitality-marketing-agency">branding di lusso per l'ospitalità</a> include naming, identità visiva e tono di voce — tutto allineato con strategie di branding alberghiero di lusso senza tempo.</p>
+            </div>
+
+            <div id="calendar2" class="section">
+                <h3>Immobiliare</h3>
+                <div class="industry_Image">
+                    <img src="https://luxury-method.vercel.app/REAL_ESTATE.png" class="hover-3d"
+                        alt="Settore Immobiliare">
+                </div>
+
+                <p>Nel <a target="_blank" href="https://www.luxury-method.com/industries/luxury-real-estate-marketing">settore immobiliare di lusso</a>, il branding deve trasmettere <strong>fiducia, esclusività e aspirazione.</strong> Come agenzia di branding per proprietà di lusso, creiamo identità che elevano gli sviluppi e parlano direttamente a un pubblico con un alto patrimonio netto.</p>
+            </div>
+
+            <div id="editorial2" class="section">
+                <h3>Orologi & Gioielli</h3>
+                <div class="industry_Image">
+                    <img src="https://luxury-method.vercel.app/WATCHES.png" class="hover-3d" alt="Settore Orologi">
+                </div>
+
+                <p>Il <a target="_blank" href="https://www.luxury-method.com/industries/luxury-watches-marketing">branding per orologi di lusso</a> richiede un <strong>focus su artigianato, eredità e precisione.</strong> Costruiamo identità su misura e raffinate che evidenziano l'eredità e il valore senza tempo. Dai loghi emblematici allo storytelling guidato dai materiali, creiamo sistemi di brand di lusso che onorano l'eccellenza artigianale pur attraendo la clientela esigente di oggi.</p>
+            </div>
+
+            <div id="distribution2" class="section">
+                <h3>Food & Beverage</h3>
+
+                <div class="industry_Image">
+                    <img src="https://luxury-method.vercel.app/FOOD_AND_BEVERAGES.png" class="hover-3d"
+                        alt="Settore Food and Beverages">
+                </div>
+
+                <p>Nel settore alimentare di lusso, il branding è un'<strong>esperienza sensoriale</strong> che deve esprimere <strong>qualità, origine e artigianato.</strong> Siamo specializzati nel branding alimentare che cattura sapore, consistenza ed emozione attraverso un packaging ponderato, naming e identità visiva. Il nostro approccio al <a target="_blank" href="https://www.luxury-method.com/industries/luxury-food-marketing">branding alimentare di lusso</a> trasforma prodotti alimentari premium in brand aspirazionali guidati dalla storia che si distinguono sullo scaffale e si connettono profondamente con consumatori esigenti.
+                </p>
+            </div>
+
+            <div id="effectiveness2" class="section">
+                <h3>Retail</h3>
+
+                <div class="industry_Image">
+                    <img src="https://luxury-method.vercel.app/RETAIL.png" class="hover-3d"
+                        alt="Settore Retail">
+                </div>
+                <p>Nel <a target="_blank" href="https://www.luxury-method.com/industries/luxury-retail-marketing">retail di lusso</a>, il branding riguarda la creazione di un'<strong>esperienza multisensoriale che coinvolga i clienti dal primo sguardo all'acquisto finale.</strong> Siamo specializzati nel branding retail che fonde identità visiva con storytelling spaziale e tattile. Attraverso design mirato e storytelling nel branding retail di lusso, aiutiamo i brand a creare ambienti immersivi e packaging che riflettano la loro essenza. Le nostre soluzioni di branding retail di lusso garantiscono coerenza e risonanza emotiva in ogni punto di contatto con il cliente.</p>
             </div>
         </div>
 
-        <div id="bottom2" class="top-section" style="padding-top: 0px !important; position: relative;">
-            <span id="content" class="anchor-offset"></span>
-            <h2 id="who-we-are" style="text-decoration: none">CHI SIAMO</h2>
+        <div id="bottom2" class="top-section no-top-padding">
+            <h2 id="content" style="text-decoration: none;">DOVE OPERIAMO</h2>
             <p style="text-align: start;">
-                Luxury Method è un'agenzia SEO di lusso specializzata nell'assistere
-                brand di fascia alta nell'attrarre il pubblico target appropriato.
-                Concentrandoci su settori che includono abbigliamento, gioielleria, orologeria,
-                retail e hotel. La nostra specialità è creare soluzioni di marketing personalizzate
-                adatte alle esigenze particolari dei brand di lusso. La nostra
-                sede è a Roma e operiamo in tutto il mondo.
+                Adattiamo le nostre strategie di branding di lusso per riflettere i valori culturali unici e le aspettative di mercato di ogni regione globale che serviamo.
             </p>
 
-            <p>In <a target="_blank" href="https://www.luxury-method.com/">Luxury Method</a>, <b>aiutiamo i brand di
-                    lusso a crescere
-                    con contenuti intelligenti ed eleganti.</b> Il nostro team di creatori di contenuti di lusso ha anni
-                di esperienza lavorando
-                con brand come <b style="color: rgb(0, 0, 0);">Gucci</b> e una profonda conoscenza del settore del lusso
-                e
-                di come connettersi
-                con un
-                pubblico di fascia alta. Oggi, offriamo <b>pacchetti di content marketing</b> flessibili per diversi
-                settori del lusso,
-                inclusi moda, viaggi e immobiliare. Con i nostri <b>servizi di brand content marketing</b>, puoi
-                rafforzare
-                la tua immagine di marca e raggiungere le persone che contano davvero per i tuoi prodotti o servizi.
-                Contatta <b style="color: rgb(0, 0, 0);">Luxury Method</b> ora per iniziare a creare <b>contenuti di
-                    lusso</b> che ti connettono
-                con un pubblico d'élite e aumentano la visibilità del tuo brand e le conversioni.</p>
-
+            <li>
+                <strong>Nel Regno Unito</strong>, dove la tradizione si fonde con l'innovazione, creiamo identità di brand che bilanciano l'eredità con la rilevanza contemporanea. Come agenzia di branding di lusso multidisciplinare operante a Londra, offriamo soluzioni su misura inclusi servizi di strategia di brand di lusso nel Regno Unito, branding premium e supporto al lancio — fondati su intuizione emotiva e precisione creativa.
+            </li>
+            <li>
+                <strong>In tutta Europa</strong>, il nostro approccio abbraccia l'artigianato e il pensiero guidato dal design, rivolgendosi a mercati che danno priorità all'estetica, alla qualità e all'autenticità creativa.
+            </li>
+            <li>
+                <strong>In Medio Oriente</strong>, dove il branding è sinonimo di prestigio e personalizzazione, adattiamo soluzioni ad alto impatto che riflettono le aspettative culturali di esclusività. Operiamo con intuizione in tutta la regione attraverso i nostri team a Dubai e in Qatar, fidati da clienti esigenti che cercano branding di lusso di alto livello.
+            </li>
+            <li>
+                <strong>Negli USA</strong>, le nostre soluzioni catturano lo spirito di aspirazione, innovazione ed espressione di sé, risuonando con un mercato guidato da un'identità audace e dallo storytelling personale.
+            </li>
         </div>
     </div>
 
+
     <div class="faq-container paddingleftright top-section">
-
         <p style="text-align: center; font-size: 24px !important; font-style: italic;">
-            Scopri la differenza di un'agenzia di marketing dedicata al lusso.
+            Sperimenta la differenza di un'agenzia di marketing dedicata al lusso.
         </p>
-
-        <div class="contact-icons-container">
+        <div style="display: flex; gap: 100px; margin-top: 60px; width: 100%; justify-content: center;">
             <a target="_blank"
                 href="https://www.google.com/url?q=https%3A%2F%2Fwa.me%2F%2B393920034695&sa=D&sntz=1&usg=AOvVaw2a9hG2asZNJfADOdAWUper"
-                class="contact-btn" style="background-color: #ffffff00;"><img
-                    src="https://i.postimg.cc/HkGt0VxV/whatsapp.png" alt=""></a>
-            <a target="_blank" href="mailto:giacomo@luxury-method.com" class="contact-btn"
-                style="background-color: #5f636800;"><img src="https://i.postimg.cc/mr4tBFZf/image-978.png"
-                    style="background-color: #5f6368;" alt=""></a>
+                class="padding:20px; background-color: #fff; border-radius: 100%;"><img
+                    src="https://i.postimg.cc/HkGt0VxV/whatsapp.png"
+                    style="width: 30px; border-radius: 100%; height: 30px;" alt=""></a>
+            <a target="_blank" href="mailto:giacomo@luxury-method.com"
+                class="padding:20px; background-color: #5f6368; border-radius: 100%; "><img
+                    src="https://i.postimg.cc/mr4tBFZf/image-978.png"
+                    style="width: 30px; border-radius: 100%; background-color: #5f6368; height: 30px;" alt=""></a>
             <a target="_blank"
                 href="https://www.google.com/url?q=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Fluxurymethod%2F&sa=D&sntz=1&usg=AOvVaw0MER64fKjxQpgMZC_E-MgX"
-                class="contact-btn"><img src="https://i.postimg.cc/BvtQqcWz/image-979.png"
-                    style="background-color: #2867b2;" alt=""></a>
+                class="padding:20px;  border-radius: 100%; "><img src="https://i.postimg.cc/BvtQqcWz/image-979.png"
+                    style="width: 30px; border-radius: 100%; background-color: #2867b2; height: 30px;" alt=""></a>
         </div>
 
-        <div class="contact-form-container">
-            <a target="_blank" href="https://www.luxury-method.com/contact" class="contact-form-link">MODULO DI
-                CONTATTO</a>
+        <div style="display: flex; justify-content: center; margin-top: 40px; margin-bottom: 100px;">
+            <a target="_blank" href="https://www.luxury-method.com/contact"
+                style="padding-left: 80px; text-decoration: none; font-size: 18px; border-radius: 5px; padding-right: 80px; border: #000; border: 1px solid; padding-top: 10px; padding-bottom: 10px;">MODULO CONTATTI</a>
         </div>
-
-
-
         <h2>Domande Frequenti</h2>
         <div class="faq-item">
             <div class="faq-question" onclick="toggleFAQ(this)">
-                <h3><strong>Cos'è il content marketing di lusso?</strong></h3>
+                <h3><strong>Come possono le piccole imprese beneficiare di un branding forte?</strong></h3>
                 <div class="faq-toggle">
                     <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
                         <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
@@ -2332,16 +1753,14 @@
             </div>
             <div class="faq-answer">
                 <p>
-                    È una strategia focalizzata sullo storytelling, l'emozione e l'esclusività per connettersi con un
-                    pubblico premium
-                    senza fare affidamento sulla vendita diretta aggressiva.
+                    <strong>Il branding di alto livello non è solo per le grandi aziende—</strong>il branding per piccole imprese aiuta a stabilire credibilità, attrarre clienti ideali e comunicare valore fin dal primo giorno. Con il giusto approccio, il branding per piccole aziende può creare una presenza premium che guida la crescita a lungo termine.
                 </p>
             </div>
         </div>
 
         <div class="faq-item">
             <div class="faq-question" onclick="toggleFAQ(this)">
-                <h3><strong>In cosa si differenzia Luxury Method dalle altre agenzie?</strong> </h3>
+                <h3><strong>In che modo le campagne dei brand di lusso differiscono dal mercato di massa?</strong></h3>
                 <div class="faq-toggle">
                     <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
                         <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
@@ -2350,8 +1769,7 @@
             </div>
             <div class="faq-answer">
                 <p>
-                    Lavoriamo solo con brand premium, quindi ogni pezzo di contenuto che creiamo è su misura per
-                    un pubblico di fascia alta.
+                    <strong>Le campagne pubblicitarie dei brand di lusso danno priorità alla sottigliezza, all'aspirazione e all'eredità del brand rispetto alla vendita diretta.</strong> Piuttosto che evidenziare prezzo o caratteristiche, le campagne dei brand di lusso si concentrano sul valore simbolico, immagini curate e connessione emotiva. Al contrario, le strategie di mercato di massa danno priorità all'alto volume e alle conversioni immediate — guidando le vendite attraverso l'accessibilità piuttosto che il desiderio.
                 </p>
             </div>
         </div>
@@ -2359,7 +1777,7 @@
         <div class="faq-item">
             <div class="faq-question" onclick="toggleFAQ(this)">
                 <h3>
-                    <strong>Perché il contenuto è importante per i brand di lusso?</strong>
+                    <strong>Qual è la differenza tra brand identity e immagine del brand?</strong>
                 </h3>
                 <div class="faq-toggle">
                     <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
@@ -2369,8 +1787,7 @@
             </div>
             <div class="faq-answer">
                 <p>
-                    Perché aiuta a plasmare l'immagine del tuo brand, costruire fiducia e parlare ai valori di fascia
-                    alta.
+                    La differenza tra brand identity e immagine del brand risiede nel controllo — la brand identity è ciò che un'azienda crea intenzionalmente (logo, voce, valori), mentre l'immagine del brand è come il pubblico la percepisce effettivamente. Un branding forte assicura che i due siano allineati.
                 </p>
             </div>
         </div>
@@ -2378,7 +1795,7 @@
         <div class="faq-item">
             <div class="faq-question" onclick="toggleFAQ(this)">
                 <h3>
-                    <strong>Come aiuta la SEO i brand di lusso?</strong>
+                    <strong>Quando un brand dovrebbe considerare il rebranding?</strong>
                 </h3>
                 <div class="faq-toggle">
                     <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
@@ -2388,8 +1805,7 @@
             </div>
             <div class="faq-answer">
                 <p>
-                    Aiuta il tuo brand a comparire nelle ricerche in modo organico, attirando il pubblico giusto senza
-                    pagare per gli annunci.
+                    Il rebranding vale la pena considerarlo quando un brand sperimenta <strong>cambiamenti di mercato,</strong> si rivolge a <strong>un nuovo pubblico,</strong> o la sua <strong>identità non riflette più chi è.</strong> I brand che necessitano di rebranding possono mostrare segni di ridotto coinvolgimento o una disconnessione con i loro valori.
                 </p>
             </div>
         </div>
@@ -2397,7 +1813,7 @@
         <div class="faq-item">
             <div class="faq-question" onclick="toggleFAQ(this)">
                 <h3>
-                    <strong>Potete aiutare a lanciare un nuovo brand di lusso?</strong>
+                    <strong>Quali sono gli errori di branding più comuni commessi dalle aziende?</strong>
                 </h3>
                 <div class="faq-toggle">
                     <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
@@ -2407,11 +1823,44 @@
             </div>
             <div class="faq-answer">
                 <p>
-                    Sì, aiutiamo a definire la tua voce, i visual e la strategia di contenuti fin dall'inizio.
+                    Gli errori comuni di branding includono messaggi disallineati, identità visiva incoerente e posizionamento del brand poco chiaro. Questi problemi confondono il pubblico, indeboliscono la fiducia e impediscono a un brand di distinguersi in un mercato affollato.
                 </p>
             </div>
         </div>
 
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3>
+                    <strong>Marketing vs Branding: qual è la differenza?</strong>
+                </h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <p>
+                    <strong>Il Branding definisce chi sei</strong> — la tua voce, i valori e l'identità — mentre il <strong><a target="_blank" href="https://www.luxury-method.com/services/luxury-marketing-strategy">marketing</a> è come lo comunichi</strong> al mondo, ad esempio attraverso annunci a pagamento, email o content marketing, collaborazioni con influencer o pubblicità stampata e esterna, ecc.
+                </p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3><strong>Quali sono gli aspetti chiave della strategia dei social media per i brand premium?</strong></h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <p>
+                    Una ponderata strategia di social media per i brand di lusso <strong>valorizza la qualità sulla quantità</strong> — enfatizzando visuali curati, storytelling del brand ed esclusività. Come <a target="_blank" href="https://www.luxury-method.com/services/luxury-social-media-agency">strategia social media per brand di lusso</a>, assicuriamo che i brand rimangano desiderabili senza sovraesposizione.
+                </p>
+            </div>
+        </div>
     </div>
 
     <!-- Footer -->
@@ -2436,8 +1885,7 @@
                         <a href="mailto:giacomo@luxury-method.com">giacomo@luxury-method.com</a>
                         <a href="tel:+393920034695" style="margin-top: 5px;">(+39) 3920034695</a>
                         <p style="margin: 5px 0 0 0; font-size: 16px;">00133, Roma, Italia</p>
-                        <a href="https://www.technifyx.com/" target="_blank" style="margin-top: 5px;">Partner di
-                            TechnifyX</a>
+                        <a href="https://www.technifyx.com/" target="_blank" style="margin-top: 5px;">Partner di TechnifyX</a>
 
                         <!-- Social Icons -->
                         <div class="footer-socials" style="margin-top: 20px; justify-content: flex-end;">
@@ -2456,12 +1904,9 @@
             <!-- Bottom Row: Privacy Text -->
             <div class="footer-bottom footer-fade-in delay-3"
                 style="border-top: 1px solid rgba(229, 215, 177, 0.2); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-                <p style="margin: 0; font-size: 14px; opacity: 0.8; max-width: 600px;">Teniamo alla tua privacy. Questo
-                    sito
-                    utilizza solo cookie tecnici essenziali per funzionare.</p>
+                <p style="margin: 0; font-size: 14px; opacity: 0.8; max-width: 600px;">Teniamo alla tua privacy. Questo sito utilizza solo cookie tecnici essenziali richiesti per il funzionamento.</p>
                 <div style="display:flex; gap: 20px;">
-                    <a href="#" onclick="openModal('prefModal'); return false;" style="font-size: 14px;">Preferenze
-                        Cookie</a>
+                    <a href="#" onclick="openModal('prefModal'); return false;" style="font-size: 14px;">Preferenze Cookie</a>
                     <a href="https://www.luxury-method.com/privacy-policy" target="_blank"
                         style="font-size: 14px;">Privacy Policy</a>
                 </div>
@@ -2474,61 +1919,6 @@
         <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false">
             <path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z" fill="currentColor"></path>
         </svg>
-    </div>
-
-    <!-- =========================================
-    13. GDPR MODALS & BANNERS (NEW)
-    ========================================= */ -->
-
-    <!-- Floating Cookie Button (Right to Withdraw) -->
-    <div class="floating-gdpr-btn" onclick="openModal('prefModal')" title="Preferenze Cookie">
-        <i class="fa-solid fa-cookie-bite"></i>
-    </div>
-
-    <!-- Cookie Preferences Modal -->
-    <div id="prefModal" class="gdpr-overlay">
-        <div class="gdpr-modal">
-            <button class="gdpr-close" onclick="closeModal('prefModal')">&times;</button>
-            <h3>Preferenze Cookie</h3>
-            <p>Gestisci l'utilizzo dei cookie. I cookie "Essenziali" sono necessari per il funzionamento del sito.</p>
-
-            <div class="pref-row">
-                <div class="pref-text">
-                    <h4>Essenziali</h4>
-                    <p>Necessari per le funzionalità di base.</p>
-                </div>
-                <label class="switch">
-                    <input type="checkbox" checked disabled>
-                    <span class="slider"></span>
-                </label>
-            </div>
-
-            <div class="pref-row">
-                <div class="pref-text">
-                    <h4>Analitici e Marketing</h4>
-                    <p>Ci aiutano a migliorare la nostra strategia di contenuti.</p>
-                </div>
-                <label class="switch">
-                    <input type="checkbox" id="analyticsToggle">
-                    <span class="slider"></span>
-                </label>
-            </div>
-
-            <button class="gdpr-btn" onclick="savePreferences()" style="width: 100%; margin-top: 20px;">Salva
-                Preferenze</button>
-        </div>
-    </div>
-
-    <!-- Cookie Banner (Dark Mode) -->
-    <div id="cookie-banner" class="cookie-banner">
-        <div class="cookie-content">
-            <p>Utilizziamo i cookie per assicurarti la migliore esperienza sul nostro sito web. <a
-                    href="https://www.luxury-method.com/privacy-policy" target="_blank">Privacy Policy</a>.</p>
-            <div class="cookie-actions">
-                <button onclick="acceptEssentials()">Solo Essenziali</button>
-                <button onclick="acceptAllCookies()">Accetta Tutto</button>
-            </div>
-        </div>
     </div>
 
     <!-- ============================================
@@ -2558,6 +1948,60 @@
         </div>
     </div>
 
+    <!-- =========================================
+    13. GDPR MODALS & BANNERS (NEW)
+    ========================================= */ -->
+
+    <!-- Floating Cookie Button (Right to Withdraw) -->
+    <div class="floating-gdpr-btn" onclick="openModal('prefModal')" title="Preferenze Cookie">
+        <i class="fa-solid fa-cookie-bite"></i>
+    </div>
+
+    <!-- Cookie Preferences Modal -->
+    <div id="prefModal" class="gdpr-overlay">
+        <div class="gdpr-modal">
+            <button class="gdpr-close" onclick="closeModal('prefModal')">&times;</button>
+            <h3>Preferenze Cookie</h3>
+            <p>Gestisci l'utilizzo dei cookie. I cookie "Essenziali" sono necessari per il funzionamento del sito.</p>
+
+            <div class="pref-row">
+                <div class="pref-text">
+                    <h4>Essenziali</h4>
+                    <p>Richiesti per le funzionalità di base.</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" checked disabled>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="pref-row">
+                <div class="pref-text">
+                    <h4>Analisi & Marketing</h4>
+                    <p>Aiutaci a migliorare la nostra strategia di contenuti.</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="analyticsToggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <button class="gdpr-btn" onclick="savePreferences()" style="width: 100%; margin-top: 20px;">Salva Preferenze</button>
+        </div>
+    </div>
+
+    <!-- Cookie Banner (Dark Mode) -->
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-content">
+            <p>Utilizziamo i cookie per assicurarti la migliore esperienza sul nostro sito. <a
+                    href="https://www.luxury-method.com/privacy-policy" target="_blank">Privacy Policy</a>.</p>
+            <div class="cookie-actions">
+                <button onclick="acceptEssentials()">Solo Essenziali</button>
+                <button onclick="acceptAllCookies()">Accetta Tutti</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         function toggleFAQ(element) {
             const answer = element.nextElementSibling;
@@ -2583,9 +2027,9 @@
 
         function scrollToSection(id) {
             const element = document.getElementById(id);
-            const isMobile = window.innerWidth <= 768;
-            const yOffset = isMobile ? -90 : -40;
-            const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
+            const yOffset = -80;
+            const y =
+                element.getBoundingClientRect().top + window.scrollY + yOffset;
             window.scrollTo({ top: y, behavior: "smooth" });
         }
 
@@ -2600,7 +2044,7 @@
         // Show/hide back to top button
         function handleBackToTopButton() {
             const backToTopButton = document.getElementById('backToTop');
-            if (window.scrollY > 300) {
+            if (window.scrollY > 300) { // Show button after scrolling 300px
                 backToTopButton.classList.add('visible');
             } else {
                 backToTopButton.classList.remove('visible');
@@ -2624,43 +2068,44 @@
                 });
             }
 
+            // Update arrow visibility after scrolling
             setTimeout(() => {
                 updateScrollButtonVisibility(sidebarId);
             }, 300);
         }
 
-        // Function to update arrow visibility based on scroll position
+        // Function to update scroll button visibility based on scroll position
         function updateScrollButtonVisibility(sidebarId) {
-            if (window.innerWidth > 768) return; // Only run on mobile
-
             const sidebar = document.querySelector(`.${sidebarId}`);
+            // Only run for sidebar1 as per structure
+            const leftBtnWrapper = document.getElementById(`sidebar1-left`);
+            const rightBtnWrapper = document.getElementById(`sidebar1-right`);
 
-            // Get buttons safely
-            const leftBtnContainer = document.getElementById(`${sidebarId === 'sidebar' ? 'sidebar1' : 'sidebar2'}-left`);
-            const rightBtnContainer = document.getElementById(`${sidebarId === 'sidebar' ? 'sidebar1' : 'sidebar2'}-right`);
+            if (!leftBtnWrapper || !rightBtnWrapper) return;
 
-            if (!leftBtnContainer || !rightBtnContainer) return;
+            const leftBtn = leftBtnWrapper.querySelector('.scroll-btn');
+            const rightBtn = rightBtnWrapper.querySelector('.scroll-btn');
 
-            const leftBtn = leftBtnContainer.querySelector('.scroll-btn');
-            const rightBtn = rightBtnContainer.querySelector('.scroll-btn');
+            // Only show buttons on mobile view (width <= 768px)
+            if (window.innerWidth <= 768) {
+                // Check if at the start or end of scrolling
+                if (sidebar.scrollLeft <= 10) {
+                    leftBtn.style.opacity = '0.4';
+                } else {
+                    leftBtn.style.opacity = '1';
+                }
 
-            if (!leftBtn || !rightBtn) return;
+                if (sidebar.scrollLeft + sidebar.clientWidth >= sidebar.scrollWidth - 10) {
+                    rightBtn.style.opacity = '0.4';
+                } else {
+                    rightBtn.style.opacity = '1';
+                }
 
-            if (sidebar.scrollLeft <= 10) {
-                leftBtn.style.opacity = '0.4';
-            } else {
-                leftBtn.style.opacity = '1';
-            }
-
-            if (sidebar.scrollLeft + sidebar.clientWidth >= sidebar.scrollWidth - 10) {
-                rightBtn.style.opacity = '0.4';
-            } else {
-                rightBtn.style.opacity = '1';
-            }
-
-            if (sidebar.scrollWidth <= sidebar.clientWidth) {
-                leftBtnContainer.style.display = 'none';
-                rightBtnContainer.style.display = 'none';
+                // Check if sidebar has enough content to scroll
+                if (sidebar.scrollWidth <= sidebar.clientWidth) {
+                    leftBtnWrapper.style.display = 'none';
+                    rightBtnWrapper.style.display = 'none';
+                }
             }
         }
 
@@ -2670,26 +2115,30 @@
             const sidebar = document.querySelector(".sidebar");
             const Faq = document.querySelector(".faq-container");
 
-            if (!bottomsection || !sidebar || !Faq) return;
-
+            // Get the bottom position of the top section
             const FaqBottom = Faq.getBoundingClientRect().top;
             const topSectiontopBottom = bottomsection.getBoundingClientRect().bottom;
 
-            // First hide all scroll buttons
-            if (window.innerWidth <= 768) {
-                document.querySelectorAll('.scroll-btn-left, .scroll-btn-right').forEach(btn => {
-                    btn.style.display = 'none';
-                });
-            }
-
             // If we've scrolled past the top section, show the sidebar
             if (topSectiontopBottom <= 100 && FaqBottom > 200) {
-                sidebar.classList.add("main-container-visible"); // Use class instead of inline style
                 sidebar.style.transform = "translateY(0)";
+                // Make the sidebar's scroll buttons active
+                if (window.innerWidth <= 768) {
+                    const leftBtnWrapper = document.getElementById('sidebar1-left');
+                    const rightBtnWrapper = document.getElementById('sidebar1-right');
+                    if (leftBtnWrapper) leftBtnWrapper.style.display = 'block';
+                    if (rightBtnWrapper) rightBtnWrapper.style.display = 'block';
+                    updateScrollButtonVisibility('sidebar');
+                }
             } else {
-                // On desktop, we hide it. On mobile, behavior might vary, but keeping original logic:
                 sidebar.style.transform = "translateY(100vh)";
-                sidebar.classList.remove("main-container-visible");
+                // Hide buttons when sidebar is hidden
+                if (window.innerWidth <= 768) {
+                    const leftBtnWrapper = document.getElementById('sidebar1-left');
+                    const rightBtnWrapper = document.getElementById('sidebar1-right');
+                    if (leftBtnWrapper) leftBtnWrapper.style.display = 'none';
+                    if (rightBtnWrapper) rightBtnWrapper.style.display = 'none';
+                }
             }
         }
 
@@ -2704,15 +2153,15 @@
         // Close dropdown when clicking outside
         window.addEventListener('click', function (e) {
             const langContainer = document.querySelector('.lang-container');
-            if (!langContainer.contains(e.target)) {
-                const dropdown = document.getElementById('langDropdown');
-                if (dropdown) dropdown.classList.remove('show');
+            const dropdown = document.getElementById('langDropdown');
+            if (dropdown && !langContainer.contains(e.target)) {
+                dropdown.classList.remove('show');
             }
         });
 
         function selectLang(lang) {
             // Placeholder logic for future redirect
-            console.log("Language selected: " + lang);
+            console.log("Lingua selezionata: " + lang);
         }
 
         // =========================================
@@ -2815,9 +2264,9 @@
         // LOADER JS (INTEGRATED)
         // =========================================
         function initLoader() {
-            // 1. Array of tips/messages to rotate (Translated to Italian)
+            // 1. Array of tips/messages to rotate
             const messages = [
-                "Il vostro partner nel marketing di lusso...",
+                "Il tuo partner nel marketing di lusso...",
                 "Curiamo la tua eredità digitale...",
                 "Eleviamo l'estetica del brand...",
                 "Creiamo narrazioni esclusive...",
@@ -2958,26 +2407,19 @@
             initLoader(); // Initialize loader
             initCustomScrollbar(); // Initialize Custom Scrollbar
 
+            // Add scroll event listeners to sidebars for button visibility updates
             const sidebar = document.querySelector('.sidebar');
-            const sidebar2 = document.querySelector('.sidebar2');
-
             if (sidebar) {
                 sidebar.addEventListener('scroll', function () {
                     updateScrollButtonVisibility('sidebar');
                 });
             }
 
-            if (sidebar2) {
-                sidebar2.addEventListener('scroll', function () {
-                    updateScrollButtonVisibility('sidebar2');
-                });
-            }
-
+            // Add window resize event listener to update button visibility
             window.addEventListener('resize', function () {
                 handleSidebar();
             });
 
-            // EXISTING IMAGE ANIMATION OBSERVER
             if (window.innerWidth <= 768) {
                 const hoverElements = document.querySelectorAll('.hover-3d');
                 const observer = new IntersectionObserver((entries) => {
@@ -2997,9 +2439,6 @@
                 });
             }
 
-            // ==========================================
-            // NEW TEXT REVEAL ANIMATION (ALL DEVICES)
-            // ==========================================
             const textElements = document.querySelectorAll(
                 'h1, .top-section p, .content h2, .content h3, .content p, .faq-container h2, .faq-intro, .faq-item'
             );
@@ -3033,7 +2472,6 @@
                 });
             });
 
-
             // ==========================================
             // FOOTER REVEAL ANIMATION (NEW)
             // ==========================================
@@ -3054,6 +2492,7 @@
 
         });
 
+        // Add scroll event listener
         window.addEventListener("scroll", function () {
             handleSidebar();
             handleBackToTopButton();

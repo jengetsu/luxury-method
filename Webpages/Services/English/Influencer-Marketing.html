@@ -5,25 +5,30 @@
     <meta charset="UTF-8" />
     <!-- Updated viewport to include viewport-fit=cover for iPhone safe area detection -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Luxury Content Marketing</title>
+    <title>Luxury Influencer Marketing</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
-    <!-- Added FontAwesome for Icons -->
+    <!-- Added FontAwesome for the Cookie Icon & Lang Switcher -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         /* =========================================
-        1. RESET & GLOBAL STYLES
+        1. GLOBAL RESET & BASE STYLES
         ========================================= */
         * {
             box-sizing: border-box;
             scroll-behavior: smooth;
             font-family: "Cormorant Garamond", serif;
             scrollbar-width: none;
+            /* animation-duration: 800ms; Removed to avoid conflict */
             color: #000;
+        }
+
+        *::-webkit-scrollbar {
+            display: none;
         }
 
         body {
@@ -38,14 +43,7 @@
             overflow: hidden;
         }
 
-        ::-webkit-scrollbar {
-            display: none;
-        }
-
-        a {
-            color: inherit;
-        }
-
+        /* Links: Default browser behavior (underlined) maintained except where overridden */
         a:visited {
             color: #000;
         }
@@ -166,7 +164,6 @@
         .lang-container {
             position: fixed;
             top: 80px;
-            /* Lowered to avoid Google Sites Nav */
             right: 30px;
             z-index: 100000;
         }
@@ -255,7 +252,6 @@
 
             .lang-container {
                 top: 95px;
-                /* Lowered below the 80px sidebar to prevent overlap */
                 right: 20px;
             }
         }
@@ -268,41 +264,30 @@
             top: 0;
             right: 0;
             width: 24px;
-            /* Wider hit area */
             height: 100vh;
             z-index: 2147483646;
-            /* Below loader, above content */
             display: flex;
             justify-content: center;
             background: transparent;
             pointer-events: none;
-            /* Let clicks pass through container */
         }
 
         .custom-scroll-thumb {
             position: absolute;
             top: 0;
             right: 6px;
-            /* Spacing from edge */
             width: 12px;
-            /* Distinct width */
             background-color: #000000;
-            /* Pure Black */
             border-radius: 20px;
-            /* Pill shape */
             cursor: pointer;
             pointer-events: auto;
-            /* Enable clicks on button */
             user-select: none;
             touch-action: none;
             transition: opacity 0.2s ease, transform 0.1s ease;
             min-height: 60px;
-            /* Minimum height for visibility */
             box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-            /* Slight contrast if needed */
         }
 
-        /* Hover effect */
         .custom-scroll-thumb:hover {
             transform: scaleX(1.2);
         }
@@ -311,7 +296,6 @@
             background-color: #333;
         }
 
-        /* Hide on Mobile/Tablet */
         @media screen and (max-width: 1024px) {
             .custom-scroll-container {
                 display: none;
@@ -322,45 +306,31 @@
         2. TYPOGRAPHY
         ========================================= */
         h1 {
-            color: #ebe0d5;
-            text-align: center;
-            z-index: 999999999999;
-            font-weight: normal;
             font-size: 4rem;
-            letter-spacing: 0.5rem;
-            margin: 0;
+            /* Desktop Default */
         }
-
 
         h2 {
             text-align: center;
-
-            font-size: 32px;
-            margin-block-start: 0.83em;
-            margin-block-end: 0.83em;
+            text-decoration: underline;
         }
 
         h3 {
             text-align: center;
-            font-size: 24px;
-            font-weight: 500;
-            color: #1a1a1a;
-            font-weight: bold;
-            margin-block-start: 1em;
-            margin-block-end: 1em;
-            text-decoration: underline;
         }
 
         p {
-            font-size: 18.7px !important;
-            /* Matches approx 14pt */
-            line-height: 1.656;
-            color: #000;
+            font-size: large !important;
+            line-height: 1.7;
+        }
+
+        .text-blue {
+            color: blue;
         }
 
         /* =========================================
-           3. TEXT REVEAL ANIMATION (FINAL)
-        ========================================= */
+   3. TEXT REVEAL ANIMATION (FINAL)
+========================================= */
 
         .reveal-text {
             opacity: 0;
@@ -391,8 +361,8 @@
         }
 
         /* ================================
-           TEXT STABILITY FIX FOR HEADINGS
-        ================================ */
+   TEXT STABILITY FIX FOR HEADINGS
+================================ */
 
         h1.reveal-text,
         h2.reveal-text,
@@ -423,13 +393,78 @@
 
 
         /* =========================================
-        4. LAYOUT & CONTAINERS
+        4. HERO SECTION
+        ========================================= */
+        .hero {
+            width: 100%;
+            height: 100vh;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url('https://luxury-method.vercel.app/InfluencerMarketingHero.jpg');
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.98;
+            position: relative;
+        }
+
+        .hero-overlay {
+            opacity: 0.5;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #000;
+        }
+
+        .hero-title {
+            color: #ebe0d5;
+            text-align: center;
+            z-index: 999999999999;
+            font-weight: normal;
+            font-size: 4rem;
+            letter-spacing: 0.5rem;
+            margin: 0;
+        }
+
+        @supports (-webkit-touch-callout: none) {
+            .hero {
+                background-attachment: scroll !important;
+            }
+        }
+
+        /* =========================================
+        5. LAYOUT & UTILITIES
         ========================================= */
         .main-container {
             display: flex;
             flex: 1;
-            width: 100%;
             position: relative;
+        }
+
+        .content {
+            transition: all 1ms;
+            background-color: #ebe0d5;
+            color: #000;
+            width: 100%;
+            flex: 1;
+        }
+
+        .top-section {
+            width: 100%;
+            background-color: #ebe0d5;
+            padding: 10px;
+            margin-bottom: 0;
+        }
+
+        .section {
+            margin-bottom: 80px;
         }
 
         .paddingleftright {
@@ -441,76 +476,34 @@
             margin-left: 340px;
         }
 
-        .content {
-            transition: all 1ms;
-            background-color: #ebe0d5;
-            color: #000;
-            width: 100%;
-            flex: 1;
-            position: relative;
-        }
-
-        .section {
-            margin-bottom: 80px;
-        }
-
-        .top-section {
-            width: 100%;
-            background-color: #ebe0d5;
-            /* padding: 10px; */
-            margin-bottom: 0;
-            position: relative;
-        }
-
-        /* Utility Classes extracted from inline styles */
-        .pt-0 {
-            padding-top: 0px !important;
-        }
-
         .mt-80 {
             margin-top: 80px;
         }
 
-        .anchor-offset {
-            position: absolute;
-            top: -40px;
+        .mt-60 {
+            margin-top: 60px;
         }
 
-        /* =========================================
-        5. COMPONENT: HERO SECTION
-        ========================================= */
-        .hero {
-            width: 100%;
-            height: 100vh;
-            background-image: url('https://luxury-method.vercel.app/ContentMarketingHeroN.jpg');
-            background-attachment: fixed;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+        .mt-40 {
+            margin-top: 40px;
+        }
+
+        .mb-30 {
+            margin-bottom: 30px;
+        }
+
+        .mb-100 {
+            margin-bottom: 100px;
+        }
+
+        .flex-center {
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative;
-        }
-
-        .hero-overlay {
-            background-color: black;
-            opacity: 0.5;
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-
-        @supports (-webkit-touch-callout: none) {
-            .hero {
-                background-attachment: scroll !important;
-            }
         }
 
         /* =========================================
-        6. COMPONENT: SIDEBAR
+        6. SIDEBAR
         ========================================= */
         .sidebar {
             width: 340px;
@@ -520,49 +513,34 @@
             position: fixed;
             left: 0;
             top: 0;
-            bottom: 0;
             padding: 16px 40px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            /* Added from inline */
-            height: fit-content;
-            gap: 14px;
-            transform: translateY(100vh);
-            transition: transform 0.3s ease;
-            z-index: 100;
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-        .sidebar2 {
-            width: 340px;
-            background-color: #ebe0d5;
-            color: white;
-            padding: 24px;
-            position: fixed;
-            height: fit-content;
-            left: 0;
-            top: 0;
             bottom: 0;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
+            height: fit-content;
             gap: 14px;
             transform: translateY(100vh);
             transition: transform 0.3s ease;
             z-index: 100;
+            justify-content: center;
+        }
+
+        /* Unifying sidebar scrollbar styles */
+        .sidebar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .sidebar {
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
 
-        .main-container-visible .sidebar,
-        .main-container-visible .sidebar2 {
+        .main-container-visible .sidebar {
             transform: translateY(0);
         }
 
-        button {
+        .sidebar button {
             background-color: #000;
             color: #fff;
             padding: 12px;
@@ -575,12 +553,99 @@
             flex-shrink: 0;
         }
 
-        button:hover {
+        .sidebar button:hover {
             background-color: #fff;
             color: #000;
         }
 
-        /* Sidebar Scroll Buttons (Mobile) */
+        /* =========================================
+        7. IMAGES
+        ========================================= */
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .socialimg {
+            max-width: 550px;
+            width: 100%;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .industry_Image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-block: 40px;
+            width: 100%;
+        }
+
+        .industry_Image img {
+            display: block;
+            width: 100%;
+            height: 70vh;
+            object-fit: cover;
+            object-position: center center;
+            max-height: 600px;
+            border-radius: 20px;
+        }
+
+        .img-fashion {
+            margin-top: 10px;
+        }
+
+        .img-jewellery {
+            height: 65vh;
+        }
+
+        .img-lifestyle {
+            margin-top: 10px;
+            margin-bottom: 30px;
+        }
+
+        /* 3D Effect- Shared */
+        .hover-3d {
+            transform-style: preserve-3d;
+            will-change: transform, opacity;
+            transition:
+                transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1),
+                box-shadow 0.45s cubic-bezier(0.25, 0.8, 0.25, 1),
+                opacity 0.35s ease-out;
+            opacity: 1;
+            transform: translateY(15px) scale(0.95);
+        }
+
+        /* =========================================
+        8. NAVIGATION CONTROLS (Arrows & Scroll)
+        ========================================= */
+        .left-arrow,
+        .right-arrow {
+            font-size: 20px;
+            color: #000;
+            cursor: pointer;
+            position: absolute;
+            top: 35%;
+            z-index: 15;
+            display: none;
+        }
+
+        .left-arrow {
+            left: 5px;
+            margin-right: 10px;
+        }
+
+        .right-arrow {
+            right: 5px;
+            margin-left: 10px;
+        }
+
         .scroll-btn-left,
         .scroll-btn-right {
             display: none;
@@ -618,113 +683,24 @@
             fill: #000;
         }
 
-        .left-arrow,
-        .right-arrow {
-            font-size: 20px;
-            color: #000;
-            cursor: pointer;
-            position: absolute;
-            top: 35%;
-            z-index: 15;
-            display: none;
-        }
-
-        .left-arrow {
-            left: 5px;
-            margin-right: 10px;
-        }
-
-        .right-arrow {
-            right: 5px;
-            margin-left: 10px;
-        }
-
-
         /* =========================================
-        7. COMPONENT: IMAGES & MEDIA
+        9. FAQ SECTION
         ========================================= */
-        .image {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
-            width: 100%;
-            margin-top: 20px;
-        }
-
-        /* General styled image (extracted from inline) */
-        .styled-img {
-            max-height: 500px;
-            object-fit: cover;
-            border-radius: 20px;
-        }
-
-        .industry_Image {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-block: 40px;
-            width: 100%;
-
-        }
-
-        .industry_Image img {
-            display: block;
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            object-position: bottom;
-            max-height: 600px;
-            object-position: center center;
-            border-radius: 20px;
-        }
-
-        /* Specific fix for OOH Container zooming */
-        .ooh-container {
-            position: relative;
-            width: 100%;
-            padding-top: 56.25%;
-            /* 16:9 ratio – adjust if needed */
-            border-radius: 26px;
-            overflow: hidden;
-            margin: 30px 0;
-        }
-
-        .ooh-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            border-radius: 6px;
-        }
-
-        /* 3D Effect- Shared */
-        .hover-3d {
-            transform-style: preserve-3d;
-            will-change: transform, opacity;
-            transition:
-                transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1),
-                box-shadow 0.45s cubic-bezier(0.25, 0.8, 0.25, 1),
-                opacity 0.35s ease-out;
-            opacity: 1;
-            transform: translateY(15px) scale(0.95);
-        }
-
-        /* =========================================
-        8. COMPONENT: FAQ
-        ======================================== */
         .faq-container {
             margin-top: 20px;
             z-index: 99999999999999999999999999;
+            position: relative;
+        }
+
+        .faq-intro {
+            text-align: center;
+            font-size: 24px !important;
+            font-style: italic;
         }
 
         .faq-item {
             border-bottom: 1px solid #696969;
             overflow: hidden;
-            margin: 0 90px;
         }
 
         .faq-question {
@@ -741,7 +717,6 @@
             font-weight: 500;
             color: #1a1a1a;
             text-align: left;
-            text-decoration: none;
         }
 
         .faq-toggle {
@@ -786,9 +761,41 @@
             margin-top: 0;
         }
 
+        /* Styled text replacement for the messy span in original code */
+        .faq-text-styled {
+            color: #000000;
+            font-size: 14pt;
+            /* Approx 18.6px, kept close to original 13.9999pt */
+            font-variant: normal;
+            vertical-align: baseline;
+        }
+
         /* =========================================
-        9. COMPONENT: FOOTER & CONTACT (UPDATED)
+        10. CONTACT & FOOTER (UPDATED)
         ========================================= */
+        .contact-icons-container {
+            display: flex;
+            gap: 100px;
+            margin-top: 60px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .contact-btn {
+            padding: 20px;
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-btn img {
+            width: 30px;
+            height: 30px;
+            border-radius: 100%;
+        }
+
+
         .luxury-footer {
             background-image: url("https://luxury-method.vercel.app/Footer.png");
             background-size: cover;
@@ -858,13 +865,6 @@
             text-align: right;
         }
 
-        /* Footer Links */
-        .footer-link-group {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
         .luxury-footer a {
             text-decoration: none;
             font-size: 18px;
@@ -894,26 +894,6 @@
             opacity: 0.8;
         }
 
-        /* Contact Details */
-        .footer-contact-item {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .footer-contact-label {
-            font-size: 14px;
-            text-transform: uppercase;
-            opacity: 0.7;
-            letter-spacing: 1px;
-            margin-bottom: 2px;
-        }
-
-        .footer-contact-value {
-            font-size: 20px;
-            font-weight: 500;
-        }
-
         /* Social Icons (Refined) */
         .footer-socials {
             display: flex;
@@ -932,28 +912,6 @@
         .social-icon-link:hover img {
             transform: scale(1.1);
             filter: brightness(1);
-        }
-
-        /* Bottom Bar */
-        .footer-bottom {
-            border-top: 1px solid rgba(229, 215, 177, 0.2);
-            padding-top: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            font-size: 14px;
-            opacity: 0.8;
-        }
-
-        .footer-bottom-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        .footer-bottom-links a {
-            font-size: 14px;
         }
 
         /* Footer Animation Classes */
@@ -981,91 +939,6 @@
             transition-delay: 0.3s;
         }
 
-        /* Mobile Adjustments for Footer */
-        @media screen and (max-width: 768px) {
-            .footer-top-row {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                gap: 50px;
-            }
-
-            .footer-column,
-            .footer-column.center,
-            .footer-column.right {
-                align-items: center;
-                text-align: center;
-                width: 100%;
-            }
-
-            .luxury-footer a::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-
-            .luxury-footer a:hover::after {
-                width: 100%;
-                /* Or fixed width if centered */
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-                gap: 15px;
-            }
-
-            .footer-bottom-links {
-                justify-content: center;
-            }
-
-            .footer-text-group {
-                align-items: center !important;
-                text-align: center !important;
-                display: flex !important;
-                flex-direction: column !important;
-                width: 100%;
-            }
-
-            .footer-socials {
-                justify-content: center !important;
-            }
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 20px;
-            justify-content: flex-end;
-            /* desktop: right */
-            align-items: center;
-        }
-
-        .social-link img {
-            width: 40px;
-            object-fit: contain;
-        }
-
-        .contact-icons-container {
-            display: flex;
-            gap: 100px;
-            margin-top: 60px;
-            width: 100%;
-            justify-content: center;
-        }
-
-        .contact-btn {
-            padding: 20px;
-            border-radius: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .contact-btn img {
-            width: 30px;
-            height: 30px;
-            border-radius: 100%;
-        }
-
         .contact-form-container {
             display: flex;
             justify-content: center;
@@ -1085,7 +958,7 @@
         }
 
         /* =========================================
-        10. COMPONENT: BACK TO TOP
+        11. BACK TO TOP
         ========================================= */
         .back-to-top {
             position: fixed;
@@ -1123,237 +996,7 @@
         }
 
         /* =========================================
-        11. MEDIA QUERIES (CONSOLIDATED)
-        ========================================= */
-
-        /* Max Width 768px (Tablet/Mobile) */
-        @media screen and (max-width: 768px) {
-            h1 {
-                font-size: 30px !important;
-            }
-
-            p {
-                font-size: large;
-            }
-
-            .top-section {
-                /* padding: 5px; */
-            }
-
-            .faq-question {
-                padding: 0 0 !important;
-            }
-
-            .faq-item {
-
-                margin: 0;
-            }
-
-            /* Sidebar Mobile Styling */
-            .sidebar {
-                width: 100%;
-                height: 80px;
-                padding: 0;
-                padding-top: 20px;
-                padding-bottom: 0;
-                padding-left: 0;
-                position: fixed;
-                top: 0;
-                left: 0;
-                background-color: #ebe0d5;
-                z-index: 10;
-                overflow-x: auto;
-                overflow-y: hidden;
-                flex-direction: row;
-                white-space: nowrap;
-                gap: 4px;
-                justify-content: flex-start;
-                /* Reset alignment for horizontal scroll */
-            }
-
-            .sidebar::-webkit-scrollbar {
-                display: none;
-            }
-
-            .sidebar button {
-                background-color: #000;
-                color: #fff;
-                padding: 8px;
-                border-radius: 5px;
-                font-weight: 500;
-                font-size: 3.5vw;
-                height: fit-content;
-            }
-
-            .sidebar2 {
-                width: 100%;
-                height: 80px;
-                padding: 16px;
-                padding-left: 40px;
-                padding-right: 40px;
-                position: fixed;
-                top: 0;
-                left: 0;
-                background-color: #ebe0d5;
-                z-index: 10;
-                flex-direction: row;
-                overflow-x: auto;
-                overflow-y: hidden;
-                white-space: nowrap;
-                gap: 10px;
-            }
-
-            .sidebar2::-webkit-scrollbar {
-                display: none;
-            }
-
-            .left-arrow,
-            .right-arrow {
-                display: none !important;
-            }
-
-            .scroll-btn-left,
-            .scroll-btn-right {
-                display: block;
-            }
-
-            .scroll-btn {
-                display: flex;
-            }
-
-            .mrginleft {
-                margin-left: 0px;
-            }
-
-            .content {
-                margin-top: 100px;
-                margin-left: 0px;
-            }
-
-            .back-to-top {
-                /* Adjusted for Safe Area */
-                bottom: 80px;
-                bottom: calc(80px + env(safe-area-inset-bottom));
-            }
-
-            /* Image Resets for Mobile */
-            .industry_Image img {
-                height: auto !important;
-                max-width: 700px;
-                width: 100%;
-            }
-
-            .image {
-                height: auto !important;
-                width: 100% !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                display: block !important;
-            }
-
-            .image img {
-                width: 100% !important;
-                height: auto !important;
-                max-width: 100% !important;
-                object-fit: cover;
-                object-position: center;
-                display: block;
-                margin: 0 auto;
-            }
-
-            .ooh-container {
-                width: 100% !important;
-                max-width: 100% !important;
-                object-fit: cover;
-                object-position: center;
-                display: block;
-            }
-
-            /* Scroll Animation State for Mobile - Images */
-            .hover-3d {
-                transform: scale(0.85);
-                opacity: 0.3;
-                transition:
-                    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-                    opacity 0.35s ease-out;
-            }
-
-            .hover-3d.is-visible {
-                transform: scale(1.03);
-                opacity: 1;
-                box-shadow: 0 12px 22px rgba(0, 0, 0, 0.15);
-            }
-
-            .luxury-footer-content {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .luxury-footer-contact {
-                margin-bottom: 20px;
-                text-align: center;
-                /* optional, to center text */
-            }
-
-            .social-icons {
-                justify-content: center !important;
-                margin-top: 20px;
-            }
-        }
-
-        @media (min-width: 769px) {
-
-            /* Desktop elements always visible */
-            .hover-3d {
-                opacity: 1;
-                transform: none;
-            }
-
-            .hover-3d:hover {
-                transform: translateY(-8px) scale(1.05);
-                box-shadow: 0 20px 35px rgba(0, 0, 0, 0.22);
-            }
-
-            /* Increased footer height for desktop */
-            .luxury-footer {
-                padding: 150px 0 60px 0;
-            }
-        }
-
-        /* Max Width 500px (Small Mobile) */
-        @media screen and (max-width: 500px) {
-            .back-to-top {
-                bottom: 120px !important;
-                /* Added safe area fix */
-                bottom: calc(120px + env(safe-area-inset-bottom)) !important;
-            }
-
-            /* Contact Buttons Wrap */
-            .contact-icons-container {
-                gap: 20px;
-                flex-wrap: wrap;
-            }
-        }
-
-        /* Max Width 400px (Extra Small) */
-        @media screen and (max-width: 400px) {
-            .luxury-footer-content {
-                display: flex;
-                flex-direction: column;
-                gap: 30px;
-            }
-
-            .image2 {
-                max-width: 100%;
-            }
-
-            h3 {
-                font-size: 18px;
-            }
-        }
-
-        /* =========================================
-        12. COMPONENT: COOKIE BANNER (MODERN DARK)
+        12. COOKIE BANNER (MODERN DARK)
         ========================================= */
         /* Keeps the Banner Look Dark as requested */
         .cookie-banner {
@@ -1449,57 +1092,6 @@
             background-color: rgba(255, 255, 255, 0.1);
             border-color: #fff;
             color: #fff;
-        }
-
-        @media (max-width: 768px) {
-            .cookie-banner {
-                /* Changed to Floating Banner for Mobile */
-                bottom: 90px;
-                /* Lifted into safe space */
-                bottom: calc(150px + env(safe-area-inset-bottom));
-
-                /* Floating dimensions */
-                width: 90%;
-                max-width: 400px;
-                left: 0;
-                right: 0;
-                margin: 0 auto;
-
-                /* Rounded corners all around */
-                border-radius: 16px;
-
-                /* Standard padding (safe area handled by bottom property) */
-                padding: 24px;
-                padding-bottom: 24px;
-
-                transform: translateY(150%);
-            }
-
-            .cookie-banner.visible {
-                transform: translateY(0);
-            }
-
-            .cookie-content {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 20px;
-            }
-
-            .cookie-content p {
-                min-width: auto;
-                font-size: 15px !important;
-            }
-
-            .cookie-actions {
-                width: 100%;
-                justify-content: space-between;
-                gap: 10px;
-            }
-
-            .cookie-actions button {
-                flex: 1;
-                padding: 14px;
-            }
         }
 
         /* =========================================
@@ -1705,11 +1297,256 @@
             transform: scale(1.1);
         }
 
-        /* Update mobile queries to match Back to Top movement */
-        @media (max-width: 768px) {
+        /* =========================================
+        14. MEDIA QUERIES
+        ========================================= */
+
+        /* --- Tablet/Mobile (Max Width 768px) --- */
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 30px !important;
+            }
+
+            p {
+                font-size: large;
+            }
+
+            .top-section {
+                padding: 5px;
+            }
+
+            .mrginleft {
+                margin-left: 0px;
+            }
+
+            .content {
+                margin-top: 100px;
+                margin-left: 0px;
+            }
+
+            /* Sidebar Changes */
+            .sidebar {
+                width: 100%;
+                height: 80px;
+                padding: 20px 20px 0 20px;
+                left: 0;
+                top: 0;
+                background-color: #ebe0d5;
+                z-index: 10;
+                overflow-x: auto;
+                overflow-y: hidden;
+                flex-direction: row;
+                white-space: nowrap;
+                gap: 12px;
+                justify-content: flex-start;
+            }
+
+            .sidebar button {
+                font-size: 3.5vw;
+                padding: 10px 16px;
+            }
+
+            /* Hiding scroll buttons */
+            .scroll-btn-left,
+            .scroll-btn-right,
+            .scroll-btn,
+            .left-arrow,
+            .right-arrow {
+                display: none !important;
+            }
+
+            .back-to-top {
+                bottom: 80px;
+                bottom: calc(80px + env(safe-area-inset-bottom));
+            }
+
+            .industry_Image img {
+                height: auto !important;
+                max-width: 700px;
+                width: 100%;
+            }
+
+            .faq-question {
+                padding: 0 0 !important;
+            }
+
+            .contact-icons-row {
+                justify-content: center !important;
+            }
+
+            .luxury-footer-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .luxury-footer-contact {
+                margin-bottom: 20px;
+                text-align: center;
+            }
+
+            .social-icons {
+                justify-content: center !important;
+                margin-top: 20px;
+            }
+
+            .hover-3d {
+                transform: scale(0.85);
+                opacity: 0.3;
+                transition:
+                    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                    opacity 0.35s ease-out;
+            }
+
+            .hover-3d.is-visible {
+                transform: scale(1.03);
+                opacity: 1;
+                box-shadow: 0 12px 22px rgba(0, 0, 0, 0.15);
+            }
+
+            /* HIDE FLOATING COOKIE BUTTON ON MOBILE */
             .floating-gdpr-btn {
                 display: none !important;
-                /* HIDE ON MOBILE AS REQUESTED */
+            }
+
+            .cookie-banner {
+                bottom: 90px;
+                bottom: calc(150px + env(safe-area-inset-bottom));
+                width: 90%;
+                max-width: 400px;
+                left: 0;
+                right: 0;
+                margin: 0 auto;
+                border-radius: 16px;
+                padding: 24px;
+                padding-bottom: 24px;
+                transform: translateY(150%);
+            }
+
+            .cookie-banner.visible {
+                transform: translateY(0);
+            }
+
+            .cookie-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .cookie-content p {
+                min-width: auto;
+                font-size: 15px !important;
+            }
+
+            .cookie-actions {
+                width: 100%;
+                justify-content: space-between;
+                gap: 10px;
+            }
+
+            .cookie-actions button {
+                flex: 1;
+                padding: 14px;
+            }
+
+            /* Footer Mobile Adjustments */
+            .footer-top-row {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 50px;
+            }
+
+            .footer-column,
+            .footer-column.center,
+            .footer-column.right {
+                align-items: center;
+                text-align: center;
+                width: 100%;
+            }
+
+            .luxury-footer a::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .luxury-footer a:hover::after {
+                width: 100%;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .footer-bottom-links {
+                justify-content: center;
+            }
+
+            .footer-text-group {
+                align-items: center !important;
+                text-align: center !important;
+                display: flex !important;
+                flex-direction: column !important;
+                width: 100%;
+            }
+
+            .footer-socials {
+                justify-content: center !important;
+            }
+        }
+
+
+        @media (min-width: 769px) {
+            .hover-3d {
+                opacity: 1;
+                transform: none;
+            }
+
+            .hover-3d:hover {
+                transform: translateY(-8px) scale(1.05);
+                box-shadow: 0 20px 35px rgba(0, 0, 0, 0.22);
+            }
+        }
+
+        /* --- Small Mobile (Max Width 500px) --- */
+        @media screen and (max-width: 500px) {
+            .back-to-top {
+                bottom: 120px !important;
+                bottom: calc(120px + env(safe-area-inset-bottom)) !important;
+            }
+
+            .contact-icons-container {
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+
+            .floating-gdpr-btn {
+                bottom: 120px;
+            }
+
+            .cookie-banner {
+                bottom: 120px;
+                bottom: calc(150px + env(safe-area-inset-bottom));
+            }
+        }
+
+        /* --- Tiny Mobile (Max Width 400px) --- */
+        @media screen and (max-width: 400px) {
+            h3 {
+                font-size: 18px;
+            }
+
+            .luxury-footer-content {
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .sidebar button {
+                padding: 8px;
+                font-size: 3.5vw;
+                height: fit-content;
             }
         }
     </style>
@@ -1742,502 +1579,518 @@
     <!-- Hero Section -->
     <div class="hero">
         <div class="hero-overlay"></div>
-        <h1>LUXURY CONTENT MARKETING</h1>
+        <h1 class="hero-title">
+            LUXURY INFLUENCER MARKETING
+        </h1>
     </div>
 
-    <!-- Main Content Wrapper -->
     <div class="paddingleftright mrginleft">
-
         <!-- Intro Section -->
         <div class="top-section">
             <div class="mt-80">
-                <p>
-                    What makes luxury content marketing different? It’s less about clicks and more about connection.
-                    Luxury
-                    content transforms your brand into a lifestyle, your product into a compelling story, and your
-                    audience into
-                    devoted believers.
-                    Customers connect with luxury brands on a mental and emotional level long before making a purchasing
-                    decision.
-                    From SEO to social media to storytelling, luxury content marketing keeps your brand relevant,
-                    desirable, and
-                    unforgettable.
+                <p>Luxury influencer marketing is a crucial component of modern luxury marketing strategies for brands
+                    seeking
+                    to engage with a high-end audience. Especially in an exclusive market where consumer behaviour is
+                    driven by
+                    the authenticity of a brand.
+
+                    By partnering with the right influencers who align with the right values and aesthetics, your brand
+                    can not
+                    only maintain its exclusive image but also promote it. All whilst building genuine connections
+                    within your
+                    target market, as well as navigating the fast-paced world of digital marketing.
+                </p>
+                <p>A
+                    <a target="_blank" href="https://www.luxury-method.com/luxury-marketing-agency">luxury influencer
+                        marketing agency</a>
+                    specialises in creating influencer marketing strategies that focus on promoting a campaign or
+                    product.
+
+                    With exclusivity in influencer marketing at the core of our ethos, Luxury Method helps your brand
+                    share
+                    stories, amplify your reach, and build loyal connections, turning influential moments into iconic
+                    brand
+                    experiences.
                 </p>
             </div>
         </div>
 
         <div class="main-container" id="main-container">
-
             <!-- Sidebar -->
             <div class="sidebar">
-                <button onclick="scrollToSection('audience')">
-                    Our content services
-                </button>
-                <button onclick="scrollToSection('mindmap')">
-                    The industries we work with
-                </button>
-                <button onclick="scrollToSection('who-we-are')">
-                    Who We Are
-                </button>
+                <button onclick="scrollToSection('aud')">Influencer Marketing Trends 2025</button>
+                <button onclick="scrollToSection('impac')">The Industries We Work With</button>
+                <button onclick="scrollToSection('brand')">Who We Are</button>
             </div>
 
-            <!-- Content -->
+            <!-- Main Content Area -->
             <div class="content">
 
-                <div class="top-section pt-0">
-                    <h2>What Is Luxury Content Marketing?</h2>
-                    <p style="text-align: start;">
-                        <b>Luxury content marketing</b> is the way to build a unique brand image by focusing on every
-                        little detail
-                        across all brand elements. <b>Luxury content</b> focuses on quality, crafting messages that
-                        connect with the
-                        emotions and heritage of the target audience to create meaningful brand experiences. <b>Content
-                            marketing</b>, just like branding, is about reaching a broad audience by working on valuable
-                        and engaging
-                        content like blog posts, videos, or social media posts that increase brand <b>visibility</b> and
-                        <b>drive
-                            conversions.</b> What sets luxury content marketing apart is its emphasis on speaking to a
-                        more refined
-                        audience.
-                    </p>
+                <!-- Section 1 -->
+                <div id="top" class="top-section">
+                    <h2 style="font-weight: bold;">Influencer Marketing on Social Media Platforms</h2>
                 </div>
-
-                <div class="top-section pt-0">
-                    <h2>The Role of Luxury Content in Building Exclusivity and Prestige</h2>
-                    <p style="text-align: start;">
-                        <b>Luxury content creators</b> aim to drive traffic and generate leads for luxury brands; they
-                        also focus on
-                        prestige, emotion, and storytelling. <b>Luxury content</b> connects with individuals who value
-                        heritage,
-                        craftsmanship, and exclusivity - those who see luxury as an extension of their identity and
-                        aspirations.
-                    </p>
-
-                    <img class="styled-img hover-3d image"
-                        src="https://images.pexels.com/photos/4549411/pexels-photo-4549411.jpeg" alt="" />
-
-                    <p style="text-align: start;">
-                        <b>Content marketing for luxury brands</b> should be built on a strategy based on connection,
-                        not just
-                        communication. It’s elegant, emotional, and carefully designed to reflect a lifestyle, which
-                        makes luxury
-                        content go beyond selling; it tells stories of heritage, quality, and meaning. With the support
-                        of a
-                        <b>luxury content agency,</b> your brand will receive custom <b>content marketing solutions</b>
-                        that connect
-                        with people who expect more than just a product. As a luxury content
-                        agency, our job is to be your partner in attracting the right audience for your luxury brand,
-                        those
-                        who care about meaning, value, and the story behind the product.
-                    </p>
-                </div>
-
-                <div id="editorial2" class="section">
-                    <h2 style="text-decoration:none;">OUR SERVICES IN LUXURY CONTENT MARKETING</h2>
-                    <div id="top" class="top-section " style="position: relative;">
-                        <span id="audience" class="anchor-offset"></span>
-                    </div>
-                    <p>
-                        As a <b>luxury content agency</b>, we offer content marketing solutions matched to your brand’s
-                        elegance
-                        and identity. From SEO and email marketing to social media content creation and elite print
-                        materials, our
-                        work is crafted to connect your brand with personalized target audiences. Our team of <b>content
-                            marketing
-                            experts</b> has the knowledge and experience to ensure every piece, whether digital or
-                        traditional,
-                        carries the right message, tone, and look to elevate your brand presence with meaning and
-                        exclusivity.
-                    </p>
-                </div>
-
                 <div class="section">
-                    <h3>1) SEO and Content Writing for Luxury Brands</h3>
-                    <p>
-                        <b>SEO for luxury brands</b> will <b>improve</b> your rankings by optimizing your website’s
-                        presence to
-                        reach audiences organically. Our <a target="_blank"
-                            href="https://www.luxury-method.com/services/luxury-seo-agency">luxury
-                            SEO services</a> target wealthy clients by identifying high-value keywords they search for,
-                        then enhancing
-                        your website’s on-page, off-page, and technical SEO to <b>rank higher</b> and appeal to them
-                        using our
-                        unique SEO work process.
-                        At <a target="_blank" href="https://www.luxury-method.com/">Luxury Method</a>, we specialize in
-                        <b>luxury
-                            content writing</b> that brings the perfect balance in tone to connect your brand with the
-                        culture of elite
-                        audiences. Every piece of content is crafted to match your brand’s exclusive identity.
-                        Whether we’re optimizing for search engines or telling your story through compelling brand
-                        narratives,
-                        <b>our goal is simple:</b> to help your premium brand connect with the right audience and turn
-                        that
-                        connection into loyalty.
-                    </p>
-
-                    <img class="image hover-3d styled-img" src="https://luxury-method.vercel.app/3.png" alt="" />
-
-                    <p>
-                        For example, look at the <b style="color: rgb(0, 0, 0);">Louis Vuitton</b> site in the image
-                        above: clean
-                        design and high rankings. That’s the result of great luxury brand SEO. We use the same approach
-                        through our
-                        <b>content marketing for fashion brands</b>, helping you get noticed on Google, build
-                        visibility, and drive
-                        conversions, all while keeping your luxury identity intact.
-                    </p>
-                </div>
-
-                <div class="section">
-                    <h3>2) Social media: Design & Content Creation for Luxury Brands</h3>
-                    <img class="image hover-3d styled-img"
-                        src="https://luxury-method.vercel.app/CMSocialMediaDesign.png" alt="" />
-
-                    <p>
-                        <b>Luxury brands</b> need clean, elegant posts that reflect their identity. That’s why they hire
-                        trusted
-                        agencies to work on their social media accounts. From the visuals to the message, everything is
-                        made to feel
-                        premium and on-brand. Content creation services and high-quality content production services
-                        matter. With
-                        strong <b>social media design services</b> and smart <a target="_blank"
-                            href="https://www.luxury-method.com/services/luxury-social-media-agency">social media
-                            optimization
-                            services</a>, your brand can grow naturally, connect with the right audience, and transform
-                        its customers
-                        into loyal ones, building trust with the right presence on their social media accounts.
-                    </p>
-
-                    <img class="image hover-3d styled-img" alt=""
-                        src="https://luxury-method.vercel.app/Social%20media.png" />
-                    <p>
-                        Just like you see in these images from <b style="color: rgb(0, 0, 0);">Patek Philippe’s</b>
-                        Instagram,
-                        luxury watch brands can achieve powerful organic growth with the right luxury watch marketing
-                        strategy.
-                        Their feed is clean, branded, and consistent, showing how a social media content creation agency
-                        can help
-                        you build prestige and loyalty without relying on paid ads only.
-                    </p>
-                </div>
-
-                <div class="section">
-                    <h3>3) Printed Material: OOH, magazine ads</h3>
-                    <p>
-                        <b>Traditional marketing</b> still plays a vital role in luxury branding. Whether it’s bold
-                        <b>OOH
-                            print</b> or elegant <b>luxury brand print ads</b>, these pieces give your brand a real,
-                        physical
-                        presence. From the street to the pages of premium magazines, good print design grabs attention
-                        and builds
-                        trust. We create the best print ads to match your brand style and leave a lasting impression
-                        wherever
-                        they’re seen.
-                    </p>
-
-                    <b style="">OOH Advertising with Gucci:</b>
-                    <p>
-                        Giacomo, founder of Luxury Method has worked with Gucci and was involved in several campaigns
-                        for the brand.
-                        This OOH project in Piccadilly Circus is one of them.
-                        It highlights how our real-world experience in luxury OOH helps us craft campaigns that leave a
-                        lasting
-                        impression. We bring this hands-on knowledge to help clients create the best <b>luxury print
-                            ads</b> and
-                        outdoor visuals that reflect their brand’s identity and values.
-                    </p>
-
-                    <div class="ooh-container">
-                        <img class="ooh-image hover-3d"
-                            src="https://luxury-method.vercel.app/OOH%20Advertising%20with%20Gucci.jpeg"
-                            alt="Luxury Advertising with Gucci" />
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1592839930500-3445eb72b8ad?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            class="socialimg hover-3d" alt="Influencer Marketing">
                     </div>
 
-                    <b style="">Luxury Magazine Print Ad:</b>
+                    <p><strong>Digital marketing strategies for luxury brands</strong> must aim to increase visibility
+                        and boost
+                        engagement. And <a target="_blank"
+                            href="https://www.luxury-method.com/services/luxury-social-media-agency">social media</a>
+                        channels are the perfect pathway to doing just that. Platforms such as Instagram, Pinterest, and
+                        TikTok have
+                        evolved into essential channels for luxury brands to build relationships with affluent
+                        customers.</p>
 
-                    <p>
-                        Many luxury companies still rely on <b>luxury brand print ads</b> to connect with readers who
-                        appreciate
-                        high-end magazines. These ads are crafted to reflect the style and mood elite audiences expect,
-                        proving how
-                        strong visuals, a clean layout, and the right message can make a lasting impact. When the format
-                        is
-                        carefully designed, the result gives your brand the space to tell a story and stand out. At <b
-                            style="color: rgb(0, 0, 0);">Luxury Method</b>, we understand how the right <b>luxury print
-                            ads</b> can
-                        place
-                        your brand in the perfect setting.
-                    </p>
+                    <p>Working with <strong>top content marketing influencers</strong> is crucial for a brand working in
+                        a luxury
+                        market. An online influencer marketing luxury brand can curate and season their presence through
+                        tailored
+                        content that their audiences can relate to. Whether it's through an aesthetic Instagram post, a
+                        Pinterest
+                        board of your latest collection, or even participating in a TikTok challenge showcasing a
+                        product, each post
+                        is a visual description of your luxury brand, and influencer partnerships authenticate it.</p>
 
-                    <div style="display: flex; align-items: center; margin: 30px; justify-content: center;">
-                        <img class="hover-3d styled-img" style="max-width: 500px; width: 100vw;" alt=""
-                            src="https://luxury-method.vercel.app/Luxury%20Magazine%20Print%20Ad.jpg" />
-                    </div>
+                    <p><strong>Pinterest influencer marketing</strong> is particularly effective for luxury brands in
+                        the retail,
+                        home decor, and travel sectors, as it allows a visual storytelling of the craftsmanship behind
+                        luxury
+                        companies. Whereas an <strong>Instagram influencer agency</strong> may help a brand promote an
+                        exclusive
+                        brand collaboration within visually captivating advertisements, which lead a targeted audience
+                        straight to
+                        the products or services on your page. Likewise, a <strong>TikTok influencer agency</strong>
+                        offers a fun
+                        and dynamic showcase of a brand through viral content while maintaining the essence of
+                        exclusivity.</p>
 
-                    <b style="">Gucci’s Vogue Italia Cover: A Luxury Print Ad Highlight:</b>
-
-                    <p>
-                        Your luxury brand can make a strong impression with timeless visual storytelling in print.
-                        Gucci’s Spring
-                        2024 collection on the Vogue Italia cover is a great example of the <b>best magazine print
-                            ads:</b> simple,
-                        elegant, and easy to remember.
-                        This luxury brand print ad blends classic style with a modern look, showing how <b>luxury print
-                            ads</b> help
-                        shape a <b>strong brand image.</b> A smart and well-placed luxury print ad like this keeps Gucci
-                        in
-                        mind for the interested audience and strengthens its presence in the world of high fashion.
-                    </p>
-                </div>
-
-                <div id="calendar" class="section">
-                    <h3>4) Email Marketing for Luxury Brands</h3>
-                    <p>
-                        <b>Email marketing for luxury brands</b> isn’t just about getting emails opened; it's about
-                        creating
-                        content and design templates that build an emotional connection with your clients by
-                        highlighting your
-                        product’s true value. Whether you’re reaching VIP clients or announcing something new, your
-                        luxury brand
-                        email marketing should reflect the same attention to detail in every element.
-                        At <b style="color: rgb(0, 0, 0);">Luxury Method</b>, we create personalized campaigns that
-                        perfectly
-                        reflect your
-                        elite brand’s style and tone, from elegant designs to carefully chosen messaging. We ensure that
-                        your
-                        <b>luxury brand email marketing</b> maintains the level of quality and style your clients
-                        expect, whether
-                        it’s for a product launch, a private event, or a seasonal update.
-                    </p>
-
-                    <div style="display: flex; align-items: center; justify-content: center;">
-                        <img class="image hover-3d styled-img" style="max-width: 500px; width: 100vw;" alt=""
-                            src="https://luxury-method.vercel.app/Email%20Marketing%20.png" />
-                    </div>
-
-                    <p>
-                        <b>Email marketing for luxury brands</b> still makes a big impact when done right. Your brand
-                        can stay close
-                        to loyal clients with clean, refined messages just like the newsletter from <b
-                            style="color: rgb(0, 0, 0);">Louis Vuitton</b>. With the right luxury email marketing
-                        approach, you can
-                        keep your audience informed, grow your reach, and drive real results.
-                    </p>
+                    <p>At Luxury Method, we partner with the most trusted <strong>online marketing influencers</strong>
+                        who will
+                        create content that reflects the high standards of your brand and develop a seamless alignment
+                        with your
+                        luxury image. Positioning your luxury brand on the right platform is the first step to standing
+                        out and
+                        capturing the attention of a sophisticated and tailored audience. Harness the power of luxury
+                        brand
+                        influencer marketing and elevate your brand to new heights.</p>
                 </div>
             </div>
         </div>
 
-        <div class="content" id="con2" style="position: relative;">
+        <!-- Section 2: Trends -->
+        <div class="content" id="con2">
             <div id="top2" class="top-section">
-                <span id="mindmap" class="anchor-offset"></span>
-                <h2 style="text-decoration: none">LUXURY CONTENT MARKETING ACROSS LUXURY SECTORS</h2>
+                <h2 id="aud" style="font-weight: bold;">Influencer Marketing Trends 2025</h2>
             </div>
 
-            <div id="audience2" class="section">
-                <p>
-                    Each <b>luxury sector</b> has its own style, voice, and audience, and a luxury content marketing
-                    agency
-                    should reflect and customize the content accordingly. From jewelry and watches to real estate,
-                    fashion, and
-                    travel, content needs to match the <b>high-end value</b> your brand offers. We craft <b>content
-                        marketing
-                        solutions</b> for each sector that fit the tone of your niche while staying true to what elite
-                    consumers
-                    expect: quality, emotion, and exclusivity.
-                    Luxury jewelry and watch marketing focuses on telling a story that is a mixture of heritage,
-                    craftsmanship,
-                    and exclusivity. Whether showcasing a unique diamond or a limited-edition timepiece, the content
-                    highlights
-                    the artistry of the maker and the brand behind each piece.
-                    Jewelry content marketing brings out the emotional value and rarity of owning something truly
-                    special. Luxury
-                    watch marketing emphasizes precision and legacy, while luxury watch ads highlight the exclusivity of
-                    owning a
-                    rare, high-end piece.
-                </p>
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1735293840436-b6950d1cdb1a?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    class="socialimg hover-3d" alt="Paid Social Media">
             </div>
 
-            <div id="mindmap2" class="section">
-                <h3>Luxury Jewelry & Luxury Watches Content Marketing</h3>
-                <div class="industry_Image">
-                    <img src="https://luxury-method.vercel.app/WATCHES.png" alt="Watches Industry" class="hover-3d"
-                        style="height:65vh;">
-                </div>
-                <p>
-                    <a target="_blank" href="https://www.luxury-method.com/industries/luxury-jewelry-marketing">Luxury
-                        jewelry</a> and
-                    <a target="_blank" href="https://www.luxury-method.com/industries/luxury-watches-marketing">luxury
-                        watch</a>
-                    marketing</a> focuses on telling a story that is a mixture of heritage, craftsmanship, and
-                    exclusivity.
-                    Whether showcasing a unique diamond or a limited-edition timepiece, the content highlights the
-                    artistry of the
-                    maker and the brand behind each piece.
-                </p>
-                <p><b>Jewelry content marketing</b> brings out the emotional value and rarity of owning something truly
-                    special.
-                    <b>Luxury watch marketing</b> emphasizes precision and legacy, while luxury watch ads highlight the
-                    exclusivity of owning a rare, high-end piece.
-                </p>
-            </div>
+            <p><b>Influencer marketing trends in 2025</b> are rapidly reshaping how luxury brands are communicating with
+                their
+                elite consumers. As deeper emotional connection and brand consistency become a personality trait, rather
+                than a
+                business plan, we're seeing a major shift towards long-term <b>luxury brand collaborations</b> with
+                niche
+                creators. Rather than relying on one-off promotional posts, labels are favouring luxury market
+                influencers who
+                truly align with a brand's image to develop sustained storytelling that builds trust and loyalty.</p>
 
-            <div id="mindmap2" class="section">
-                <h3>Luxury Travel & Luxury Hospitality content marketing</h3>
-                <p>
-                    <a target="_blank" href="https://www.luxury-method.com/industries/luxury-travel-marketing">Luxury
-                        travel
-                        marketing</a>
-                    helps high-end
-                    travelers discover unique and unforgettable experiences. With strong travel content marketing,
-                    brands can
-                    showcase stunning places, luxury stays, and personalized service. Through quality visuals and
-                    stories, content
-                    marketing travel agency services highlight what makes each destination special.
-                </p>
+            <p>Another key evolution is the rise of <b>local influencer marketing</b>. This is where brands target
+                micro-communities through regionally influential creators. This hyper-targeted approach offers to build
+                a more
+                genuine and impactful connection with a micro audience. The priority is a higher engagement rather than
+                a high
+                following count, to ensure curated experiences that resonate on a personal level.</p>
 
-                <div class="industry_Image">
-                    <img src="https://luxury-method.vercel.app/TRAVEL.png" alt="Travel Industry" class="hover-3d"
-                        style="height:65vh;">
-                </div>
-
-                <p>
-                    In hospitality, <b>content marketing for <a target="_blank"
-                            href="https://www.luxury-method.com/industries/luxury-hospitality-marketing-agency">luxury
-                            hotels</a></b>
-                    focuses on the design, atmosphere, and service that set a hotel apart. A smart content marketing
-                    plan for
-                    hotels uses SEO, storytelling, and beautiful imagery to attract elite travelers and encourage
-                    bookings.
-                </p>
-            </div>
-
-            <div id="content2" class="section">
-                <h3>Luxury Fashion & Luxury Retail content marketing</h3>
-
-                <div class="industry_Image"
-                    style="display:flex; justify-content:center; align-items:center; margin:40px 0;">
-                    <img src="https://luxury-method.vercel.app/FASHION.png" class="hover-3d" alt=""
-                        style="width:100%; height:65vh; object-fit:cover; object-position:center center;">
-                </div>
-
-                <p>
-                    <b><a target="_blank"
-                            href="https://www.luxury-method.com/industries/luxury-fashion-marketing">Luxury
-                            fashion</a>
-                        content marketing</b>
-                    works best when it focuses on seasonal collections, couture, and the lifestyle behind the brand. It
-                    helps
-                    create a real connection with high-end shoppers by showing what makes the brand special in a clear
-                    and stylish
-                    way.
-                </p>
-                <p>
-                    <b>Retail content marketing</b> supports this by making the shopping journey feel personal and
-                    seamless online
-                    and in-store. It highlights what matters most to luxury buyers, from quality to exclusivity. A
-                    strong <b><a target="_blank"
-                            href="https://www.luxury-method.com/industries/luxury-retail-marketing">luxury retail</a>
-                        strategy</b>
-                    uses the
-                    right tone, visuals, and content to reflect the premium experience people expect from a high-end
-                    brand.
-                </p>
-            </div>
-
-            <div id="calendar2" class="section">
-                <h3>Real Estate Content Marketing</h3>
-                <div class="industry_Image">
-                    <img src="https://luxury-method.vercel.app/REAL_ESTATE.png" class="hover-3d"
-                        alt="Real Estate Industry" style="height:65vh;">
-                </div>
-
-                <p><b>Real estate content marketing</b> is about showing the design, location, and value of a property
-                    in a way
-                    that feels real and appealing. Great content marketing for <a target="_blank"
-                        href="https://www.luxury-method.com/industries/luxury-real-estate-marketing">real estate</a>
-                    bring out the
-                    lifestyle and experience behind every listing, builds trust, and helps attract the right buyers.</p>
-            </div>
-
-            <div id="top2" class="top-section">
-                <h3 id="industry" style="text-decoration: none;">eCommerce Content Marketing</h3>
-
-                <div class="industry_Image">
-                    <img src="https://luxury-method.vercel.app/E_COMMERCE.png" style="height:65vh;" class="hover-3d"
-                        alt="E Commerce Industry">
-                </div>
-
-                <p>On the digital side, the best ecommerce content marketing uses personalization and clean, stylish
-                    product
-                    displays. Strong <b>content marketing for ecommerce sites</b> brings everything together: blogs,
-                    email flows,
-                    and <a target="_blank" href="https://www.luxury-method.com/services/luxury-seo-agency">SEO</a> to
-                    drive sales
-                    and build brand
-                    loyalty.</p>
-            </div>
-
-            <div id="audience2" class="section">
-                <h3><a target="_blank" style="text-decoration: none;"
-                        href="https://www.luxury-method.com/industries/luxury-food-marketing">Content Marketing for
-                        Restaurant & Food</a></h3>
-                <div class="industry_Image">
-                    <img src="https://luxury-method.vercel.app/FOOD_AND_BEVERAGES.png" class="hover-3d"
-                        alt="Food and Beverages Industry" style="height:65vh;">
-                </div>
-
-                <p><b>Content marketing for restaurants</b> goes beyond food pictures. It shares the whole experience of
-                    great
-                    spaces, talented chefs, and the story behind each dish. Content marketing for food highlights the
-                    atmosphere
-                    and the passion behind each meal. In the content marketing <a target="_blank"
-                        href="https://www.luxury-method.com/industries/luxury-food-marketing">food industry</a>, it
-                    builds trust and
-                    excitement.
-                    Excellent <b>content marketing for restaurants</b> connects with the right people and makes them
-                    want to
-                    visit, whether it's a fine dining spot or a new place to try.</p>
-            </div>
-        </div>
-
-        <div id="bottom2" class="top-section" style="padding-top: 0px !important; position: relative;">
-            <span id="content" class="anchor-offset"></span>
-            <h2 id="who-we-are" style="text-decoration: none">WHO WE ARE</h2>
-            <p style="text-align: start;">
-                Luxury Method is a luxury SEO agency that specialises in assisting
-                high-end brands in attracting the appropriate target audience.
-                Concentrating on sectors including apparel, jewellery, watches, and,
-                retail and hotels. Our speciality is creating custom marketing solutions
-                that are suited to the particular requirements of luxury brands. Our
-                headquarters is in Rome, and we operate all over the globe.
+            <p>Additionally, <b>trends in influencer marketing</b> are moving towards immersive experiences to truly
+                captivate
+                <b>high-end consumers</b>. This can be presented in visual try-on videos, behind-the-scenes lifestyle
+                content,
+                virtual product placement in real-life environments, and even influencer-led “day in the life” vlogging.
             </p>
 
-            <p>At <a target="_blank" href="https://www.luxury-method.com/">Luxury Method</a>, <b>we help luxury brands
-                    grow
-                    with smart, elegant content.</b> Our team of luxury content creators has years of experience working
-                with
-                brands like <b style="color: rgb(0, 0, 0);">Gucci</b> and deep knowledge of the luxury sector and how to
-                connect
-                with a
-                high-end audience. Today, we offer flexible <b>content marketing packages</b> for different luxury
-                sectors,
-                including fashion, travel, and real estate. With our <b>brand content marketing services</b>, you can
-                strengthen
-                your brand image and reach the people who truly matter for your products or services.
-                Contact <b style="color: rgb(0, 0, 0);">Luxury Method</b> now to start creating <b>luxury content</b>
-                that
-                connects you
-                with an elite audience and increases your brand visibility and conversions.</p>
+            <p>With Gen Z and Millennial consumers continuing to dominate the market, there is a growing pressure for
+                transparency, innovation, and genuinely interesting storytelling from a brand.</p>
 
+            <p>Whilst these trends provide a multitude of <b>pros and cons of influencer marketing</b>, it is clear that
+                the
+                luxury brands that stay ahead of these luxury influencer marketing trends will maintain their edge in an
+                increasingly competitive digital space.</p>
+        </div>
+
+        <!-- Section 3: Influencer vs Affiliate -->
+        <div class="content" id="con3">
+            <div id="top2" class="top-section">
+                <h2 id="industry" style="font-weight: bold;">Influencer Vs. Affiliate Marketing</h2>
+            </div>
+
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1741851578333-b17d003679c7?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    class="socialimg hover-3d" alt="Influencer Vs. Affiliate Marketing">
+            </div>
+
+            <p>In the luxury market, comparing <b>influencer vs affiliate marketing</b> highlights a clear difference in
+                strategy and influence. Whilst affiliate marketing is performance-based, earning commission from
+                partners
+                driving clicks and sales, it often lacks the emotional element of storytelling that attracts
+                conversations from
+                high-end customers.</p>
+
+            <p>On the other hand, online marketing influencers excel at crafting exceptional, handmade content that
+                directly
+                aligns with luxury lifestyles. One of the major <b>advantages of influencer marketing</b> is the ability
+                to
+                build trust and desire through long-term relationships within tight-knit communities of affluent
+                followers. This
+                market values the exclusivity and experience that comes only from visually rich narratives.</p>
+
+            <p>Affiliate marketing relies on the fast-paced volume of every sale, lead, or action. Luxury demands a more
+                refined approach when elevating its brand perception. An <b>Influencer marketing luxury products</b>
+                combines
+                image, influence, and emotion as they embody a brand's entire essence.</p>
+
+            <p>For your prestige brand to maintain allure while driving engagement, luxury influencer marketing stands
+                out as
+                the most effective method for connecting with a selective audience in a meaningful way.</p>
+        </div>
+
+        <!-- Section 4: Top Influencers -->
+        <div class="content" id="con3">
+            <div id="top2" class="top-section">
+                <h2 id="Cont" style="font-weight: bold;">Top Luxury Influencers</h2>
+            </div>
+
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    class="socialimg hover-3d" alt="">
+            </div>
+
+            <p>Today's luxury influencers are redefining the standards of <span class="text-blue"><a target="_blank"
+                        href="https://www.luxury-method.com/services/luxury-branding">high-end branding</a></span>
+                through
+                visually stunning and strategically crafted content. As top content marketing influencers, they drive
+                engagement
+                and trust across the fashion, travel, and retail sectors. These <b>influencer marketing fashion
+                    leaders</b>—such
+                as Leonie Hanne, Chriselle Lim, and Nora Smith—seamlessly blend elegance with digital impact. Known for
+                shaping
+                trends, they also rank among the <b>biggest influencers in online marketing</b> today. Their influence
+                extends
+                globally, making them ideal for influencer marketing retail, and influencer marketing travel campaigns.
+                These
+                powerful voices are essential in today's landscape of <b>content marketing influencers</b>, driving
+                visibility
+                and value for luxury brands.</p>
+        </div>
+
+        <!-- Section 5: Industries -->
+        <div class="content" id="con3">
+            <div id="top2" class="top-section">
+                <h2 id="impac" style="text-decoration:none; font-weight: bold;">THE INDUSTRIES WE WORK WITH</h2>
+                <p>At Luxury Method, we specialize in <b>elevating brands across high-end industries</b>, including
+                    fashion,
+                    travel, fine dining, and automotive, through curated luxury influencer marketing partnerships. In
+                    the
+                    following sections, we'll explore how our tailored influencer strategies drive engagement and
+                    exclusivity
+                    within each of these elite sectors.</p>
+            </div>
+
+            <div>
+                <h3 style="font-weight: bold;"> Luxury Influencer Marketing for Luxury Fashion Brands</h3>
+                <div class="industry_Image img-fashion">
+                    <img src="https://luxury-method.vercel.app/FASHION.png" class="hover-3d" alt="Fashion Industry">
+                </div>
+
+                <p>Luxury fashion brands are constantly utilizing digital <a target="_blank"
+                        href="https://www.luxury-method.com/industries/luxury-fashion-marketing">marketing strategies
+                        for fashion and luxury brands</a>, to stay ahead in the competitive market. And one of the most
+                    powerful tactics is
+                    <b>influencer marketing in the fashion industry</b>.
+                </p>
+
+                <p>Establishing partnerships with high-profile, luxury influencers elevates a brand's visibility and
+                    desirability and develops the relationship between your brand and its affluent customers.</p>
+
+                <p>A successful <b>luxury fashion brand marketing strategy</b> typically includes collaborations with
+                    luxury
+                    brand influencers who embody a brand identity and essence, building on its luxury ideology. They
+                    will showcase
+                    products and campaigns across their social media pages, including Instagram and and TikTok.</p>
+
+                <p><b>Top fashion brands that use influencer marketing</b>, such as <b>Gucci, Dior, or Chanel</b>, have
+                    demonstrated how strategic influencer partnerships can drive engagement and boost sales. You can see
+                    these
+                    brands typically collaborating with influencers during fashion week, product launches, and exclusive
+                    events to
+                    create aspirational content. For both emerging
+                    and established labels, a fashion influencer marketing agency ensures access to curated influencer
+                    networks,
+                    campaign management, and performance analytics. </p>
+                <p>With the rapid evolution of digital channels, luxury influencer marketing remains an essential pillar
+                    of
+                    luxury fashion marketing.</p>
+            </div>
+
+            <div>
+                <h3 class="mt-80" style="font-weight: bold;"> Luxury Influencer Marketing for Real Estate</h3>
+
+                <div class="industry_Image">
+                    <img src="https://luxury-method.vercel.app/REAL_ESTATE.png" class="hover-3d"
+                        alt="Real Estate Industry">
+                </div>
+
+                <p>Luxury real estate brands are embracing the power of <b>real estate influencer marketing</b> to
+                    connect with
+                    highly selected individuals in a more authentic and impactful way. By utilising <a target="_blank"
+                        href="https://www.luxury-method.com/industries/luxury-real-estate-marketing">real estate</a>,
+                    agencies and
+                    developers can showcase properties through trusted voices who have built credibility and authority
+                    online.
+                    This approach humanizes listings and creates aspirational content that <b>resonates with luxury
+                        buyers</b>.
+                </p>
+
+                <p>Influencer marketing real estate strategies often include virtual property tours, lifestyle content,
+                    and
+                    behind-the-scenes lifestyle glimpses, which represent not just a home, but the luxury lifestyle it
+                    represents.
+                </p>
+
+                <p>The growing <b>influence of online marketing on the real estate business</b> emphasizes the sense of
+                    trust
+                    and personalisation that significantly impacts buying decisions. Whether
+                    partnering with luxury lifestyle influencers, interior design tastemakers, or real estate content
+                    creators,
+                    the goal is to elevate the property’s visibility in a curated and engaging way. </p>
+                <p>Driven by shifting consumer behavior, luxury influencer marketing is now transforming how high-end
+                    properties
+                    are marketed, offering immersive, trust-driven experiences that far surpass the reach and impact of
+                    traditional advertising.</p>
+            </div>
+
+            <div>
+                <h3 class="mt-80" style="font-weight: bold;"> Luxury Influencer Marketing for Hospitality</h3>
+                <div class="industry_Image">
+                    <img src="https://luxury-method.vercel.app/HOSPITALITY.png" class="hover-3d"
+                        alt="Hospitality Industry">
+                </div>
+
+                <p>Luxury influencer marketing has become a vital strategy within the hospitality industry to redefine
+                    brand
+                    visibility and guest engagement. Through <a target="_blank"
+                        href="https://www.luxury-method.com/industries/luxury-hospitality-marketing-agency">hospitality
+                        industry</a>, your premium brand can create authentic experiences that resonate with affluent
+                    travelers and
+                    discerning diners.</p>
+
+                <p><a target="_blank" href="https://www.luxury-method.com/industries/luxury-food-marketing">Restaurant
+                        influencer marketing</a>
+                    strategies focus on collaborating with food bloggers, lifestyle influencers, and celebrity chefs to
+                    showcase
+                    signature dishes, exclusive menus, and curated dining experiences. Similarly, <b>hotel influencer
+                        marketing</b> campaigns involve partnerships with travel influencers who highlight luxurious
+                    accommodations,
+                    personalized services, and one-of-a-kind amenities. These influencers can turn a stay into a
+                    visually rich,
+                    story-driven narrative.</p>
+
+                <p><b>Food and beverage influencer marketing</b> further enhances the appeal of both hotel and
+                    restaurant
+                    offerings by engaging niche audiences who follow gourmet trends and high-end culinary experiences.
+                    These
+                    campaigns build credibility, generate buzz, and encourage bookings by tapping into the trust and
+                    influence
+                    these creators have with their followers.</p>
+
+                <p>As travelers increasingly seek personalized experiences, <b>influencer marketing in the hospitality
+                        industry</b> provides a powerful way for your luxury brand to build trust, boost visibility, and
+                    drive
+                    high-value bookings.</p>
+            </div>
+
+            <div>
+                <h3 class="mt-80" style="font-weight: bold;"> Luxury Influencer Marketing for Retail</h3>
+
+                <div class="industry_Image">
+                    <img src="https://luxury-method.vercel.app/RETAIL.png" class="hover-3d" alt="Retail Industry">
+                </div>
+
+                <p>In today's experience-driven retail landscape, luxury influencer marketing is a key tool that premium
+                    brands
+                    are using to target modern, style-conscious consumers. <a target="_blank"
+                        href="https://www.luxury-method.com/industries/luxury-retail-marketing">retail shopping
+                        brands</a> involves
+                    collaborations with lifestyle and fashion influencers, who appeal to aspirational customers and use
+                    their
+                    trusted voice to reflect the brand's image. <b>Retail influencer marketing</b> partnerships can
+                    showcase
+                    exclusive collections, in-store experiences, and limited-edition drops.</p>
+
+                <p>In fashion capitals like Milan, luxury influencer marketing has proven especially effective, allowing
+                    brands
+                    to blend local culture with global appeal through curated digital campaigns. These campaigns elevate
+                    a brand's
+                    presence to more audiences and drive purchase intent among active consumers.</p>
+
+                <p>For those of you who are exploring <b>how to grow your business with influencer marketing</b>,
+                    aligning with
+                    the right influencer- those who authentically reflect your brand image and build on it- is utterly
+                    crucial.
+                    These influencers offer unique access to niche audiences through their layer of authentic
+                    advertising, the
+                    type that traditional advertising cannot offer.</p>
+
+                <p>Luxury brand influencer marketing enables enthusiastic conversations in the ever-evolving luxury
+                    retail
+                    market.</p>
+            </div>
+
+            <div>
+                <h3 class="mt-80" style="font-weight: bold;"> Luxury Influencer Marketing for Jewelry</h3>
+
+                <div class="industry_Image">
+                    <img src="https://luxury-method.vercel.app/JEWELLERY.png" alt="Jewellery Industry"
+                        class="img-jewellery hover-3d">
+                </div>
+
+                <p><a target="_blank" href="https://www.luxury-method.com/industries/luxury-jewelry-marketing">High-end
+                        jewelry</a> has
+                    evolved with the rise of social media, being redefined by the strategic use of <b>jewelry influencer
+                        marketing</b>. High-end jewelry brands are increasingly turning towards influencers who embody
+                    the authentic
+                    essence of luxury brands, and showcase collections to their prestige audiences.</p>
+
+                <p>These collaborations provide powerful storytelling and captivating content that allows you to stand
+                    out in a
+                    competitive luxury jewelry market. Influencer marketing for luxury brands not only elevates a brand
+                    identity,
+                    but they also bring it to life within <b>curated lifestyle content</b>.</p>
+
+                <p>When navigating your brand's <b>luxury watch marketing strategy</b>, aligning with influencers known
+                    for
+                    their sophistication and high-class content can amplify a brand's heritage and craftsmanship.</p>
+
+                <p>This modern approach allows your luxury brand to reach younger, digitally-driven consumers, who
+                    appreciate
+                    authentic marketing over traditional approaches.</p>
+
+                <p>By investing in influencer partnerships, you can convert social media followers into loyal customers
+                    through
+                    the enhancement of your digital presence. <b>Jewelry influencer marketing</b> is no longer optional,
+                    it’s
+                    essential to remain relevant in a digital landscape.</p>
+            </div>
+
+            <div>
+                <h3 class="mt-80" style="font-weight: bold;"> Luxury Influencer Marketing for Lifestyle</h3>
+
+                <div class="industry_Image img-lifestyle">
+                    <img src="https://luxury-method.vercel.app/LIFESTYLE.png" class="hover-3d" alt="Lifestyle Industry">
+                </div>
+
+                <p>Affluent consumers today don't just buy products—they invest in experiences, which is why luxury
+                    lifestyle
+                    marketing services are embracing influencer partnerships.</p>
+
+                <p>Through a trusted <a target="_blank"
+                        href="https://www.luxury-method.com/industries/luxury-lifestyle-marketing">luxury
+                        lifestyle</a>,
+                    brands can connect with influencers who inspire through curated, high-end content.
+                    <b>Influencer marketing in travel and tourism</b> can authentically highlight luxury destinations,
+                    prestige
+                    products, and bespoke services through visually compelling content that reaches a high-end audience.
+                    For
+                    brands entering this space, a <b>guide to travel influencer marketing</b> offers essential insights
+                    for
+                    building high-impact campaigns in the growing <b>influencer marketing travel industry</b>.
+                </p>
+
+                <p>On the fitness side, <b>fitness influencer marketing</b> has become a powerful tool for luxury
+                    wellness and
+                    activewear brands. A top <b>fitness influencer marketing agency</b> ensures the connection between a
+                    brand and
+                    an influencer who embodies performance, health, and upscale living. These qualities enable an
+                    influencer
+                    marketing fitness to connect audiences who prioritize both product quality and lifestyle appeal with
+                    luxury
+                    fitness brands.</p>
+
+                <p>In a lifestyle market driven by aspiration, luxury influencer marketing delivers impact and prestige.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="mt-80" style="font-weight: bold; text-decoration: underline;">The Future of Influencer
+                    Marketing</h3>
+
+                <div class="image-container mb-30">
+                    <img src="https://images.unsplash.com/photo-1663729312345-9fd2a8ff256c?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        class="socialimg hover-3d" alt="">
+                </div>
+
+                <p>The <b>future of influencer marketing</b> is rapidly evolving, especially within the high-end space
+                    where
+                    exclusivity and authenticity reign. As consumers demand a more refined and personalised experience,
+                    <b>luxury
+                        influencer marketing agencies</b> are reshaping the digital landscape by connecting brands with
+                    influential
+                    voices that resonate with the affluent audience's needs.
+                </p>
+
+                <p>From immersive experiences to AI-driven personalization, <b>elite social media marketing</b>
+                    strategies are
+                    becoming more data-driven and experience-centric. This showcases the shift from traditional
+                    endorsements to
+                    long-term partnerships, valuing authenticity and credibility.</p>
+
+                <p>As Gen Z and millennials increasingly influence the luxury market, brands must adopt new technologies
+                    while
+                    preserving the sophistication and exclusivity that define the space. Influencer marketing for luxury
+                    brands is
+                    becoming a key strategy, driving the rise of curated digital experiences that resonate with younger,
+                    tech-savvy audiences.</p>
+
+                <p>Brands that partner with specialized agencies will gain a competitive edge by leveraging deep
+                    industry
+                    insights and refined influencer curation. The future of luxury influencer marketing lies in blending
+                    innovation with heritage to captivate tomorrow’s discerning clientele.</p>
+            </div>
+        </div>
+
+        <!-- Bottom Section: Who We Are -->
+        <div id="bottom2" class="top-section" style="padding-top: 0px !important; ">
+            <h2 id="brand" style="text-decoration: none; font-weight: bold;">WHO WE ARE</h2>
+            <p style="text-align: start;">
+                Luxury Method is a global luxury marketing agency based in Rome, dedicated to helping high-end brands
+                connect
+                with their ideal audiences. Our expertise in SEO forms just one part of a broader, integrated approach.
+                We offer
+                tailor-made marketing solutions that also encompass digital strategy, branding, content creation, and
+                influencer
+                marketing—bringing together everything premium brands need to grow and stand out. We work across key
+                sectors
+                such as fashion, jewellery, watches, retail, and hospitality, delivering results-driven campaigns with a
+                refined, luxury-focused approach.
+            </p>
         </div>
     </div>
 
+    <!-- FAQ Section -->
     <div class="faq-container paddingleftright top-section">
 
-        <p style="text-align: center; font-size: 24px !important; font-style: italic;">
+        <p class="faq-intro">
             Experience the difference of a marketing agency dedicated to luxury.
         </p>
 
+        <!-- Fixed Contact Icons Structure -->
         <div class="contact-icons-container">
             <a target="_blank"
                 href="https://www.google.com/url?q=https%3A%2F%2Fwa.me%2F%2B393920034695&sa=D&sntz=1&usg=AOvVaw2a9hG2asZNJfADOdAWUper"
@@ -2251,17 +2104,18 @@
                 class="contact-btn"><img src="https://i.postimg.cc/BvtQqcWz/image-979.png"
                     style="background-color: #2867b2;" alt=""></a>
         </div>
-
         <div class="contact-form-container">
             <a target="_blank" href="https://www.luxury-method.com/contact" class="contact-form-link">CONTACT FORM</a>
         </div>
 
 
 
-        <h2>Frequently Asked Questions</h2>
+        <h2>Luxury Influencer Marketing FAQs</h2>
+
+        <!-- FAQ Items -->
         <div class="faq-item">
             <div class="faq-question" onclick="toggleFAQ(this)">
-                <h3><strong>What is luxury content marketing?</strong></h3>
+                <h3><strong>What are the pros and cons of influencer marketing?</strong></h3>
                 <div class="faq-toggle">
                     <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
                         <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
@@ -2269,17 +2123,18 @@
                 </div>
             </div>
             <div class="faq-answer">
-                <p>
-                    It's a strategy focused on storytelling, emotion, and exclusivity to connect with premium audiences
-                    without
-                    relying on hard sales.
-                </p>
+                <p><b>Pros:</b> Influencer marketing builds authentic brand trust, drives high engagement, and creates
+                    direct
+                    access to niche audiences.</p>
+                <p><b>Cons:</b> Without the right strategy or influencer fit, campaigns can lack ROI or dilute brand
+                    image. At
+                    Luxury Method, we mitigate these risks by aligning brands only with elite, vetted voices.</p>
             </div>
         </div>
 
         <div class="faq-item">
             <div class="faq-question" onclick="toggleFAQ(this)">
-                <h3><strong>How is Luxury Method different from other agencies? </strong> </h3>
+                <h3><strong>What is luxury influencer marketing?</strong></h3>
                 <div class="faq-toggle">
                     <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
                         <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
@@ -2287,18 +2142,16 @@
                 </div>
             </div>
             <div class="faq-answer">
-                <p>
-                    We only work with premium brands, so every piece of content we craft is tailored for high-end
-                    audiences.
-                </p>
+                <span class="faq-text-styled">Luxury
+                    influencer marketing is the strategic use of high-profile content creators who embody
+                    sophistication, exclusivity, and brand alignment to promote premium products or services.
+                </span>
             </div>
         </div>
 
         <div class="faq-item">
             <div class="faq-question" onclick="toggleFAQ(this)">
-                <h3>
-                    <strong>Why is content important for luxury brands?</strong>
-                </h3>
+                <h3><strong>How to grow your business with influencer marketing?</strong></h3>
                 <div class="faq-toggle">
                     <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
                         <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
@@ -2306,17 +2159,17 @@
                 </div>
             </div>
             <div class="faq-answer">
-                <p>
-                    Because it helps shape your brand image, build trust, and speak to high-end values.
-                </p>
+                <p>Success comes from selecting influencers who genuinely align with your brand values and speak
+                    directly to
+                    your ideal audience. With Luxury Method, growth is driven by precision targeting, curated
+                    collaborations, and
+                    content strategies that convert visibility into brand loyalty.</p>
             </div>
         </div>
 
         <div class="faq-item">
             <div class="faq-question" onclick="toggleFAQ(this)">
-                <h3>
-                    <strong>How does SEO help luxury brands?</strong>
-                </h3>
+                <h3><strong>How is luxury influencer marketing effective for high-end brands?</strong></h3>
                 <div class="faq-toggle">
                     <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
                         <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
@@ -2324,18 +2177,20 @@
                 </div>
             </div>
             <div class="faq-answer">
-                <p>
-                    It helps your brand show up in searches organically, attracting the right audience without paying
-                    for ads.
-                </p>
+                <span class="faq-text-styled">It’s
+                    effective because it blends aspiration with authenticity. High-end consumers trust elite influencers
+                    as
+                    tastemakers. A crafted campaign should subtly promote without compromising the exclusivity,
+                    remaining
+                    desirable yet attainable.</span>
             </div>
         </div>
 
         <div class="faq-item">
             <div class="faq-question" onclick="toggleFAQ(this)">
-                <h3>
-                    <strong>Can you help launch a new luxury brand?</strong>
-                </h3>
+                <h3><strong>What are the most effective marketing strategies for luxury brands to maintain exclusivity
+                        while still
+                        reaching a global audience?</strong></h3>
                 <div class="faq-toggle">
                     <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
                         <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
@@ -2343,12 +2198,52 @@
                 </div>
             </div>
             <div class="faq-answer">
-                <p>
-                    Yes, we help define your voice, visuals, and content strategy from the very beginning.
-                </p>
+                <ul>
+                    <li>Invite-only digital campaigns</li>
+                    <li>Private influencer events</li>
+                    <li>Limited-edition collaborations</li>
+                    <li>Region-specific storytelling through select influencers</li>
+                </ul>
             </div>
         </div>
 
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3><strong>How do luxury brand collaborations influence brand perception?</strong></h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <p>Strategic collaborations can elevate a brand’s status, introduce it to a new but aligned audience,
+                    and create
+                    a sense of novelty without diluting identity. Luxury Method helps brands co-create moments that feel
+                    exclusive
+                    and culturally relevant, without compromising heritage.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3><strong>How are luxury brands using local influencer marketing to maintain exclusivity while
+                        expanding their
+                        reach?</strong></h3>
+                <div class="faq-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                        <path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <p>Luxury brands partner with curated local influencers who resonate with regional audiences yet embody
+                    global
+                    elegance. This micro-targeting approach enables growth in emerging markets while keeping brand
+                    access limited
+                    and controlled.</p>
+            </div>
+        </div>
     </div>
 
     <!-- Footer -->
@@ -2373,8 +2268,7 @@
                         <a href="mailto:giacomo@luxury-method.com">giacomo@luxury-method.com</a>
                         <a href="tel:+393920034695" style="margin-top: 5px;">(+39) 3920034695</a>
                         <p style="margin: 5px 0 0 0; font-size: 16px;">00133, Rome, Italy</p>
-                        <a href="https://www.technifyx.com/" target="_blank" style="margin-top: 5px;">Partner of
-                            TechnifyX</a>
+                        
 
                         <!-- Social Icons -->
                         <div class="footer-socials" style="margin-top: 20px; justify-content: flex-end;">
@@ -2410,6 +2304,33 @@
         <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false">
             <path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z" fill="currentColor"></path>
         </svg>
+    </div>
+
+    <!-- ============================================
+         CUSTOM SCROLLBAR HTML (DESKTOP ONLY)
+         ============================================ -->
+    <div class="custom-scroll-container">
+        <div class="custom-scroll-thumb" id="customScrollThumb"></div>
+    </div>
+
+    <!-- ============================================
+         LOADER OVERLAY (MOVED TO BOTTOM FOR Z-INDEX FIX)
+         ============================================ -->
+    <div id="loader-overlay">
+        <div class="loader-content">
+            <!-- Text Logo Placeholder -->
+            <div class="loader-logo">LUXURY METHOD</div>
+
+            <!-- Rotating Messages Area -->
+            <div class="loader-message-container">
+                <p class="loader-message" id="loader-text"></p>
+            </div>
+
+            <!-- Elegant Progress Bar -->
+            <div class="loader-progress-container">
+                <div class="loader-progress-bar"></div>
+            </div>
+        </div>
     </div>
 
     <!-- =========================================
@@ -2467,33 +2388,6 @@
         </div>
     </div>
 
-    <!-- ============================================
-         CUSTOM SCROLLBAR HTML (DESKTOP ONLY)
-         ============================================ -->
-    <div class="custom-scroll-container">
-        <div class="custom-scroll-thumb" id="customScrollThumb"></div>
-    </div>
-
-    <!-- ============================================
-         LOADER OVERLAY (MOVED TO BOTTOM FOR Z-INDEX FIX)
-         ============================================ -->
-    <div id="loader-overlay">
-        <div class="loader-content">
-            <!-- Text Logo Placeholder -->
-            <div class="loader-logo">LUXURY METHOD</div>
-
-            <!-- Rotating Messages Area -->
-            <div class="loader-message-container">
-                <p class="loader-message" id="loader-text"></p>
-            </div>
-
-            <!-- Elegant Progress Bar -->
-            <div class="loader-progress-container">
-                <div class="loader-progress-bar"></div>
-            </div>
-        </div>
-    </div>
-
     <script>
         function toggleFAQ(element) {
             const answer = element.nextElementSibling;
@@ -2519,10 +2413,12 @@
 
         function scrollToSection(id) {
             const element = document.getElementById(id);
-            const isMobile = window.innerWidth <= 768;
-            const yOffset = isMobile ? -90 : -40;
+            const yOffset = -80;
             const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
-            window.scrollTo({ top: y, behavior: "smooth" });
+            window.scrollTo({
+                top: y,
+                behavior: "smooth"
+            });
         }
 
         // Back to Top functionality
@@ -2536,7 +2432,7 @@
         // Show/hide back to top button
         function handleBackToTopButton() {
             const backToTopButton = document.getElementById('backToTop');
-            if (window.scrollY > 300) {
+            if (window.scrollY > 300) { // Show button after scrolling 300px
                 backToTopButton.classList.add('visible');
             } else {
                 backToTopButton.classList.remove('visible');
@@ -2560,43 +2456,44 @@
                 });
             }
 
+            // Update arrow visibility after scrolling
             setTimeout(() => {
                 updateScrollButtonVisibility(sidebarId);
             }, 300);
         }
 
-        // Function to update arrow visibility based on scroll position
+        // Function to update scroll button visibility based on scroll position
         function updateScrollButtonVisibility(sidebarId) {
-            if (window.innerWidth > 768) return; // Only run on mobile
-
             const sidebar = document.querySelector(`.${sidebarId}`);
+            // Only run for sidebar1 as per structure
+            const leftBtnWrapper = document.getElementById(`sidebar1-left`);
+            const rightBtnWrapper = document.getElementById(`sidebar1-right`);
 
-            // Get buttons safely
-            const leftBtnContainer = document.getElementById(`${sidebarId === 'sidebar' ? 'sidebar1' : 'sidebar2'}-left`);
-            const rightBtnContainer = document.getElementById(`${sidebarId === 'sidebar' ? 'sidebar1' : 'sidebar2'}-right`);
+            if (!leftBtnWrapper || !rightBtnWrapper) return;
 
-            if (!leftBtnContainer || !rightBtnContainer) return;
+            const leftBtn = leftBtnWrapper.querySelector('.scroll-btn');
+            const rightBtn = rightBtnWrapper.querySelector('.scroll-btn');
 
-            const leftBtn = leftBtnContainer.querySelector('.scroll-btn');
-            const rightBtn = rightBtnContainer.querySelector('.scroll-btn');
+            // Only show buttons on mobile view (width <= 768px)
+            if (window.innerWidth <= 768) {
+                // Check if at the start or end of scrolling
+                if (sidebar.scrollLeft <= 10) {
+                    leftBtn.style.opacity = '0.4';
+                } else {
+                    leftBtn.style.opacity = '1';
+                }
 
-            if (!leftBtn || !rightBtn) return;
+                if (sidebar.scrollLeft + sidebar.clientWidth >= sidebar.scrollWidth - 10) {
+                    rightBtn.style.opacity = '0.4';
+                } else {
+                    rightBtn.style.opacity = '1';
+                }
 
-            if (sidebar.scrollLeft <= 10) {
-                leftBtn.style.opacity = '0.4';
-            } else {
-                leftBtn.style.opacity = '1';
-            }
-
-            if (sidebar.scrollLeft + sidebar.clientWidth >= sidebar.scrollWidth - 10) {
-                rightBtn.style.opacity = '0.4';
-            } else {
-                rightBtn.style.opacity = '1';
-            }
-
-            if (sidebar.scrollWidth <= sidebar.clientWidth) {
-                leftBtnContainer.style.display = 'none';
-                rightBtnContainer.style.display = 'none';
+                // Check if sidebar has enough content to scroll
+                if (sidebar.scrollWidth <= sidebar.clientWidth) {
+                    leftBtnWrapper.style.display = 'none';
+                    rightBtnWrapper.style.display = 'none';
+                }
             }
         }
 
@@ -2606,26 +2503,30 @@
             const sidebar = document.querySelector(".sidebar");
             const Faq = document.querySelector(".faq-container");
 
-            if (!bottomsection || !sidebar || !Faq) return;
-
+            // Get the bottom position of the top section
             const FaqBottom = Faq.getBoundingClientRect().top;
             const topSectiontopBottom = bottomsection.getBoundingClientRect().bottom;
 
-            // First hide all scroll buttons
-            if (window.innerWidth <= 768) {
-                document.querySelectorAll('.scroll-btn-left, .scroll-btn-right').forEach(btn => {
-                    btn.style.display = 'none';
-                });
-            }
-
             // If we've scrolled past the top section, show the sidebar
             if (topSectiontopBottom <= 100 && FaqBottom > 200) {
-                sidebar.classList.add("main-container-visible"); // Use class instead of inline style
                 sidebar.style.transform = "translateY(0)";
+                // Make the sidebar's scroll buttons active
+                if (window.innerWidth <= 768) {
+                    const leftBtnWrapper = document.getElementById('sidebar1-left');
+                    const rightBtnWrapper = document.getElementById('sidebar1-right');
+                    if (leftBtnWrapper) leftBtnWrapper.style.display = 'block';
+                    if (rightBtnWrapper) rightBtnWrapper.style.display = 'block';
+                    updateScrollButtonVisibility('sidebar');
+                }
             } else {
-                // On desktop, we hide it. On mobile, behavior might vary, but keeping original logic:
                 sidebar.style.transform = "translateY(100vh)";
-                sidebar.classList.remove("main-container-visible");
+                // Hide buttons when sidebar is hidden
+                if (window.innerWidth <= 768) {
+                    const leftBtnWrapper = document.getElementById('sidebar1-left');
+                    const rightBtnWrapper = document.getElementById('sidebar1-right');
+                    if (leftBtnWrapper) leftBtnWrapper.style.display = 'none';
+                    if (rightBtnWrapper) rightBtnWrapper.style.display = 'none';
+                }
             }
         }
 
@@ -2894,26 +2795,19 @@
             initLoader(); // Initialize loader
             initCustomScrollbar(); // Initialize Custom Scrollbar
 
+            // Add scroll event listeners to sidebars for button visibility updates
             const sidebar = document.querySelector('.sidebar');
-            const sidebar2 = document.querySelector('.sidebar2');
-
             if (sidebar) {
                 sidebar.addEventListener('scroll', function () {
                     updateScrollButtonVisibility('sidebar');
                 });
             }
 
-            if (sidebar2) {
-                sidebar2.addEventListener('scroll', function () {
-                    updateScrollButtonVisibility('sidebar2');
-                });
-            }
-
+            // Add window resize event listener to update button visibility
             window.addEventListener('resize', function () {
                 handleSidebar();
             });
 
-            // EXISTING IMAGE ANIMATION OBSERVER
             if (window.innerWidth <= 768) {
                 const hoverElements = document.querySelectorAll('.hover-3d');
                 const observer = new IntersectionObserver((entries) => {
@@ -2933,9 +2827,6 @@
                 });
             }
 
-            // ==========================================
-            // NEW TEXT REVEAL ANIMATION (ALL DEVICES)
-            // ==========================================
             const textElements = document.querySelectorAll(
                 'h1, .top-section p, .content h2, .content h3, .content p, .faq-container h2, .faq-intro, .faq-item'
             );
@@ -2969,7 +2860,6 @@
                 });
             });
 
-
             // ==========================================
             // FOOTER REVEAL ANIMATION (NEW)
             // ==========================================
@@ -2990,6 +2880,7 @@
 
         });
 
+        // Add scroll event listener
         window.addEventListener("scroll", function () {
             handleSidebar();
             handleBackToTopButton();
